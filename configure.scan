@@ -1,0 +1,100 @@
+#                                               -*- Autoconf -*-
+# Process this file with autoconf to produce a configure script.
+
+AC_PREREQ([2.69])
+AC_INIT([FULL-PACKAGE-NAME], [VERSION], [BUG-REPORT-ADDRESS])
+AC_CONFIG_SRCDIR([STYLE.C])
+AC_CONFIG_HEADERS([config.h])
+
+# Checks for programs.
+AC_PROG_CXX
+AC_PROG_AWK
+AC_PROG_CC
+AC_PROG_CPP
+AC_PROG_INSTALL
+AC_PROG_LN_S
+AC_PROG_MAKE_SET
+AC_PROG_RANLIB
+AC_PROG_YACC
+
+# Checks for libraries.
+# FIXME: Replace `main' with a function in `-lbfd':
+AC_CHECK_LIB([bfd], [main])
+# FIXME: Replace `main' with a function in `-ldl':
+AC_CHECK_LIB([dl], [main])
+# FIXME: Replace `main' with a function in `-linkall':
+AC_CHECK_LIB([inkall], [main])
+# FIXME: Replace `main' with a function in `-linkpkg':
+AC_CHECK_LIB([inkpkg], [main])
+# FIXME: Replace `main' with a function in `-lopcodes':
+AC_CHECK_LIB([opcodes], [main])
+# FIXME: Replace `main' with a function in `-lprotobuf':
+AC_CHECK_LIB([protobuf], [main])
+# FIXME: Replace `main' with a function in `-lpthread':
+AC_CHECK_LIB([pthread], [main])
+# FIXME: Replace `main' with a function in `-lz':
+AC_CHECK_LIB([z], [main])
+
+# Checks for header files.
+AC_CHECK_HEADERS([fcntl.h inttypes.h limits.h malloc.h memory.h stddef.h stdint.h stdlib.h string.h sys/socket.h unistd.h])
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_CHECK_HEADER_STDBOOL
+AC_C_INLINE
+AC_TYPE_INT16_T
+AC_TYPE_INT32_T
+AC_TYPE_INT64_T
+AC_TYPE_INT8_T
+AC_TYPE_OFF_T
+AC_TYPE_SIZE_T
+AC_TYPE_SSIZE_T
+AC_TYPE_UINT16_T
+AC_TYPE_UINT32_T
+AC_TYPE_UINT64_T
+AC_TYPE_UINT8_T
+
+# Checks for library functions.
+AC_FUNC_ERROR_AT_LINE
+AC_FUNC_MALLOC
+AC_FUNC_MMAP
+AC_FUNC_REALLOC
+AC_CHECK_FUNCS([floor getpagesize memset munmap rint sqrt])
+
+AC_CONFIG_FILES([Makefile
+                 VEX/Makefile
+                 VEX/switchback/Makefile
+                 batteries/Makefile
+                 batteries/build/camlzip/Makefile
+                 batteries/examples/benchmark/Makefile
+                 batteries/examples/euler/Makefile
+                 batteries/libs/estring/Makefile
+                 doc/Makefile
+                 doc/fig/Makefile
+                 doc/just-formals/Makefile
+                 libasmir/Makefile
+                 libasmir/apps/Makefile
+                 libasmir/src/Makefile
+                 libtracewrap/Makefile
+                 objsize-0.16/Makefile
+                 ocaml-proj.example/Makefile
+                 ocaml/Makefile
+                 pcre-ocaml/Makefile
+                 pcre-ocaml/examples/cloc/Makefile
+                 pcre-ocaml/examples/count_hash/Makefile
+                 pcre-ocaml/examples/pcregrep/Makefile
+                 pcre-ocaml/examples/subst/Makefile
+                 pcre-ocaml/lib/Makefile
+                 pintraces/Makefile
+                 pintraces/examples/bof1/Makefile
+                 piqi-files/Makefile
+                 tests-proj.example/Makefile
+                 tests/C/Makefile
+                 tests/Makefile
+                 tests/asm/Makefile
+                 utils-proj.example/Makefile
+                 utils/Makefile])
+AC_CONFIG_SUBDIRS([libtracewrap/libtrace
+                   ocamlgraph-1.8
+                   ounit
+                   zarith-1.0])
+AC_OUTPUT
