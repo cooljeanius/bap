@@ -2,9 +2,9 @@
 
 export OCAMLMAKEFILE = ../OCamlMakefile
 
-ROOTDIR = /private/var/root/Downloads/bap-0.7/libtracewrap/libtrace
+ROOTDIR = /private/var/root/bap/libtracewrap/libtrace
 PIQIBUILDDIR = $(ROOTDIR)/piqi/piqi/build/lib/ocaml
-BATT = /private/var/root/.opam/system/lib/batteries
+BATT = /var/root/.opam/system/lib/batteries
 #BATT = $(ROOTDIR)/batteries/_build/src
 LIBTRACEDIR = $(realpath ..)
 #ZARITHDIR = $(ROOTDIR)/zarith-1.0

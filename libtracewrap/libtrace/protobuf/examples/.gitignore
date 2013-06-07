@@ -1,0 +1,17 @@
+add_person_cpp
+list_people_cpp
+add_person_java
+list_people_java
+add_person_python
+list_people_python
+javac_middleman
+*.class
+protoc_middleman
+addressbook.pb.cc
+addressbook.pb.h
+addressbook_pb2.py
+*.pyc
+com/example/tutorial/*
+com/example/*
+com/*
+

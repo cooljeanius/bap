@@ -1,5 +1,7 @@
 # Automake file
 
+ACLOCAL_AMFLAGS = -I m4
+
 # TODO(chandlerc@google.com): automate the generation of *.h from *.h.pump.
 
 # Nonstandard package files for distribution

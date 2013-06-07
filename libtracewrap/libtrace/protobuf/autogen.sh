@@ -35,7 +35,7 @@ sed -i -e 's/RuntimeLibrary="5"/RuntimeLibrary="3"/g;
            s/RuntimeLibrary="4"/RuntimeLibrary="2"/g;' gtest/msvc/*.vcproj
 
 # TODO(kenton):  Remove the ",no-obsolete" part and fix the resulting warnings.
-autoreconf -f -i -Wall,no-obsolete
+autoreconf -f -i -v -Wall,no-obsolete
 
 rm -rf autom4te.cache config.h.in~
 exit 0

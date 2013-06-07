@@ -2,7 +2,7 @@
 
 # libtool - Provide generalized library-building support services.
 # Generated automatically by config.status (bap) 0.7
-# Libtool was configured on host gl00b05045:
+# Libtool was configured on host eric-gallagers-macbook-pro.local:
 # NOTE: Changes made to this file will be lost: look at ltmain.sh.
 #
 #   Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2003, 2004, 2005,
@@ -66,13 +66,13 @@ PATH_SEPARATOR=":"
 
 # The host system.
 host_alias=
-host=x86_64-apple-darwin11.4.2
-host_os=darwin11.4.2
+host=x86_64-apple-darwin10.8.0
+host_os=darwin10.8.0
 
 # The build system.
 build_alias=
-build=x86_64-apple-darwin11.4.2
-build_os=darwin11.4.2
+build=x86_64-apple-darwin10.8.0
+build_os=darwin10.8.0
 
 # A sed program that does not truncate output.
 SED="/opt/local/bin/gsed"
@@ -81,13 +81,13 @@ SED="/opt/local/bin/gsed"
 Xsed="$SED -e 1s/^X//"
 
 # A grep program that handles long lines.
-GREP="/opt/local/bin/grep"
+GREP="/sw/bin/pathsetup.sh/bin/grep"
 
 # An ERE matcher.
-EGREP="/opt/local/bin/grep -E"
+EGREP="/sw/bin/pathsetup.sh/bin/grep -E"
 
 # A literal string matcher.
-FGREP="/opt/local/bin/grep -F"
+FGREP="/sw/bin/pathsetup.sh/bin/grep -F"
 
 # A BSD- or MS-compatible name lister.
 NM="/opt/local/bin/nm"
@@ -164,7 +164,7 @@ lock_old_archive_extraction=yes
 LTCC="gcc"
 
 # LTCC compiler flags.
-LTCFLAGS="-g -O2 -DAMD64"
+LTCFLAGS="-g -O2"
 
 # Take the output of nm and produce a listing of raw symbols and C names.
 global_symbol_pipe="sed -n -e 's/^.*[	 ]\\([BCDEGRST][BCDEGRST]*\\)[	 ][	 ]*_\\([_A-Za-z][_A-Za-z0-9]*\\)\$/\\1 _\\2 \\2/p' | sed '/ __gnu_lto/d'"
@@ -209,7 +209,7 @@ LIPO="lipo"
 OTOOL="otool"
 
 # ldd/readelf like tool for 64 bit Mach-O binaries on Mac OS X 10.4.
-OTOOL64=":"
+OTOOL64="otool64"
 
 # Old archive suffix (normally "a").
 libext=a
@@ -272,7 +272,7 @@ finish_eval=""
 hardcode_into_libs=no
 
 # Compile-time system search path for libraries.
-sys_lib_search_path_spec="/opt/local/lib/gcc45/gcc/x86_64-apple-darwin11/4.5.4 /opt/local/lib/gcc45 /usr/lib  /usr/local/lib"
+sys_lib_search_path_spec="/usr/lib/x86_64 /usr/lib/gcc/i686-apple-darwin10/4.2.1/x86_64 /usr/lib/i686-apple-darwin10/4.2.1  /usr/local/lib"
 
 # Run-time system search path for libraries.
 sys_lib_dlsearch_path_spec="/usr/local/lib /lib /usr/lib"
@@ -292,7 +292,7 @@ striplib="strip -x"
 
 
 # The linker used to build libraries.
-LD="/opt/local/bin/ld"
+LD="/usr/libexec/gcc/i686-apple-darwin10/4.2.1/ld"
 
 # How to create reloadable object files.
 reload_flag=" -r"
@@ -10091,7 +10091,7 @@ build_old_libs=`case $build_libtool_libs in yes) echo no;; *) echo yes;; esac`
 # ### BEGIN LIBTOOL TAG CONFIG: CXX
 
 # The linker used to build libraries.
-LD="/opt/local/bin/ld"
+LD="/usr/libexec/gcc/i686-apple-darwin10/4.2.1/ld"
 
 # How to create reloadable object files.
 reload_flag=" -r"

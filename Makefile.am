@@ -1,4 +1,5 @@
 ACLOCAL_AMFLAGS = -I m4
+
 # Work around buggy Debian ocaml patch
 # See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=678577
 export OCAML_COMPAT='c'

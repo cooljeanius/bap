@@ -1,8 +1,8 @@
 OCAMLMAKEFILE = ./OCamlMakefile
 
-ROOTDIR = /private/var/root/Downloads/bap-0.7/libtracewrap/libtrace
+ROOTDIR = /private/var/root/bap/libtracewrap/libtrace
 PIQIBUILDDIR = $(ROOTDIR)/piqi/piqi/build/lib/ocaml
-BATT = /private/var/root/.opam/system/lib/batteries
+BATT = /var/root/.opam/system/lib/batteries
 #BATT = $(ROOTDIR)/batteries/_build/src
 
 export OCAMLPATH = $(PIQIBUILDDIR)
@@ -11,7 +11,7 @@ export OCAMLPATH = $(PIQIBUILDDIR)
 # .idl files.
 export CAMLIDLFLAGS = -prepro cpp
 
-INCDIRS += /private/var/root/.opam/system/lib/camlidl
+INCDIRS += 
 
 PACKS = piqi.lib
 

@@ -1,0 +1,15 @@
+protoc
+protobuf-test
+protobuf-lazy-descriptor-test
+protobuf-lite-test
+test_plugin
+zcgzip
+zcgunzip
+*.pb.*
+*.zip
+*.jar
+so_locations
+*.loT
+*.lo
+*.o
+*deps/*.*o

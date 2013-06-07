@@ -1,7 +1,7 @@
 # Owned and copyright BitBlaze, 2007. All rights reserved.
 # Do not copy, disclose, or distribute without explicit written
 # permission.
-
+# (Oops)
 
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
@@ -13,6 +13,7 @@ AC_CONFIG_HEADER([libasmir/config.h])
 AC_CONFIG_MACRO_DIR([m4])
 
 AM_INIT_AUTOMAKE
+AM_MAINTAINER_MODE
 
 m4_include([./m4/ac_ocaml.m4])
 m4_include([./m4/ac_prog_latex.m4])
@@ -223,7 +224,6 @@ AC_CONFIG_FILES([Makefile
 AC_OUTPUT
 
 AC_CONFIG_SUBDIRS([libtracewrap/libtrace
-                   ocamlgraph-1.8])
-
-(cd zarith-1.0 && ./configure)
+                   ocamlgraph-1.8
+		   zarith-1.0])
 

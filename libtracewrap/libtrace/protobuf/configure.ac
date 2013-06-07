@@ -1,7 +1,7 @@
 ## Process this file with autoconf to produce configure.
 ## In general, the safest way to proceed is to run ./autogen.sh
 
-AC_PREREQ(2.59)
+AC_PREREQ([2.59])
 
 # Note:  If you change the version, you must also update it in:
 # * java/pom.xml
@@ -14,8 +14,7 @@ AC_PREREQ(2.59)
 # the size of one file name in the dist tarfile over the 99-char limit.)
 AC_INIT([Protocol Buffers],[2.4.1],[protobuf@googlegroups.com],[protobuf])
 
-
-AC_CONFIG_SRCDIR(src/google/protobuf/message.cc)
+AC_CONFIG_SRCDIR([src/google/protobuf/message.cc])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4])
 
@@ -26,9 +25,11 @@ AS_IF([test "x${ac_cv_env_CFLAGS_set}" = "x"],
 AS_IF([test "x${ac_cv_env_CXXFLAGS_set}" = "x"],
       [CXXFLAGS=""])
 
+AC_CANONICAL_HOST
 AC_CANONICAL_TARGET
 
 AM_INIT_AUTOMAKE
+AM_MAINTAINER_MODE
 
 AC_ARG_WITH([zlib],
   [AS_HELP_STRING([--with-zlib],
@@ -41,11 +42,19 @@ AC_ARG_WITH([protoc],
   [],[with_protoc=no])
 
 # Checks for programs.
+AC_USE_SYSTEM_EXTENSIONS
+AM_PROG_AR
+AC_PROG_AWK
 AC_PROG_CC
 AC_PROG_CXX
 AC_LANG([C++])
+AC_PROG_CPP
+AC_PROG_INSTALL
+AC_PROG_LN_S
+AC_PROG_MAKE_SET
+AC_PROG_RANLIB
 ACX_USE_SYSTEM_EXTENSIONS
-AM_CONDITIONAL(GCC, test "$GCC" = yes)   # let the Makefile know if we're gcc
+AM_CONDITIONAL([GCC], [test "$GCC" = yes])   # let the Makefile know if we're gcc
 
 # test_util.cc takes forever to compile with GCC and optimization turned on.
 AC_MSG_CHECKING([C++ compiler flags...])
@@ -65,22 +74,43 @@ AS_IF([test "x${ac_cv_env_CXXFLAGS_set}" = "x"],[
   AC_MSG_RESULT([use user-supplied: $CXXFLAGS])
 ])
 
-AC_SUBST(PROTOBUF_OPT_FLAG)
+AC_SUBST([PROTOBUF_OPT_FLAG])
 
 ACX_CHECK_SUNCC
 
-# Have to do libtool after SUNCC, other wise it "helpfully" adds Crun Cstd
+# Have to do libtool after SUNCC, otherwise it "helpfully" adds Crun Cstd
 # to the link
 AC_PROG_LIBTOOL
 
 # Checks for header files.
 AC_HEADER_STDC
-AC_CHECK_HEADERS([fcntl.h inttypes.h limits.h stdlib.h unistd.h])
+AC_CHECK_HEADERS([fcntl.h float.h limits.h locale.h stdio.h sys/param.h])
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_CHECK_HEADER_STDBOOL
+AC_C_INLINE
+AC_TYPE_INT16_T
+AC_TYPE_INT32_T
+AC_TYPE_INT64_T
+AC_TYPE_INT8_T
+AC_TYPE_OFF_T
+AC_TYPE_PID_T
+AC_TYPE_SIZE_T
+AC_TYPE_UINT16_T
+AC_TYPE_UINT32_T
+AC_TYPE_UINT64_T
+AC_TYPE_UINT8_T
+AC_CHECK_TYPES([ptrdiff_t])
 
 # Checks for library functions.
+AC_FUNC_ERROR_AT_LINE
+AC_FUNC_FORK
+AC_FUNC_MALLOC
 AC_FUNC_MEMCMP
+AC_FUNC_MMAP
 AC_FUNC_STRTOD
-AC_CHECK_FUNCS([ftruncate memset mkdir strchr strerror strtol])
+AC_CHECK_FUNCS([dup2 ftruncate localeconv memmove memset mkdir realpath select setlocale \
+                strchr strdup strerror strpbrk strtol strtoul strtoull])
 
 # Check for zlib.
 HAVE_ZLIB=0
@@ -88,13 +118,13 @@ AS_IF([test "$with_zlib" != no], [
   AC_MSG_CHECKING([zlib version])
 
   # First check the zlib header version.
-  AC_COMPILE_IFELSE(
+  AC_COMPILE_IFELSE([AC_LANG_SOURCE([
     AC_LANG_PROGRAM([[
         #include <zlib.h>
         #if !defined(ZLIB_VERNUM) || (ZLIB_VERNUM < 0x1204)
         # error zlib version too old
         #endif
-        ]], []), [
+        ]], [])])], [
     AC_MSG_RESULT([ok (1.2.0.4 or later)])
 
     # Also need to add -lz to the linker flags and make sure this succeeds.
@@ -145,5 +175,8 @@ export CFLAGS
 export CXXFLAGS
 AC_CONFIG_SUBDIRS([gtest])
 
-AC_CONFIG_FILES([Makefile src/Makefile protobuf.pc protobuf-lite.pc])
+AC_CONFIG_FILES([Makefile
+		 src/Makefile
+		 protobuf.pc
+		 protobuf-lite.pc])
 AC_OUTPUT

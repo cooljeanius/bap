@@ -1,0 +1,84 @@
+#                                               -*- Autoconf -*-
+# Process this file with autoconf to produce a configure script.
+
+AC_PREREQ([2.69])
+AC_INIT([FULL-PACKAGE-NAME], [VERSION], [BUG-REPORT-ADDRESS])
+AC_CONFIG_SRCDIR([piqilib/piqi_c_impl.c])
+AC_CONFIG_HEADERS([config.h])
+
+# Checks for programs.
+AC_PROG_CXX
+AC_PROG_CC
+AC_PROG_CPP
+AC_PROG_INSTALL
+AC_PROG_LN_S
+AC_PROG_MAKE_SET
+
+# Checks for libraries.
+# FIXME: Replace `main' with a function in `-lprotobuf':
+AC_CHECK_LIB([protobuf], [main])
+# FIXME: Replace `main' with a function in `-lprotoc':
+AC_CHECK_LIB([protoc], [main])
+# FIXME: Replace `main' with a function in `-lpthread':
+AC_CHECK_LIB([pthread], [main])
+
+# Checks for header files.
+AC_CHECK_HEADERS([fcntl.h stdint.h stdlib.h])
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_CHECK_HEADER_STDBOOL
+AC_TYPE_UINT64_T
+
+# Checks for library functions.
+AC_CHECK_FUNCS([strtoull])
+
+AC_CONFIG_FILES([Makefile
+                 deps/Makefile
+                 deps/easy-format-1.0.0/Makefile
+                 deps/easy-format-1.0.0/examples/Makefile
+                 deps/ulex-1.1/Makefile
+                 deps/xmlm-1.1.1/Makefile
+                 examples/Makefile
+                 examples/erlang-custom-types/Makefile
+                 examples/erlang/Makefile
+                 examples/ocaml-custom-types/Makefile
+                 examples/ocaml-piq-config/Makefile
+                 examples/ocaml/Makefile
+                 piqi-camlp4/Makefile
+                 piqi-erlang/Makefile
+                 piqi-erlang/piqic-erlang-ext/Makefile
+                 piqi-erlang/src/Makefile
+                 piqi-rpc/Makefile
+                 piqi-rpc/examples/Makefile
+                 piqi-rpc/examples/addressbook/Makefile
+                 piqi-rpc/examples/process_info/Makefile
+                 piqi-rpc/piqic-erlang-rpc/Makefile
+                 piqi-rpc/src/Makefile
+                 piqi-tools/Makefile
+                 piqi/Makefile
+                 piqic/Makefile
+                 piqicc/Makefile
+                 piqilib/Makefile
+                 piqirun-ocaml/Makefile
+                 tests/Makefile
+                 tests/boot_proto2piqi/Makefile
+                 tests/cpp/Makefile
+                 tests/erlang_import/Makefile
+                 tests/erlang_misc/Makefile
+                 tests/erlang_packed/Makefile
+                 tests/erlang_perf/Makefile
+                 tests/erlang_piqi/Makefile
+                 tests/ocaml_array/Makefile
+                 tests/ocaml_misc/Makefile
+                 tests/ocaml_packed/Makefile
+                 tests/ocaml_perf/Makefile
+                 tests/ocaml_piq_config/Makefile
+                 tests/ocaml_piqi/Makefile
+                 tests/ocaml_riak_pb/Makefile
+                 tests/piqi_compile/Makefile
+                 tests/piqi_misc/Makefile
+                 tests/piqi_packed/Makefile
+                 tests/piqi_proto/Makefile
+                 tests/piqi_proto1/Makefile
+                 tests/piqi_server/Makefile])
+AC_OUTPUT

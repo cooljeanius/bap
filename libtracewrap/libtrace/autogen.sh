@@ -1,5 +1,18 @@
-aclocal -I m4
-autoconf
-autoheader
-automake --add-missing --copy
-(cd protobuf && ./autogen.sh)
+#!/bin/sh
+
+set -e
+
+echo "It'd probably be a better idea to just run \`autoreconf' with your flags of choice, but whatever..."
+
+set -ex
+
+test ! -z "`which aclocal`" && aclocal --force -I m4
+test ! -z "`which autoconf`" && autoconf --force
+test ! -z "`which autoheader`" && autoheader --force
+test ! -z "`which automake`" && automake --add-missing --copy --force-missing
+
+cd protobuf && sh ./autogen.sh
+
+if [ ! -z "$OLDPWD" ]; then
+	cd $OLDPWD
+fi
