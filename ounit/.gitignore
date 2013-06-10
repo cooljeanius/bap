@@ -1,0 +1,8 @@
+_build/*
+*.o
+*.log
+*~
+*.cm[aiox]
+setup.data
+test.byte
+*.docdir

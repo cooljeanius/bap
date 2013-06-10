@@ -1,0 +1,17 @@
+*.cm[aiox]
+*.cmx[as]
+*.o
+*.cache
+*.so
+*.dll
+*~
+\#*
+depend
+test
+z.ml
+z.mli
+tmp.c
+test.b
+rtest
+bitest
+html
