@@ -90,3 +90,5 @@ tests/asm/nop
 *.annot
 *lexer.ml
 *grammar.ml
+*grammar.mli
+VEX/pub/*guest_offsets.h
