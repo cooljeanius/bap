@@ -87,3 +87,6 @@ tests/C/test
 tests/C/unroll
 tests/asm/nop
 *.exe
+*.annot
+*lexer.ml
+*grammar.ml
