@@ -1,0 +1,2 @@
+This file is no longer necessary now that automake uses the
+"foreign" option.
