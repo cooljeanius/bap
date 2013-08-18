@@ -17,7 +17,7 @@ AC_USE_SYSTEM_EXTENSIONS
 
 AB_INIT
 AM_INIT_AUTOMAKE([foreign subdir-objects -Wall])
-AM_MAINTAINER_MODE
+GNOME_MAINTAINER_MODE_DEFINES
 
 m4_include([./m4/ac_ocaml.m4])
 m4_include([./m4/ac_prog_latex.m4])
@@ -46,6 +46,7 @@ if test "x$CPP" = "x"; then
 	test -z "$CPP"
 	AC_PROG_CPP
 else
+	test ! -z "$CPP"
 	XORG_PROG_RAWCPP([])
 fi
 if test "x$INSTALL" = "x"; then
@@ -68,6 +69,7 @@ else
 	AC_SUBST([MAKE])
 fi
 AX_CHECK_GNU_MAKE
+AM_PROG_LEX
 AC_PROG_YACC
 AC_PROG_OCAML([3.12.0])
 AC_PROG_CAMLP4
@@ -82,6 +84,7 @@ else
 	export RANLIB
 	AC_SUBST([RANLIB])
 fi
+PKG_PROG_PKG_CONFIG
 
 # Check for Z3
 AC_ARG_WITH([z3],
@@ -196,6 +199,10 @@ AC_CHECK_LIB([iberty],[xmalloc],[],[AC_MSG_WARN([libiberty not found: This ought
 AC_CHECK_LIB([pcre],[pcre_config],[],[AC_MSG_ERROR([PCRE library not found])])
 # zlib is apparently needed by bfd
 AC_CHECK_LIB([z],[inflate],[],[AC_MSG_ERROR([zlib library not found])])
+
+# More checks for libraries
+# FIXME: Replace `main' with a function in `-lasmir':
+AC_CHECK_LIB([asmir],[main])
 AC_CHECK_LIB([c],[printf])
 AC_CHECK_LIB([dl],[dlopen])
 AC_CHECK_LIB([m],[sqrt])
@@ -204,6 +211,10 @@ AC_CHECK_LIB([opcodes],[main])
 # FIXME: Replace `main' with a function in `-lprotobuf':
 AC_CHECK_LIB([protobuf],[main])
 AC_CHECK_LIB([pthread],[pthread_create])
+# FIXME: Replace `main' with a function in `-lstdc++':
+AC_CHECK_LIB([vex],[main])
+# FIXME: Replace `main' with a function in `-lvex':
+AC_CHECK_LIB([stdc++],[main])
 
 AC_SUBST([VEX_DIR])
 
@@ -249,13 +260,18 @@ AC_TYPE_UINT16_T
 AC_TYPE_UINT32_T
 AC_TYPE_UINT64_T
 AC_DEFINE_UNQUOTED([VEX_VERSION],[${VEX_VERSION}],[The VEX SVN Version])
+XORG_CHECK_MALLOC_ZERO
+XORG_MEMORY_CHECK_FLAGS
+GNOME_DEBUG_CHECK
 
+AC_CHECK_TYPES([bfd_vma])
 AC_CHECK_SIZEOF([bfd_vma],[],[#include <bfd.h>])
-AC_CHECK_ALIGNOF([bfd_vma])
+AC_CHECK_ALIGNOF([bfd_vma],[],[#include <bfd.h>])
 
 # Checks for library functions.
 AC_FUNC_ERROR_AT_LINE
 AC_FUNC_MALLOC
+AM_WITH_DMALLOC
 AC_FUNC_MEMCMP
 AC_FUNC_MMAP
 AC_FUNC_REALLOC

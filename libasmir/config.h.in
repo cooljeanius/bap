@@ -6,6 +6,12 @@
 /* The normal alignment of `bfd_vma', in bytes. */
 #undef ALIGNOF_BFD_VMA
 
+/* Enable additional debugging at the expense of performance and size */
+#undef GNOME_ENABLE_DEBUG
+
+/* Define to 1 if the system has the type `bfd_vma'. */
+#undef HAVE_BFD_VMA
+
 /* Define to 1 if you have the `bzero' function. */
 #undef HAVE_BZERO
 
@@ -23,6 +29,9 @@
 
 /* Define to 1 if you have the <inttypes.h> header file. */
 #undef HAVE_INTTYPES_H
+
+/* Define to 1 if you have the `asmir' library (-lasmir). */
+#undef HAVE_LIBASMIR
 
 /* Define to 1 if you have the `bfd' library (-lbfd). */
 #undef HAVE_LIBBFD
@@ -50,6 +59,12 @@
 
 /* Define to 1 if you have the `pthread' library (-lpthread). */
 #undef HAVE_LIBPTHREAD
+
+/* Define to 1 if you have the `stdc++' library (-lstdc++). */
+#undef HAVE_LIBSTDC__
+
+/* Define to 1 if you have the `vex' library (-lvex). */
+#undef HAVE_LIBVEX
 
 /* Define to 1 if you have the `z' library (-lz). */
 #undef HAVE_LIBZ
@@ -204,6 +219,9 @@
 
 /* The VEX SVN Version */
 #undef VEX_VERSION
+
+/* Define if using the dmalloc debugging malloc package */
+#undef WITH_DMALLOC
 
 /* Define WORDS_BIGENDIAN to 1 if your processor stores words with the most
    significant byte first (like Motorola and SPARC, unlike Intel). */

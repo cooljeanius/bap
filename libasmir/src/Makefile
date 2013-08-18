@@ -85,10 +85,11 @@ DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/autobuild.m4 \
 	$(top_srcdir)/m4/ax_check_gnu_make.m4 \
-	$(top_srcdir)/m4/libtool.m4 $(top_srcdir)/m4/ltoptions.m4 \
-	$(top_srcdir)/m4/ltsugar.m4 $(top_srcdir)/m4/ltversion.m4 \
-	$(top_srcdir)/m4/lt~obsolete.m4 \
-	$(top_srcdir)/m4/xorg-macros.m4 $(top_srcdir)/./m4/ac_ocaml.m4 \
+	$(top_srcdir)/m4/gnome-common.m4 $(top_srcdir)/m4/libtool.m4 \
+	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
+	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
+	$(top_srcdir)/m4/pkg.m4 $(top_srcdir)/m4/xorg-macros.m4 \
+	$(top_srcdir)/./m4/ac_ocaml.m4 \
 	$(top_srcdir)/./m4/ac_prog_latex.m4 $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
@@ -260,6 +261,7 @@ CXXFLAGS = -g -O2
 CYGPATH_W = echo
 DEFS = -DHAVE_CONFIG_H
 DEPDIR = .deps
+DISABLE_DEPRECATED = 
 DLLTOOL = false
 DSYMUTIL = dsymutil
 DUMPBIN = 
@@ -283,7 +285,7 @@ LEX = flex
 LEXLIB = -lfl
 LEX_OUTPUT_ROOT = lex.yy
 LIBOBJS =  ${LIBOBJDIR}error$U.o
-LIBS = -lpthread -lprotobuf -lm -ldl -lc -lz -lpcre 
+LIBS = -lstdc++ -lpthread -lprotobuf -lm -ldl -lc -lz -lpcre 
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LIPO = lipo
 LLVM_PACKAGE = 
@@ -293,6 +295,7 @@ LTLIBOBJS =  ${LIBOBJDIR}error$U.lo
 MAINT = #
 MAKE = /sw2/bin/make
 MAKEINFO = ${SHELL} /Users/ericgallager/GitHubReposFromOtherComputers/bap/missing makeinfo
+MALLOC_ZERO_CFLAGS = 
 MANIFEST_TOOL = :
 MKDIR_P = /opt/local/bin/gmkdir -p
 NM = /opt/local/bin/nm
@@ -323,6 +326,9 @@ PACKAGE_TARNAME = bap
 PACKAGE_URL = 
 PACKAGE_VERSION = 0.7
 PATH_SEPARATOR = :
+PKG_CONFIG = /opt/local/bin/pkg-config
+PKG_CONFIG_LIBDIR = 
+PKG_CONFIG_PATH = /sw/opt/kde4/x11/lib/pkgconfig:/sw/lib/freetype219/lib/pkgconfig:/sw/lib/fontconfig2/lib/pkgconfig:/sw/lib/qt4-x11/lib/pkgconfig:/sw/opt/qca2/x11/lib/pkgconfig:/usr/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/local/lib/pkgconfig:/opt/X11/lib/pkgconfig:/sw/lib/pkgconfig:/Developer/usr/lib/pkgconfig:/usr/share/pkgconfig:/usr/local/share/pkgconfig:/opt/local/share/pkgconfig:/opt/X11/share/pkgconfig:/sw/share/pkgconfig:/Library/Frameworks/Python.framework/Versions/Current/lib/pkgconfig:/opt/local/Library/Frameworks/Python.framework/Versions/Current/lib/pkgconfig:/usr/local/Library/ENV/pkgconfig:~/.rvm/usr/lib/pkgconfig:/usr/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/local/lib/pkgconfig:/sw/lib/pkgconfig:/Developer/usr/lib/pkgconfig:/usr/share/pkgconfig:/usr/local/share/pkgconfig:/opt/local/share/pkgconfig:/opt/X11/lib/pkgconfig:/opt/X11/share/pkgconfig:/sw/share/pkgconfig:/Library/Frameworks/Python.framework/Versions/Current/lib/pkgconfig:/opt/local/Library/Frameworks/Python.framework/Versions/Current/lib/pkgconfig:/usr/local/Library/ENV/pkgconfig:/Users/ericgallager/.rvm/usr/lib/pkgconfig
 RANLIB = ranlib
 RAWCPP = /opt/local/bin/cpp
 RAWCPPFLAGS =  -traditional
@@ -332,6 +338,9 @@ SHELL = /bin/sh
 STRIP = strip
 VERSION = 0.7
 VEX_DIR = /Users/ericgallager/GitHubReposFromOtherComputers/bap/VEX
+XMALLOC_ZERO_CFLAGS = 
+XORG_MALLOC_DEBUG_ENV = MallocPreScribble=1 MallocScribble=1 DYLD_INSERT_LIBRARIES=/usr/lib/libgmalloc.dylib
+XTMALLOC_ZERO_CFLAGS = 
 YACC = bison -y
 YFLAGS = 
 abs_builddir = /Users/ericgallager/GitHubReposFromOtherComputers/bap/libasmir/src

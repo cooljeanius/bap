@@ -639,6 +639,10 @@ am__EXEEXT_TRUE
 LTLIBOBJS
 subdirs
 LIBOBJS
+XORG_MALLOC_DEBUG_ENV
+XTMALLOC_ZERO_CFLAGS
+XMALLOC_ZERO_CFLAGS
+MALLOC_ZERO_CFLAGS
 BAP_DIR
 ASMIR_DIR
 INCDIRS
@@ -650,6 +654,9 @@ HAVE_LLVM_AC
 LLVM_PACKAGE
 HAVE_PIN_FALSE
 HAVE_PIN_TRUE
+PKG_CONFIG_LIBDIR
+PKG_CONFIG_PATH
+PKG_CONFIG
 CXXCPP
 OTOOL64
 OTOOL
@@ -676,9 +683,6 @@ CAMLP4
 OCAMLYACC
 OCAMLLEX_OPT
 OCAMLLEX
-LEXLIB
-LEX_OUTPUT_ROOT
-LEX
 OCAMLDOC_OPT
 OCAMLDOC
 OCAMLMKLIB
@@ -691,6 +695,9 @@ OCAMLC_OPT
 OCAMLC
 YFLAGS
 YACC
+LEXLIB
+LEX_OUTPUT_ROOT
+LEX
 ifGNUmake
 MAKE
 LN_S
@@ -710,6 +717,7 @@ CCASFLAGS
 CCAS
 ac_ct_AR
 AR
+DISABLE_DEPRECATED
 MAINT
 MAINTAINER_MODE_FALSE
 MAINTAINER_MODE_TRUE
@@ -826,6 +834,9 @@ with_sysroot
 enable_libtool_lock
 with_z3
 with_llvm
+enable_malloc0returnsnull
+enable_debug
+with_dmalloc
 '
       ac_precious_vars='build_alias
 host_alias
@@ -843,7 +854,11 @@ CXXFLAGS
 CCC
 YACC
 YFLAGS
-CXXCPP'
+CXXCPP
+PKG_CONFIG
+PKG_CONFIG_PATH
+PKG_CONFIG_LIBDIR
+XORG_MALLOC_DEBUG_ENV'
 ac_subdirs_all='libtracewrap/libtrace
                    ocamlgraph-1.8
                    zarith-1.0'
@@ -1480,6 +1495,9 @@ Optional Features:
   --enable-fast-install[=PKGS]
                           optimize for fast installation [default=yes]
   --disable-libtool-lock  avoid locking (might break parallel builds)
+  --enable-malloc0returnsnull
+                          malloc(0) returns NULL (default: auto)
+  --enable-debug          turn on debugging
 
 Optional Packages:
   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
@@ -1491,6 +1509,7 @@ Optional Packages:
                         (or the compiler's sysroot if not specified).
   --with-z3               location of Z3 library
   --with-llvm=[=ARG]      use OCaml llvm package named ARG
+  --with-dmalloc          use dmalloc, as in http://www.dmalloc.com
 
 Some influential environment variables:
   CC          C compiler command
@@ -1512,6 +1531,13 @@ Some influential environment variables:
               This script will default YFLAGS to the empty string to avoid a
               default value of `-d' given by some make applications.
   CXXCPP      C++ preprocessor
+  PKG_CONFIG  path to pkg-config utility
+  PKG_CONFIG_PATH
+              directories to add to pkg-config's search path
+  PKG_CONFIG_LIBDIR
+              path overriding pkg-config's built-in search path
+  XORG_MALLOC_DEBUG_ENV
+              Environment variables to enable memory checking in tests
 
 Use these variables to override the choices made by `configure' or to help
 it to find libraries and programs with nonstandard names/locations.
@@ -5065,6 +5091,19 @@ fi
 
 
 
+
+
+	DISABLE_DEPRECATED=""
+	if test $USE_MAINTAINER_MODE = yes; then
+	        DOMAINS="GCONF BONOBO BONOBO_UI GNOME LIBGLADE GNOME_VFS WNCK LIBSOUP"
+	        for DOMAIN in $DOMAINS; do
+	               DISABLE_DEPRECATED="$DISABLE_DEPRECATED -D${DOMAIN}_DISABLE_DEPRECATED -D${DOMAIN}_DISABLE_SINGLE_INCLUDES"
+	        done
+	fi
+
+
+
+
 # OCaml macros for autoconf
 #
 # Guillaume Rousse <Guillaume.Rou...@inria.fr>
@@ -6684,6 +6723,7 @@ ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 else
+	test ! -z "$CPP"
 
 
 for ac_prog in cpp
@@ -7007,49 +7047,6 @@ $as_echo "\"Not found\"" >&6; };
         fi
 
 
-for ac_prog in 'bison -y' byacc
-do
-  # Extract the first word of "$ac_prog", so it can be a program name with args.
-set dummy $ac_prog; ac_word=$2
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
-$as_echo_n "checking for $ac_word... " >&6; }
-if ${ac_cv_prog_YACC+:} false; then :
-  $as_echo_n "(cached) " >&6
-else
-  if test -n "$YACC"; then
-  ac_cv_prog_YACC="$YACC" # Let the user override the test.
-else
-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-for as_dir in $PATH
-do
-  IFS=$as_save_IFS
-  test -z "$as_dir" && as_dir=.
-    for ac_exec_ext in '' $ac_executable_extensions; do
-  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
-    ac_cv_prog_YACC="$ac_prog"
-    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
-    break 2
-  fi
-done
-  done
-IFS=$as_save_IFS
-
-fi
-fi
-YACC=$ac_cv_prog_YACC
-if test -n "$YACC"; then
-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $YACC" >&5
-$as_echo "$YACC" >&6; }
-else
-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
-$as_echo "no" >&6; }
-fi
-
-
-  test -n "$YACC" && break
-done
-test -n "$YACC" || YACC="yacc"
-
 for ac_prog in flex lex
 do
   # Extract the first word of "$ac_prog", so it can be a program name with args.
@@ -7212,6 +7209,49 @@ fi
 if test "$LEX" = :; then
   LEX=${am_missing_run}flex
 fi
+for ac_prog in 'bison -y' byacc
+do
+  # Extract the first word of "$ac_prog", so it can be a program name with args.
+set dummy $ac_prog; ac_word=$2
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+$as_echo_n "checking for $ac_word... " >&6; }
+if ${ac_cv_prog_YACC+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  if test -n "$YACC"; then
+  ac_cv_prog_YACC="$YACC" # Let the user override the test.
+else
+as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+    ac_cv_prog_YACC="$ac_prog"
+    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+fi
+fi
+YACC=$ac_cv_prog_YACC
+if test -n "$YACC"; then
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $YACC" >&5
+$as_echo "$YACC" >&6; }
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+fi
+
+
+  test -n "$YACC" && break
+done
+test -n "$YACC" || YACC="yacc"
+
 
 
     # allow the user to disable the use of optimized versions
@@ -18712,6 +18752,126 @@ else
 
 fi
 
+
+
+
+
+
+
+if test "x$ac_cv_env_PKG_CONFIG_set" != "xset"; then
+	if test -n "$ac_tool_prefix"; then
+  # Extract the first word of "${ac_tool_prefix}pkg-config", so it can be a program name with args.
+set dummy ${ac_tool_prefix}pkg-config; ac_word=$2
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+$as_echo_n "checking for $ac_word... " >&6; }
+if ${ac_cv_path_PKG_CONFIG+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  case $PKG_CONFIG in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_PKG_CONFIG="$PKG_CONFIG" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+    ac_cv_path_PKG_CONFIG="$as_dir/$ac_word$ac_exec_ext"
+    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  ;;
+esac
+fi
+PKG_CONFIG=$ac_cv_path_PKG_CONFIG
+if test -n "$PKG_CONFIG"; then
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $PKG_CONFIG" >&5
+$as_echo "$PKG_CONFIG" >&6; }
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+fi
+
+
+fi
+if test -z "$ac_cv_path_PKG_CONFIG"; then
+  ac_pt_PKG_CONFIG=$PKG_CONFIG
+  # Extract the first word of "pkg-config", so it can be a program name with args.
+set dummy pkg-config; ac_word=$2
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+$as_echo_n "checking for $ac_word... " >&6; }
+if ${ac_cv_path_ac_pt_PKG_CONFIG+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  case $ac_pt_PKG_CONFIG in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_ac_pt_PKG_CONFIG="$ac_pt_PKG_CONFIG" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+    ac_cv_path_ac_pt_PKG_CONFIG="$as_dir/$ac_word$ac_exec_ext"
+    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  ;;
+esac
+fi
+ac_pt_PKG_CONFIG=$ac_cv_path_ac_pt_PKG_CONFIG
+if test -n "$ac_pt_PKG_CONFIG"; then
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_pt_PKG_CONFIG" >&5
+$as_echo "$ac_pt_PKG_CONFIG" >&6; }
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+fi
+
+  if test "x$ac_pt_PKG_CONFIG" = x; then
+    PKG_CONFIG=""
+  else
+    case $cross_compiling:$ac_tool_warned in
+yes:)
+{ $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: using cross tools not prefixed with host triplet" >&5
+$as_echo "$as_me: WARNING: using cross tools not prefixed with host triplet" >&2;}
+ac_tool_warned=yes ;;
+esac
+    PKG_CONFIG=$ac_pt_PKG_CONFIG
+  fi
+else
+  PKG_CONFIG="$ac_cv_path_PKG_CONFIG"
+fi
+
+fi
+if test -n "$PKG_CONFIG"; then
+	_pkg_min_version=0.9.0
+	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking pkg-config is at least version $_pkg_min_version" >&5
+$as_echo_n "checking pkg-config is at least version $_pkg_min_version... " >&6; }
+	if $PKG_CONFIG --atleast-pkgconfig-version $_pkg_min_version; then
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+$as_echo "yes" >&6; }
+	else
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+		PKG_CONFIG=""
+	fi
+fi
+
 # Check for Z3
 
 # Check whether --with-z3 was given.
@@ -19124,6 +19284,48 @@ else
   as_fn_error $? "zlib library not found" "$LINENO" 5
 fi
 
+
+# More checks for libraries
+# FIXME: Replace `main' with a function in `-lasmir':
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -lasmir" >&5
+$as_echo_n "checking for main in -lasmir... " >&6; }
+if ${ac_cv_lib_asmir_main+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lasmir  $LIBS"
+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+
+int
+main ()
+{
+return main ();
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  ac_cv_lib_asmir_main=yes
+else
+  ac_cv_lib_asmir_main=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_asmir_main" >&5
+$as_echo "$ac_cv_lib_asmir_main" >&6; }
+if test "x$ac_cv_lib_asmir_main" = xyes; then :
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBASMIR 1
+_ACEOF
+
+  LIBS="-lasmir $LIBS"
+
+fi
+
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for printf in -lc" >&5
 $as_echo_n "checking for printf in -lc... " >&6; }
 if ${ac_cv_lib_c_printf+:} false; then :
@@ -19381,6 +19583,86 @@ if test "x$ac_cv_lib_pthread_pthread_create" = xyes; then :
 _ACEOF
 
   LIBS="-lpthread $LIBS"
+
+fi
+
+# FIXME: Replace `main' with a function in `-lstdc++':
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -lvex" >&5
+$as_echo_n "checking for main in -lvex... " >&6; }
+if ${ac_cv_lib_vex_main+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lvex  $LIBS"
+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+
+int
+main ()
+{
+return main ();
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  ac_cv_lib_vex_main=yes
+else
+  ac_cv_lib_vex_main=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_vex_main" >&5
+$as_echo "$ac_cv_lib_vex_main" >&6; }
+if test "x$ac_cv_lib_vex_main" = xyes; then :
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBVEX 1
+_ACEOF
+
+  LIBS="-lvex $LIBS"
+
+fi
+
+# FIXME: Replace `main' with a function in `-lvex':
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -lstdc++" >&5
+$as_echo_n "checking for main in -lstdc++... " >&6; }
+if ${ac_cv_lib_stdcpp_main+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lstdc++  $LIBS"
+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+
+int
+main ()
+{
+return main ();
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  ac_cv_lib_stdcpp_main=yes
+else
+  ac_cv_lib_stdcpp_main=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_stdcpp_main" >&5
+$as_echo "$ac_cv_lib_stdcpp_main" >&6; }
+if test "x$ac_cv_lib_stdcpp_main" = xyes; then :
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBSTDC__ 1
+_ACEOF
+
+  LIBS="-lstdc++ $LIBS"
 
 fi
 
@@ -20036,6 +20318,162 @@ cat >>confdefs.h <<_ACEOF
 _ACEOF
 
 
+# Check whether --enable-malloc0returnsnull was given.
+if test "${enable_malloc0returnsnull+set}" = set; then :
+  enableval=$enable_malloc0returnsnull; MALLOC_ZERO_RETURNS_NULL=$enableval
+else
+  MALLOC_ZERO_RETURNS_NULL=auto
+fi
+
+
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking whether malloc(0) returns NULL" >&5
+$as_echo_n "checking whether malloc(0) returns NULL... " >&6; }
+if test "x$MALLOC_ZERO_RETURNS_NULL" = xauto; then
+	if test "$cross_compiling" = yes; then :
+  MALLOC_ZERO_RETURNS_NULL=yes
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+#include <stdlib.h>
+
+int
+main ()
+{
+
+    char *m0, *r0, *c0, *p;
+    m0 = malloc(0);
+    p = malloc(10);
+    r0 = realloc(p,0);
+    c0 = calloc(0,10);
+    exit((m0 == 0 || r0 == 0 || c0 == 0) ? 0 : 1);
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_run "$LINENO"; then :
+  MALLOC_ZERO_RETURNS_NULL=yes
+else
+  MALLOC_ZERO_RETURNS_NULL=no
+fi
+rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
+  conftest.$ac_objext conftest.beam conftest.$ac_ext
+fi
+
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $MALLOC_ZERO_RETURNS_NULL" >&5
+$as_echo "$MALLOC_ZERO_RETURNS_NULL" >&6; }
+
+if test "x$MALLOC_ZERO_RETURNS_NULL" = xyes; then
+	MALLOC_ZERO_CFLAGS="-DMALLOC_0_RETURNS_NULL"
+	XMALLOC_ZERO_CFLAGS=$MALLOC_ZERO_CFLAGS
+	XTMALLOC_ZERO_CFLAGS="$MALLOC_ZERO_CFLAGS -DXTMALLOC_BC"
+else
+	MALLOC_ZERO_CFLAGS=""
+	XMALLOC_ZERO_CFLAGS=""
+	XTMALLOC_ZERO_CFLAGS=""
+fi
+
+
+
+
+
+
+
+
+
+
+# Check for different types of support on different platforms
+case $host_os in
+    solaris*)
+        { $as_echo "$as_me:${as_lineno-$LINENO}: checking for umem_alloc in -lumem" >&5
+$as_echo_n "checking for umem_alloc in -lumem... " >&6; }
+if ${ac_cv_lib_umem_umem_alloc+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lumem  $LIBS"
+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+/* Override any GCC internal prototype to avoid an error.
+   Use char because int might match the return type of a GCC
+   builtin and then its argument prototype would still apply.  */
+#ifdef __cplusplus
+extern "C"
+#endif
+char umem_alloc ();
+int
+main ()
+{
+return umem_alloc ();
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  ac_cv_lib_umem_umem_alloc=yes
+else
+  ac_cv_lib_umem_umem_alloc=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_umem_umem_alloc" >&5
+$as_echo "$ac_cv_lib_umem_umem_alloc" >&6; }
+if test "x$ac_cv_lib_umem_umem_alloc" = xyes; then :
+  malloc_debug_env='LD_PRELOAD=libumem.so UMEM_DEBUG=default'
+fi
+
+        ;;
+    *-gnu*) # GNU libc - Value is used as a single byte bit pattern,
+        # both directly and inverted, so should not be 0 or 255.
+        malloc_debug_env='MALLOC_PERTURB_=15'
+        ;;
+    darwin*)
+        malloc_debug_env='MallocPreScribble=1 MallocScribble=1 DYLD_INSERT_LIBRARIES=/usr/lib/libgmalloc.dylib'
+        ;;
+    *bsd*)
+        malloc_debug_env='MallocPreScribble=1 MallocScribble=1'
+        ;;
+esac
+
+# User supplied flags override default flags
+if test "x$XORG_MALLOC_DEBUG_ENV" != "x"; then
+    malloc_debug_env="$XORG_MALLOC_DEBUG_ENV"
+fi
+
+XORG_MALLOC_DEBUG_ENV=$malloc_debug_env
+
+
+
+	# Check whether --enable-debug was given.
+if test "${enable_debug+set}" = set; then :
+  enableval=$enable_debug;
+else
+  enable_debug=no
+fi
+
+
+	if test x$enable_debug = xyes ; then
+
+$as_echo "#define GNOME_ENABLE_DEBUG 1" >>confdefs.h
+
+	fi
+
+
+ac_fn_c_check_type "$LINENO" "bfd_vma" "ac_cv_type_bfd_vma" "$ac_includes_default"
+if test "x$ac_cv_type_bfd_vma" = xyes; then :
+
+cat >>confdefs.h <<_ACEOF
+#define HAVE_BFD_VMA 1
+_ACEOF
+
+
+fi
+
 # The cast to long int works around a bug in the HP C Compiler
 # version HP92453-01 B.11.11.23709.GP, which incorrectly rejects
 # declarations like `int a3[[(sizeof (unsigned char)) >= 0]];'.
@@ -20206,6 +20644,29 @@ esac
 
 $as_echo "#define malloc rpl_malloc" >>confdefs.h
 
+fi
+
+
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if malloc debugging is wanted" >&5
+$as_echo_n "checking if malloc debugging is wanted... " >&6; }
+
+# Check whether --with-dmalloc was given.
+if test "${with_dmalloc+set}" = set; then :
+  withval=$with_dmalloc; if test "$withval" = yes; then
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+$as_echo "yes" >&6; }
+
+$as_echo "#define WITH_DMALLOC 1" >>confdefs.h
+
+  LIBS="$LIBS -ldmalloc"
+  LDFLAGS="$LDFLAGS -g"
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+fi
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
 fi
 
 
