@@ -2,6 +2,9 @@
 
 # $Id: getpin.sh 6733 2012-09-26 14:22:44Z edmcman $
 # Download and extract Pin
+# The link in this script is dead; use:
+# http://software.intel.com/en-us/articles/pintool-downloads
+# instead.
 
 set -x
 

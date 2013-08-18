@@ -19,4 +19,5 @@ samples/so_locations
 *.trs
 libtool
 config.h
+build-aux/config.h
 Makefile

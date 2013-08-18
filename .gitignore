@@ -58,6 +58,9 @@ libtracewrap/Makefile
 libtracewrap/libtrace/Makefile
 libtracewrap/libtrace/piqi/deps
 ocaml/Makefile
+utils/Makefile
+tests/Makefile
+libasmir/config.h
 *.cm[xio]
 VEX/vex
 TAGS

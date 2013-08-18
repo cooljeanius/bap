@@ -25,4 +25,5 @@ libtool
 config.h
 Makefile
 src/Makefile
-
+protobuf.pc
+protobuf-lite.pc

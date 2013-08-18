@@ -31,3 +31,5 @@ bin/color.opt
 bin/demo_planar.opt
 bin/sudoku.opt
 *.status
+Makefile
+config.h
