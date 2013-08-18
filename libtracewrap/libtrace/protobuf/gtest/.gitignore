@@ -3,8 +3,7 @@ src/protoc
 src/google/protobuf/unittest_*
 src/protobuf/unittest_*
 src/unittest_*
-*.o
-*.lo
+*.*o
 *.dirstamp
 *.log
 *.cache
@@ -18,3 +17,6 @@ scripts/gtest-config
 lib/so_locations
 samples/so_locations
 *.trs
+libtool
+config.h
+Makefile

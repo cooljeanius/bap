@@ -9,5 +9,5 @@ default: all
 	$(MAKE) -C libtrace $@
 
 CONFIGURED: libtrace/Makefile.am libtrace/configure.ac
-	(cd libtrace && INCDIRS="" CPPFLAGS="-I/opt/local/include/ -I/private/var/root/.opam/system/lib/camlidl" CFLAGS=-m32 CXXFLAGS=-m32 ./configure --with-batteries=/var/root/bap/batteries/_build/src)
+	(cd libtrace && INCDIRS="" CPPFLAGS="-I/sw/opt/kde4/x11/include -I/sw/lib/freetype219/include -I/sw/lib/fontconfig2/include -I/sw/lib/qt4-x11/include -I/sw/opt/qca2/x11/include " CFLAGS=-m32 CXXFLAGS=-m32 ./configure --with-batteries=/Users/ericgallager/GitHubReposFromOtherComputers/bap/batteries/_build/src)
 	touch CONFIGURED

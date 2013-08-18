@@ -7,7 +7,7 @@ PREFIX=/usr/local
 # destination directory path will be used. Such path is determined by
 # OCAMLFIND_DESTDIR environment variable or by ocamlfind config. You can run
 # "ocamlfind printconf destdir" to see the current setting.
-OCAML_LIBDIR=
+OCAML_LIBDIR=/opt/local/lib/ocaml/site-lib
 
 
 usage() {

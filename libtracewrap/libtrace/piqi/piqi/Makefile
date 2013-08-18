@@ -15,7 +15,7 @@ DIRS = \
 
 .PHONY: deps build-dir install distclean \
 	ocaml ocaml-install ocaml-uninstall \
-	erlang erlang-clean
+	erlang erlang-clean Makefile.config
 
 
 # export installation and search path for OCaml dependencies

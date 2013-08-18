@@ -1,0 +1,1638 @@
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 24 763 767 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 24 763 779
+type(
+  Z.t
+)
+ident(
+  def zero_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 26 790 790 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 24 763 782 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 24 763 788
+type(
+  Z.t
+)
+ident(
+  ext_ref Z.zero
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 26 790 794 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 26 790 806
+type(
+  Z.t
+)
+ident(
+  def unit_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 28 816 816 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 26 790 809 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 26 790 814
+type(
+  Z.t
+)
+ident(
+  ext_ref Z.one
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 28 816 820 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 28 816 833
+type(
+  Z.t -> Z.t
+)
+ident(
+  def minus_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 30 843 843 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 28 816 836 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 28 816 841
+type(
+  Z.t -> Z.t
+)
+ident(
+  ext_ref Z.neg
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 30 843 847 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 30 843 858
+type(
+  Z.t -> Z.t
+)
+ident(
+  def abs_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 32 868 868 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 30 843 861 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 30 843 866
+type(
+  Z.t -> Z.t
+)
+ident(
+  ext_ref Z.abs
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 32 868 872 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 32 868 883
+type(
+  Z.t -> Z.t -> Z.t
+)
+ident(
+  def add_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 34 893 893 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 32 868 886 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 32 868 891
+type(
+  Z.t -> Z.t -> Z.t
+)
+ident(
+  ext_ref Z.add
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 34 893 897 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 34 893 909
+type(
+  Z.t -> Z.t
+)
+ident(
+  def succ_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 36 920 920 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 34 893 912 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 34 893 918
+type(
+  Z.t -> Z.t
+)
+ident(
+  ext_ref Z.succ
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 36 920 924 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 36 920 939
+type(
+  int -> Z.t -> Z.t
+)
+ident(
+  def add_int_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 38 968 968 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 36 920 940 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 36 920 941
+type(
+  int
+)
+ident(
+  def x "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 36 920 942 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 36 920 966
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 36 920 942 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 36 920 943
+type(
+  Z.t
+)
+ident(
+  def y "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 36 920 946 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 36 920 966
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 36 920 946 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 36 920 951
+type(
+  Z.t -> Z.t -> Z.t
+)
+ident(
+  ext_ref Z.add
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 36 920 953 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 36 920 961
+type(
+  int -> Z.t
+)
+ident(
+  ext_ref Z.of_int
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 36 920 962 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 36 920 963
+type(
+  int
+)
+ident(
+  int_ref x "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 36 920 940 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 36 920 941
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 36 920 952 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 36 920 964
+call(
+  stack
+)
+type(
+  Z.t
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 36 920 965 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 36 920 966
+type(
+  Z.t
+)
+ident(
+  int_ref y "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 36 920 942 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 36 920 943
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 36 920 946 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 36 920 966
+type(
+  Z.t
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 38 968 972 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 38 968 983
+type(
+  Z.t -> Z.t -> Z.t
+)
+ident(
+  def sub_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 40 993 993 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 38 968 986 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 38 968 991
+type(
+  Z.t -> Z.t -> Z.t
+)
+ident(
+  ext_ref Z.sub
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 40 993 997 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 40 993 1009
+type(
+  Z.t -> Z.t
+)
+ident(
+  def pred_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 42 1020 1020 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 40 993 1012 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 40 993 1018
+type(
+  Z.t -> Z.t
+)
+ident(
+  ext_ref Z.pred
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 42 1020 1024 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 42 1020 1036
+type(
+  Z.t -> Z.t -> Z.t
+)
+ident(
+  def mult_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 44 1047 1047 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 42 1020 1040 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 42 1020 1045
+type(
+  Z.t -> Z.t -> Z.t
+)
+ident(
+  ext_ref Z.mul
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 44 1047 1051 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 44 1047 1067
+type(
+  int -> Z.t -> Z.t
+)
+ident(
+  def mult_int_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 46 1096 1096 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 44 1047 1068 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 44 1047 1069
+type(
+  int
+)
+ident(
+  def x "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 44 1047 1070 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 44 1047 1094
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 44 1047 1070 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 44 1047 1071
+type(
+  Z.t
+)
+ident(
+  def y "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 44 1047 1074 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 44 1047 1094
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 44 1047 1074 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 44 1047 1079
+type(
+  Z.t -> Z.t -> Z.t
+)
+ident(
+  ext_ref Z.mul
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 44 1047 1081 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 44 1047 1089
+type(
+  int -> Z.t
+)
+ident(
+  ext_ref Z.of_int
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 44 1047 1090 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 44 1047 1091
+type(
+  int
+)
+ident(
+  int_ref x "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 44 1047 1068 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 44 1047 1069
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 44 1047 1080 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 44 1047 1092
+call(
+  stack
+)
+type(
+  Z.t
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 44 1047 1093 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 44 1047 1094
+type(
+  Z.t
+)
+ident(
+  int_ref y "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 44 1047 1070 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 44 1047 1071
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 44 1047 1074 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 44 1047 1094
+type(
+  Z.t
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 46 1096 1100 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 46 1096 1114
+type(
+  Z.t -> Z.t
+)
+ident(
+  def square_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 48 1130 1130 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 46 1096 1115 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 46 1096 1116
+type(
+  Z.t
+)
+ident(
+  def x "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 46 1096 1119 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 46 1096 1128
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 46 1096 1119 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 46 1096 1124
+type(
+  Z.t -> Z.t -> Z.t
+)
+ident(
+  ext_ref Z.mul
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 46 1096 1125 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 46 1096 1126
+type(
+  Z.t
+)
+ident(
+  int_ref x "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 46 1096 1115 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 46 1096 1116
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 46 1096 1127 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 46 1096 1128
+type(
+  Z.t
+)
+ident(
+  int_ref x "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 46 1096 1115 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 46 1096 1116
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 46 1096 1119 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 46 1096 1128
+type(
+  Z.t
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 48 1130 1134 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 48 1130 1146
+type(
+  Z.t -> Z.t
+)
+ident(
+  def sqrt_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 50 1157 1157 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 48 1130 1149 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 48 1130 1155
+type(
+  Z.t -> Z.t
+)
+ident(
+  ext_ref Z.sqrt
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 50 1157 1161 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 50 1157 1175
+type(
+  Z.t -> Z.t -> Z.t * Z.t
+)
+ident(
+  def quomod_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 52 1190 1190 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 50 1157 1178 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 50 1157 1188
+type(
+  Z.t -> Z.t -> Z.t * Z.t
+)
+ident(
+  ext_ref Z.ediv_rem
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 52 1190 1194 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 52 1190 1205
+type(
+  Z.t -> Z.t -> Z.t
+)
+ident(
+  def div_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 54 1216 1216 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 52 1190 1208 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 52 1190 1214
+type(
+  Z.t -> Z.t -> Z.t
+)
+ident(
+  ext_ref Z.ediv
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 54 1216 1220 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 54 1216 1231
+type(
+  Z.t -> Z.t -> Z.t
+)
+ident(
+  def mod_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 56 1242 1242 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 54 1216 1234 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 54 1216 1240
+type(
+  Z.t -> Z.t -> Z.t
+)
+ident(
+  ext_ref Z.erem
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 56 1242 1246 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 56 1242 1257
+type(
+  Z.t -> Z.t -> Z.t
+)
+ident(
+  def gcd_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 58 1267 1267 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 56 1242 1260 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 56 1242 1265
+type(
+  Z.t -> Z.t -> Z.t
+)
+ident(
+  ext_ref Z.gcd
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 58 1267 1271 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 58 1267 1276
+type(
+  Z.t -> int -> Z.t
+)
+ident(
+  def power "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 60 1286 1286 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 58 1267 1279 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 58 1267 1284
+type(
+  Z.t -> int -> Z.t
+)
+ident(
+  ext_ref Z.pow
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 60 1286 1290 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 60 1286 1299
+type(
+  Z.t -> Z.t -> Z.t
+)
+ident(
+  def power_big "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 63 1331 1331 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 60 1286 1300 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 60 1286 1301
+type(
+  Z.t
+)
+ident(
+  def a "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 60 1286 1302 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 61 1307 1329
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 60 1286 1302 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 60 1286 1303
+type(
+  Z.t
+)
+ident(
+  def b "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 61 1307 1309 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 61 1307 1329
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 61 1307 1309 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 61 1307 1314
+type(
+  Z.t -> int -> Z.t
+)
+ident(
+  ext_ref Z.pow
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 61 1307 1315 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 61 1307 1316
+type(
+  Z.t
+)
+ident(
+  int_ref a "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 60 1286 1300 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 60 1286 1301
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 61 1307 1318 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 61 1307 1326
+type(
+  Z.t -> int
+)
+ident(
+  ext_ref Z.to_int
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 61 1307 1327 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 61 1307 1328
+type(
+  Z.t
+)
+ident(
+  int_ref b "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 60 1286 1302 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 60 1286 1303
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 61 1307 1317 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 61 1307 1329
+type(
+  int
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 61 1307 1309 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 61 1307 1329
+type(
+  Z.t
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 63 1331 1335 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 63 1331 1357
+type(
+  int -> int -> Z.t
+)
+ident(
+  def power_int_positive_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 67 1455 1455 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 63 1331 1358 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 63 1331 1359
+type(
+  int
+)
+ident(
+  def a "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 63 1331 1360 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 65 1431 1453
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 63 1331 1360 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 63 1331 1361
+type(
+  int
+)
+ident(
+  def b "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 64 1364 1366 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 65 1431 1453
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 64 1364 1369 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 64 1364 1370
+type(
+  int
+)
+ident(
+  int_ref b "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 63 1331 1360 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 63 1331 1361
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 64 1364 1371 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 64 1364 1372
+type(
+  int -> int -> bool
+)
+ident(
+  ext_ref Pervasives.( < )
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 64 1364 1373 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 64 1364 1374
+type(
+  int
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 64 1364 1369 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 64 1364 1374
+type(
+  bool
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 64 1364 1380 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 64 1364 1385
+type(
+  exn -> unit
+)
+ident(
+  ext_ref Pervasives.raise
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 64 1364 1404 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 64 1364 1428
+type(
+  string
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 64 1364 1386 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 64 1364 1429
+type(
+  exn
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 64 1364 1380 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 64 1364 1429
+type(
+  unit
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 64 1364 1366 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 64 1364 1429
+type(
+  unit
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 65 1431 1433 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 65 1431 1438
+type(
+  Z.t -> int -> Z.t
+)
+ident(
+  int_ref power "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 58 1267 1271 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 58 1267 1276
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 65 1431 1440 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 65 1431 1448
+type(
+  int -> Z.t
+)
+ident(
+  ext_ref Z.of_int
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 65 1431 1449 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 65 1431 1450
+type(
+  int
+)
+ident(
+  int_ref a "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 63 1331 1358 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 63 1331 1359
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 65 1431 1439 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 65 1431 1451
+call(
+  stack
+)
+type(
+  Z.t
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 65 1431 1452 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 65 1431 1453
+type(
+  int
+)
+ident(
+  int_ref b "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 63 1331 1360 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 63 1331 1361
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 65 1431 1433 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 65 1431 1453
+call(
+  tail
+)
+type(
+  Z.t
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 64 1364 1366 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 65 1431 1453
+type(
+  Z.t
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 67 1455 1459 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 67 1455 1485
+type(
+  Z.t -> int -> Z.t
+)
+ident(
+  def power_big_int_positive_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 71 1576 1576 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 67 1455 1486 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 67 1455 1487
+type(
+  Z.t
+)
+ident(
+  def a "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 67 1455 1488 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 69 1563 1574
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 67 1455 1488 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 67 1455 1489
+type(
+  int
+)
+ident(
+  def b "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 68 1492 1494 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 69 1563 1574
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 68 1492 1497 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 68 1492 1498
+type(
+  int
+)
+ident(
+  int_ref b "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 67 1455 1488 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 67 1455 1489
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 68 1492 1499 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 68 1492 1500
+type(
+  int -> int -> bool
+)
+ident(
+  ext_ref Pervasives.( < )
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 68 1492 1501 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 68 1492 1502
+type(
+  int
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 68 1492 1497 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 68 1492 1502
+type(
+  bool
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 68 1492 1508 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 68 1492 1513
+type(
+  exn -> unit
+)
+ident(
+  ext_ref Pervasives.raise
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 68 1492 1532 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 68 1492 1560
+type(
+  string
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 68 1492 1514 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 68 1492 1561
+type(
+  exn
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 68 1492 1508 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 68 1492 1561
+type(
+  unit
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 68 1492 1494 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 68 1492 1561
+type(
+  unit
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 69 1563 1565 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 69 1563 1570
+type(
+  Z.t -> int -> Z.t
+)
+ident(
+  int_ref power "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 58 1267 1271 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 58 1267 1276
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 69 1563 1571 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 69 1563 1572
+type(
+  Z.t
+)
+ident(
+  int_ref a "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 67 1455 1486 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 67 1455 1487
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 69 1563 1573 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 69 1563 1574
+type(
+  int
+)
+ident(
+  int_ref b "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 67 1455 1488 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 67 1455 1489
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 69 1563 1565 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 69 1563 1574
+call(
+  tail
+)
+type(
+  Z.t
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 68 1492 1494 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 69 1563 1574
+type(
+  Z.t
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 71 1576 1580 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 71 1576 1606
+type(
+  int -> Z.t -> Z.t
+)
+ident(
+  def power_int_positive_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 75 1719 1719 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 71 1576 1607 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 71 1576 1608
+type(
+  int
+)
+ident(
+  def a "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 71 1576 1609 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 73 1691 1717
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 71 1576 1609 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 71 1576 1610
+type(
+  Z.t
+)
+ident(
+  def b "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 72 1613 1615 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 73 1691 1717
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 72 1613 1618 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 72 1613 1624
+type(
+  Z.t -> int
+)
+ident(
+  ext_ref Z.sign
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 72 1613 1625 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 72 1613 1626
+type(
+  Z.t
+)
+ident(
+  int_ref b "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 71 1576 1609 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 71 1576 1610
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 72 1613 1618 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 72 1613 1626
+type(
+  int
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 72 1613 1627 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 72 1613 1628
+type(
+  int -> int -> bool
+)
+ident(
+  ext_ref Pervasives.( < )
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 72 1613 1629 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 72 1613 1630
+type(
+  int
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 72 1613 1618 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 72 1613 1630
+type(
+  bool
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 72 1613 1636 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 72 1613 1641
+type(
+  exn -> unit
+)
+ident(
+  ext_ref Pervasives.raise
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 72 1613 1660 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 72 1613 1688
+type(
+  string
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 72 1613 1642 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 72 1613 1689
+type(
+  exn
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 72 1613 1636 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 72 1613 1689
+type(
+  unit
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 72 1613 1615 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 72 1613 1689
+type(
+  unit
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 73 1691 1693 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 73 1691 1702
+type(
+  Z.t -> Z.t -> Z.t
+)
+ident(
+  int_ref power_big "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 60 1286 1290 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 60 1286 1299
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 73 1691 1704 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 73 1691 1712
+type(
+  int -> Z.t
+)
+ident(
+  ext_ref Z.of_int
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 73 1691 1713 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 73 1691 1714
+type(
+  int
+)
+ident(
+  int_ref a "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 71 1576 1607 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 71 1576 1608
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 73 1691 1703 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 73 1691 1715
+call(
+  stack
+)
+type(
+  Z.t
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 73 1691 1716 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 73 1691 1717
+type(
+  Z.t
+)
+ident(
+  int_ref b "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 71 1576 1609 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 71 1576 1610
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 73 1691 1693 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 73 1691 1717
+call(
+  tail
+)
+type(
+  Z.t
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 72 1613 1615 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 73 1691 1717
+type(
+  Z.t
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 75 1719 1723 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 75 1719 1753
+type(
+  Z.t -> Z.t -> Z.t
+)
+ident(
+  def power_big_int_positive_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 79 1859 1859 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 75 1719 1754 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 75 1719 1755
+type(
+  Z.t
+)
+ident(
+  def a "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 75 1719 1756 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 77 1842 1857
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 75 1719 1756 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 75 1719 1757
+type(
+  Z.t
+)
+ident(
+  def b "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 76 1760 1762 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 77 1842 1857
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 76 1760 1765 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 76 1760 1771
+type(
+  Z.t -> int
+)
+ident(
+  ext_ref Z.sign
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 76 1760 1772 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 76 1760 1773
+type(
+  Z.t
+)
+ident(
+  int_ref b "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 75 1719 1756 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 75 1719 1757
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 76 1760 1765 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 76 1760 1773
+type(
+  int
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 76 1760 1774 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 76 1760 1775
+type(
+  int -> int -> bool
+)
+ident(
+  ext_ref Pervasives.( < )
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 76 1760 1776 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 76 1760 1777
+type(
+  int
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 76 1760 1765 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 76 1760 1777
+type(
+  bool
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 76 1760 1783 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 76 1760 1788
+type(
+  exn -> unit
+)
+ident(
+  ext_ref Pervasives.raise
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 76 1760 1807 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 76 1760 1839
+type(
+  string
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 76 1760 1789 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 76 1760 1840
+type(
+  exn
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 76 1760 1783 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 76 1760 1840
+type(
+  unit
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 76 1760 1762 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 76 1760 1840
+type(
+  unit
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 77 1842 1844 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 77 1842 1853
+type(
+  Z.t -> Z.t -> Z.t
+)
+ident(
+  int_ref power_big "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 60 1286 1290 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 60 1286 1299
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 77 1842 1854 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 77 1842 1855
+type(
+  Z.t
+)
+ident(
+  int_ref a "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 75 1719 1754 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 75 1719 1755
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 77 1842 1856 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 77 1842 1857
+type(
+  Z.t
+)
+ident(
+  int_ref b "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 75 1719 1756 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 75 1719 1757
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 77 1842 1844 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 77 1842 1857
+call(
+  tail
+)
+type(
+  Z.t
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 76 1760 1762 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 77 1842 1857
+type(
+  Z.t
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 79 1859 1863 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 79 1859 1875
+type(
+  Z.t -> int
+)
+ident(
+  def sign_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 81 1886 1886 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 79 1859 1878 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 79 1859 1884
+type(
+  Z.t -> int
+)
+ident(
+  ext_ref Z.sign
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 81 1886 1890 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 81 1886 1905
+type(
+  Z.t -> Z.t -> int
+)
+ident(
+  def compare_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 83 1919 1919 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 81 1886 1908 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 81 1886 1917
+type(
+  Z.t -> Z.t -> int
+)
+ident(
+  ext_ref Z.compare
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 83 1919 1923 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 83 1919 1933
+type(
+  Z.t -> Z.t -> bool
+)
+ident(
+  def eq_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 85 1945 1945 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 83 1919 1936 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 83 1919 1943
+type(
+  Z.t -> Z.t -> bool
+)
+ident(
+  ext_ref Z.equal
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 85 1945 1949 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 85 1945 1959
+type(
+  Z.t -> Z.t -> bool
+)
+ident(
+  def le_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 87 1986 1986 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 85 1945 1960 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 85 1945 1961
+type(
+  Z.t
+)
+ident(
+  def a "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 85 1945 1962 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 85 1945 1984
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 85 1945 1962 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 85 1945 1963
+type(
+  Z.t
+)
+ident(
+  def b "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 85 1945 1966 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 85 1945 1984
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 85 1945 1966 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 85 1945 1975
+type(
+  Z.t -> Z.t -> int
+)
+ident(
+  ext_ref Z.compare
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 85 1945 1976 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 85 1945 1977
+type(
+  Z.t
+)
+ident(
+  int_ref a "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 85 1945 1960 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 85 1945 1961
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 85 1945 1978 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 85 1945 1979
+type(
+  Z.t
+)
+ident(
+  int_ref b "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 85 1945 1962 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 85 1945 1963
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 85 1945 1966 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 85 1945 1979
+type(
+  int
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 85 1945 1980 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 85 1945 1982
+type(
+  int -> int -> bool
+)
+ident(
+  ext_ref Pervasives.( <= )
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 85 1945 1983 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 85 1945 1984
+type(
+  int
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 85 1945 1966 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 85 1945 1984
+type(
+  bool
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 87 1986 1990 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 87 1986 2000
+type(
+  Z.t -> Z.t -> bool
+)
+ident(
+  def ge_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 89 2027 2027 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 87 1986 2001 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 87 1986 2002
+type(
+  Z.t
+)
+ident(
+  def a "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 87 1986 2003 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 87 1986 2025
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 87 1986 2003 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 87 1986 2004
+type(
+  Z.t
+)
+ident(
+  def b "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 87 1986 2007 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 87 1986 2025
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 87 1986 2007 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 87 1986 2016
+type(
+  Z.t -> Z.t -> int
+)
+ident(
+  ext_ref Z.compare
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 87 1986 2017 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 87 1986 2018
+type(
+  Z.t
+)
+ident(
+  int_ref a "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 87 1986 2001 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 87 1986 2002
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 87 1986 2019 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 87 1986 2020
+type(
+  Z.t
+)
+ident(
+  int_ref b "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 87 1986 2003 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 87 1986 2004
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 87 1986 2007 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 87 1986 2020
+type(
+  int
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 87 1986 2021 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 87 1986 2023
+type(
+  int -> int -> bool
+)
+ident(
+  ext_ref Pervasives.( >= )
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 87 1986 2024 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 87 1986 2025
+type(
+  int
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 87 1986 2007 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 87 1986 2025
+type(
+  bool
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 89 2027 2031 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 89 2027 2041
+type(
+  Z.t -> Z.t -> bool
+)
+ident(
+  def lt_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 91 2067 2067 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 89 2027 2042 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 89 2027 2043
+type(
+  Z.t
+)
+ident(
+  def a "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 89 2027 2044 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 89 2027 2065
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 89 2027 2044 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 89 2027 2045
+type(
+  Z.t
+)
+ident(
+  def b "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 89 2027 2048 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 89 2027 2065
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 89 2027 2048 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 89 2027 2057
+type(
+  Z.t -> Z.t -> int
+)
+ident(
+  ext_ref Z.compare
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 89 2027 2058 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 89 2027 2059
+type(
+  Z.t
+)
+ident(
+  int_ref a "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 89 2027 2042 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 89 2027 2043
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 89 2027 2060 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 89 2027 2061
+type(
+  Z.t
+)
+ident(
+  int_ref b "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 89 2027 2044 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 89 2027 2045
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 89 2027 2048 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 89 2027 2061
+type(
+  int
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 89 2027 2062 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 89 2027 2063
+type(
+  int -> int -> bool
+)
+ident(
+  ext_ref Pervasives.( < )
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 89 2027 2064 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 89 2027 2065
+type(
+  int
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 89 2027 2048 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 89 2027 2065
+type(
+  bool
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 91 2067 2071 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 91 2067 2081
+type(
+  Z.t -> Z.t -> bool
+)
+ident(
+  def gt_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 93 2107 2107 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 91 2067 2082 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 91 2067 2083
+type(
+  Z.t
+)
+ident(
+  def a "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 91 2067 2084 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 91 2067 2105
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 91 2067 2084 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 91 2067 2085
+type(
+  Z.t
+)
+ident(
+  def b "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 91 2067 2088 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 91 2067 2105
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 91 2067 2088 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 91 2067 2097
+type(
+  Z.t -> Z.t -> int
+)
+ident(
+  ext_ref Z.compare
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 91 2067 2098 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 91 2067 2099
+type(
+  Z.t
+)
+ident(
+  int_ref a "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 91 2067 2082 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 91 2067 2083
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 91 2067 2100 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 91 2067 2101
+type(
+  Z.t
+)
+ident(
+  int_ref b "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 91 2067 2084 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 91 2067 2085
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 91 2067 2088 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 91 2067 2101
+type(
+  int
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 91 2067 2102 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 91 2067 2103
+type(
+  int -> int -> bool
+)
+ident(
+  ext_ref Pervasives.( > )
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 91 2067 2104 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 91 2067 2105
+type(
+  int
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 91 2067 2088 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 91 2067 2105
+type(
+  bool
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 93 2107 2111 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 93 2107 2122
+type(
+  Z.t -> Z.t -> Z.t
+)
+ident(
+  def max_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 95 2132 2132 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 93 2107 2125 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 93 2107 2130
+type(
+  Z.t -> Z.t -> Z.t
+)
+ident(
+  ext_ref Z.max
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 95 2132 2136 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 95 2132 2147
+type(
+  Z.t -> Z.t -> Z.t
+)
+ident(
+  def min_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 97 2157 2157 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 95 2132 2150 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 95 2132 2155
+type(
+  Z.t -> Z.t -> Z.t
+)
+ident(
+  ext_ref Z.min
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 97 2157 2161 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 97 2157 2179
+type(
+  Z.t -> int
+)
+ident(
+  def num_digits_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 99 2190 2190 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 97 2157 2182 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 97 2157 2188
+type(
+  Z.t -> int
+)
+ident(
+  ext_ref Z.size
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 99 2190 2194 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 99 2190 2211
+type(
+  Z.t -> string
+)
+ident(
+  def string_of_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 101 2227 2227 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 99 2190 2214 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 99 2190 2225
+type(
+  Z.t -> string
+)
+ident(
+  ext_ref Z.to_string
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 101 2227 2231 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 101 2227 2248
+type(
+  string -> Z.t
+)
+ident(
+  def big_int_of_string "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 103 2264 2264 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 101 2227 2251 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 101 2227 2262
+type(
+  string -> Z.t
+)
+ident(
+  ext_ref Z.of_string
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 103 2264 2268 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 103 2264 2282
+type(
+  int -> Z.t
+)
+ident(
+  def big_int_of_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 105 2295 2295 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 103 2264 2285 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 103 2264 2293
+type(
+  int -> Z.t
+)
+ident(
+  ext_ref Z.of_int
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 105 2295 2299 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 105 2295 2313
+type(
+  Z.t -> bool
+)
+ident(
+  def is_int_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 107 2328 2328 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 105 2295 2316 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 105 2295 2326
+type(
+  Z.t -> bool
+)
+ident(
+  ext_ref Z.fits_int
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 107 2328 2332 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 107 2328 2346
+type(
+  Z.t -> int
+)
+ident(
+  def int_of_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 110 2416 2416 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 107 2328 2347 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 107 2328 2348
+type(
+  Z.t
+)
+ident(
+  def x "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 108 2352 2355 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 108 2352 2414
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 108 2352 2359 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 108 2352 2367
+type(
+  Z.t -> int
+)
+ident(
+  ext_ref Z.to_int
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 108 2352 2368 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 108 2352 2369
+type(
+  Z.t
+)
+ident(
+  int_ref x "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 107 2328 2347 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 107 2328 2348
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 108 2352 2359 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 108 2352 2369
+type(
+  int
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 108 2352 2375 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 108 2352 2385
+type(
+  exn
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 108 2352 2389 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 108 2352 2397
+type(
+  string -> int
+)
+ident(
+  ext_ref Pervasives.failwith
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 108 2352 2398 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 108 2352 2414
+type(
+  string
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 108 2352 2389 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 108 2352 2414
+call(
+  tail
+)
+type(
+  int
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 108 2352 2355 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 108 2352 2414
+type(
+  int
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 110 2416 2420 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 110 2416 2436
+type(
+  int32 -> Z.t
+)
+ident(
+  def big_int_of_int32 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 112 2451 2451 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 110 2416 2439 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 110 2416 2449
+type(
+  int32 -> Z.t
+)
+ident(
+  ext_ref Z.of_int32
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 112 2451 2455 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 112 2451 2475
+type(
+  nativeint -> Z.t
+)
+ident(
+  def big_int_of_nativeint "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 114 2494 2494 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 112 2451 2478 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 112 2451 2492
+type(
+  nativeint -> Z.t
+)
+ident(
+  ext_ref Z.of_nativeint
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 114 2494 2498 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 114 2494 2514
+type(
+  int64 -> Z.t
+)
+ident(
+  def big_int_of_int64 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 116 2529 2529 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 114 2494 2517 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 114 2494 2527
+type(
+  int64 -> Z.t
+)
+ident(
+  ext_ref Z.of_int64
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 116 2529 2533 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 116 2529 2549
+type(
+  Z.t -> int32
+)
+ident(
+  def int32_of_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 119 2622 2622 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 116 2529 2550 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 116 2529 2551
+type(
+  Z.t
+)
+ident(
+  def x "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 117 2554 2557 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 117 2554 2620
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 117 2554 2561 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 117 2554 2571
+type(
+  Z.t -> int32
+)
+ident(
+  ext_ref Z.to_int32
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 117 2554 2572 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 117 2554 2573
+type(
+  Z.t
+)
+ident(
+  int_ref x "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 116 2529 2550 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 116 2529 2551
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 117 2554 2561 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 117 2554 2573
+type(
+  int32
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 117 2554 2579 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 117 2554 2589
+type(
+  exn
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 117 2554 2593 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 117 2554 2601
+type(
+  string -> int32
+)
+ident(
+  ext_ref Pervasives.failwith
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 117 2554 2602 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 117 2554 2620
+type(
+  string
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 117 2554 2593 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 117 2554 2620
+call(
+  tail
+)
+type(
+  int32
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 117 2554 2557 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 117 2554 2620
+type(
+  int32
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 119 2622 2626 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 119 2622 2646
+type(
+  Z.t -> nativeint
+)
+ident(
+  def nativeint_of_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 122 2727 2727 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 119 2622 2647 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 119 2622 2648
+type(
+  Z.t
+)
+ident(
+  def x "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 120 2651 2654 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 120 2651 2725
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 120 2651 2658 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 120 2651 2672
+type(
+  Z.t -> nativeint
+)
+ident(
+  ext_ref Z.to_nativeint
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 120 2651 2673 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 120 2651 2674
+type(
+  Z.t
+)
+ident(
+  int_ref x "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 119 2622 2647 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 119 2622 2648
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 120 2651 2658 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 120 2651 2674
+type(
+  nativeint
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 120 2651 2680 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 120 2651 2690
+type(
+  exn
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 120 2651 2694 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 120 2651 2702
+type(
+  string -> nativeint
+)
+ident(
+  ext_ref Pervasives.failwith
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 120 2651 2703 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 120 2651 2725
+type(
+  string
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 120 2651 2694 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 120 2651 2725
+call(
+  tail
+)
+type(
+  nativeint
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 120 2651 2654 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 120 2651 2725
+type(
+  nativeint
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 122 2727 2731 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 122 2727 2747
+type(
+  Z.t -> int64
+)
+ident(
+  def int64_of_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 125 2820 2820 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 122 2727 2748 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 122 2727 2749
+type(
+  Z.t
+)
+ident(
+  def x "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 123 2752 2755 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 123 2752 2818
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 123 2752 2759 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 123 2752 2769
+type(
+  Z.t -> int64
+)
+ident(
+  ext_ref Z.to_int64
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 123 2752 2770 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 123 2752 2771
+type(
+  Z.t
+)
+ident(
+  int_ref x "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 122 2727 2748 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 122 2727 2749
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 123 2752 2759 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 123 2752 2771
+type(
+  int64
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 123 2752 2777 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 123 2752 2787
+type(
+  exn
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 123 2752 2791 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 123 2752 2799
+type(
+  string -> int64
+)
+ident(
+  ext_ref Pervasives.failwith
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 123 2752 2800 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 123 2752 2818
+type(
+  string
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 123 2752 2791 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 123 2752 2818
+call(
+  tail
+)
+type(
+  int64
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 123 2752 2755 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 123 2752 2818
+type(
+  int64
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 125 2820 2824 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 125 2820 2840
+type(
+  Z.t -> float
+)
+ident(
+  def float_of_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 127 2855 2855 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 125 2820 2843 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 125 2820 2853
+type(
+  Z.t -> float
+)
+ident(
+  ext_ref Z.to_float
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 127 2855 2859 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 127 2855 2870
+type(
+  Z.t -> Z.t -> Z.t
+)
+ident(
+  def and_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 129 2883 2883 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 127 2855 2873 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 127 2855 2881
+type(
+  Z.t -> Z.t -> Z.t
+)
+ident(
+  ext_ref Z.logand
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 129 2883 2887 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 129 2883 2897
+type(
+  Z.t -> Z.t -> Z.t
+)
+ident(
+  def or_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 131 2909 2909 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 129 2883 2900 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 129 2883 2907
+type(
+  Z.t -> Z.t -> Z.t
+)
+ident(
+  ext_ref Z.logor
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 131 2909 2913 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 131 2909 2924
+type(
+  Z.t -> Z.t -> Z.t
+)
+ident(
+  def xor_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 133 2937 2937 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 131 2909 2927 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 131 2909 2935
+type(
+  Z.t -> Z.t -> Z.t
+)
+ident(
+  ext_ref Z.logxor
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 133 2937 2941 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 133 2937 2959
+type(
+  Z.t -> int -> Z.t
+)
+ident(
+  def shift_left_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 135 2976 2976 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 133 2937 2962 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 133 2937 2974
+type(
+  Z.t -> int -> Z.t
+)
+ident(
+  ext_ref Z.shift_left
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 135 2976 2980 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 135 2976 2999
+type(
+  Z.t -> int -> Z.t
+)
+ident(
+  def shift_right_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 137 3017 3017 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 135 2976 3002 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 135 2976 3015
+type(
+  Z.t -> int -> Z.t
+)
+ident(
+  ext_ref Z.shift_right
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 137 3017 3021 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 137 3017 3053
+type(
+  Z.t -> int -> Z.t
+)
+ident(
+  def shift_right_towards_zero_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 139 3077 3077 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 137 3017 3056 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 137 3017 3075
+type(
+  Z.t -> int -> Z.t
+)
+ident(
+  ext_ref Z.shift_right_trunc
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 139 3077 3081 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 139 3077 3096
+type(
+  Z.t -> int -> int -> Z.t
+)
+ident(
+  def extract_big_int "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 139 3077 3108 "_none_" 1 0 -1
+)
+"/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 139 3077 3099 "/Users/ericgallager/GitHubReposFromOtherComputers/bap/ocaml/../zarith-1.0/big_int_Z.ml" 139 3077 3108
+type(
+  Z.t -> int -> int -> Z.t
+)
+ident(
+  ext_ref Z.extract
+)

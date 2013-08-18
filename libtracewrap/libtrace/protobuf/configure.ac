@@ -1,7 +1,10 @@
-## Process this file with autoconf to produce configure.
-## In general, the safest way to proceed is to run ./autogen.sh
+dnl##                                               -*- Autoconf -*-
+dnl## Process this file with autoconf to produce configure.
+dnl## In general, the safest way to proceed is to run ./autogen.sh
+dnl## ^ Actually the real safest way is just to run `autoreconf` 
+dnl## with your favorite flags, but whatever...
 
-AC_PREREQ([2.59])
+AC_PREREQ([2.69])
 
 # Note:  If you change the version, you must also update it in:
 # * java/pom.xml
@@ -12,23 +15,23 @@ AC_PREREQ([2.59])
 # In the SVN trunk, the version should always be the next anticipated release
 # version with the "-pre" suffix.  (We used to use "-SNAPSHOT" but this pushed
 # the size of one file name in the dist tarfile over the 99-char limit.)
+
 AC_INIT([Protocol Buffers],[2.4.1],[protobuf@googlegroups.com],[protobuf])
 
 AC_CONFIG_SRCDIR([src/google/protobuf/message.cc])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4])
 
-# autoconf's default CXXFLAGS are usually "-g -O2".  These aren't necessarily
+# autoconf's default CXXFLAGS are usually "-g -O2".  These are not necessarily
 # the best choice for libprotobuf.
 AS_IF([test "x${ac_cv_env_CFLAGS_set}" = "x"],
       [CFLAGS=""])
 AS_IF([test "x${ac_cv_env_CXXFLAGS_set}" = "x"],
       [CXXFLAGS=""])
 
-AC_CANONICAL_HOST
 AC_CANONICAL_TARGET
 
-AM_INIT_AUTOMAKE
+AM_INIT_AUTOMAKE([foreign subdir-objects -Wall])
 AM_MAINTAINER_MODE
 
 AC_ARG_WITH([zlib],
@@ -44,17 +47,50 @@ AC_ARG_WITH([protoc],
 # Checks for programs.
 AC_USE_SYSTEM_EXTENSIONS
 AM_PROG_AR
-AC_PROG_AWK
-AC_PROG_CC
+if test "x$AWK" = "x"; then
+	test -z "$AWK"
+	AC_PROG_AWK
+else
+	test ! -z "$AWK"
+	export AWK
+	AC_SUBST([AWK])
+fi
+if test "x$CC" = "x"; then
+	test -z "$CC"
+	AC_PROG_CC
+else
+	test ! -z "$CC"
+	export CC
+	AC_SUBST([CC])
+fi
 AC_PROG_CXX
 AC_LANG([C++])
-AC_PROG_CPP
-AC_PROG_INSTALL
+if test "x$CPP" = "x"; then
+	test -z "$CPP"
+	AC_PROG_CPP
+fi
+if test "x$INSTALL" = "x"; then
+	test -z "$INSTALL"
+	AC_PROG_INSTALL
+	AM_PROG_INSTALL_STRIP
+else
+	test ! -z "$INSTALL"
+	export INSTALL
+	AC_SUBST([INSTALL])
+fi
 AC_PROG_LN_S
-AC_PROG_MAKE_SET
-AC_PROG_RANLIB
+if test "x$MAKE" = "x"; then
+	test -z "$MAKE"
+	AC_PATH_PROG([MAKE],[make gmake gnumake])
+	AC_PROG_MAKE_SET
+else
+	test ! -z "$MAKE"
+	export MAKE
+	AC_SUBST([MAKE])
+fi
 ACX_USE_SYSTEM_EXTENSIONS
-AM_CONDITIONAL([GCC], [test "$GCC" = yes])   # let the Makefile know if we're gcc
+AM_CONDITIONAL([GCC],[test "$GCC" = yes]) # let the Makefile know if we are gcc
+AC_PROG_GCC_TRADITIONAL
 
 # test_util.cc takes forever to compile with GCC and optimization turned on.
 AC_MSG_CHECKING([C++ compiler flags...])
@@ -80,26 +116,36 @@ ACX_CHECK_SUNCC
 
 # Have to do libtool after SUNCC, otherwise it "helpfully" adds Crun Cstd
 # to the link
-AC_PROG_LIBTOOL
+LT_INIT
+
+if test "x$RANLIB" = "x"; then
+	test -z "$RANLIB"
+	AC_PROG_RANLIB
+else
+	test ! -z "$RANLIB"
+	export RANLIB
+	AC_SUBST([RANLIB])
+fi
 
 # Checks for header files.
-AC_HEADER_STDC
 AC_CHECK_HEADERS([fcntl.h float.h limits.h locale.h stdio.h sys/param.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_CHECK_HEADER_STDBOOL
+AC_C_BIGENDIAN
 AC_C_INLINE
+AC_C_PROTOTYPES
+AC_TYPE_INT8_T
 AC_TYPE_INT16_T
 AC_TYPE_INT32_T
 AC_TYPE_INT64_T
-AC_TYPE_INT8_T
 AC_TYPE_OFF_T
 AC_TYPE_PID_T
 AC_TYPE_SIZE_T
+AC_TYPE_UINT8_T
 AC_TYPE_UINT16_T
 AC_TYPE_UINT32_T
 AC_TYPE_UINT64_T
-AC_TYPE_UINT8_T
 AC_CHECK_TYPES([ptrdiff_t])
 
 # Checks for library functions.
@@ -114,37 +160,38 @@ AC_CHECK_FUNCS([dup2 ftruncate localeconv memmove memset mkdir realpath select s
 
 # Check for zlib.
 HAVE_ZLIB=0
-AS_IF([test "$with_zlib" != no], [
-  AC_MSG_CHECKING([zlib version])
-
+AS_IF([test "$with_zlib" != no],[
   # First check the zlib header version.
+  AC_CHECK_HEADERS([zlib.h])
+  AC_MSG_CHECKING([zlib version])
   AC_COMPILE_IFELSE([AC_LANG_SOURCE([
     AC_LANG_PROGRAM([[
         #include <zlib.h>
         #if !defined(ZLIB_VERNUM) || (ZLIB_VERNUM < 0x1204)
         # error zlib version too old
         #endif
-        ]], [])])], [
+        ]],[])])],[
     AC_MSG_RESULT([ok (1.2.0.4 or later)])
 
     # Also need to add -lz to the linker flags and make sure this succeeds.
-    AC_SEARCH_LIBS([zlibVersion], [z], [
-      AC_DEFINE([HAVE_ZLIB], [1], [Enable classes using zlib compression.])
+    AC_CHECK_LIB([z],[zlibVersion])
+    AC_SEARCH_LIBS([zlibVersion],[z],[
+      AC_DEFINE([HAVE_ZLIB],[1],[Enable classes using zlib compression.])
       HAVE_ZLIB=1
-    ], [
-      AS_IF([test "$with_zlib" != check], [
+    ],[
+      AS_IF([test "$with_zlib" != check],[
         AC_MSG_FAILURE([--with-zlib was given, but no working zlib library was found])
       ])
     ])
-  ], [
-    AS_IF([test "$with_zlib" = check], [
+  ],[
+    AS_IF([test "$with_zlib" = check],[
       AC_MSG_RESULT([headers missing or too old (requires 1.2.0.4)])
-    ], [
+    ],[
       AC_MSG_FAILURE([--with-zlib was given, but zlib headers were not present or were too old (requires 1.2.0.4)])
     ])
   ])
 ])
-AM_CONDITIONAL([HAVE_ZLIB], [test $HAVE_ZLIB = 1])
+AM_CONDITIONAL([HAVE_ZLIB],[test $HAVE_ZLIB = 1])
 
 AS_IF([test "$with_protoc" != "no"], [
   PROTOC=$with_protoc
@@ -163,9 +210,9 @@ AS_IF([test "$with_protoc" != "no"], [
   ])
   AC_SUBST([PROTOC])
 ])
-AM_CONDITIONAL([USE_EXTERNAL_PROTOC], [test "$with_protoc" != "no"])
+AM_CONDITIONAL([USE_EXTERNAL_PROTOC],[test "$with_protoc" != "no"])
 
-ACX_PTHREAD
+AX_PTHREAD
 AC_CXX_STL_HASH
 
 # HACK:  Make gtest's configure script pick up our copy of CFLAGS and CXXFLAGS,

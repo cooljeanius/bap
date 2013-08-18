@@ -11,8 +11,7 @@ src/protobuf/unittest_*
 src/protobuf/unittest.*
 src/unittest_*
 src/unittest.*
-*.o
-*.lo
+*.*o
 *.dirstamp
 *.log
 *.cache
@@ -22,3 +21,8 @@ src/unittest.*
 *deps/*
 */*deps/*
 *~
+libtool
+config.h
+Makefile
+src/Makefile
+

@@ -14,13 +14,13 @@ SUBDIRS=batteries zarith-1.0 ounit pcre-ocaml ocamlgraph-1.8 objsize-0.16 libtra
 test: all
 	$(MAKE) -C tests test
 
-install:
+install-intentional-failure:
 	@echo "BAP does not support the install target"
 	@false
 
-.PHONY: cscope
+.PHONY: cscope-local install-intentional-failure
 
-cscope:
+cscope-local:
 	cscope -b `find . -name "*.[ch]" -or -name "*.hh" -or -name "*.cc" -or -name "*.cpp"`
 
 .PHONY: bap-clean

@@ -16,3 +16,6 @@ cd protobuf && sh ./autogen.sh
 if [ ! -z "$OLDPWD" ]; then
 	cd $OLDPWD
 fi
+
+rm -rf autom4te.cache config.h.in~
+exit 0
