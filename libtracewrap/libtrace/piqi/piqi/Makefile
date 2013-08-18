@@ -77,7 +77,8 @@ erlang-clean:
 	$(MAKE) -C piqi-erlang clean
 	$(MAKE) -C piqi-rpc clean
 
-
+# Do NOT add distclean as a dependency for this target,
+# otherwise it gets in an infinite loop
 clean:: erlang-clean
 	$(MAKE) -C deps clean
 	$(MAKE) -C tests clean
@@ -87,6 +88,8 @@ distclean:
 	if [ -f Makefile.config ]; then \
 		$(MAKE) clean; \
 		rm -rf $(PIQI_BUILD); \
+		rm -rf autom4te.cache; \
+		rm -rf config.h.in~ \
 		rm Makefile.config; \
 	fi
 

@@ -2,7 +2,7 @@
 
 set -e
 
-echo "It'd probably be a better idea to just run \`autoreconf' with your flags of choice, but whatever..."
+echo "It would probably be a better idea to just run \`autoreconf' with your flags of choice, but whatever..."
 
 set -ex
 
@@ -17,5 +17,6 @@ if [ ! -z "$OLDPWD" ]; then
 	cd $OLDPWD
 fi
 
-rm -rf autom4te.cache config.h.in~
+test -e autom4te.cache && rm -rf autom4te.cache
+test -e config.h.in~ && rm -rf config.h.in~
 exit 0

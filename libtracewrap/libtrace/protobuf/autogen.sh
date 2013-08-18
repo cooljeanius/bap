@@ -37,5 +37,8 @@ sed -i -e 's/RuntimeLibrary="5"/RuntimeLibrary="3"/g;
 # TODO(kenton):  Remove the ",no-obsolete" part and fix the resulting warnings.
 autoreconf -f -i -v -Wall,no-obsolete
 
-rm -rf autom4te.cache config.h.in~
+test -e autom4te.cache && rm -rf autom4te.cache
+test -e config.h.in~ && rm -rf config.h.in~
+test -e gtest/autom4te.cache && rm -rf gtest/autom4te.cache
+test -e gtest/build-aux/config.h.in~ && rm -rf gtest/build-aux/config.h.in~
 exit 0

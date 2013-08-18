@@ -1,7 +1,7 @@
 
 RANLIB = @RANLIB@
 lib_LIBRARIES = libasmir.a
-#lib_LTLIBRARIES = libasmir.la
+lib_LTLIBRARIES = libasmir.la
 AM_CFLAGS = -I@VEX_DIR@/pub -I../include -Itraces -fPIC -DGET_OPERANDS
 AM_CXXFLAGS = $(AM_CFLAGS)
 
@@ -32,3 +32,4 @@ libasmir_a_SOURCES = \
         ./traces/pin_frame.h ./traces/pin_frame.cpp \
         ./traces/pin_trace.h ./traces/pin_trace.cpp
 libasmir_a_LIBADD = @VEX_DIR@/libvex.a @BAP_DIR@/libtracewrap/libtrace/src/cpp/libtrace.a
+
