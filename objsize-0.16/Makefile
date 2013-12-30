@@ -112,3 +112,5 @@ uninstall :
 
 tags:
 	-
+
+distclean: clean

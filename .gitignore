@@ -51,12 +51,14 @@ zarith-1.0/Makefile.orig
 *(Autosaved)*
 Makefile
 libasmir/Makefile
+libasmir/makefile.inc
 libasmir/apps/Makefile
 libasmir/src/Makefile
 libtracewrap/CONFIGURED
 libtracewrap/Makefile
 libtracewrap/libtrace/Makefile
 libtracewrap/libtrace/piqi/deps
+libtracewrap/libtrace/piqi/piqi/configure.sh
 ocaml/Makefile
 utils/Makefile
 tests/Makefile
@@ -92,3 +94,4 @@ tests/asm/nop
 *grammar.ml
 *grammar.mli
 VEX/pub/*guest_offsets.h
+pin/*

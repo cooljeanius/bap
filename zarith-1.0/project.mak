@@ -3,13 +3,13 @@
 # It is distributed under LGPL 2 licensing, with static linking exception.
 # See the LICENSE file included in the distribution.
 #   
-# Copyright (c) 2010-2011 Antoine MinÃ©, Abstraction project.
+# Copyright (c) 2010-2011 Antoine MinŽ, Abstraction project.
 # Abstraction is part of the LIENS (Laboratoire d'Informatique de l'ENS),
 # a joint laboratory by:
 # CNRS (Centre national de la recherche scientifique, France),
-# ENS (Ã‰cole normale supÃ©rieure, Paris, France),
+# ENS (ƒcole normale supŽrieure, Paris, France),
 # INRIA Rocquencourt (Institut national de recherche en informatique, France).
-
+# (if a letter is not rendering above, it is most likely an "e" with an accent)
 
 # project files
 ###############
@@ -115,9 +115,19 @@ clean:
 	/bin/rm -rf *.o *.a *.so *.cmi *.cmo *.cmx *.cmxa *.cmxs *.cma *.dll *~ \#* depend test $(AUTOGEN) tmp.c depend
 	/bin/rm -rf test test.b rtest bitest html
 
+distclean: clean
+
+Makefile.orig: config.status
+	./config.status
+
+config.status: configure
+	./configure
+
+configure: configure.ac
+
 depend: $(AUTOGEN)
 	$(OCAMLDEP) -native $(OCAMLINC) *.ml *.mli > depend
 
 include depend
 
-.PHONY: clean
+.PHONY: clean distclean

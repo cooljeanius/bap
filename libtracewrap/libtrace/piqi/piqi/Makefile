@@ -89,7 +89,8 @@ distclean:
 		$(MAKE) clean; \
 		rm -rf $(PIQI_BUILD); \
 		rm -rf autom4te.cache; \
-		rm -rf config.h.in~ \
-		rm Makefile.config; \
+		rm -f config.h.in~; \
+		rm -f configure.sh; \
+		rm -f Makefile.config; \
 	fi
 

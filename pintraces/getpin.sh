@@ -6,11 +6,19 @@
 # http://software.intel.com/en-us/articles/pintool-downloads
 # instead.
 
-set -x
+set -ex
 
 # check if pin dir exists first
 
-wget 'http://software.intel.com/sites/landingpage/pintool/downloads/pin-2.12-53271-gcc.4.4.7-ia32_intel64-linux.tar.gz' -U "Mozilla/5.0 (compatible; MSIE 10.6; Windows NT 6.1; Trident/5.0; InfoPath.2; SLCC1; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET CLR 2.0.50727) 3gpp-gba UNTRUSTED/1.0" -O - | tar -xvz -C ..
+if test ! -z "$(which wget)"; then
+	wget 'http://software.intel.com/sites/landingpage/pintool/downloads/pin-2.12-53271-gcc.4.4.7-ia32_intel64-linux.tar.gz' -U "Mozilla/5.0 (compatible; MSIE 10.6; Windows NT 6.1; Trident/5.0; InfoPath.2; SLCC1; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET CLR 2.0.50727) 3gpp-gba UNTRUSTED/1.0" -O - | tar -xvz -C ..
+elif test ! -z "$(which curl)"; then
+	echo "TODO: convert wget command in this script to equivalent curl command"
+	exit 1
+else
+	echo "No known download program found, try downloading pin from http://software.intel.com/en-us/articles/pintool-downloads manually"
+	exit 1
+fi
 rm -rf ../pin
 mv ../pin-* ../pin
-#make
+test -e Makefile & test -d ../pin && make

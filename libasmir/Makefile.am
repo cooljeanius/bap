@@ -3,3 +3,5 @@
 # permission.
 
 SUBDIRS= src apps 
+
+MAINTAINERCLEANFILES= makefile.inc

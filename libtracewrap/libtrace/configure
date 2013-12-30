@@ -5161,8 +5161,8 @@ else
 fi
 
 
-if test "x$CC" = "x"; then
-	test -z "$CC"
+if test "x${CC}" = "x"; then
+	test -z "${CC}"
 	ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
@@ -5762,12 +5762,11 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
 else
-	test ! -z "$CC"
-	export CC
+	test ! -z "${CC}" && export CC
 
 fi
-if test "x$CPP" = "x"; then
-	test -z "$CPP"
+if test "x${CPP}" = "x"; then
+	test -z "${CPP}"
 	ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
@@ -5906,8 +5905,8 @@ ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 fi
-if test "x$RANLIB" = "x"; then
-	test -z "$RANLIB"
+if test "x${RANLIB}" = "x"; then
+	test -z "${RANLIB}"
 	if test -n "$ac_tool_prefix"; then
   # Extract the first word of "${ac_tool_prefix}ranlib", so it can be a program name with args.
 set dummy ${ac_tool_prefix}ranlib; ac_word=$2
@@ -6001,8 +6000,7 @@ else
 fi
 
 else
-	test ! -z "$RANLIB"
-	export RANLIB
+	test ! -z "${RANLIB}" && export RANLIB
 
 fi
   # checking for ocamlc
@@ -7092,20 +7090,6 @@ fi
 
 
 # Checks for header files.
-for ac_header in stdio.h
-do :
-  ac_fn_c_check_header_mongrel "$LINENO" "stdio.h" "ac_cv_header_stdio_h" "$ac_includes_default"
-if test "x$ac_cv_header_stdio_h" = xyes; then :
-  cat >>confdefs.h <<_ACEOF
-#define HAVE_STDIO_H 1
-_ACEOF
-
-fi
-
-done
-
-
-# Checks for typedefs, structures, and compiler characteristics.
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for stdbool.h that conforms to C99" >&5
 $as_echo_n "checking for stdbool.h that conforms to C99... " >&6; }
 if ${ac_cv_header_stdbool_h+:} false; then :
@@ -7199,6 +7183,20 @@ $as_echo "#define HAVE_STDBOOL_H 1" >>confdefs.h
 
 fi
 
+for ac_header in stdio.h
+do :
+  ac_fn_c_check_header_mongrel "$LINENO" "stdio.h" "ac_cv_header_stdio_h" "$ac_includes_default"
+if test "x$ac_cv_header_stdio_h" = xyes; then :
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_STDIO_H 1
+_ACEOF
+
+fi
+
+done
+
+
+# Checks for typedefs, structures, and compiler characteristics.
  { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether byte ordering is bigendian" >&5
 $as_echo_n "checking whether byte ordering is bigendian... " >&6; }
 if ${ac_cv_c_bigendian+:} false; then :
@@ -7787,12 +7785,13 @@ fi
 
 
 # Checks for library functions.
-for ac_func in memset
+for ac_func in memset strtoull
 do :
-  ac_fn_c_check_func "$LINENO" "memset" "ac_cv_func_memset"
-if test "x$ac_cv_func_memset" = xyes; then :
+  as_ac_var=`$as_echo "ac_cv_func_$ac_func" | $as_tr_sh`
+ac_fn_c_check_func "$LINENO" "$ac_func" "$as_ac_var"
+if eval test \"x\$"$as_ac_var"\" = x"yes"; then :
   cat >>confdefs.h <<_ACEOF
-#define HAVE_MEMSET 1
+#define `$as_echo "HAVE_$ac_func" | $as_tr_cpp` 1
 _ACEOF
 
 fi
@@ -7802,11 +7801,11 @@ done
 
 # Check whether --with-batteries was given.
 if test "${with_batteries+set}" = set; then :
-  withval=$with_batteries; with_batteries="$( cd $withval && pwd )"
+  withval=$with_batteries; with_batteries="$( cd ${withval} && pwd )"
 fi
 
 
-if test "x$with_batteries" != x; then :
+if test "x${with_batteries}" != x; then :
     { $as_echo "$as_me:${as_lineno-$LINENO}: checking for OCaml module batteries" >&5
 $as_echo_n "checking for OCaml module batteries... " >&6; }
 
@@ -7814,7 +7813,7 @@ $as_echo_n "checking for OCaml module batteries... " >&6; }
 open BatHashtbl
 EOF
   unset found
-  for has_batteries in $has_batteries $with_batteries ; do
+  for has_batteries in $has_batteries ${with_batteries} ; do
     if $OCAMLC -c -I "$has_batteries" conftest.ml >&5 2>&5 ; then
       found=yes
       break
@@ -7831,13 +7830,13 @@ $as_echo "not found" >&6; }
   fi
 
 
-       if test "x$has_batteries" = "xno"; then :
+       if test "x${has_batteries}" = "xno"; then :
   { { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
 $as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
-as_fn_error $? "batteries not found in $with_batteries
+as_fn_error $? "batteries not found in ${with_batteries}
 See \`config.log' for more details" "$LINENO" 5; }
 else
-  BAT_DIR=$with_batteries
+  BAT_DIR=${with_batteries}
 
 fi
 else
@@ -7856,6 +7855,8 @@ subdirs="$subdirs piqi/piqi"
 # Note: protobuf must be compiled for 32-bit because it is linked by
 # pintraces code, which is 32-bit
 subdirs="$subdirs protobuf"
+
+ac_config_commands="$ac_config_commands bap-local"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -8599,6 +8600,7 @@ do
     "src/cpp/utils/Makefile") CONFIG_FILES="$CONFIG_FILES src/cpp/utils/Makefile" ;;
     "src/ocaml/Makefile") CONFIG_FILES="$CONFIG_FILES src/ocaml/Makefile" ;;
     "src/ocaml/utils/Makefile") CONFIG_FILES="$CONFIG_FILES src/ocaml/utils/Makefile" ;;
+    "bap-local") CONFIG_COMMANDS="$CONFIG_COMMANDS bap-local" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac
@@ -9286,6 +9288,14 @@ $as_echo X"$file" |
     done
   done
 }
+ ;;
+    "bap-local":C)
+if test "$(cd .. && basename $(pwd))" = "libtracewrap"; then
+  echo "CONFIGURED"
+  touch ../CONFIGURED
+else
+  echo "Not in subdirectory of libtracewrap, so never mind."
+fi
  ;;
 
   esac

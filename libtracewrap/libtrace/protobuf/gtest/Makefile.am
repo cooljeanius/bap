@@ -1,6 +1,6 @@
 # Automake file
 
-ACLOCAL_AMFLAGS = -I m4
+ACLOCAL_AMFLAGS = -I m4 --install
 
 # TODO(chandlerc@google.com): automate the generation of *.h from *.h.pump.
 
@@ -65,9 +65,9 @@ EXTRA_DIST += \
   codegear/gtest.groupproj
 
 # TODO(wan@google.com): integrate scripts/gen_gtest_pred_impl.py into
-#   the build system such that a user can specify the maximum predicate
-#   arity here and have the script automatically generate the
-#   corresponding .h and .cc files.
+# the build system such that a user can specify the maximum predicate
+# arity here and have the script automatically generate the
+# corresponding .h and .cc files.
 
 # Scripts and utilities
 bin_SCRIPTS = scripts/gtest-config
@@ -78,7 +78,7 @@ m4datadir = $(datadir)/aclocal
 m4data_DATA = m4/gtest.m4
 EXTRA_DIST += $(m4data_DATA)
 
-# We define the global AM_CPPFLAGS as everything we compile includes from these
+# We define global AM_CPPFLAGS as everything we compile includes from these
 # directories.
 AM_CPPFLAGS = -I$(srcdir) -I$(srcdir)/include
 
@@ -120,7 +120,7 @@ lib_libgtest_main_la_SOURCES = src/gtest_main.cc
 lib_libgtest_main_la_LIBADD = lib/libgtest.la
 
 # Bulid rules for samples and tests. Automake's naming for some of
-# these variables isn't terribly obvious, so this is a brief
+# these variables is NOT terribly obvious, so this is a brief
 # reference:
 #
 # TESTS -- Programs run automatically by "make check"
@@ -339,11 +339,11 @@ test_gtest_use_own_tuple_test_SOURCES = test/gtest-param-test_test.cc \
 test_gtest_use_own_tuple_test_CXXFLAGS = \
     $(AM_CXXFLAGS) -DGTEST_USE_OWN_TR1_TUPLE=1
 
-# The following tests depend on the presence of a Python installation and are
-# keyed off of it. TODO(chandlerc@google.com): While we currently only attempt
+# The following tests depend on the presence of a Python installation & are
+# keyed off it. TODO(chandlerc@google.com): While we currently only attempt
 # to build and execute these tests if Autoconf has found Python v2.4 on the
-# system, we don't use the PYTHON variable it specified as the valid
-# interpreter. The problem is that TESTS_ENVIRONMENT is a global variable, and
+# system, we do NOT use the PYTHON variable it specified as the valid
+# interpreter. The problem is: TESTS_ENVIRONMENT is a global variable, and
 # thus we cannot distinguish between C++ unit tests and Python unit tests.
 if HAVE_PYTHON
 check_SCRIPTS =
@@ -433,9 +433,9 @@ check_SCRIPTS += test/gtest_xml_output_unittest.py
 TESTS += test/gtest_xml_output_unittest.py
 
 # TODO(wan@google.com): make the build script compile and run the
-#   negative-compilation tests.  (The test/gtest_nc* files are unfinished
-#   implementation of tests for verifying that certain kinds of misuse
-#   of Google Test don't compile.)
+# negative-compilation tests. (The test/gtest_nc* files are unfinished
+# implementation of tests for verifying that certain kinds of misuse
+# of Google Test do NOT compile.)
 EXTRA_DIST += $(check_SCRIPTS) \
               test/gtest_nc.cc \
               test/gtest_nc_test.py

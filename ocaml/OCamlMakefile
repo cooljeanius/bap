@@ -1278,3 +1278,6 @@ clean-all:: clean clean-doc
 .PHONY: nobackup
 nobackup:
 	rm -f *.bak *~ *.dup
+
+.PHONY: distclean
+distclean: clean cleanup clean-doc clean-all nobackup

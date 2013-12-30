@@ -3,11 +3,11 @@ OCAMLMAKEFILE = ./OCamlMakefile
 ROOTDIR = @LIBTRACE_DIR@
 PIQIBUILDDIR = $(ROOTDIR)/piqi/piqi/build/lib/ocaml
 BATT = @BAT_DIR@
-#BATT = $(ROOTDIR)/batteries/_build/src
+BATT_HARDCODED = $(ROOTDIR)/batteries/_build/src
 
 export OCAMLPATH = $(PIQIBUILDDIR)
 
-# We can't use $(CPP) here because the default (cc -E) won't work on
+# We cannot use $(CPP) here because the default (cc -E) will NOT work on
 # .idl files.
 export CAMLIDLFLAGS = -prepro cpp
 

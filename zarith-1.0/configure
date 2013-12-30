@@ -4054,8 +4054,8 @@ else
 fi
 
 
-if test "x$CC" = "x"; then
-	test -z "$CC"
+if test "x${CC}" = "x"; then
+	test -z "${CC}"
 	ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
@@ -4596,12 +4596,11 @@ ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 else
-	test ! -z "$CC"
-	export CC
+	test ! -z "${CC}" && export CC
 
 fi
-if test "x$CPP" = "x"; then
-	test -z "$CPP"
+if test "x${CPP}" = "x"; then
+	test -z "${CPP}"
 	ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
@@ -5392,7 +5391,7 @@ $as_echo "no" >&6; }
 fi
 
 
-if test "$OCAML" = no ; then
+if test "${OCAML}" = no ; then
 	as_fn_error $? "Cannot find ocaml." "$LINENO" 5
 fi
 
@@ -5404,16 +5403,16 @@ wordsize=`ocaml tmp.ml`
 $as_echo "$wordsize" >&6; }
 rm -f tmp.ml
 
-case $host_os in
+case ${host_os} in
     x86_64-*linux-gnu)
-        CFLAGS="-DZ_ELF $CFLAGS"
+        CFLAGS="-DZ_ELF ${CFLAGS}"
         arch='x86_64';;
     i686-*linux-gnu)
-        CFLAGS="-DZ_ELF $CFLAGS"
+        CFLAGS="-DZ_ELF ${CFLAGS}"
         arch='i686';;
     i686-*cygwin)
-        if test "x$wordsize" = "x64"; then
-            CFLAGS="-DZ_COFF $CFLAGS"
+        if test "x${wordsize}" = "x64"; then
+            CFLAGS="-DZ_COFF ${CFLAGS}"
             arch='x86_64_mingw64'
         else
             CFLAGS="-DZ_UNDERSCORE_PREFIX -DZ_COFF $CFLAGS"
@@ -5422,21 +5421,21 @@ case $host_os in
 	;;
     *darwin*)
         ccdef="-DZ_UNDERSCORE_PREFIX -DZ_MACOS $CFLAGS"
-        if test "x$wordsize" = "x64"; then
-            CFLAGS="-arch x86_64 $CFLAGS"
-            ASFLAGS="-arch x86_64 $ASFLAGS"
+        if test "x${wordsize}" = "x64"; then
+            CFLAGS="-arch x86_64 ${CFLAGS}"
+            ASFLAGS="-arch x86_64 ${ASFLAGS}"
             arch='x86_64'
         else
-            CFLAGS="-arch i386 $CFLAGS"
-            ASFLAGS="-arch i386 $ASFLAGS"
+            CFLAGS="-arch i386 ${CFLAGS}"
+            ASFLAGS="-arch i386 ${ASFLAGS}"
             arch='i686'
         fi
         ;;
     none)
         ;;
     *)
-        { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: unknown host $host_os" >&5
-$as_echo "$as_me: WARNING: unknown host $host_os" >&2;};;
+        { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: unknown host ${host_os}" >&5
+$as_echo "$as_me: WARNING: unknown host ${host_os}" >&2;};;
 esac
 
 # Extract the first word of "ocamlc", so it can be a program name with args.
@@ -5477,7 +5476,7 @@ $as_echo "no" >&6; }
 fi
 
 
-if test "$OCAMLC" = no ; then
+if test "${OCAMLC}" = no ; then
 	as_fn_error $? "Cannot find ocamlc." "$LINENO" 5
 fi
 
@@ -5519,14 +5518,14 @@ fi
 
 
 OCAMLBEST=byte
-if test "x$OCAMLOPT" = "x" ; then
+if test "x${OCAMLOPT}" = "x" ; then
 	{ $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: Cannot find ocamlopt; bytecode compilation only." >&5
 $as_echo "$as_me: WARNING: Cannot find ocamlopt; bytecode compilation only." >&2;}
 else
 	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking ocamlopt version" >&5
 $as_echo_n "checking ocamlopt version... " >&6; }
 	TMPVERSION=`$OCAMLOPT -v | sed -n -e 's|.*version *\(.*\)$|\1|p' `
-	if test "$TMPVERSION" != "$OCAMLVERSION" ; then
+	if test "${TMPVERSION}" != "${OCAMLVERSION}" ; then
 	    { $as_echo "$as_me:${as_lineno-$LINENO}: result: differs from ocamlc; ocamlopt discarded." >&5
 $as_echo "differs from ocamlc; ocamlopt discarded." >&6; }
 	    unset OCAMLOPT
@@ -5576,11 +5575,11 @@ $as_echo "no" >&6; }
 fi
 
 
-if test "$OCAMLCDOTOPT" != no ; then
+if test "${OCAMLCDOTOPT}" != no ; then
 	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking ocamlc.opt version" >&5
 $as_echo_n "checking ocamlc.opt version... " >&6; }
-	TMPVERSION=`$OCAMLCDOTOPT -v | sed -n -e 's|.*version *\(.*\)$|\1|p' `
-	if test "$TMPVERSION" != "$OCAMLVERSION" ; then
+	TMPVERSION=`${OCAMLCDOTOPT} -v | sed -n -e 's|.*version *\(.*\)$|\1|p' `
+	if test "${TMPVERSION}" != "${OCAMLVERSION}" ; then
 	    { $as_echo "$as_me:${as_lineno-$LINENO}: result: differs from ocamlc; ocamlc.opt discarded." >&5
 $as_echo "differs from ocamlc; ocamlc.opt discarded." >&6; }
 	else
@@ -5590,7 +5589,7 @@ $as_echo "ok" >&6; }
 	fi
 fi
 
-if test "$OCAMLOPT" != no ; then
+if test "${OCAMLOPT}" != no ; then
     # Extract the first word of "ocamlopt.opt", so it can be a program name with args.
 set dummy ocamlopt.opt; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
@@ -5629,17 +5628,17 @@ $as_echo "no" >&6; }
 fi
 
 
-    if test "$OCAMLOPTDOTOPT" != no ; then
+    if test "${OCAMLOPTDOTOPT}" != no ; then
 	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking ocamlc.opt version" >&5
 $as_echo_n "checking ocamlc.opt version... " >&6; }
-	TMPVER=`$OCAMLOPTDOTOPT -v | sed -n -e 's|.*version *\(.*\)$|\1|p' `
-	if test "$TMPVER" != "$OCAMLVERSION" ; then
+	TMPVER=`${OCAMLOPTDOTOPT} -v | sed -n -e 's|.*version *\(.*\)$|\1|p' `
+	if test "${TMPVER}" != "${OCAMLVERSION}" ; then
 	    { $as_echo "$as_me:${as_lineno-$LINENO}: result: differs from ocamlc; ocamlopt.opt discarded." >&5
 $as_echo "differs from ocamlc; ocamlopt.opt discarded." >&6; }
 	else
 	    { $as_echo "$as_me:${as_lineno-$LINENO}: result: ok" >&5
 $as_echo "ok" >&6; }
-	    OCAMLOPT=$OCAMLOPTDOTOPT
+	    OCAMLOPT=${OCAMLOPTDOTOPT}
 	fi
     fi
 fi
@@ -5682,7 +5681,7 @@ $as_echo "no" >&6; }
 fi
 
 
-if test "$OCAMLDEP" = no ; then
+if test "${OCAMLDEP}" = no ; then
 	{ $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: Cannot find ocamldep." >&5
 $as_echo "$as_me: WARNING: Cannot find ocamldep." >&2;}
 fi
@@ -5725,7 +5724,7 @@ $as_echo "no" >&6; }
 fi
 
 
-if test "$OCAMLDOC" = true ; then
+if test "${OCAMLDOC}" = true ; then
     { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: Cannot find ocamldoc" >&5
 $as_echo "$as_me: WARNING: Cannot find ocamldoc" >&2;}
 else
@@ -5767,8 +5766,8 @@ $as_echo "no" >&6; }
 fi
 
 
-    if test "$OCAMLDOCOPT" != no ; then
-	OCAMLDOC=$OCAMLDOCOPT
+    if test "${OCAMLDOCOPT}" != no ; then
+	OCAMLDOC=${OCAMLDOCOPT}
     fi
 fi
 
@@ -5810,12 +5809,12 @@ $as_echo "no" >&6; }
 fi
 
 
-if test "$OCAMLFIND" != no; then
+if test "${OCAMLFIND}" != no; then
 	INSTMETH=findlib
 	INSTALLDIR=`ocamlfind printconf destdir`
-elif "x$INSTALL" != "x"; then
+elif "x${INSTALL}" != "x"; then
 	INSTMETH=install
-	if test "$OCAMLC" != "no"; then
+	if test "${OCAMLC}" != "no"; then
 		INSTALLDIR=`ocamlc -where`
 	fi
 else
@@ -5864,7 +5863,7 @@ $as_echo "no" >&6; }
 fi
 
 
-if test "$OCAMLMKLIB" = no ; then
+if test "${OCAMLMKLIB}" = no ; then
 	{ $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: Cannot find ocamlmklib." >&5
 $as_echo "$as_me: WARNING: Cannot find ocamlmklib." >&2;}
 fi
@@ -5947,7 +5946,7 @@ fi
 { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_gmp_main" >&5
 $as_echo "$ac_cv_lib_gmp_main" >&6; }
 if test "x$ac_cv_lib_gmp_main" = xyes; then :
-  CFLAGS="-DHAS_GMP $CFLAGS"
+  CFLAGS="-DHAS_GMP ${CFLAGS}"
 fi
 
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for cos in -lm" >&5
@@ -6027,7 +6026,7 @@ fi
 { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_mpir_main" >&5
 $as_echo "$ac_cv_lib_mpir_main" >&6; }
 if test "x$ac_cv_lib_mpir_main" = xyes; then :
-  CFLAGS="-DHAS_MPIR $CFLAGS"
+  CFLAGS="-DHAS_MPIR ${CFLAGS}"
 fi
 
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for gzlib in -lz" >&5
@@ -6078,24 +6077,8 @@ fi
 
 # Checks for header files.
 if test ! -z "$ocamllibdir"; then
-	CPPFLAGS="-I$ocamllibdir $CPPFLAGS"
+	CPPFLAGS="-I${ocamllibdir} ${CPPFLAGS}"
 fi
-for ac_header in caml/mlvalues.h float.h gmp.h math.h mpir.h \
-                  stddef.h stdio.h
-do :
-  as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
-ac_fn_c_check_header_mongrel "$LINENO" "$ac_header" "$as_ac_Header" "$ac_includes_default"
-if eval test \"x\$"$as_ac_Header"\" = x"yes"; then :
-  cat >>confdefs.h <<_ACEOF
-#define `$as_echo "HAVE_$ac_header" | $as_tr_cpp` 1
-_ACEOF
-
-fi
-
-done
-
-
-# Checks for typedefs, structures, and compiler characteristics.
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for stdbool.h that conforms to C99" >&5
 $as_echo_n "checking for stdbool.h that conforms to C99... " >&6; }
 if ${ac_cv_header_stdbool_h+:} false; then :
@@ -6183,6 +6166,27 @@ _ACEOF
 fi
 
 
+if test $ac_cv_header_stdbool_h = yes; then
+
+$as_echo "#define HAVE_STDBOOL_H 1" >>confdefs.h
+
+fi
+ for ac_header in caml/mlvalues.h float.h gmp.h math.h mpir.h \
+                  stddef.h stdio.h
+do :
+  as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
+ac_fn_c_check_header_mongrel "$LINENO" "$ac_header" "$as_ac_Header" "$ac_includes_default"
+if eval test \"x\$"$as_ac_Header"\" = x"yes"; then :
+  cat >>confdefs.h <<_ACEOF
+#define `$as_echo "HAVE_$ac_header" | $as_tr_cpp` 1
+_ACEOF
+
+fi
+
+done
+
+
+# Checks for typedefs, structures, and compiler characteristics.
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for inline" >&5
 $as_echo_n "checking for inline... " >&6; }
 if ${ac_cv_c_inline+:} false; then :

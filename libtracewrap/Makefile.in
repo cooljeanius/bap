@@ -6,8 +6,16 @@ default: all
 
 %:
 	$(MAKE) CONFIGURED
-	$(MAKE) -C libtrace $@
+	if [ -f libtrace/Makefile ]; then $(MAKE) -C libtrace $@; fi
 
 CONFIGURED: libtrace/Makefile.am libtrace/configure.ac
 	(cd libtrace && INCDIRS="@INCDIRS@" CPPFLAGS="@CPPFLAGS@" CFLAGS=-m32 CXXFLAGS=-m32 ./configure --with-batteries=@BAP_DIR@/batteries/_build/src)
 	touch CONFIGURED
+
+.PHONY: distclean
+distclean: clean
+	if [ -f libtrace/Makefile ]; then $(MAKE) -C libtrace distclean; fi
+
+.PHONY: clean
+clean:
+	if [ -f libtrace/Makefile ]; then $(MAKE) -C libtrace distclean; fi

@@ -37,3 +37,6 @@ clean:
 
 tags:
 	-
+
+.PHONY: distclean
+distclean: clean

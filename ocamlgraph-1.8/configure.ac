@@ -43,61 +43,68 @@ AC_CANONICAL_TARGET
 AM_MAINTAINER_MODE
 
 # Checks for programs.
-if test "x$INSTALL" = "x"; then
-	test -z "$INSTALL"
+if test "x${INSTALL}" = "x"; then
+	test -z "${INSTALL}"
 	AC_PROG_INSTALL
 	AM_PROG_INSTALL_STRIP
 else
-	test ! -z "$INSTALL"
-	export INSTALL
+	test ! -z "${INSTALL}" && export INSTALL
 	AC_SUBST([INSTALL])
 fi
-if test "x$MAKE" = "x"; then
-	test -z "$MAKE"
+if test "x${MAKE}" = "x"; then
+	test -z "${MAKE}"
 	AC_PATH_PROG([MAKE],[make gmake gnumake])
 	AC_PROG_MAKE_SET
 else
-	test ! -z "$MAKE"
-	export MAKE
+	test ! -z "${MAKE}" && export MAKE
 	AC_SUBST([MAKE])
 fi
 AC_PROG_SED
+if test "x${CC}" = "x"; then
+	test -z "${CC}"
+	AC_PROG_CC
+else
+	test ! -z "${CC}" && export CC
+	AC_SUBST([CC])
+fi
+# (yacc and lex are checked later)
 
+dnl########################
 # Check for Ocaml compilers
 
 # we first look for ocamlc in the path; if not present, we fail
 AC_CHECK_PROG([OCAMLC],[ocamlc],[ocamlc],[no])
-if test "$OCAMLC" = no ; then
+if test "${OCAMLC}" = no ; then
 	AC_MSG_ERROR([Cannot find ocamlc.])
 fi
 
 # we extract Ocaml version number and library path
-OCAMLVERSION=`$OCAMLC -v | sed -n -e 's|.*version *\(.*\)$|\1|p' `
-echo "ocaml version is $OCAMLVERSION"
+OCAMLVERSION=`${OCAMLC} -v | sed -n -e 's|.*version *\(.*\)$|\1|p' `
+echo "ocaml version is ${OCAMLVERSION}"
 
-case $OCAMLVERSION in
+case ${OCAMLVERSION} in
   0.*|1.*|2.*|3.0*)
         AC_MSG_ERROR([ocamlgraph needs ocaml version 3.10.0 or higher]);;
   *)
 	;;
 esac
 
-# OCAMLLIB=`$OCAMLC -v | tail -n 1 | cut -f 4 -d " "`
-# OCAMLLIB=`$OCAMLC -v | tail -n 1 | sed -e 's|[[^:]]*: \(.*\)|\1|' `
-OCAMLLIB=`$OCAMLC -where | tr -d '\r'`
-echo "ocaml library path is $OCAMLLIB"
+# OCAMLLIB=`${OCAMLC} -v | tail -n 1 | cut -f 4 -d " "`
+# OCAMLLIB=`${OCAMLC} -v | tail -n 1 | sed -e 's|[[^:]]*: \(.*\)|\1|' `
+OCAMLLIB=`${OCAMLC} -where | tr -d '\r'`
+echo "ocaml library path is ${OCAMLLIB}"
 
 # then we look for ocamlopt; if not present, we issue a warning
 # if the version is not the same, we also discard it
 # we set OCAMLBEST to "opt" or "byte", whether ocamlopt is available or not
 AC_CHECK_PROG([OCAMLOPT],[ocamlopt],[ocamlopt],[no])
 OCAMLBEST=byte
-if test "$OCAMLOPT" = no ; then
+if test "${OCAMLOPT}" = no ; then
 	AC_MSG_WARN([Cannot find ocamlopt; bytecode compilation only.])
 else
 	AC_MSG_CHECKING([ocamlopt version])
 	TMPVERSION=`$OCAMLOPT -v | sed -n -e 's|.*version *\(.*\)$|\1|p' `
-	if test "$TMPVERSION" != "$OCAMLVERSION" ; then
+	if test "${TMPVERSION}" != "${OCAMLVERSION}" ; then
 	    AC_MSG_RESULT([differs from ocamlc; ocamlopt discarded.])
 	    OCAMLOPT=no
 	else
@@ -108,64 +115,68 @@ fi
 
 # checking for ocamlc.opt
 AC_CHECK_PROG([OCAMLCDOTOPT],[ocamlc.opt],[ocamlc.opt],[no])
-if test "$OCAMLCDOTOPT" != no ; then
+if test "${OCAMLCDOTOPT}" != no ; then
 	AC_MSG_CHECKING([ocamlc.opt version])
-	TMPVERSION=`$OCAMLCDOTOPT -v | sed -n -e 's|.*version *\(.*\)$|\1|p' `
-	if test "$TMPVERSION" != "$OCAMLVERSION" ; then
+	TMPVERSION=`${OCAMLCDOTOPT} -v | sed -n -e 's|.*version *\(.*\)$|\1|p' `
+	if test "${TMPVERSION}" != "${OCAMLVERSION}" ; then
 	    AC_MSG_RESULT([differs from ocamlc; ocamlc.opt discarded.])
 	else
 	    AC_MSG_RESULT([ok])
-	    OCAMLC=$OCAMLCDOTOPT
+	    OCAMLC=${OCAMLCDOTOPT}
 	fi
 fi
 
 # checking for ocamlopt.opt
 if test "$OCAMLOPT" != no ; then
     AC_CHECK_PROG([OCAMLOPTDOTOPT],[ocamlopt.opt],[ocamlopt.opt],[no])
-    if test "$OCAMLOPTDOTOPT" != no ; then
+    if test "${OCAMLOPTDOTOPT}" != no ; then
 	AC_MSG_CHECKING([ocamlc.opt version])
-	TMPVER=`$OCAMLOPTDOTOPT -v | sed -n -e 's|.*version *\(.*\)$|\1|p' `
-	if test "$TMPVER" != "$OCAMLVERSION" ; then
+	TMPVER=`${OCAMLOPTDOTOPT} -v | sed -n -e 's|.*version *\(.*\)$|\1|p' `
+	if test "${TMPVER}" != "${OCAMLVERSION}" ; then
 	    AC_MSG_RESULT([differs from ocamlc; ocamlopt.opt discarded.])
 	else
 	    AC_MSG_RESULT([ok])
-	    OCAMLOPT=$OCAMLOPTDOTOPT
+	    OCAMLOPT=${OCAMLOPTDOTOPT}
 	fi
     fi
 fi
 
 # ocamldep, ocamllex and ocamlyacc should also be present in the path
 AC_CHECK_PROG([OCAMLDEP],[ocamldep],[ocamldep],[no])
-if test "$OCAMLDEP" = no ; then
+if test "${OCAMLDEP}" = no ; then
 	AC_MSG_ERROR([Cannot find ocamldep.])
 fi
 
 AC_PROG_LEX
+if test -x ./missing; then
+  test -d ${srcdir}
+  m4_ifdef([AM_PROG_LEX],[AM_PROG_LEX],[test ! -z "${LEX}"])
+fi
 
 AC_CHECK_PROG([OCAMLLEX],[ocamllex],[ocamllex],[no])
-if test "$OCAMLLEX" = no ; then
+if test "${OCAMLLEX}" = no ; then
     AC_MSG_ERROR([Cannot find ocamllex.])
 else
     AC_CHECK_PROG([OCAMLLEXDOTOPT],[ocamllex.opt],[ocamllex.opt],[no])
-    if test "$OCAMLLEXDOTOPT" != no ; then
-	OCAMLLEX=$OCAMLLEXDOTOPT
+    if test "${OCAMLLEXDOTOPT}" != no ; then
+	OCAMLLEX=${OCAMLLEXDOTOPT}
     fi
 fi
 
 AC_PROG_YACC
 
 AC_CHECK_PROG([OCAMLYACC],[ocamlyacc],[ocamlyacc],[no])
-if test "$OCAMLYACC" = no ; then
+if test "${OCAMLYACC}" = no ; then
 	AC_MSG_ERROR([Cannot find ocamlyacc.])
 fi
 
 AC_CHECK_PROG([OCAMLDOC],[ocamldoc],[ocamldoc],[true])
-if test "$OCAMLDOC" = true ; then
+if test "${OCAMLDOC}" = true ; then
     AC_MSG_WARN([Cannot find ocamldoc])
 else
     AC_CHECK_PROG([OCAMLDOCOPT],[ocamldoc.opt],[ocamldoc.opt],[no])
-    if test "$OCAMLDOCOPT" != no ; then
-	OCAMLDOC=$OCAMLDOCOPT
+    if test "${OCAMLDOCOPT}" != no ; then
+	OCAMLDOC=${OCAMLDOCOPT}
     fi
 fi
 
@@ -173,17 +184,17 @@ AC_CHECK_PROG([OCAMLWEB],[ocamlweb],[ocamlweb],[true])
 
 AC_CHECK_PROG([OCAMLFIND],[ocamlfind],[ocamlfind])
 
-if test "$OCAMLBEST" = "opt"; then
+if test "${OCAMLBEST}" = "opt"; then
   SUFFIX=cmxa;
 else
   SUFFIX=cma;
 fi
 
 # checking for lablgtk2 and lablgnomecanvas
-AC_CHECK_FILE([$OCAMLLIB/lablgtk2/lablgtk.$SUFFIX],[LABLGTK2=yes],[LABLGTK2=no])
-if test "$LABLGTK2" = yes ; then
+AC_CHECK_FILE([${OCAMLLIB}/lablgtk2/lablgtk.${SUFFIX}],[LABLGTK2=yes],[LABLGTK2=no])
+if test "${LABLGTK2}" = yes ; then
   INCLUDEGTK2="-I +lablgtk2"
-  AC_CHECK_FILE([$OCAMLLIB/lablgtk2/lablgnomecanvas.$SUFFIX],[LABLGNOMECANVAS=yes],[LABLGNOMECANVAS=no])
+  AC_CHECK_FILE([${OCAMLLIB}/lablgtk2/lablgnomecanvas.${SUFFIX}],[LABLGNOMECANVAS=yes],[LABLGNOMECANVAS=no])
 else
   LABLGTK2=no
   LABLGNOMECANVAS=no
@@ -199,7 +210,7 @@ if ocaml check_arch.ml | grep -q Win32; then
 else
     AC_MSG_RESULT([no])
     OCAMLWIN32=no
-    EXE=
+    EXE=""
 fi
 rm -f check_arch.ml
 
@@ -207,13 +218,14 @@ AC_OBJEXT
 AC_EXEEXT
 
 AM_PROG_AS
-AC_SEARCH_LIBS([strerror],[cposix])dnl# Used to be AC_ISC_POSIX
+AC_SEARCH_LIBS([strerror],[cposix])dnl# Used to be AC\_ISC\_POSIX
 AC_USE_SYSTEM_EXTENSIONS
+AC_CHECK_HEADERS([stdio.h])
 
 LIBEXT=`ocamlc -config | grep ext_lib | sed -e 's/.*\(\..*\)/\1/' `
 OBJEXT=`ocamlc -config | grep ext_obj | sed -e 's/.*\(\..*\)/\1/' `
 
-if test "$LABLGNOMECANVAS" = no ; then
+if test "${LABLGNOMECANVAS}" = no ; then
   AC_MSG_WARN([lablgnomecanvas not found: the graph editor and view_graph will not be compiled.])
 fi
 
@@ -238,5 +250,8 @@ AC_SUBST([INCLUDEGTK2])
 
 # Finally create the Makefile from Makefile.in
 AC_CONFIG_FILES([Makefile])
-AC_OUTPUT
+AC_CONFIG_COMMANDS([default],[
+echo "chmod a-w Makefile"
 chmod a-w Makefile
+])
+AC_OUTPUT

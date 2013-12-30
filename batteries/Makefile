@@ -58,7 +58,7 @@ else
   MODE = bytecode
 endif
 
-.PHONY: all clean doc install uninstall reinstall test qtest camfail camfailunk
+.PHONY: all clean doc install uninstall reinstall test qtest camfail camfailunk distclean
 
 all: src/batCamomile.ml
 	@echo "Build mode:" $(MODE)
@@ -165,10 +165,10 @@ src/batCamomile.ml: $(CAMFIX)
 	cp -f $< $@
 
 camfailunk:
-	echo "Unknown build of camomile detected ( $(CAMVER) ), cannot auto-config batcamomile."
-	echo "If your camomile is more recent than 0.8.3, you can probably do"
-	echo "  cp src/batCamomile-0.8.2.ml src/batCamomile.ml"
-	echo "and everything will work fine."
+	@echo "Unknown build of camomile detected ( $(CAMVER) ), cannot auto-config batcamomile."
+	@echo "If your camomile is more recent than 0.8.3, you can probably do"
+	@echo "  cp src/batCamomile-0.8.2.ml src/batCamomile.ml"
+	@echo "and everything will work fine."
 	exit 1
 
 ##
@@ -191,3 +191,5 @@ qtest/test_mods.mllib:
 
 tags:
 	-
+
+distclean: clean

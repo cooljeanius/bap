@@ -90,8 +90,8 @@ CCFLAGS = -Wall -Wmissing-prototypes -Wshadow \
 		-Wno-pointer-sign \
 		$(EXTRA_CFLAGS) -g -O2 -fstrict-aliasing -fPIC
 
-#CC = icc
-#CCFLAGS = -g -Wall -wd981 -wd279 -wd1287 -wd869 -wd111 -wd188 -wd186
+CC_THAT_IS_ACTUALLY_ICC = icc
+ICC_SPECIFIC_CCFLAGS = -g -Wall -wd981 -wd279 -wd1287 -wd869 -wd111 -wd188 -wd186
 # 981: operands are evaluated in unspecified order
 # 279: controlling expression is constant
 # 1287: invalid attribute for parameter
@@ -122,7 +122,7 @@ libvex.a: $(LIB_OBJS)
 
 # The idea with these TAG-s is to mark the flavour of libvex.a 
 # most recently built, so if the same target is re-requested, we
-# don't rebuild everything, but if a different one is requested
+# do NOT rebuild everything, but if a different one is requested
 # then we scrub everything and start over.
 
 libvex-x86-linux.a: TAG-x86-linux libvex.a
@@ -173,11 +173,14 @@ TAG-amd64-darwin:
 	if [ ! -f TAG-amd64-darwin ] ; then rm -f $(LIB_OBJS) TAG-* libvex.a ; fi
 	touch TAG-amd64-darwin
 
-
+.PHONY: clean
 clean:
 	rm -f $(LIB_OBJS) *.a vex test_main.o TAG-* \
 		pub/libvex_guest_offsets.h \
 		auxprogs/genoffsets.s
+
+.PHONY: distclean
+distclean: clean
 
 minidist:
 	rm -f vex--minidist-2005MMDD.tar

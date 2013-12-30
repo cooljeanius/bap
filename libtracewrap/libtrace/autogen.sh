@@ -17,6 +17,6 @@ if [ ! -z "$OLDPWD" ]; then
 	cd $OLDPWD
 fi
 
-test -e autom4te.cache && rm -rf autom4te.cache
-test -e config.h.in~ && rm -rf config.h.in~
+test -d autom4te.cache && rm -rf autom4te.cache
+test -e config.h.in~ && rm -f config.h.in~
 exit 0

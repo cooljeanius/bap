@@ -46,6 +46,9 @@ ifdef OS
     ifeq (${OS},Windows_NT)
         TARGET_COMPILER=ms
     endif
+    ifeq (${OS},darwin)
+        TARGET_COMPILER=clang
+    endif
 endif
 
 ifeq ($(TARGET_COMPILER),gnu)
@@ -62,6 +65,13 @@ ifeq ($(TARGET_COMPILER),ms)
 	RM = del /Q
 endif
 
+ifeq ($(TARGET_COMPILER),clang)
+    CXXFLAGS ?= -Wall -Wno-unknown-pragmas $(DBG) $(OPT)
+    CXXFLAGS += -Iddk-inc -I$(PIN_HOME)/source/include/pin
+    PIN=$(PIN_HOME)/pin
+	RM = rm -rf
+endif
+
 ##############################################################
 #
 # Tools - you may wish to add your tool name to TOOL_ROOTS
@@ -73,9 +83,9 @@ TOOL_ROOTS = gentrace #ctxtest
 
 TOOLS = $(TOOL_ROOTS:%=$(OBJDIR)%$(PINTOOL_SUFFIX))
 
-# FORMATOBJS = $(OBJDIR)frame.piqi.pb.o $(OBJDIR)types.piqi.pb.o $(OBJDIR)trace.container.o
+COMMENTED_OUT_FORMATOBJS = $(OBJDIR)frame.piqi.pb.o $(OBJDIR)types.piqi.pb.o $(OBJDIR)trace.container.o
 
-#FORMATOBJS = $(OBJDIR)frame.piqi.pb.o $(OBJDIR)exceptionframe.piqi.pb.o $(OBJDIR)stdframe.piqi.pb.o $(OBJDIR)taintintroframe.piqi.pb.o $(OBJDIR)types.piqi.pb.o $(OBJDIR)trace.container.o
+FORMATOBJS_COMMENTED_OUT = $(OBJDIR)frame.piqi.pb.o $(OBJDIR)exceptionframe.piqi.pb.o $(OBJDIR)stdframe.piqi.pb.o $(OBJDIR)taintintroframe.piqi.pb.o $(OBJDIR)types.piqi.pb.o $(OBJDIR)trace.container.o
 
 OBJS = $(OBJDIR)pivot.o $(OBJDIR)pin_trace.o $(OBJDIR)pin_taint.o $(OBJDIR)pin_frame.o $(OBJDIR)pin_misc.o $(OBJDIR)reg_mapping_pin.o $(OBJDIR)winsyscalls.o $(FORMATOBJS)
 
@@ -110,34 +120,16 @@ test: $(OBJDIR) $(TOOL_ROOTS:%=%.test)
 $(OBJDIR):
 	-mkdir "$(OBJDIR)"
 
-#$(OBJDIR)gentrace.o : gentrace.cpp 
-#	$(CXX) -c $(CXXFLAGS) $(PIN_CXXFLAGS) ${OUTOPT}$@ $<
-
-#$(OBJDIR)pivot.o : pivot.cpp
-#	$(CXX) -c $(CXXFLAGS) $(PIN_CXXFLAGS) ${OUTOPT}$@ $<
-
-#$(OBJDIR)pin_frame.o : $(TRACEDIR)/pin_frame.cpp
-#	$(CXX) -c $(CXXFLAGS) $(PIN_CXXFLAGS) ${OUTOPT}$@ $<
-
-#$(OBJDIR)pin_trace.o : $(TRACEDIR)/pin_trace.cpp
-#	$(CXX) -c $(CXXFLAGS) $(PIN_CXXFLAGS) ${OUTOPT}$@ $<
-
-#$(OBJDIR)pin_taint.o : $(TRACEDIR)/pin_taint.cpp
-#	$(CXX) -c $(CXXFLAGS) $(PIN_CXXFLAGS) ${OUTOPT}$@ $<
-
-#$(OBJDIR)winsyscalls.o : $(TRACEDIR)/winsyscalls.cpp
-#	$(CXX) -c $(CXXFLAGS) $(PIN_CXXFLAGS) ${OUTOPT}$@ $<
-
-$(OBJDIR)%.o : $(TRACEDIR)/%.cpp
+$(OBJDIR)%.o: $(TRACEDIR)/%.cpp
 	$(CXX) -c $(CXXFLAGS) $(PIN_CXXFLAGS) ${OUTOPT}$@ $<
 
-$(OBJDIR)%.o : %.cpp
+$(OBJDIR)%.o: %.cpp
 	$(CXX) -c $(CXXFLAGS) $(PIN_CXXFLAGS) ${OUTOPT}$@ $<
 
-$(OBJDIR)%.o : $(TRACEFORMATPBDIR)/%.cc
+$(OBJDIR)%.o: $(TRACEFORMATPBDIR)/%.cc
 	$(CXX) -c $(CXXFLAGS) $(PIN_CXXFLAGS) ${OUTOPT}$@ $<
 
-$(OBJDIR)%.o : $(TRACEFORMATDIR)/%.cpp
+$(OBJDIR)%.o: $(TRACEFORMATDIR)/%.cpp
 	$(CXX) -c $(CXXFLAGS) $(PIN_CXXFLAGS) ${OUTOPT}$@ $<
 
 pivottest: $(OBJDIR)pivot.o pivottest.cpp
@@ -146,10 +138,10 @@ pivottest: $(OBJDIR)pivot.o pivottest.cpp
 listregs: listregs.cpp
 	$(CXX) -o $@ $^ $(CXXFLAGS) $(PIN_CXXFLAGS)
 
-pinregs.h : listregs $(OBJDIR)ctxtest$(PINTOOL_SUFFIX)
+pinregs.h: listregs $(OBJDIR)ctxtest$(PINTOOL_SUFFIX)
 	./listregs pinregs.h
 
-#gentrace.cpp : pinregs.h
+gentrace.cpp: pinregs.h
 
 $(TOOLS): $(PIN_LIBNAMES)
 
@@ -160,6 +152,8 @@ $(TOOLS): %$(PINTOOL_SUFFIX) : %.o $(OBJS) $(LIBTRACE)
 clean:
 	-$(RM) "$(OBJDIR)" *.out *.tested *.failed makefile.copy reader pinregs.h listregs
 
+distclean: clean
+
 tags: 
 
-.PHONY: tags
+.PHONY: clean distclean tags
