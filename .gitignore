@@ -50,6 +50,7 @@ zarith-1.0/Makefile.orig
 *.depend
 *(Autosaved)*
 Makefile
+gcc-root/*
 libasmir/Makefile
 libasmir/makefile.inc
 libasmir/apps/Makefile

@@ -117,6 +117,10 @@ clean:
 
 distclean: clean
 
+maintainer-clean: distclean
+	@echo "This command is intended for maintainers to use"
+	@echo "it deletes files that may require special tools to rebuild."
+
 Makefile.orig: config.status
 	./config.status
 
@@ -130,4 +134,4 @@ depend: $(AUTOGEN)
 
 include depend
 
-.PHONY: clean distclean
+.PHONY: clean distclean maintainer-clean

@@ -524,8 +524,8 @@ Makefile: Makefile.in config.status
 config.status: configure
 	./config.status --recheck
 
-configure: configure.in
-	autoconf
+configure: configure.ac
+	autoconf --force --warnings=all,no-cross
 
 # clean
 #######
@@ -551,6 +551,10 @@ dist-clean distclean:: clean
 
 svnclean svn-clean:: dist-clean
 	rm -f config.* configure configure.lineno
+
+maintainer-clean: distclean svnclean
+	@echo "This command is intended for maintainers to use"
+	@echo "it deletes files that may require special tools to rebuild."
 
 # depend
 ########

@@ -1,4 +1,4 @@
-#TESTFLAGS=-only-test "OUnit:1"
+TESTFLAGS_COMMENTED_OUT=-only-test "OUnit:1"
 default: test
 
 # OASIS_START
@@ -33,10 +33,14 @@ clean:
 distclean: 
 	$(SETUP) -distclean $(DISTCLEANFLAGS)
 
+maintainer-clean: distclean
+	@echo "This command is intended for maintainers to use"
+	@echo "it deletes files that may require special tools to rebuild."
+
 setup.data:
 	$(SETUP) -configure $(CONFIGUREFLAGS)
 
-.PHONY: build doc test all install uninstall reinstall clean distclean configure
+.PHONY: build doc test all install uninstall reinstall clean distclean configure maintainer-clean
 
 # OASIS_STOP
 

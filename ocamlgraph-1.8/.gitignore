@@ -33,3 +33,5 @@ bin/sudoku.opt
 *.status
 Makefile
 config.h
+lex.yy.c
+conf*/*.awk
