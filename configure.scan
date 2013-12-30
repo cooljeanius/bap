@@ -36,7 +36,7 @@ AC_CHECK_LIB([pthread], [main])
 AC_CHECK_LIB([z], [main])
 
 # Checks for header files.
-AC_CHECK_HEADERS([fcntl.h float.h inttypes.h limits.h locale.h malloc.h memory.h stddef.h stdint.h stdlib.h string.h sys/file.h sys/ioctl.h sys/socket.h sys/time.h sys/timeb.h unistd.h wchar.h])
+AC_CHECK_HEADERS([fcntl.h inttypes.h limits.h malloc.h memory.h stddef.h stdint.h stdlib.h string.h sys/socket.h unistd.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_CHECK_HEADER_STDBOOL
@@ -45,25 +45,20 @@ AC_TYPE_INT16_T
 AC_TYPE_INT32_T
 AC_TYPE_INT64_T
 AC_TYPE_INT8_T
-AC_TYPE_MODE_T
 AC_TYPE_OFF_T
-AC_TYPE_PID_T
 AC_TYPE_SIZE_T
 AC_TYPE_SSIZE_T
 AC_TYPE_UINT16_T
 AC_TYPE_UINT32_T
 AC_TYPE_UINT64_T
 AC_TYPE_UINT8_T
-AC_CHECK_TYPES([ptrdiff_t])
 
 # Checks for library functions.
 AC_FUNC_ERROR_AT_LINE
-AC_FUNC_FORK
 AC_FUNC_MALLOC
 AC_FUNC_MMAP
 AC_FUNC_REALLOC
-AC_FUNC_STRTOD
-AC_CHECK_FUNCS([alarm atexit dup2 floor getpagesize gettimeofday memset munmap realpath rint setenv setlocale socket sqrt strchr strdup strerror strrchr strstr strtol strtoul strtoull sysinfo uname])
+AC_CHECK_FUNCS([floor getpagesize memset munmap rint sqrt])
 
 AC_CONFIG_FILES([Makefile
                  VEX/Makefile
@@ -89,41 +84,6 @@ AC_CONFIG_FILES([Makefile
                  pcre-ocaml/examples/pcregrep/Makefile
                  pcre-ocaml/examples/subst/Makefile
                  pcre-ocaml/lib/Makefile
-                 pin/extras/xed2-ia32/examples/makefile
-                 pin/extras/xed2-intel64/examples/makefile
-                 pin/source/tools/AlignChk/makefile
-                 pin/source/tools/AttachDetach/makefile
-                 pin/source/tools/Buffer/makefile
-                 pin/source/tools/CacheClient/makefile
-                 pin/source/tools/ChildProcess/makefile
-                 pin/source/tools/CrossIa32Intel64/makefile
-                 pin/source/tools/DebugTrace/makefile
-                 pin/source/tools/Debugger/makefile
-                 pin/source/tools/GracefulExit/makefile
-                 pin/source/tools/I18N/makefile
-                 pin/source/tools/Insmix/makefile
-                 pin/source/tools/InstLibExamples/makefile
-                 pin/source/tools/InstrumentationOrderAndVersion/makefile
-                 pin/source/tools/MacTests/makefile
-                 pin/source/tools/Maid/makefile
-                 pin/source/tools/ManualExamples/makefile
-                 pin/source/tools/MemTrace/makefile
-                 pin/source/tools/Memory/makefile
-                 pin/source/tools/Mix/makefile
-                 pin/source/tools/Mmx/makefile
-                 pin/source/tools/MyPinTool/makefile
-                 pin/source/tools/PinPoints/makefile
-                 pin/source/tools/Probes/makefile
-                 pin/source/tools/Replay/makefile
-                 pin/source/tools/SegTrace/makefile
-                 pin/source/tools/SegmentsVirtualization/makefile
-                 pin/source/tools/SignalTests/makefile
-                 pin/source/tools/SimpleExamples/makefile
-                 pin/source/tools/SyncTests/makefile
-                 pin/source/tools/Tests/makefile
-                 pin/source/tools/ToolUnitTests/makefile
-                 pin/source/tools/Utils/makefile
-                 pin/source/tools/makefile
                  pintraces/Makefile
                  pintraces/examples/bof1/Makefile
                  piqi-files/Makefile
