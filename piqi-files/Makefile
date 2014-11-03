@@ -1,9 +1,12 @@
+## Makefile for piqi-files
+
 ROOTDIR=$(CURDIR)/..
 TRACEDIR=$(ROOTDIR)/libtracewrap/libtrace
 PBDIR=$(CURDIR)/protobuf
 MLDIR=$(ROOTDIR)/ocaml/piqi
 
-# I don't think we need to compile all piqi files actually, only frame.piqi
+# I do NOT think that we need to compile all piqi files actually;
+# only frame.piqi should be fine:
 PIQIFILE=stmt.piqi
 OTHERPIQIFILES=$(filter-out $(PIQIFILE), $(wildcard *.piqi))
 PROTOFILES=$(addsuffix .proto, $(PIQIFILES))
@@ -41,6 +44,9 @@ $(PBDIR)/%.piqi.pb.cc $(PBDIR)/%.piqi.pb.hh : %.piqi.proto
 
 clean:
 	rm -f $(PROTOFILES) $(MLFILES) $(MLEXTFILES) $(PROTOCFILES) $(PROTOHFILES)
+
+distclean: clean
+	-find . -name .DS_Store -delete 2>/dev/null
 
 .PHONY: install-piqi install
 # install-pb: $(PROTOCFILES) $(PROTOHFILES)

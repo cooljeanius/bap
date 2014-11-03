@@ -1,16 +1,16 @@
 # Owned and copyright BitBlaze, 2007. All rights reserved.
 # Do not copy, disclose, or distribute without explicit written
 # permission.
-# (Oops)
+# (Oops, too late for that...)
 
-#                                               -*- Autoconf -*-
-# Process this file with autoconf to produce a configure script.
+dnl#                                               -*- Autoconf -*-
+dnl# Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
 AC_INIT([Bap],[0.7],[bap-dev@lists.andrew.cmu.edu])
 AC_CONFIG_SRCDIR([libasmir/src/asm_program.c])
 AC_CONFIG_HEADER([libasmir/config.h])
-AC_CONFIG_MACRO_DIR([m4])
+AC_CONFIG_MACRO_DIR([m4])dnl
 
 AC_CANONICAL_TARGET
 AC_USE_SYSTEM_EXTENSIONS
@@ -29,42 +29,42 @@ AM_PROG_AR
 AM_PROG_AS
 AC_PROG_CXX
 if test "x${AWK}" = "x"; then
-	test -z "${AWK}"
-	AC_PROG_AWK
+  test -z "${AWK}"
+  AC_PROG_AWK
 else
-	test ! -z "${AWK}" && export AWK
-	AC_SUBST([AWK])
+  test ! -z "${AWK}" && export AWK
+  AC_SUBST([AWK])
 fi
 if test "x${CC}" = "x"; then
-	test -z "${CC}"
-	AC_PROG_CC
+  test -z "${CC}"
+  AC_PROG_CC
 else
-	test ! -z "${CC}" && export CC
-	AC_SUBST([CC])
+  test ! -z "${CC}" && export CC
+  AC_SUBST([CC])
 fi
 if test "x${CPP}" = "x"; then
-	test -z "${CPP}"
-	AC_PROG_CPP
+  test -z "${CPP}"
+  AC_PROG_CPP
 else
-	test ! -z "${CPP}"
-	XORG_PROG_RAWCPP([])
+  test ! -z "${CPP}"
+  XORG_PROG_RAWCPP([])
 fi
 if test "x${INSTALL}" = "x"; then
-	test -z "${INSTALL}"
-	AC_PROG_INSTALL
-	AM_PROG_INSTALL_STRIP
+  test -z "${INSTALL}"
+  AC_PROG_INSTALL
+  AM_PROG_INSTALL_STRIP
 else
-	test ! -z "${INSTALL}" && export INSTALL
-	AC_SUBST([INSTALL])
+  test ! -z "${INSTALL}" && export INSTALL
+  AC_SUBST([INSTALL])
 fi
 AC_PROG_LN_S
 if test "x${MAKE}" = "x"; then
-	test -z "${MAKE}"
-	AC_PATH_PROG([MAKE],[make gmake gnumake])
-	AC_PROG_MAKE_SET
+  test -z "${MAKE}"
+  AC_PATH_PROGS([MAKE],[make gmake gnumake remake])
+  AC_PROG_MAKE_SET
 else
-	test ! -z "${MAKE}" && export MAKE
-	AC_SUBST([MAKE])
+  test ! -z "${MAKE}" && export MAKE
+  AC_SUBST([MAKE])
 fi
 AX_CHECK_GNU_MAKE
 AM_PROG_LEX
@@ -74,41 +74,41 @@ AC_PROG_CAMLP4
 AC_PROG_OCAMLFIND
 AC_PROG_CAMLIDL
 LT_INIT([win32-dll dlopen])
-LT_LANG([C])
-LT_LANG([C++])
-LT_LANG([Java])
+LT_LANG([C])dnl
+LT_LANG([C++])dnl
+LT_LANG([Java])dnl
 LT_LANG([Windows Resource])
 if test "x${RANLIB}" = "x"; then
-	test -z "${RANLIB}"
-	AC_PROG_RANLIB
+  test -z "${RANLIB}"
+  AC_PROG_RANLIB
 else
-	test ! -z "${RANLIB}" && export RANLIB
-	AC_SUBST([RANLIB])
+  test ! -z "${RANLIB}" && export RANLIB
+  AC_SUBST([RANLIB])
 fi
 PKG_PROG_PKG_CONFIG
 
-# Check for Z3
+# Check for Z3:
 AC_ARG_WITH([z3],
             [AS_HELP_STRING([--with-z3],
-              [location of Z3 library])],
+                            [location of Z3 library])],
             [with_z3=${withval}],
-            [with_z3=no])
+            [with_z3=no])dnl
 
-# Save pre-z3 ldflags
+# Save pre-z3 ldflags:
 OLDLDFLAGS=${LDFLAGS}
 
 AS_IF([test "x${with_z3}" != "xno"],
-      [LDFLAGS="${OLDLDFLAGS} -L${with_z3/lib}"
+      [LDFLAGS="${OLDLDFLAGS} -L${with_z3}/lib"
        AC_CHECK_LIB([z3],[Z3_mk_bvadd],[
-        z3_dir=${with_z3}
-        with_z3=yes
-        AC_DEFINE([HAVE_Z3_BINDINGS],[1],[Define to use Z3 bindings])
-        ],[
-        AC_MSG_FAILURE([z3 library not found])
-        ],[-lgmp -lgomp])
-     ])
+         z3_dir=${with_z3}
+         with_z3=yes
+         AC_DEFINE([HAVE_Z3_BINDINGS],[1],[Define to 1 to use Z3 bindings])
+       ],[
+         AC_MSG_FAILURE([z3 library requested but not found])
+       ],[-lgmp -lgomp])
+     ])dnl
 
-# Restore
+# Restore:
 LDFLAGS=${OLDLDFLAGS}
 
 rm -f solvers/makefile.inc
@@ -119,33 +119,37 @@ SOLVER_CLIBS = z3stubs z3
 EOF
 echo "SOLVER_SOURCES = ${z3_dir}/ocaml/z3.ml" >>solvers/makefile.inc
 echo "SOLVER_LIBDIRS = ${z3_dir}/lib" >>solvers/makefile.inc
-echo "SOLVER_LDFLAGS = -fopenmp -Wl,-rpath=$z3_dir/lib" >> solvers/makefile.inc
+echo "SOLVER_LDFLAGS = -fopenmp -Wl,-rpath=${z3_dir}/lib" >> solvers/makefile.inc
 else
    touch solvers/makefile.inc
 fi
 
-# Add -DAMD64 when needed
+# Add -DAMD64 when needed:
 if test "$(uname -m)" == "x86_64";
    then export CFLAGS="${CFLAGS} -DAMD64";
 fi
 
-# Check for PIN
+# Check for PIN:
 PIN_HOME=${PIN_HOME:=$(pwd)/pin}
 AC_CHECK_FILE([${PIN_HOME}],
               [HAVE_PIN=true],
-              [HAVE_PIN=false; AC_MSG_WARN([Pin not found. BAP pintraces will be unavailable.])])
+              [HAVE_PIN=false
+               AC_MSG_WARN([Pin not found; disabling BAP pintraces.])
+])dnl
 
-AM_CONDITIONAL([HAVE_PIN],[test x${HAVE_PIN} = xtrue])
+AM_CONDITIONAL([HAVE_PIN],[test "x${HAVE_PIN}" = "xtrue"])dnl
 
-# Conditionally build llvm
+# Conditionally build llvm:
 AC_MSG_CHECKING([llvm ocaml libraries])
 AC_ARG_WITH([llvm],
-            [AS_HELP_STRING([[--with-llvm=[=ARG]]],[use OCaml llvm package named ARG])],[LIBLLVM="${withval}"],
-             [LIBLLVM="check"])
+            [AS_HELP_STRING([[--with-llvm=[=ARG]]],
+                            [use OCaml llvm package named ARG])],
+            [LIBLLVM="${withval}"],
+            [LIBLLVM="check"])dnl
 
-AS_IF([test x${LIBLLVM} = xno],
+AS_IF([test "x${LIBLLVM}" = "xno"],
       [LLVM_PACKAGE=""],
-      [AS_IF([test x${LIBLLVM} = xyes -o x${LIBLLVM} = xcheck],
+      [AS_IF([test "x${LIBLLVM}" = "xyes" -o "x${LIBLLVM}" = "xcheck"],
              [AS_IF([ocamlfind query llvm >/dev/null 2>&1],
              [LLVM_PACKAGE="llvm"],
              [AS_IF([ocamlfind query llvm-3_1 >/dev/null 2>&1],
@@ -153,34 +157,37 @@ AS_IF([test x${LIBLLVM} = xno],
                     [LLVM_PACKAGE=""])])],
              [AS_IF([ocamlfind query ${LIBLLVM} >/dev/null 2>&1],
                     [LLVM_PACKAGE="${LIBLLVM}"],
-                    [])])])
+                    [])])])dnl
 
-AS_IF([test \( x${LIBLLVM} != xno -a x${LIBLLVM} != xcheck \) -a x${LLVM_PACKAGE} = x],
+AS_IF([test \( "x${LIBLLVM}" != "xno" -a "x${LIBLLVM}" != "xcheck" \) -a "x${LLVM_PACKAGE}" = "x"],
       [AC_MSG_FAILURE([--with-llvm specified but llvm was not found])],
-      [])
+      [])dnl
 
-AC_SUBST([LLVM_PACKAGE])
+AC_SUBST([LLVM_PACKAGE])dnl
 
-AS_IF([test x${LLVM_PACKAGE} != x],[HAVE_LLVM_AC=yes],[HAVE_LLVM_AC=no])
-AS_IF([test x${HAVE_LLVM_AC} = xyes],
+AS_IF([test "x${LLVM_PACKAGE}" != "x"],
+      [HAVE_LLVM_AC=yes],[HAVE_LLVM_AC=no])dnl
+      ## ...which implies:
+AS_IF([test "x${HAVE_LLVM_AC}" = "xyes"],
       [AC_MSG_RESULT([${HAVE_LLVM_AC} (${LLVM_PACKAGE})])],
-      [AC_MSG_RESULT([${HAVE_LLVM_AC}])])
-AC_SUBST([HAVE_LLVM_AC])
-
+      [AC_MSG_RESULT([${HAVE_LLVM_AC}])])dnl
+AC_SUBST([HAVE_LLVM_AC])dnl
 
 AS_IF([test "x${HAVE_LLVM_AC}" = "xtrue"],
       [LLVM_PPFLAGS="-D WITH_LLVM"],
-      [])
-AC_SUBST([LLVM_PPFLAGS])
+      [])dnl
+AC_SUBST([LLVM_PPFLAGS])dnl
 
-# Check for etags
+# Check for etags:
 AS_IF([which etags >/dev/null 2>&1],
       [HAVE_ETAGS=true],
-      [HAVE_ETAGS=false; AC_MSG_WARN([ETAGS not found. BAP will not build tags.])])
+      [HAVE_ETAGS=false
+       AC_MSG_WARN([ETAGS not found. BAP will not build tags.])
+])dnl
 
-AM_CONDITIONAL([HAVE_ETAGS],[test x${HAVE_ETAGS} = xtrue])
+AM_CONDITIONAL([HAVE_ETAGS],[test "x${HAVE_ETAGS}" = "xtrue"])dnl
 
-# Checks for ocaml libraries
+# Checks for ocaml libraries:
 AC_MSG_CHECKING([for camomile])
 ocamlfind query camomile >/dev/null 2>&1
 if test $? != 0; then
@@ -190,75 +197,120 @@ else
    AC_MSG_RESULT([yes])
 fi
 
+# Batteries (passed to libtrace).
+AC_ARG_WITH([batteries],
+            [AS_HELP_STRING([--with-batteries],
+            [specify path to batteries (directory must actually exist)])],
+            [with_batteries="$( cd ${withval} && pwd )"],
+            [AS_IF([test "x${srcdir}" != "x"],
+                   [AS_IF([test -d "${srcdir}/batteries"],
+                          [with_batteries="${srcdir}/batteries"],
+                          [AS_IF([test -d ./batteries],
+                                 [with_batteries=./batteries])])])])dnl
+
+AS_IF([test "x${with_batteries}" != "x"],
+      [test -n "${with_batteries}"
+       AC_MSG_CHECKING([for batteries directory])
+       AS_IF([test -d "${with_batteries}"],
+             [AC_MSG_RESULT([found])
+              AC_SUBST([TOP_BAT_DIR],[${with_batteries}])],
+             [AC_MSG_RESULT([no])])],
+      [AC_MSG_WARN([libtrace will want to know where batteries are.])])
+
 VEX_DIR=`pwd`/'VEX'
 VEX_VERSION=2201
 
 # Checks for libraries.
 AC_MSG_CHECKING([libraries])
 AC_MSG_RESULT([ ])
+if test "x${acl_cv_wl}" = "x"; then
+  test -z "${acl_cv_wl}" && export acl_cv_wl='-Wl,'
+fi
+AC_SUBST([acl_cv_wl])dnl
+AC_CACHE_CHECK([if the linker accepts ${acl_cv_wl}-fatal_warnings],
+               [bap_cv_ld_werror],
+               [AC_LINK_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+	                       [bap_cv_ld_werror=yes],
+	                       [bap_cv_ld_werror=no])])
+# Use the flag to make sure the libraries we check actually link correctly:
+SAVE_LDFLAGS="${LDFLAGS}"
+AS_IF([test "x${bap_cv_ld_werror}" = "xyes"],
+      [AS_CASE(["${LDFLAGS}"],
+               [*${acl_cv_wl}-warn*],
+               [export LDFLAGS="${acl_cv_wl}-fatal_warnings"],
+               [LDFLAGS="${LDFLAGS} ${acl_cv_wl}-fatal_warnings"])])dnl
+  ## OK, now actually check the libraries:
 AC_CHECK_LIB([bfd],[bfd_init],[],[
   AC_CHECK_LIB([bfd],[main],[],[
     AC_MSG_WARN([BFD library not found: This ought to be an error but it has been changed to a warning to facilitate work on this configure script.])
-  ])
-])
+    echo "Make sure that the first libbfd that your linker finds is built with the correct architecture."
+  ])dnl
+])dnl
 AC_CHECK_LIB([iberty],[xmalloc],[],[
   AC_CHECK_LIB([iberty],[main],[],[
     AC_MSG_WARN([libiberty not found: This ought to be an error but it has been changed to a warning to facilitate work on this configure script.])
-  ])
-])
+    echo "Make sure that the first libiberty that your linker finds is built with the correct architecture."
+  ])dnl
+])dnl
 AC_CHECK_LIB([pcre],[pcre_config],[],[
   AC_CHECK_LIB([pcre],[main],[],[
     AC_CHECK_LIB([pcreposix],[main],[
       AC_MSG_WARN([trying to use libpcreposix in the absence of just plain libpcre; this is untested])
     ],[
       AC_MSG_ERROR([PCRE library not found])
-    ])
-  ])
-])
-# zlib is apparently needed by bfd
+    ])dnl
+  ])dnl
+])dnl
+# zlib is apparently needed by bfd:
 AC_CHECK_LIB([z],[inflate],[],[
   AC_CHECK_LIB([z],[main],[],[
     AC_MSG_ERROR([zlib library not found])
-  ])
-])
+  ])dnl
+])dnl
 
 # More checks for libraries
 # FIXME: Replace `main' with a function in `-lasmir':
-AC_CHECK_LIB([asmir],[main])
-AC_CHECK_LIB([c],[printf])
-AC_CHECK_LIB([dl],[dlsym])
-AC_CHECK_LIB([m],[sqrt])
+AC_CHECK_LIB([asmir],[main])dnl
+AC_CHECK_LIB([c],[printf])dnl
+AC_CHECK_LIB([dl],[dlsym])dnl
+AC_CHECK_LIB([m],[sqrt])dnl
 LT_LIB_M
 # FIXME: Replace `main' with a function in `-lopcodes':
-AC_CHECK_LIB([opcodes],[main])
+AC_CHECK_LIB([opcodes],[main])dnl
 # FIXME: Replace `main' with a function in `-lprotobuf':
-AC_CHECK_LIB([protobuf],[main])
-AC_CHECK_LIB([pthread],[pthread_create])
+AC_CHECK_LIB([protobuf],[main])dnl
+AC_CHECK_LIB([pthread],[pthread_create])dnl
 # FIXME: Replace `main' with a function in `-lvex':
-AC_CHECK_LIB([vex],[main])
+AC_CHECK_LIB([vex],[main])dnl
 # FIXME: Replace `main' with a function in `-lstdc++':
-AC_CHECK_LIB([stdc++],[main])
+AC_CHECK_LIB([stdc++],[main])dnl
 
-AC_SUBST([VEX_DIR])
+LDFLAGS="${SAVE_LDFLAGS}"
 
-AC_SUBST([INCDIRS])
+AC_SUBST([VEX_DIR])dnl
+
+AC_SUBST([INCDIRS])dnl
 
 rm -f libasmir/makefile.inc
 echo "VEX_DIR=${VEX_DIR}" >> libasmir/makefile.inc
-echo "LIBASMIR_CXXFLAGS=-I${VEX_DIR}/pub -I`pwd`/src/include $CXXFLAGS" >> libasmir/makefile.inc
-echo "LIBASMIR_LDFLAGS=-L${VEX_DIR} -L`pwd`/src $LDFLAGS" >> libasmir/makefile.inc
+echo "LIBASMIR_CXXFLAGS=-I${VEX_DIR}/pub -I`pwd`/src/include ${CXXFLAGS}" >> libasmir/makefile.inc
+echo "LIBASMIR_LDFLAGS=-L${VEX_DIR} -L`pwd`/src ${LDFLAGS}" >> libasmir/makefile.inc
 echo "LIBASMIR_LIBS=-lasmir -lvex -lbfd -ldl -liberty -lz" >> libasmir/makefile.inc
 echo "CLIBS=asmir vex opcodes bfd z iberty stdc++" >> libasmir/makefile.inc
 ASMIR_DIR="`pwd`/libasmir"
-AC_SUBST([ASMIR_DIR])
+AC_SUBST([ASMIR_DIR])dnl
 
 BAP_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-AC_SUBST([BAP_DIR])
+AC_SUBST([BAP_DIR])dnl
 
 # Checks for header files.
 # Some of these following header checks are duplicates, but we need to do
-# it again so that we can error out if any are missing
+# it again so that we can error out if any are missing:
 AC_MSG_NOTICE([re-checking standard headers])
+unset ac_cv_header_stdint_h
+unset ac_cv_header_stdlib_h
+unset ac_cv_header_string_h
+unset ac_cv_header_unistd_h
 AC_CHECK_HEADERS([fcntl.h stdint.h stdio.h stdlib.h string.h unistd.h],[],
    [AC_MSG_ERROR([Standard headers missing])])
 # Just check these without erroring out:
@@ -275,7 +327,7 @@ AC_CHECK_HEADER([bfd.h],[],
 AC_CHECK_HEADER([pcre.h],[],
    [AC_MSG_ERROR([You need libpcre headers (e.g., libpcre3-dev)])])
 AC_CHECK_HEADER([caml/camlidlruntime.h],[],
-   [AC_MSG_WARN([the optional z3 package will want to include caml/camlidlruntime.h])])
+   [AC_MSG_WARN([the optional z3 package will want to include <caml/camlidlruntime.h>, but this header seems to be missing.])])dnl
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_MSG_CHECKING([C compiler characteristics])
@@ -284,6 +336,7 @@ AC_C_BIGENDIAN
 AC_C_CONST
 AC_C_INLINE
 AC_C_PROTOTYPES
+AC_C_VOLATILE
 AC_MSG_CHECKING([types and stuff])
 AC_MSG_RESULT([ ])
 AC_TYPE_INT8_T
@@ -299,15 +352,16 @@ AC_TYPE_UINT8_T
 AC_TYPE_UINT16_T
 AC_TYPE_UINT32_T
 AC_TYPE_UINT64_T
-AC_CHECK_TYPES([ptrdiff_t])
-AC_DEFINE_UNQUOTED([VEX_VERSION],[${VEX_VERSION}],[The VEX SVN Version])
+AC_CHECK_TYPES([ptrdiff_t])dnl
+AC_STRUCT_TIMEZONE dnl# also does the "_TM" one.
+AC_DEFINE_UNQUOTED([VEX_VERSION],[${VEX_VERSION}],[The VEX SVN Version])dnl
 XORG_CHECK_MALLOC_ZERO
 XORG_MEMORY_CHECK_FLAGS
 GNOME_DEBUG_CHECK
 
-AC_CHECK_TYPES([bfd_vma])
-AC_CHECK_SIZEOF([bfd_vma],[],[#include <bfd.h>])
-AC_CHECK_ALIGNOF([bfd_vma],[],[#include <bfd.h>])
+AC_CHECK_TYPES([bfd_vma])dnl
+AC_CHECK_SIZEOF([bfd_vma],[],[#include <bfd.h>])dnl
+AC_CHECK_ALIGNOF([bfd_vma],[],[#include <bfd.h>])dnl
 
 # Checks for library functions.
 AC_MSG_CHECKING([functions])
@@ -319,15 +373,17 @@ AM_WITH_DMALLOC
 AC_FUNC_MEMCMP
 AC_FUNC_MMAP
 AC_FUNC_REALLOC
+AC_FUNC_STAT
 AC_FUNC_STRTOD
 AC_CHECK_FUNCS([alarm atexit bzero dup2 floor gettimeofday memset munmap \
                 printf realpath rint scanf setenv setlocale sqrt socket \
                 strchr strdup strerror strrchr strstr strtol strtoul \
-                strtoull sysinfo system uname])
+                strtoull sysinfo system uname])dnl
 
 # Check for library function versions
 # (N/A)
 
+# Output.
 AC_CONFIG_FILES([Makefile
                  libasmir/Makefile
                  libasmir/apps/Makefile
@@ -335,8 +391,8 @@ AC_CONFIG_FILES([Makefile
                  libtracewrap/Makefile
                  ocaml/Makefile
                  utils/Makefile
-                 tests/Makefile])
+                 tests/Makefile])dnl
 AC_CONFIG_SUBDIRS([libtracewrap/libtrace
                    ocamlgraph-1.8
-                   zarith-1.0])
+                   zarith-1.0])dnl
 AC_OUTPUT

@@ -4,7 +4,7 @@ dnl## In general, the safest way to proceed is to run ./autogen.sh
 dnl## ^ Actually the real safest way is just to run `autoreconf` 
 dnl## with your favorite flags, but whatever...
 
-AC_PREREQ([2.69])
+AC_PREREQ([2.69])dnl
 
 # Note:  If you change the version, you must also update it in:
 # * java/pom.xml
@@ -37,52 +37,52 @@ AM_MAINTAINER_MODE
 AC_ARG_WITH([zlib],
   [AS_HELP_STRING([--with-zlib],
     [include classes for streaming compressed data in and out @<:@default=check@:>@])],
-  [],[with_zlib=check])
+  [],[with_zlib=check])dnl
 
 AC_ARG_WITH([protoc],
   [AS_HELP_STRING([--with-protoc=COMMAND],
     [use the given protoc command instead of building a new one when building tests (useful for cross-compiling)])],
-  [],[with_protoc=no])
+  [],[with_protoc=no])dnl
 
 # Checks for programs.
 AC_USE_SYSTEM_EXTENSIONS
 AM_PROG_AR
 if test "x${AWK}" = "x"; then
-	test -z "${AWK}"
-	AC_PROG_AWK
+  test -z "${AWK}"
+  AC_PROG_AWK
 else
-	test ! -z "${AWK}" && export AWK
-	AC_SUBST([AWK])
+  test ! -z "${AWK}" && export AWK
+  AC_SUBST([AWK])
 fi
 if test "x${CC}" = "x"; then
-	test -z "${CC}"
-	AC_PROG_CC
+  test -z "${CC}"
+  AC_PROG_CC
 else
-	test ! -z "${CC}" && export CC
-	AC_SUBST([CC])
+  test ! -z "${CC}" && export CC
+  AC_SUBST([CC])
 fi
 AC_PROG_CXX
 AC_LANG([C++])
 if test "x${CPP}" = "x"; then
-	test -z "${CPP}"
-	AC_PROG_CPP
+  test -z "${CPP}"
+  AC_PROG_CPP
 fi
 if test "x${INSTALL}" = "x"; then
-	test -z "${INSTALL}"
-	AC_PROG_INSTALL
-	AM_PROG_INSTALL_STRIP
+  test -z "${INSTALL}"
+  AC_PROG_INSTALL
+  AM_PROG_INSTALL_STRIP
 else
-	test ! -z "${INSTALL}" && export INSTALL
-	AC_SUBST([INSTALL])
+  test ! -z "${INSTALL}" && export INSTALL
+  AC_SUBST([INSTALL])
 fi
 AC_PROG_LN_S
 if test "x${MAKE}" = "x"; then
-	test -z "${MAKE}"
-	AC_PATH_PROG([MAKE],[make gmake gnumake])
-	AC_PROG_MAKE_SET
+  test -z "${MAKE}"
+  AC_PATH_PROGS([MAKE],[make gmake gnumake remake])
+  AC_PROG_MAKE_SET
 else
-	test ! -z "${MAKE}" && export MAKE
-	AC_SUBST([MAKE])
+  test ! -z "${MAKE}" && export MAKE
+  AC_SUBST([MAKE])
 fi
 ACX_USE_SYSTEM_EXTENSIONS
 AM_CONDITIONAL([GCC],[test "${GCC}" = yes]) # let Makefile know we are gcc
@@ -94,7 +94,7 @@ AS_IF([test "x${ac_cv_env_CXXFLAGS_set}" = "x"],[
   AS_IF([test "${GCC}" = "yes"],[
     PROTOBUF_OPT_FLAG="-O2"
     CXXFLAGS="${CXXFLAGS} -g"
-  ])
+  ])dnl
 
   # Protocol Buffers contains several checks intended to be used only
   # for debugging and which might hurt performance. Most users are probably
@@ -104,35 +104,39 @@ AS_IF([test "x${ac_cv_env_CXXFLAGS_set}" = "x"],[
   AC_MSG_RESULT([use default: ${PROTOBUF_OPT_FLAG} ${CXXFLAGS}])
 ],[
   AC_MSG_RESULT([use user-supplied: ${CXXFLAGS}])
-])
+])dnl
 
-AC_SUBST([PROTOBUF_OPT_FLAG])
+AC_SUBST([PROTOBUF_OPT_FLAG])dnl
 
 ACX_CHECK_SUNCC
 
 # Have to do libtool after SUNCC, otherwise it "helpfully" adds Crun Cstd
-# to the link
-LT_INIT([win32-dll])
-LT_LANG([C])
-LT_LANG([C++])
-LT_LANG([Java])
+# to the link:
+LT_INIT([win32-dll])dnl
+LT_LANG([C])dnl
+LT_LANG([C++])dnl
+LT_LANG([Java])dnl
 
 if test "x${RANLIB}" = "x"; then
-	test -z "${RANLIB}"
-	AC_PROG_RANLIB
+  test -z "${RANLIB}"
+  AC_PROG_RANLIB
 else
-	test ! -z "${RANLIB}" && export RANLIB
-	AC_SUBST([RANLIB])
+  test ! -z "${RANLIB}" && export RANLIB
+  AC_SUBST([RANLIB])
 fi
 
 # Checks for header files.
+AC_HEADER_DIRENT
 AC_HEADER_STDBOOL dnl# Also "_CHECK"s it
+AC_HEADER_SYS_WAIT
 AC_CHECK_HEADERS([fcntl.h float.h limits.h locale.h stdio.h sys/param.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_C_BIGENDIAN
+AC_C_CONST
 AC_C_INLINE
 AC_C_PROTOTYPES
+AC_C_VOLATILE
 AC_TYPE_INT8_T
 AC_TYPE_INT16_T
 AC_TYPE_INT32_T
@@ -144,7 +148,8 @@ AC_TYPE_UINT8_T
 AC_TYPE_UINT16_T
 AC_TYPE_UINT32_T
 AC_TYPE_UINT64_T
-AC_CHECK_TYPES([ptrdiff_t])
+AC_CHECK_TYPES([ptrdiff_t])dnl
+AC_TYPE_SIGNAL
 
 # Checks for library functions.
 AC_FUNC_ERROR_AT_LINE
@@ -152,14 +157,15 @@ AC_FUNC_FORK
 AC_FUNC_MALLOC
 AC_FUNC_MEMCMP
 AC_FUNC_MMAP
+AC_FUNC_SELECT_ARGTYPES
 AC_FUNC_STRTOD
 AC_CHECK_FUNCS([dup2 ftruncate localeconv memmove memset mkdir realpath \
                 select setlocale strchr strdup strerror strpbrk strtol \
-                strtoul strtoull])
+                strtoul strtoull])dnl
 
 # Check for zlib.
 HAVE_ZLIB=0
-AS_IF([test "${with_zlib}" != no],[
+AS_IF([test "x${with_zlib}" != "xno"],[
   # First check the zlib header version.
   AC_CHECK_HEADERS([zlib.h])
   AC_MSG_CHECKING([zlib version])
@@ -167,8 +173,8 @@ AS_IF([test "${with_zlib}" != no],[
     AC_LANG_PROGRAM([[
         #include <zlib.h>
         #if !defined(ZLIB_VERNUM) || (ZLIB_VERNUM < 0x1204)
-        # error zlib version too old
-        #endif
+        # error "zlib version too old"
+        #endif /* older than 1.2.0.4 */
         ]],[])])],[
     AC_MSG_RESULT([ok (1.2.0.4 or later)])
 
@@ -178,27 +184,37 @@ AS_IF([test "${with_zlib}" != no],[
       AC_DEFINE([HAVE_ZLIB],[1],[Enable classes using zlib compression.])
       HAVE_ZLIB=1
     ],[
-      AS_IF([test "${with_zlib}" != check],[
+      AS_IF([test "x${with_zlib}" != "xcheck"],[
         AC_MSG_FAILURE([--with-zlib was given, but no working zlib library was found])
-      ])
-    ])
+      ])dnl
+    ])dnl
   ],[
-    AS_IF([test "${with_zlib}" = check],[
+    AS_IF([test "x${with_zlib}" = "xcheck"],[
       AC_MSG_RESULT([headers missing or too old (requires 1.2.0.4)])
     ],[
       AC_MSG_FAILURE([--with-zlib was given, but zlib headers were not present or were too old (requires 1.2.0.4)])
-    ])
-  ])
-])
-AM_CONDITIONAL([HAVE_ZLIB],[test ${HAVE_ZLIB} = 1])
+    ])dnl
+  ])dnl
+])dnl# end outmost zlib conditional
+  ## (need this extra line with spaces before the comment here)
+AM_CONDITIONAL([HAVE_ZLIB],[test ${HAVE_ZLIB} = 1])dnl
 
-AS_IF([test "${with_protoc}" != "no"], [
-  PROTOC=$with_protoc
-  AS_IF([test "${with_protoc}" = "yes"], [
+dnl# Check for grep before using it.
+AC_DEFUN([AC_REQUIRE_GREPS],[
+  AC_REQUIRE([AC_PROG_GREP])dnl
+  AC_REQUIRE([AC_PROG_EGREP])dnl
+  AC_REQUIRE([AC_PROG_FGREP])dnl
+])dnl
+AC_REQUIRE_GREPS
+
+# Check for an external protoc.
+AS_IF([test "x${with_protoc}" != "xno"],[
+  PROTOC=${with_protoc}
+  AS_IF([test "x${with_protoc}" = "xyes"],[
     # No argument given. Use system protoc.
     PROTOC=protoc
   ])
-  AS_IF([echo "${PROTOC}" | grep -q '^@<:@^/@:>@.*/'], [
+  AS_IF([echo "${PROTOC}" | grep -q '^@<:@^/@:>@.*/'],[
     # Does not start with a slash, but has a slash. So it is a relative
     # path (as opposed to an absolute path or an executable in ${PATH}).
     # Since it will actually be execed from the src directory, prefix with
@@ -207,9 +223,10 @@ AS_IF([test "${with_protoc}" != "no"], [
     # package's configure script.
     PROTOC=`pwd`/${ac_top_build_prefix}${PROTOC}
   ])
-  AC_SUBST([PROTOC])
-])
-AM_CONDITIONAL([USE_EXTERNAL_PROTOC],[test "${with_protoc}" != "no"])
+  AC_SUBST([PROTOC])dnl
+])dnl
+  ## (need this extra line with spaces before the comment here)
+AM_CONDITIONAL([USE_EXTERNAL_PROTOC],[test "x${with_protoc}" != "xno"])dnl
 
 AX_PTHREAD
 AC_CXX_STL_HASH
@@ -219,7 +236,7 @@ AC_CXX_STL_HASH
 # too.
 export CFLAGS
 export CXXFLAGS
-AC_CONFIG_SUBDIRS([gtest])
+AC_CONFIG_SUBDIRS([gtest])dnl
 
 AC_CONFIG_FILES([Makefile \
 		 src/Makefile \
@@ -232,5 +249,5 @@ if test "$(cd ../.. && basename $(pwd))" = "libtracewrap"; then
 else
   echo "Not in subdirectory of libtracewrap, so never mind."
 fi
-])
+])dnl
 AC_OUTPUT

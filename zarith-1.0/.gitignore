@@ -15,5 +15,5 @@ test.b
 rtest
 bitest
 html
-Makefile.orig
+Makefile*orig
 config.h

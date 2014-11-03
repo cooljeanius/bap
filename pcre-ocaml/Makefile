@@ -1,3 +1,5 @@
+## Makefile for pcre-ocaml
+
 .NOTPARALLEL:
 
 -include Makefile.conf
@@ -40,6 +42,7 @@ tags:
 
 .PHONY: distclean
 distclean: clean
+	-find . -name .DS_Store -delete 2>/dev/null
 
 .PHONY: maintainer-clean
 maintainer-clean: distclean

@@ -1,3 +1,4 @@
+#ac_ocaml.m4 serial 1                                      -*- Autoconf -*-
 # OCaml macros for autoconf
 #
 # Guillaume Rousse <Guillaume.Rou...@inria.fr>
@@ -29,33 +30,32 @@
 
 #  Modified by Sojeong Hong
 AC_DEFUN([AC_PROG_OCAML],[
-
-    # allow the user to disable the use of optimized versions
+    # allow the user to disable the use of optimized versions:
     AC_ARG_ENABLE([opt],
-        dnl# note: for some reason, putting square brackets around this part
+        dnl# note: for some reason, properly m4-quoting this part
         dnl# leads to errors...
         AS_HELP_STRING([--enable-opt],
             [use optimized versions of ocaml tools (default)]
         ),
-        [case "$enableval" in
-            yes) ac_ocaml_enable_opt=$enableval;;
-            no)  ac_ocaml_enable_opt=$enableval;;
-            *)   AC_MSG_ERROR([bad value $enableval for --enable-opt]);;
+        [case "${enableval}" in
+            yes) ac_ocaml_enable_opt=${enableval};;
+            no)  ac_ocaml_enable_opt=${enableval};;
+            *)   AC_MSG_ERROR([bad value ${enableval} for --enable-opt]);;
         esac],
         [ac_ocaml_enable_opt="yes"])
 
-    # Checking for OCaml compiler
+    # Checking for OCaml compiler:
     _AC_OCAML_PATH_PROG_FATAL([OCAMLC],[ocamlc])
 
-    # Checking for OCaml version
+    # Checking for OCaml version:
     AC_MSG_CHECKING([for OCaml version])
-    OCAMLVERSION=`$OCAMLC -version`
-    AC_MSG_RESULT([$OCAMLVERSION])
+    OCAMLVERSION=`${OCAMLC} -version`
+    AC_MSG_RESULT([${OCAMLVERSION}])
 
     if test -n ["$1"]; then
         ac_ocaml_min_version=["$1"];
         # Checking for OCaml minimum version
-        AC_MSG_CHECKING([whether OCaml version >= $ac_ocaml_min_version])
+        AC_MSG_CHECKING([whether OCaml version >= ${ac_ocaml_min_version}])
         ac_ocaml_min_major_version=`echo $ac_ocaml_min_version | cut -d. -f1`
         ac_ocaml_min_minor_version=`echo $ac_ocaml_min_version | cut -d. -f2`
         ac_ocaml_min_micro_version=`echo $ac_ocaml_min_version | cut -d. -f3`

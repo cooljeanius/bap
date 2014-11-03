@@ -1,3 +1,5 @@
+## Makefile for ounit
+
 TESTFLAGS_COMMENTED_OUT=-only-test "OUnit:1"
 default: test
 
@@ -34,8 +36,9 @@ distclean:
 	$(SETUP) -distclean $(DISTCLEANFLAGS)
 
 maintainer-clean: distclean
-	@echo "This command is intended for maintainers to use"
-	@echo "it deletes files that may require special tools to rebuild."
+	@echo "This target is intended for maintainers to use."
+	@echo "It can delete files that may require special tools to rebuild, and other junk."
+	@-find . -name .DS_Store -delete 2>/dev/null
 
 setup.data:
 	$(SETUP) -configure $(CONFIGUREFLAGS)

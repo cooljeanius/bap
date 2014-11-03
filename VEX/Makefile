@@ -181,6 +181,7 @@ clean:
 
 .PHONY: distclean
 distclean: clean
+	-find . -name .DS_Store -delete 2>/dev/null
 
 minidist:
 	rm -f vex--minidist-2005MMDD.tar

@@ -1,8 +1,14 @@
+## automake Makefile for the protobuf sources distributed in the libtrace
+## that comes with bap.
 ## Process this file with automake to produce Makefile.in
 
 ACLOCAL_AMFLAGS = -I m4 --install
 
 AUTOMAKE_OPTIONS = foreign
+
+noinst_SCRIPTS = autogen.sh generate_descriptor_proto.sh
+
+DISTCLEANFILES = .DS_Store
 
 # Build . before src so that our all-local and clean-local hooks kick in at
 # the right time.
@@ -194,3 +200,14 @@ MAINTAINERCLEANFILES =   \
   m4/ltversion.m4        \
   m4/lt~obsolete.m4      \
   m4/ltoptions.m4
+
+# And similar things:
+MAINTAINERCLEANFILES += autoscan.log configure.scan
+
+nodist_noinst_DATA = @MAINT@ configure.scan
+
+configure.scan:
+	autoscan || touch $@
+
+distclean-local:
+	rm -rf autom4te.cache || rmdir autom4te.cache

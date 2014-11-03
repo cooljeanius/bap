@@ -11,6 +11,7 @@ default: all
 CONFIGURED: libtrace/Makefile.am libtrace/configure.ac
 	(cd libtrace && INCDIRS="@INCDIRS@" CPPFLAGS="@CPPFLAGS@" CFLAGS=-m32 CXXFLAGS=-m32 ./configure --with-batteries=@BAP_DIR@/batteries/_build/src)
 	touch CONFIGURED
+	echo "CONFIGURED on `date`" >> CONFIGURED
 
 .PHONY: distclean
 distclean: clean
@@ -18,4 +19,10 @@ distclean: clean
 
 .PHONY: clean
 clean:
-	if [ -f libtrace/Makefile ]; then $(MAKE) -C libtrace distclean; fi
+	if [ -f libtrace/Makefile ]; then $(MAKE) -C libtrace clean; fi
+
+.PHONY: maintainer-clean
+maintainer-clean: distclean
+	@echo "This target is intended for maintainers to use."
+	@-rm -f .DS_Store
+	rm -f CONFIGURED

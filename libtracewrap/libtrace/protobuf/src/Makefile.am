@@ -1,4 +1,7 @@
+## automake Makefile for gtest sources
 ## Process this file with automake to produce Makefile.in
+
+DISTCLEANFILES = .DS_Store
 
 if HAVE_ZLIB
 GZCHECKPROGRAMS = zcgzip zcgunzip
@@ -11,23 +14,23 @@ GZTESTS =
 endif
 
 if GCC
-# These are good warnings to turn on by default
-NO_OPT_CXXFLAGS = $(PTHREAD_CFLAGS) -Wall -Wwrite-strings -Woverloaded-virtual -Wno-sign-compare
+# These are good warnings to turn on by default:
+NO_OPT_CXXFLAGS = $(PTHREAD_CFLAGS) -Wall -Wwrite-strings -Woverloaded-virtual -Wno-sign-compare -Wno-return-type
 else
 NO_OPT_CXXFLAGS = $(PTHREAD_CFLAGS)
 endif
 
-AM_CXXFLAGS = $(NO_OPT_CXXFLAGS) $(PROTOBUF_OPT_FLAG)
+AM_CXXFLAGS = $(NO_OPT_CXXFLAGS) $(PROTOBUF_OPT_FLAG) -fpermissive
 
 AM_LDFLAGS = $(PTHREAD_CFLAGS)
 
-# If I say "dist_include_DATA", automake complains that $(includedir) is not
-# a "legitimate" directory for DATA.  Screw you, automake.
+## If I say "dist_include_DATA", automake complains that $(includedir) is
+## not a "legitimate" directory for DATA.  Screw you, automake.
 protodir = $(includedir)
 nobase_dist_proto_DATA = google/protobuf/descriptor.proto \
                          google/protobuf/compiler/plugin.proto
 
-# Not sure why these don't get cleaned automatically.
+# Not sure why these fail to get cleaned automatically:
 clean-local:
 	rm -f *.loT
 
@@ -255,11 +258,11 @@ unittest_proto_middleman: $(protoc_inputs)
 
 else
 
-# We have to cd to $(srcdir) before executing protoc because $(protoc_inputs) is
-# relative to srcdir, which may not be the same as the current directory when
-# building out-of-tree.
+# We have to cd to $(srcdir) before executing protoc because
+# $(protoc_inputs) is relative to srcdir, which may not be the same as the
+# current directory when building out-of-tree.
 unittest_proto_middleman: protoc$(EXEEXT) $(protoc_inputs)
-	oldpwd=`pwd` && ( cd $(srcdir) && $$oldpwd/protoc$(EXEEXT) -I. --cpp_out=$$oldpwd $(protoc_inputs) )
+	oldpwd=`pwd` && ( cd $(srcdir) && $${oldpwd}/protoc$(EXEEXT) -I. --cpp_out=$${oldpwd} $(protoc_inputs) )
 	touch unittest_proto_middleman
 
 endif

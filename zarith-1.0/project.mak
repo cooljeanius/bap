@@ -112,16 +112,18 @@ $(AUTOGEN): z.mlp z.mlip $(SSRC) z_pp.pl
 	$(OCAMLC) -verbose -ccopt "$(CFLAGS)" -c $<
 
 clean:
-	/bin/rm -rf *.o *.a *.so *.cmi *.cmo *.cmx *.cmxa *.cmxs *.cma *.dll *~ \#* depend test $(AUTOGEN) tmp.c depend
+	/bin/rm -rf *.o *.a *.so *.cmi *.cmo *.cmx *.cmxa *.cmxs *.cma *.dll *~ \#* depend $(AUTOGEN) tmp.c
 	/bin/rm -rf test test.b rtest bitest html
 
 distclean: clean
+	rm -f config.status config.log config.h Makefile_orig
 
 maintainer-clean: distclean
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
+	rm -f autoscan.log configure.scan
 
-Makefile.orig: config.status
+Makefile_orig: config.status
 	./config.status
 
 config.status: configure

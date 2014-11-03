@@ -1,10 +1,19 @@
-# Automake file
+## Automake Makefile for the gtest that comes with protobuf
 
 ACLOCAL_AMFLAGS = -I m4 --install
 
+DISTCLEANFILES = .DS_Store
+
+distclean-local:
+	rm -rf autom4te.cache || rmdir autom4te.cache
+
+MAINTAINERCLEANFILES = autoscan.log configure.scan
+
+nodist_noinst_DATA = @MAINT@ configure.scan
+
 # TODO(chandlerc@google.com): automate the generation of *.h from *.h.pump.
 
-# Nonstandard package files for distribution
+# Nonstandard package files for distribution:
 EXTRA_DIST = \
   CHANGES \
   CONTRIBUTORS \
@@ -21,7 +30,7 @@ EXTRA_DIST = \
   scripts/test/Makefile \
   test/gtest_all_test.cc
 
-# MSVC project files
+# MSVC project files:
 EXTRA_DIST += \
   msvc/gtest-md.sln \
   msvc/gtest.sln \
@@ -34,7 +43,7 @@ EXTRA_DIST += \
   msvc/gtest_unittest-md.vcproj \
   msvc/gtest_unittest.vcproj
 
-# xcode project files
+# xcode project files:
 EXTRA_DIST += \
   xcode/Config/DebugProject.xcconfig \
   xcode/Config/FrameworkTarget.xcconfig \
@@ -47,7 +56,7 @@ EXTRA_DIST += \
   xcode/Scripts/runtests.sh \
   xcode/gtest.xcodeproj/project.pbxproj
 
-# xcode sample files
+# xcode sample files:
 EXTRA_DIST += \
   xcode/Samples/FrameworkSample/Info.plist \
   xcode/Samples/FrameworkSample/widget_test.cc \
@@ -55,7 +64,7 @@ EXTRA_DIST += \
   xcode/Samples/FrameworkSample/widget.h \
   xcode/Samples/FrameworkSample/WidgetFramework.xcodeproj/project.pbxproj
 
-# C++Builder project files
+# C++Builder project files:
 EXTRA_DIST += \
   codegear/gtest_all.cc \
   codegear/gtest_link.cc \
@@ -69,11 +78,11 @@ EXTRA_DIST += \
 # arity here and have the script automatically generate the
 # corresponding .h and .cc files.
 
-# Scripts and utilities
+# Scripts and utilities:
 bin_SCRIPTS = scripts/gtest-config
 CLEANFILES = $(bin_SCRIPTS)
 
-# Distribute and install M4 macro
+# Distribute and install M4 macro:
 m4datadir = $(datadir)/aclocal
 m4data_DATA = m4/gtest.m4
 EXTRA_DIST += $(m4data_DATA)
@@ -81,6 +90,9 @@ EXTRA_DIST += $(m4data_DATA)
 # We define global AM_CPPFLAGS as everything we compile includes from these
 # directories.
 AM_CPPFLAGS = -I$(srcdir) -I$(srcdir)/include
+
+# another global:
+AM_CXXFLAGS = -fpermissive
 
 # Build rules for libraries.
 lib_LTLIBRARIES = lib/libgtest.la lib/libgtest_main.la
@@ -117,10 +129,11 @@ pkginclude_internal_HEADERS = \
   include/gtest/internal/gtest-type-util.h
 
 lib_libgtest_main_la_SOURCES = src/gtest_main.cc
+lib_libgtest_main_la_CXXFLAGS = -fpermissive
 lib_libgtest_main_la_LIBADD = lib/libgtest.la
 
 # Bulid rules for samples and tests. Automake's naming for some of
-# these variables is NOT terribly obvious, so this is a brief
+# these variables is NOT terribly obvious at first, so this is a brief
 # reference:
 #
 # TESTS -- Programs run automatically by "make check"

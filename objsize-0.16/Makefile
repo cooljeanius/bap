@@ -1,3 +1,5 @@
+## Makefile for objsize-0.16
+
 .NOTPARALLEL:
 
 all : lib tests
@@ -84,7 +86,7 @@ $(DIST) : $(FILES)
 	$(MAKE) clean  &&  \
 	 if [ -d "$(DISTDIR)" ]; \
 	 then \
-	   ( echo can\'t make distfile: there already exists directory $(DISTDIR); \
+	   ( echo "cannot make distfile: there already exists directory $(DISTDIR)"; \
 	     exit 1 ); \
 	 else \
 	   ( mkdir "$(DISTDIR)"; cp -R $(FILES) "$(DISTDIR)"; \
@@ -114,6 +116,7 @@ tags:
 	-
 
 distclean: clean
+	-find . -name .DS_Store -delete 2>/dev/null
 
 maintainer-clean: distclean
 	@echo "This command is intended for maintainers to use"

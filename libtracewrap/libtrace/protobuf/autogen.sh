@@ -13,6 +13,8 @@ Could not find source code.  Make sure you are running this script from the
 root of the distribution tree.
 __EOF__
   exit 1
+else
+  echo "autoreconfing in $(basename `pwd`)"
 fi
 
 # Check that gtest is present. Usually it is already there since the
@@ -37,7 +39,7 @@ sed -i -e 's/RuntimeLibrary="5"/RuntimeLibrary="3"/g;
 # TODO(kenton):  Remove the ",no-obsolete" part and fix the resulting warnings.
 autoreconf -f -i -v -Wall,no-obsolete
 
-test -d autom4te.cache && rm -rf autom4te.cache
+test -d autom4te.cache && (rm -rf autom4te.cache || rmdir autom4te.cache)
 test -e config.h.in~ && rm -f config.h.in~
 test -d gtest/autom4te.cache && rm -rf gtest/autom4te.cache
 test -e gtest/build-aux/config.h.in~ && rm -f gtest/build-aux/config.h.in~

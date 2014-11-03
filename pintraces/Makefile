@@ -52,14 +52,14 @@ ifdef OS
 endif
 
 ifeq ($(TARGET_COMPILER),gnu)
-    include $(PIN_HOME)/source/tools/makefile.gnu.config
+    -include $(PIN_HOME)/source/tools/makefile.gnu.config
     CXXFLAGS ?= -Wall -Werror -Wno-unknown-pragmas $(DBG) $(OPT)
     PIN=$(PIN_HOME)/pin
 	RM = rm -rf
 endif
 
 ifeq ($(TARGET_COMPILER),ms)
-    include $(PIN_HOME)/source/tools/makefile.ms.config
+    -include $(PIN_HOME)/source/tools/makefile.ms.config
     CXXFLAGS +=  -Iddk-inc
     PIN=$(PIN_HOME)/pin.bat
 	RM = del /Q
@@ -153,6 +153,7 @@ clean:
 	-$(RM) "$(OBJDIR)" *.out *.tested *.failed makefile.copy reader pinregs.h listregs
 
 distclean: clean
+	-find . -name .DS_Store -delete 2>/dev/null
 
 tags: 
 

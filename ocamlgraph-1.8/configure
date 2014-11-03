@@ -635,7 +635,6 @@ OCAMLVERSION
 OCAMLBEST
 EGREP
 GREP
-CPP
 am__fastdepCCAS_FALSE
 am__fastdepCCAS_TRUE
 CCASDEPMODE
@@ -666,6 +665,7 @@ OCAMLOPTDOTOPT
 OCAMLCDOTOPT
 OCAMLOPT
 OCAMLC
+CPP
 OBJEXT
 EXEEXT
 ac_ct_CC
@@ -750,11 +750,11 @@ CFLAGS
 LDFLAGS
 LIBS
 CPPFLAGS
+CPP
 YACC
 YFLAGS
 CCAS
-CCASFLAGS
-CPP'
+CCASFLAGS'
 
 
 # Initialize some variables set by options.
@@ -1385,6 +1385,7 @@ Some influential environment variables:
   LIBS        libraries to pass to the linker, e.g. -l<library>
   CPPFLAGS    (Objective) C/C++ preprocessor flags, e.g. -I<include dir> if
               you have headers in a nonstandard directory <include dir>
+  CPP         C preprocessor
   YACC        The `Yet Another Compiler Compiler' implementation to use.
               Defaults to the first program found out of: `bison -y', `byacc',
               `yacc'.
@@ -1393,7 +1394,6 @@ Some influential environment variables:
               default value of `-d' given by some make applications.
   CCAS        assembler compiler command (defaults to CC)
   CCASFLAGS   assembler compiler flags (defaults to CFLAGS)
-  CPP         C preprocessor
 
 Use these variables to override the choices made by `configure' or to help
 it to find libraries and programs with nonstandard names/locations.
@@ -1513,6 +1513,43 @@ fi
 
 } # ac_fn_c_try_compile
 
+# ac_fn_c_try_cpp LINENO
+# ----------------------
+# Try to preprocess conftest.$ac_ext, and return whether this succeeded.
+ac_fn_c_try_cpp ()
+{
+  as_lineno=${as_lineno-"$1"} as_lineno_stack=as_lineno_stack=$as_lineno_stack
+  if { { ac_try="$ac_cpp conftest.$ac_ext"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval ac_try_echo="\"\$as_me:${as_lineno-$LINENO}: $ac_try_echo\""
+$as_echo "$ac_try_echo"; } >&5
+  (eval "$ac_cpp conftest.$ac_ext") 2>conftest.err
+  ac_status=$?
+  if test -s conftest.err; then
+    grep -v '^ *+' conftest.err >conftest.er1
+    cat conftest.er1 >&5
+    mv -f conftest.er1 conftest.err
+  fi
+  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+  test $ac_status = 0; } > conftest.i && {
+	 test -z "$ac_c_preproc_warn_flag$ac_c_werror_flag" ||
+	 test ! -s conftest.err
+       }; then :
+  ac_retval=0
+else
+  $as_echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+    ac_retval=1
+fi
+  eval $as_lineno_stack; ${as_lineno_stack:+:} unset as_lineno
+  as_fn_set_status $ac_retval
+
+} # ac_fn_c_try_cpp
+
 # ac_fn_c_try_link LINENO
 # -----------------------
 # Try to link conftest.$ac_ext, and return whether this succeeded.
@@ -1558,43 +1595,6 @@ fi
   as_fn_set_status $ac_retval
 
 } # ac_fn_c_try_link
-
-# ac_fn_c_try_cpp LINENO
-# ----------------------
-# Try to preprocess conftest.$ac_ext, and return whether this succeeded.
-ac_fn_c_try_cpp ()
-{
-  as_lineno=${as_lineno-"$1"} as_lineno_stack=as_lineno_stack=$as_lineno_stack
-  if { { ac_try="$ac_cpp conftest.$ac_ext"
-case "(($ac_try" in
-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
-  *) ac_try_echo=$ac_try;;
-esac
-eval ac_try_echo="\"\$as_me:${as_lineno-$LINENO}: $ac_try_echo\""
-$as_echo "$ac_try_echo"; } >&5
-  (eval "$ac_cpp conftest.$ac_ext") 2>conftest.err
-  ac_status=$?
-  if test -s conftest.err; then
-    grep -v '^ *+' conftest.err >conftest.er1
-    cat conftest.er1 >&5
-    mv -f conftest.er1 conftest.err
-  fi
-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
-  test $ac_status = 0; } > conftest.i && {
-	 test -z "$ac_c_preproc_warn_flag$ac_c_werror_flag" ||
-	 test ! -s conftest.err
-       }; then :
-  ac_retval=0
-else
-  $as_echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-    ac_retval=1
-fi
-  eval $as_lineno_stack; ${as_lineno_stack:+:} unset as_lineno
-  as_fn_set_status $ac_retval
-
-} # ac_fn_c_try_cpp
 
 # ac_fn_c_check_header_mongrel LINENO HEADER VAR INCLUDES
 # -------------------------------------------------------
@@ -2279,8 +2279,8 @@ fi
 
 # Checks for programs.
 if test "x${INSTALL}" = "x"; then
-	test -z "${INSTALL}"
-	# Find a good install program.  We prefer a C program (faster),
+  test -z "${INSTALL}"
+  # Find a good install program.  We prefer a C program (faster),
 # so one script is as good as another.  But avoid the broken or
 # incompatible versions:
 # SysV /etc/install, /usr/sbin/install
@@ -2373,7 +2373,7 @@ test -z "$INSTALL_SCRIPT" && INSTALL_SCRIPT='${INSTALL}'
 
 test -z "$INSTALL_DATA" && INSTALL_DATA='${INSTALL} -m 644'
 
-	# expand $ac_aux_dir to an absolute path
+  # expand $ac_aux_dir to an absolute path
 am_aux_dir=`cd $ac_aux_dir && pwd`
 
 if test x"${install_sh}" != xset; then
@@ -2486,13 +2486,15 @@ fi
 INSTALL_STRIP_PROGRAM="\$(install_sh) -c -s"
 
 else
-	test ! -z "${INSTALL}" && export INSTALL
+  test ! -z "${INSTALL}" && export INSTALL
 
 fi
 if test "x${MAKE}" = "x"; then
-	test -z "${MAKE}"
-	# Extract the first word of "make gmake gnumake", so it can be a program name with args.
-set dummy make gmake gnumake; ac_word=$2
+  test -z "${MAKE}"
+  for ac_prog in make gmake gnumake remake
+do
+  # Extract the first word of "$ac_prog", so it can be a program name with args.
+set dummy $ac_prog; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
 $as_echo_n "checking for $ac_word... " >&6; }
 if ${ac_cv_path_MAKE+:} false; then :
@@ -2531,7 +2533,10 @@ $as_echo "no" >&6; }
 fi
 
 
-	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking whether ${MAKE-make} sets \$(MAKE)" >&5
+  test -n "$MAKE" && break
+done
+
+  { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether ${MAKE-make} sets \$(MAKE)" >&5
 $as_echo_n "checking whether ${MAKE-make} sets \$(MAKE)... " >&6; }
 set x ${MAKE-make}
 ac_make=`$as_echo "$2" | sed 's/+/p/g; s/[^a-zA-Z0-9_]/_/g'`
@@ -2563,7 +2568,7 @@ $as_echo "no" >&6; }
 fi
 
 else
-	test ! -z "${MAKE}" && export MAKE
+  test ! -z "${MAKE}" && export MAKE
 
 fi
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for a sed that does not truncate output" >&5
@@ -2636,8 +2641,8 @@ $as_echo "$ac_cv_path_SED" >&6; }
   rm -f conftest.sed
 
 if test "x${CC}" = "x"; then
-	test -z "${CC}"
-	ac_ext=c
+  test -z "${CC}"
+  ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
 ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
@@ -3427,14 +3432,154 @@ ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 else
-	test ! -z "${CC}" && export CC
+  test ! -z "${CC}" && export CC
+
+fi
+if test "x${CPP}" = "x"; then
+  test -z "${CPP}"
+  ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking how to run the C preprocessor" >&5
+$as_echo_n "checking how to run the C preprocessor... " >&6; }
+# On Suns, sometimes $CPP names a directory.
+if test -n "$CPP" && test -d "$CPP"; then
+  CPP=
+fi
+if test -z "$CPP"; then
+  if ${ac_cv_prog_CPP+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+      # Double quotes because CPP needs to be expanded
+    for CPP in "$CC -E" "$CC -E -traditional-cpp" "/lib/cpp"
+    do
+      ac_preproc_ok=false
+for ac_c_preproc_warn_flag in '' yes
+do
+  # Use a header file that comes with gcc, so configuring glibc
+  # with a fresh cross-compiler works.
+  # Prefer <limits.h> to <assert.h> if __STDC__ is defined, since
+  # <limits.h> exists even on freestanding compilers.
+  # On the NeXT, cc -E runs the code through the compiler's parser,
+  # not just through cpp. "Syntax error" is here to catch this case.
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+#ifdef __STDC__
+# include <limits.h>
+#else
+# include <assert.h>
+#endif
+		     Syntax error
+_ACEOF
+if ac_fn_c_try_cpp "$LINENO"; then :
+
+else
+  # Broken: fails on valid input.
+continue
+fi
+rm -f conftest.err conftest.i conftest.$ac_ext
+
+  # OK, works on sane cases.  Now check whether nonexistent headers
+  # can be detected and how.
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+#include <ac_nonexistent.h>
+_ACEOF
+if ac_fn_c_try_cpp "$LINENO"; then :
+  # Broken: success on invalid input.
+continue
+else
+  # Passes both tests.
+ac_preproc_ok=:
+break
+fi
+rm -f conftest.err conftest.i conftest.$ac_ext
+
+done
+# Because of `break', _AC_PREPROC_IFELSE's cleaning code was skipped.
+rm -f conftest.i conftest.err conftest.$ac_ext
+if $ac_preproc_ok; then :
+  break
+fi
+
+    done
+    ac_cv_prog_CPP=$CPP
+
+fi
+  CPP=$ac_cv_prog_CPP
+else
+  ac_cv_prog_CPP=$CPP
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $CPP" >&5
+$as_echo "$CPP" >&6; }
+ac_preproc_ok=false
+for ac_c_preproc_warn_flag in '' yes
+do
+  # Use a header file that comes with gcc, so configuring glibc
+  # with a fresh cross-compiler works.
+  # Prefer <limits.h> to <assert.h> if __STDC__ is defined, since
+  # <limits.h> exists even on freestanding compilers.
+  # On the NeXT, cc -E runs the code through the compiler's parser,
+  # not just through cpp. "Syntax error" is here to catch this case.
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+#ifdef __STDC__
+# include <limits.h>
+#else
+# include <assert.h>
+#endif
+		     Syntax error
+_ACEOF
+if ac_fn_c_try_cpp "$LINENO"; then :
+
+else
+  # Broken: fails on valid input.
+continue
+fi
+rm -f conftest.err conftest.i conftest.$ac_ext
+
+  # OK, works on sane cases.  Now check whether nonexistent headers
+  # can be detected and how.
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+#include <ac_nonexistent.h>
+_ACEOF
+if ac_fn_c_try_cpp "$LINENO"; then :
+  # Broken: success on invalid input.
+continue
+else
+  # Passes both tests.
+ac_preproc_ok=:
+break
+fi
+rm -f conftest.err conftest.i conftest.$ac_ext
+
+done
+# Because of `break', _AC_PREPROC_IFELSE's cleaning code was skipped.
+rm -f conftest.i conftest.err conftest.$ac_ext
+if $ac_preproc_ok; then :
+
+else
+  { { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
+$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
+as_fn_error $? "C preprocessor \"$CPP\" fails sanity check
+See \`config.log' for more details" "$LINENO" 5; }
+fi
+
+ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 fi
 # (yacc and lex are checked later)
 
 # Check for Ocaml compilers
 
-# we first look for ocamlc in the path; if not present, we fail
+# we first look for ocamlc in the path; if not present, we fail:
 # Extract the first word of "ocamlc", so it can be a program name with args.
 set dummy ocamlc; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
@@ -3473,11 +3618,11 @@ $as_echo "no" >&6; }
 fi
 
 
-if test "${OCAMLC}" = no ; then
-	as_fn_error $? "Cannot find ocamlc." "$LINENO" 5
+if test "x${OCAMLC}" = "xno"; then
+  as_fn_error $? "Cannot find ocamlc." "$LINENO" 5
 fi
 
-# we extract Ocaml version number and library path
+# we extract Ocaml version number and library path:
 OCAMLVERSION=`${OCAMLC} -v | sed -n -e 's|.*version *\(.*\)$|\1|p' `
 echo "ocaml version is ${OCAMLVERSION}"
 
@@ -3493,7 +3638,7 @@ esac
 OCAMLLIB=`${OCAMLC} -where | tr -d '\r'`
 echo "ocaml library path is ${OCAMLLIB}"
 
-# then we look for ocamlopt; if not present, we issue a warning
+# then we look for ocamlopt; if not present, we issue a warning.
 # if the version is not the same, we also discard it
 # we set OCAMLBEST to "opt" or "byte", whether ocamlopt is available or not
 # Extract the first word of "ocamlopt", so it can be a program name with args.
@@ -3535,22 +3680,22 @@ fi
 
 
 OCAMLBEST=byte
-if test "${OCAMLOPT}" = no ; then
-	{ $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: Cannot find ocamlopt; bytecode compilation only." >&5
+if test "x${OCAMLOPT}" = "xno"; then
+  { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: Cannot find ocamlopt; bytecode compilation only." >&5
 $as_echo "$as_me: WARNING: Cannot find ocamlopt; bytecode compilation only." >&2;}
 else
-	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking ocamlopt version" >&5
+  { $as_echo "$as_me:${as_lineno-$LINENO}: checking ocamlopt version" >&5
 $as_echo_n "checking ocamlopt version... " >&6; }
-	TMPVERSION=`$OCAMLOPT -v | sed -n -e 's|.*version *\(.*\)$|\1|p' `
-	if test "${TMPVERSION}" != "${OCAMLVERSION}" ; then
-	    { $as_echo "$as_me:${as_lineno-$LINENO}: result: differs from ocamlc; ocamlopt discarded." >&5
+  TMPVERSION=`$OCAMLOPT -v | sed -n -e 's|.*version *\(.*\)$|\1|p' `
+  if test "x${TMPVERSION}" != "x${OCAMLVERSION}"; then
+    { $as_echo "$as_me:${as_lineno-$LINENO}: result: differs from ocamlc; ocamlopt discarded." >&5
 $as_echo "differs from ocamlc; ocamlopt discarded." >&6; }
-	    OCAMLOPT=no
-	else
-	    { $as_echo "$as_me:${as_lineno-$LINENO}: result: ok" >&5
+    OCAMLOPT=no
+  else
+    { $as_echo "$as_me:${as_lineno-$LINENO}: result: ok" >&5
 $as_echo "ok" >&6; }
-	    OCAMLBEST=opt
-	fi
+    OCAMLBEST=opt
+  fi
 fi
 
 # checking for ocamlc.opt
@@ -3593,22 +3738,22 @@ fi
 
 
 if test "${OCAMLCDOTOPT}" != no ; then
-	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking ocamlc.opt version" >&5
+  { $as_echo "$as_me:${as_lineno-$LINENO}: checking ocamlc.opt version" >&5
 $as_echo_n "checking ocamlc.opt version... " >&6; }
-	TMPVERSION=`${OCAMLCDOTOPT} -v | sed -n -e 's|.*version *\(.*\)$|\1|p' `
-	if test "${TMPVERSION}" != "${OCAMLVERSION}" ; then
-	    { $as_echo "$as_me:${as_lineno-$LINENO}: result: differs from ocamlc; ocamlc.opt discarded." >&5
+  TMPVERSION=`${OCAMLCDOTOPT} -v | sed -n -e 's|.*version *\(.*\)$|\1|p' `
+  if test "${TMPVERSION}" != "${OCAMLVERSION}" ; then
+    { $as_echo "$as_me:${as_lineno-$LINENO}: result: differs from ocamlc; ocamlc.opt discarded." >&5
 $as_echo "differs from ocamlc; ocamlc.opt discarded." >&6; }
-	else
-	    { $as_echo "$as_me:${as_lineno-$LINENO}: result: ok" >&5
+  else
+    { $as_echo "$as_me:${as_lineno-$LINENO}: result: ok" >&5
 $as_echo "ok" >&6; }
-	    OCAMLC=${OCAMLCDOTOPT}
-	fi
+    OCAMLC=${OCAMLCDOTOPT}
+  fi
 fi
 
 # checking for ocamlopt.opt
-if test "$OCAMLOPT" != no ; then
-    # Extract the first word of "ocamlopt.opt", so it can be a program name with args.
+if test "x${OCAMLOPT}" != "xno"; then
+  # Extract the first word of "ocamlopt.opt", so it can be a program name with args.
 set dummy ocamlopt.opt; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
 $as_echo_n "checking for $ac_word... " >&6; }
@@ -3646,22 +3791,22 @@ $as_echo "no" >&6; }
 fi
 
 
-    if test "${OCAMLOPTDOTOPT}" != no ; then
-	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking ocamlc.opt version" >&5
+  if test "x${OCAMLOPTDOTOPT}" != "xno"; then
+    { $as_echo "$as_me:${as_lineno-$LINENO}: checking ocamlc.opt version" >&5
 $as_echo_n "checking ocamlc.opt version... " >&6; }
-	TMPVER=`${OCAMLOPTDOTOPT} -v | sed -n -e 's|.*version *\(.*\)$|\1|p' `
-	if test "${TMPVER}" != "${OCAMLVERSION}" ; then
-	    { $as_echo "$as_me:${as_lineno-$LINENO}: result: differs from ocamlc; ocamlopt.opt discarded." >&5
+    TMPVER=`${OCAMLOPTDOTOPT} -v | sed -n -e 's|.*version *\(.*\)$|\1|p' `
+    if test "${TMPVER}" != "${OCAMLVERSION}" ; then
+      { $as_echo "$as_me:${as_lineno-$LINENO}: result: differs from ocamlc; ocamlopt.opt discarded." >&5
 $as_echo "differs from ocamlc; ocamlopt.opt discarded." >&6; }
-	else
-	    { $as_echo "$as_me:${as_lineno-$LINENO}: result: ok" >&5
+    else
+      { $as_echo "$as_me:${as_lineno-$LINENO}: result: ok" >&5
 $as_echo "ok" >&6; }
-	    OCAMLOPT=${OCAMLOPTDOTOPT}
-	fi
+      OCAMLOPT=${OCAMLOPTDOTOPT}
     fi
+  fi
 fi
 
-# ocamldep, ocamllex and ocamlyacc should also be present in the path
+# ocamldep, ocamllex and ocamlyacc should also be present in the path:
 # Extract the first word of "ocamldep", so it can be a program name with args.
 set dummy ocamldep; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
@@ -3700,8 +3845,8 @@ $as_echo "no" >&6; }
 fi
 
 
-if test "${OCAMLDEP}" = no ; then
-	as_fn_error $? "Cannot find ocamldep." "$LINENO" 5
+if test "x${OCAMLDEP}" = "xno"; then
+  as_fn_error $? "Cannot find ocamldep." "$LINENO" 5
 fi
 
 
@@ -3926,10 +4071,10 @@ $as_echo "no" >&6; }
 fi
 
 
-if test "${OCAMLLEX}" = no ; then
-    as_fn_error $? "Cannot find ocamllex." "$LINENO" 5
+if test "x${OCAMLLEX}" = "xno"; then
+  as_fn_error $? "Cannot find ocamllex." "$LINENO" 5
 else
-    # Extract the first word of "ocamllex.opt", so it can be a program name with args.
+  # Extract the first word of "ocamllex.opt", so it can be a program name with args.
 set dummy ocamllex.opt; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
 $as_echo_n "checking for $ac_word... " >&6; }
@@ -3967,9 +4112,9 @@ $as_echo "no" >&6; }
 fi
 
 
-    if test "${OCAMLLEXDOTOPT}" != no ; then
-	OCAMLLEX=${OCAMLLEXDOTOPT}
-    fi
+  if test "x${OCAMLLEXDOTOPT}" != "xno"; then
+    OCAMLLEX=${OCAMLLEXDOTOPT}
+  fi
 fi
 
 for ac_prog in 'bison -y' byacc
@@ -4054,8 +4199,8 @@ $as_echo "no" >&6; }
 fi
 
 
-if test "${OCAMLYACC}" = no ; then
-	as_fn_error $? "Cannot find ocamlyacc." "$LINENO" 5
+if test "x${OCAMLYACC}" = "xno"; then
+  as_fn_error $? "Cannot find ocamlyacc." "$LINENO" 5
 fi
 
 # Extract the first word of "ocamldoc", so it can be a program name with args.
@@ -4096,11 +4241,11 @@ $as_echo "no" >&6; }
 fi
 
 
-if test "${OCAMLDOC}" = true ; then
-    { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: Cannot find ocamldoc" >&5
+if test "x${OCAMLDOC}" = "xtrue"; then
+  { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: Cannot find ocamldoc" >&5
 $as_echo "$as_me: WARNING: Cannot find ocamldoc" >&2;}
 else
-    # Extract the first word of "ocamldoc.opt", so it can be a program name with args.
+  # Extract the first word of "ocamldoc.opt", so it can be a program name with args.
 set dummy ocamldoc.opt; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
 $as_echo_n "checking for $ac_word... " >&6; }
@@ -4138,9 +4283,9 @@ $as_echo "no" >&6; }
 fi
 
 
-    if test "${OCAMLDOCOPT}" != no ; then
-	OCAMLDOC=${OCAMLDOCOPT}
-    fi
+  if test "x${OCAMLDOCOPT}" != "xno"; then
+    OCAMLDOC=${OCAMLDOCOPT}
+  fi
 fi
 
 # Extract the first word of "ocamlweb", so it can be a program name with args.
@@ -4181,7 +4326,6 @@ $as_echo "no" >&6; }
 fi
 
 
-
 # Extract the first word of "ocamlfind", so it can be a program name with args.
 set dummy ocamlfind; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
@@ -4219,14 +4363,13 @@ $as_echo "no" >&6; }
 fi
 
 
-
-if test "${OCAMLBEST}" = "opt"; then
+if test "x${OCAMLBEST}" = "xopt"; then
   SUFFIX=cmxa;
 else
   SUFFIX=cma;
 fi
 
-# checking for lablgtk2 and lablgnomecanvas
+# checking for lablgtk2 and lablgnomecanvas:
 as_ac_File=`$as_echo "ac_cv_file_${OCAMLLIB}/lablgtk2/lablgtk.${SUFFIX}" | $as_tr_sh`
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for ${OCAMLLIB}/lablgtk2/lablgtk.${SUFFIX}" >&5
 $as_echo_n "checking for ${OCAMLLIB}/lablgtk2/lablgtk.${SUFFIX}... " >&6; }
@@ -4250,7 +4393,7 @@ else
   LABLGTK2=no
 fi
 
-if test "${LABLGTK2}" = yes ; then
+if test "x${LABLGTK2}" = "xyes"; then
   INCLUDEGTK2="-I +lablgtk2"
   as_ac_File=`$as_echo "ac_cv_file_${OCAMLLIB}/lablgtk2/lablgnomecanvas.${SUFFIX}" | $as_tr_sh`
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for ${OCAMLLIB}/lablgtk2/lablgnomecanvas.${SUFFIX}" >&5
@@ -4280,20 +4423,20 @@ else
   LABLGNOMECANVAS=no
 fi
 
-# platform
+# platform:
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking Win32 platform" >&5
 $as_echo_n "checking Win32 platform... " >&6; }
 echo "print_endline Sys.os_type" > check_arch.ml
 if ocaml check_arch.ml | grep -q Win32; then
-    { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
 $as_echo "yes" >&6; }
-    OCAMLWIN32=yes
-    EXE=.exe
+  OCAMLWIN32=yes
+  EXE=.exe
 else
-    { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
 $as_echo "no" >&6; }
-    OCAMLWIN32=no
-    EXE=""
+  OCAMLWIN32=no
+  EXE=""
 fi
 rm -f check_arch.ml
 
@@ -4560,143 +4703,6 @@ if test "$ac_res" != no; then :
   test "$ac_res" = "none required" || LIBS="$ac_res $LIBS"
 
 fi
-ac_ext=c
-ac_cpp='$CPP $CPPFLAGS'
-ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
-ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
-ac_compiler_gnu=$ac_cv_c_compiler_gnu
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking how to run the C preprocessor" >&5
-$as_echo_n "checking how to run the C preprocessor... " >&6; }
-# On Suns, sometimes $CPP names a directory.
-if test -n "$CPP" && test -d "$CPP"; then
-  CPP=
-fi
-if test -z "$CPP"; then
-  if ${ac_cv_prog_CPP+:} false; then :
-  $as_echo_n "(cached) " >&6
-else
-      # Double quotes because CPP needs to be expanded
-    for CPP in "$CC -E" "$CC -E -traditional-cpp" "/lib/cpp"
-    do
-      ac_preproc_ok=false
-for ac_c_preproc_warn_flag in '' yes
-do
-  # Use a header file that comes with gcc, so configuring glibc
-  # with a fresh cross-compiler works.
-  # Prefer <limits.h> to <assert.h> if __STDC__ is defined, since
-  # <limits.h> exists even on freestanding compilers.
-  # On the NeXT, cc -E runs the code through the compiler's parser,
-  # not just through cpp. "Syntax error" is here to catch this case.
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-#ifdef __STDC__
-# include <limits.h>
-#else
-# include <assert.h>
-#endif
-		     Syntax error
-_ACEOF
-if ac_fn_c_try_cpp "$LINENO"; then :
-
-else
-  # Broken: fails on valid input.
-continue
-fi
-rm -f conftest.err conftest.i conftest.$ac_ext
-
-  # OK, works on sane cases.  Now check whether nonexistent headers
-  # can be detected and how.
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-#include <ac_nonexistent.h>
-_ACEOF
-if ac_fn_c_try_cpp "$LINENO"; then :
-  # Broken: success on invalid input.
-continue
-else
-  # Passes both tests.
-ac_preproc_ok=:
-break
-fi
-rm -f conftest.err conftest.i conftest.$ac_ext
-
-done
-# Because of `break', _AC_PREPROC_IFELSE's cleaning code was skipped.
-rm -f conftest.i conftest.err conftest.$ac_ext
-if $ac_preproc_ok; then :
-  break
-fi
-
-    done
-    ac_cv_prog_CPP=$CPP
-
-fi
-  CPP=$ac_cv_prog_CPP
-else
-  ac_cv_prog_CPP=$CPP
-fi
-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $CPP" >&5
-$as_echo "$CPP" >&6; }
-ac_preproc_ok=false
-for ac_c_preproc_warn_flag in '' yes
-do
-  # Use a header file that comes with gcc, so configuring glibc
-  # with a fresh cross-compiler works.
-  # Prefer <limits.h> to <assert.h> if __STDC__ is defined, since
-  # <limits.h> exists even on freestanding compilers.
-  # On the NeXT, cc -E runs the code through the compiler's parser,
-  # not just through cpp. "Syntax error" is here to catch this case.
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-#ifdef __STDC__
-# include <limits.h>
-#else
-# include <assert.h>
-#endif
-		     Syntax error
-_ACEOF
-if ac_fn_c_try_cpp "$LINENO"; then :
-
-else
-  # Broken: fails on valid input.
-continue
-fi
-rm -f conftest.err conftest.i conftest.$ac_ext
-
-  # OK, works on sane cases.  Now check whether nonexistent headers
-  # can be detected and how.
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-#include <ac_nonexistent.h>
-_ACEOF
-if ac_fn_c_try_cpp "$LINENO"; then :
-  # Broken: success on invalid input.
-continue
-else
-  # Passes both tests.
-ac_preproc_ok=:
-break
-fi
-rm -f conftest.err conftest.i conftest.$ac_ext
-
-done
-# Because of `break', _AC_PREPROC_IFELSE's cleaning code was skipped.
-rm -f conftest.i conftest.err conftest.$ac_ext
-if $ac_preproc_ok; then :
-
-else
-  { { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
-$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
-as_fn_error $? "C preprocessor \"$CPP\" fails sanity check
-See \`config.log' for more details" "$LINENO" 5; }
-fi
-
-ac_ext=c
-ac_cpp='$CPP $CPPFLAGS'
-ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
-ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
-ac_compiler_gnu=$ac_cv_c_compiler_gnu
-
 
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for grep that handles long lines and -e" >&5
 $as_echo_n "checking for grep that handles long lines and -e... " >&6; }
@@ -5030,39 +5036,19 @@ fi
 
 done
 
-
 LIBEXT=`ocamlc -config | grep ext_lib | sed -e 's/.*\(\..*\)/\1/' `
 OBJEXT=`ocamlc -config | grep ext_obj | sed -e 's/.*\(\..*\)/\1/' `
 
-if test "${LABLGNOMECANVAS}" = no ; then
+if test "x${LABLGNOMECANVAS}" = "xno"; then
   { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: lablgnomecanvas not found: the graph editor and view_graph will not be compiled." >&5
 $as_echo "$as_me: WARNING: lablgnomecanvas not found: the graph editor and view_graph will not be compiled." >&2;}
 fi
 
-# substitutions to perform
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Finally create the Makefile from Makefile.in
+# Finally create the Makefile from Makefile.in with our outpt:
 ac_config_files="$ac_config_files Makefile"
 
 ac_config_commands="$ac_config_commands default"
-
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure

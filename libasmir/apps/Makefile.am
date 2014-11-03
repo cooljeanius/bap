@@ -1,11 +1,13 @@
+## automake Makefile for libasmir apps
+
 bin_PROGRAMS = \
 	print-ir \
 	lifttrace
 
 # these executables should depend on libasmir, since they link it in
 # statically.
-#print-ir_DEPENDENCIES = ../src/libasmir.a
-#lifttrace_DEPENDENCIES = ../src/libasmir.a
+print_ir_DEPENDENCIES = ../src/libasmir.a
+lifttrace_DEPENDENCIES = ../src/libasmir.a
 
 print_ir_SOURCES = print-ir.cpp ir_printer.cpp
 lifttrace_SOURCES = lifttrace.cpp

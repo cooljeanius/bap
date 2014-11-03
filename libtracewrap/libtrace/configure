@@ -2358,7 +2358,6 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 ac_config_headers="$ac_config_headers src/cpp/config.h"
 
 
-
 ac_aux_dir=
 for ac_dir in "$srcdir" "$srcdir/.." "$srcdir/../.."; do
   if test -f "$ac_dir/install-sh"; then
@@ -4575,7 +4574,6 @@ END
     as_fn_error $? "Your 'rm' program is bad, sorry." "$LINENO" 5
   fi
 fi
-
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether to enable maintainer-specific portions of Makefiles" >&5
 $as_echo_n "checking whether to enable maintainer-specific portions of Makefiles... " >&6; }
     # Check whether --enable-maintainer-mode was given.
@@ -4599,11 +4597,13 @@ fi
 
 
 
-
 LIBTRACE_DIR="$( cd "$( dirname "${BASH_SOURCE0}" )" && pwd )"
 
+if test "x${INCDIRS}" = "x"
+      ## actually just keep it empty for now:
+       test -z "${INCDIRS}" && INCDIRS=""; then :
 
-
+fi
 # Checks for programs.
 if test -n "$ac_tool_prefix"; then
   for ac_prog in ar lib "link -lib"
@@ -5162,8 +5162,8 @@ fi
 
 
 if test "x${CC}" = "x"; then
-	test -z "${CC}"
-	ac_ext=c
+  test -z "${CC}"
+  ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
 ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
@@ -5762,12 +5762,12 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
 else
-	test ! -z "${CC}" && export CC
+  test ! -z "${CC}" && export CC
 
 fi
 if test "x${CPP}" = "x"; then
-	test -z "${CPP}"
-	ac_ext=c
+  test -z "${CPP}"
+  ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
 ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
@@ -5906,8 +5906,8 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 fi
 if test "x${RANLIB}" = "x"; then
-	test -z "${RANLIB}"
-	if test -n "$ac_tool_prefix"; then
+  test -z "${RANLIB}"
+  if test -n "$ac_tool_prefix"; then
   # Extract the first word of "${ac_tool_prefix}ranlib", so it can be a program name with args.
 set dummy ${ac_tool_prefix}ranlib; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
@@ -6000,7 +6000,7 @@ else
 fi
 
 else
-	test ! -z "${RANLIB}" && export RANLIB
+  test ! -z "${RANLIB}" && export RANLIB
 
 fi
   # checking for ocamlc
@@ -7041,7 +7041,6 @@ $as_echo "no" >&6; }
 fi
 
 
-
 # Checks for libraries.
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for pthread_create in -lpthread" >&5
 $as_echo_n "checking for pthread_create in -lpthread... " >&6; }
@@ -7087,7 +7086,6 @@ _ACEOF
   LIBS="-lpthread $LIBS"
 
 fi
-
 
 # Checks for header files.
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for stdbool.h that conforms to C99" >&5
@@ -7182,8 +7180,7 @@ if test $ac_cv_header_stdbool_h = yes; then
 $as_echo "#define HAVE_STDBOOL_H 1" >>confdefs.h
 
 fi
-
-for ac_header in stdio.h
+ for ac_header in stdio.h
 do :
   ac_fn_c_check_header_mongrel "$LINENO" "stdio.h" "ac_cv_header_stdio_h" "$ac_includes_default"
 if test "x$ac_cv_header_stdio_h" = xyes; then :
@@ -7194,7 +7191,6 @@ _ACEOF
 fi
 
 done
-
 
 # Checks for typedefs, structures, and compiler characteristics.
  { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether byte ordering is bigendian" >&5
@@ -7420,6 +7416,87 @@ $as_echo "#define AC_APPLE_UNIVERSAL_BUILD 1" >>confdefs.h
      as_fn_error $? "unknown endianness
  presetting ac_cv_c_bigendian=no (or yes) will help" "$LINENO" 5 ;;
  esac
+
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for an ANSI C-conforming const" >&5
+$as_echo_n "checking for an ANSI C-conforming const... " >&6; }
+if ${ac_cv_c_const+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+int
+main ()
+{
+
+#ifndef __cplusplus
+  /* Ultrix mips cc rejects this sort of thing.  */
+  typedef int charset[2];
+  const charset cs = { 0, 0 };
+  /* SunOS 4.1.1 cc rejects this.  */
+  char const *const *pcpcc;
+  char **ppc;
+  /* NEC SVR4.0.2 mips cc rejects this.  */
+  struct point {int x, y;};
+  static struct point const zero = {0,0};
+  /* AIX XL C 1.02.0.0 rejects this.
+     It does not let you subtract one const X* pointer from another in
+     an arm of an if-expression whose if-part is not a constant
+     expression */
+  const char *g = "string";
+  pcpcc = &g + (g ? g-g : 0);
+  /* HPUX 7.0 cc rejects these. */
+  ++pcpcc;
+  ppc = (char**) pcpcc;
+  pcpcc = (char const *const *) ppc;
+  { /* SCO 3.2v4 cc rejects this sort of thing.  */
+    char tx;
+    char *t = &tx;
+    char const *s = 0 ? (char *) 0 : (char const *) 0;
+
+    *t++ = 0;
+    if (s) return 0;
+  }
+  { /* Someone thinks the Sun supposedly-ANSI compiler will reject this.  */
+    int x[] = {25, 17};
+    const int *foo = &x[0];
+    ++foo;
+  }
+  { /* Sun SC1.0 ANSI compiler rejects this -- but not the above. */
+    typedef const int *iptr;
+    iptr p = 0;
+    ++p;
+  }
+  { /* AIX XL C 1.02.0.0 rejects this sort of thing, saying
+       "k.c", line 2.27: 1506-025 (S) Operand must be a modifiable lvalue. */
+    struct s { int j; const int *ap[3]; } bx;
+    struct s *b = &bx; b->j = 5;
+  }
+  { /* ULTRIX-32 V3.1 (Rev 9) vcc rejects this */
+    const int foo = 10;
+    if (!foo) return 0;
+  }
+  return !cs[0] && !zero.x;
+#endif
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"; then :
+  ac_cv_c_const=yes
+else
+  ac_cv_c_const=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_c_const" >&5
+$as_echo "$ac_cv_c_const" >&6; }
+if test $ac_cv_c_const = no; then
+
+$as_echo "#define const /**/" >>confdefs.h
+
+fi
 
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for inline" >&5
 $as_echo_n "checking for inline... " >&6; }
@@ -7715,6 +7792,8 @@ rm -rf conftest*
 
 fi
 
+
+# Checks for library functions.
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for _LARGEFILE_SOURCE value needed for large files" >&5
 $as_echo_n "checking for _LARGEFILE_SOURCE value needed for large files... " >&6; }
 if ${ac_cv_sys_largefile_source+:} false; then :
@@ -7783,8 +7862,6 @@ $as_echo "#define HAVE_FSEEKO 1" >>confdefs.h
 
 fi
 
-
-# Checks for library functions.
 for ac_func in memset strtoull
 do :
   as_ac_var=`$as_echo "ac_cv_func_$ac_func" | $as_tr_sh`
@@ -7797,16 +7874,36 @@ _ACEOF
 fi
 done
 
-
+# Batteries.
 
 # Check whether --with-batteries was given.
 if test "${with_batteries+set}" = set; then :
   withval=$with_batteries; with_batteries="$( cd ${withval} && pwd )"
+else
+  if test "x${ac_abs_top_srcdir}" != "x"; then :
+  if test -d "${ac_abs_top_srcdir}/batteries"; then :
+  export with_batteries="${ac_abs_top_srcdir}/batteries"
+else
+  if test -d ../../batteries; then :
+  export with_batteries=../../batteries
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: no default for batteries" >&5
+$as_echo "$as_me: WARNING: no default for batteries" >&2;}
+fi
+fi
+else
+  if test -d ../../batteries; then :
+  export with_batteries=../../batteries
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: no default dir for batteries" >&5
+$as_echo "$as_me: WARNING: no default dir for batteries" >&2;}
+fi
+fi
 fi
 
-
-if test "x${with_batteries}" != x; then :
-    { $as_echo "$as_me:${as_lineno-$LINENO}: checking for OCaml module batteries" >&5
+if test "x${with_batteries}" != "x"; then :
+  test -n "${with_batteries}"
+         { $as_echo "$as_me:${as_lineno-$LINENO}: checking for OCaml module batteries" >&5
 $as_echo_n "checking for OCaml module batteries... " >&6; }
 
   cat > conftest.ml <<EOF
@@ -7831,33 +7928,33 @@ $as_echo "not found" >&6; }
 
 
        if test "x${has_batteries}" = "xno"; then :
-  { { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
-$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
-as_fn_error $? "batteries not found in ${with_batteries}
-See \`config.log' for more details" "$LINENO" 5; }
+  { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: batteries not found in ${with_batteries}; proceeding as if they were missing. This ought to be an error, but it has been changed to a warning to facilitate work on this configure script." >&5
+$as_echo "$as_me: WARNING: batteries not found in ${with_batteries}; proceeding as if they were missing. This ought to be an error, but it has been changed to a warning to facilitate work on this configure script." >&2;}
+              unset with_batteries
 else
   BAT_DIR=${with_batteries}
 
 fi
 else
+  if test -z "${with_batteries}"; then :
   { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: You must specify the path to batteries using --with-batteries. This ought to be an error, but it has been changed to a warning to facilitate work on this configure script." >&5
 $as_echo "$as_me: WARNING: You must specify the path to batteries using --with-batteries. This ought to be an error, but it has been changed to a warning to facilitate work on this configure script." >&2;}
 fi
-
+fi
+# Output.
 ac_config_files="$ac_config_files Makefile src/Makefile src/cpp/Makefile src/cpp/utils/Makefile src/ocaml/Makefile src/ocaml/utils/Makefile"
 
-# Configure piqi
+# Configure piqi now:
 
 
 subdirs="$subdirs piqi/piqi"
 
-# Configure google protobuf
+# Configure google protobuf next.
 # Note: protobuf must be compiled for 32-bit because it is linked by
-# pintraces code, which is 32-bit
+# pintraces code, which is 32-bit.
 subdirs="$subdirs protobuf"
 
 ac_config_commands="$ac_config_commands bap-local"
-
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
