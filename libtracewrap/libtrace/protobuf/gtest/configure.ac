@@ -70,6 +70,8 @@ else
 fi
 LT_INIT([win32-dll static])
 LT_LANG([C++])dnl
+dnl# temporarily set this while I update everything libtool-related:
+LT_PREREQ([2.4.6])dnl
 
 if test "x${RANLIB}" = "x"; then
   test -z "${RANLIB}"

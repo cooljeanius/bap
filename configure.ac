@@ -74,6 +74,9 @@ AC_PROG_CAMLP4
 AC_PROG_OCAMLFIND
 AC_PROG_CAMLIDL
 LT_INIT([win32-dll dlopen])
+dnl# temporarily set this while I update everything libtool-related:
+LT_PREREQ([2.4.6])dnl
+  ## languages:
 LT_LANG([C])dnl
 LT_LANG([C++])dnl
 LT_LANG([Java])dnl
@@ -229,9 +232,20 @@ fi
 AC_SUBST([acl_cv_wl])dnl
 AC_CACHE_CHECK([if the linker accepts ${acl_cv_wl}-fatal_warnings],
                [bap_cv_ld_werror],
-               [AC_LINK_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+               [pre_saved_LDFLAGS="${LDFLAGS}"
+                LDFLAGS="${LDFLAGS} ${acl_cv_wl}-fatal_warnings"
+                AC_LINK_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
 	                       [bap_cv_ld_werror=yes],
-	                       [bap_cv_ld_werror=no])])
+	                       [bap_cv_ld_werror=no])
+                LDFLAGS="${pre_saved_LDFLAGS}"])
+AC_CACHE_CHECK([if the linker accepts ${acl_cv_wl}-arch_errors_fatal],
+               [bap_cv_ld_arch_werror],
+               [pre_saved_LDFLAGS="${LDFLAGS}"
+                LDFLAGS="${LDFLAGS} ${acl_cv_wl}-arch_errors_fatal"
+                AC_LINK_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+	                       [bap_cv_ld_arch_werror=yes],
+	                       [bap_cv_ld_arch_werror=no])
+                LDFLAGS="${pre_saved_LDFLAGS}"])
 # Use the flag to make sure the libraries we check actually link correctly:
 SAVE_LDFLAGS="${LDFLAGS}"
 AS_IF([test "x${bap_cv_ld_werror}" = "xyes"],
@@ -239,6 +253,12 @@ AS_IF([test "x${bap_cv_ld_werror}" = "xyes"],
                [*${acl_cv_wl}-warn*],
                [export LDFLAGS="${acl_cv_wl}-fatal_warnings"],
                [LDFLAGS="${LDFLAGS} ${acl_cv_wl}-fatal_warnings"])])dnl
+  ## If that failed, try this:
+AS_IF([test "x${bap_cv_ld_arch_werror}" = "xyes"],
+      [AS_CASE(["${LDFLAGS}"],
+               [*${acl_cv_wl}-warn*],
+               [export LDFLAGS="${acl_cv_wl}-arch_errors_fatal"],
+               [LDFLAGS="${LDFLAGS} ${acl_cv_wl}-arch_errors_fatal"])])dnl
   ## OK, now actually check the libraries:
 AC_CHECK_LIB([bfd],[bfd_init],[],[
   AC_CHECK_LIB([bfd],[main],[],[

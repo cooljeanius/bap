@@ -116,6 +116,8 @@ LT_INIT([win32-dll])dnl
 LT_LANG([C])dnl
 LT_LANG([C++])dnl
 LT_LANG([Java])dnl
+dnl# temporarily set this while I update everything libtool-related:
+LT_PREREQ([2.4.6])dnl
 
 if test "x${RANLIB}" = "x"; then
   test -z "${RANLIB}"
