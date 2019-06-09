@@ -17,3 +17,6 @@ AM_CXXFLAGS = \
               ${acl_cv_wp}-I../src/traces \
               ${acl_cv_wp}-I@VEX_DIR@/pub
 
+distclean-local:
+	rm -rf .deps || rmdir .deps
+.PHONY: distclean-local

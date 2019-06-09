@@ -15,6 +15,8 @@ endif
 BAPDIRS=libasmir ocaml utils tests $(PINTRACES)
 SUBDIRS=batteries zarith-1.0 ounit pcre-ocaml ocamlgraph-1.8 objsize-0.16 libtracewrap VEX $(BAPDIRS)
 
+DISTCLEANFILES = *.log config.status
+
 test: all
 	$(MAKE) -C tests test
 

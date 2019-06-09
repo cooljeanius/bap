@@ -83,7 +83,6 @@ clean:: erlang-clean
 	$(MAKE) -C deps clean
 	$(MAKE) -C tests clean
 
-
 distclean:
 	if [ -f Makefile.config ]; then \
 		$(MAKE) clean; \
@@ -92,5 +91,7 @@ distclean:
 		rm -f config.h.in~; \
 		rm -f configure.sh; \
 		rm -f Makefile.config; \
+		rm -f config.log; \
+		rm -f config.status; \
 	fi
 

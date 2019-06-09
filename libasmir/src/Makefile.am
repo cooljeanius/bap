@@ -1,6 +1,6 @@
 ## automake Makefile for libasmir sources
 
-DISTCLEANFILES = .DS_Store
+DISTCLEANFILES = .DS_Store .deps/* ./*/.deps/*
 
 RANLIB = @RANLIB@
 lib_LIBRARIES = libasmir.a
@@ -45,3 +45,8 @@ libasmir_a_LIBADD = @VEX_DIR@/libvex.a @BAP_DIR@/libtracewrap/libtrace/src/cpp/l
 
 @BAP_DIR@/libtracewrap/libtrace/src/cpp/libtrace.a: @BAP_DIR@/libtracewrap/libtrace/src/cpp/Makefile
 	$(MAKE) -C @BAP_DIR@/libtracewrap/libtrace/src/cpp libtrace.a
+
+distclean-local:
+	-rm -rf .deps || rmdir .deps
+	-rm -rf ./*/.deps || rmdir ./*/.deps
+.PHONY: distclean-local

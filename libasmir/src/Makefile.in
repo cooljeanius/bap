@@ -439,7 +439,7 @@ target_vendor = @target_vendor@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-DISTCLEANFILES = .DS_Store
+DISTCLEANFILES = .DS_Store .deps/* ./*/.deps/*
 lib_LIBRARIES = libasmir.a
 #lib_LTLIBRARIES = libasmir.la
 AM_CFLAGS = ${acl_cv_wp}-I@VEX_DIR@/pub ${acl_cv_wp}-I../include \
@@ -834,7 +834,7 @@ distclean: distclean-am
 	-rm -f ./traces/$(DEPDIR)/trace_v50.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
-	distclean-tags
+	distclean-local distclean-tags
 
 dvi: dvi-am
 
@@ -924,16 +924,17 @@ uninstall-am: uninstall-libLIBRARIES
 .PHONY: CTAGS GTAGS TAGS all all-am am--depfiles check check-am clean \
 	clean-generic clean-libLIBRARIES clean-libtool cscopelist-am \
 	ctags ctags-am distclean distclean-compile distclean-generic \
-	distclean-libtool distclean-tags distdir dvi dvi-am html \
-	html-am info info-am install install-am install-data \
-	install-data-am install-dvi install-dvi-am install-exec \
-	install-exec-am install-html install-html-am install-info \
-	install-info-am install-libLIBRARIES install-man install-pdf \
-	install-pdf-am install-ps install-ps-am install-strip \
-	installcheck installcheck-am installdirs maintainer-clean \
-	maintainer-clean-generic mostlyclean mostlyclean-compile \
-	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
-	tags tags-am uninstall uninstall-am uninstall-libLIBRARIES
+	distclean-libtool distclean-local distclean-tags distdir dvi \
+	dvi-am html html-am info info-am install install-am \
+	install-data install-data-am install-dvi install-dvi-am \
+	install-exec install-exec-am install-html install-html-am \
+	install-info install-info-am install-libLIBRARIES install-man \
+	install-pdf install-pdf-am install-ps install-ps-am \
+	install-strip installcheck installcheck-am installdirs \
+	maintainer-clean maintainer-clean-generic mostlyclean \
+	mostlyclean-compile mostlyclean-generic mostlyclean-libtool \
+	pdf pdf-am ps ps-am tags tags-am uninstall uninstall-am \
+	uninstall-libLIBRARIES
 
 .PRECIOUS: Makefile
 
@@ -943,6 +944,11 @@ uninstall-am: uninstall-libLIBRARIES
 
 @BAP_DIR@/libtracewrap/libtrace/src/cpp/libtrace.a: @BAP_DIR@/libtracewrap/libtrace/src/cpp/Makefile
 	$(MAKE) -C @BAP_DIR@/libtracewrap/libtrace/src/cpp libtrace.a
+
+distclean-local:
+	-rm -rf .deps || rmdir .deps
+	-rm -rf ./*/.deps || rmdir ./*/.deps
+.PHONY: distclean-local
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

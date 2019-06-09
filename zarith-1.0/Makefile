@@ -18,6 +18,7 @@ clean:
 
 distclean: clean
 	rm -f config.status config.log config.h Makefile_orig .DS_Store
+	-rm -rf autom4te.cache || rmdir autom4te.cache
 
 maintainer-clean: distclean
 	@echo "This target is intended for maintainers to use."

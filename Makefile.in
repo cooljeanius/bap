@@ -405,6 +405,7 @@ noinst_SCRIPTS = autogen.sh
 @HAVE_PIN_TRUE@PINTRACES = pintraces
 BAPDIRS = libasmir ocaml utils tests $(PINTRACES)
 SUBDIRS = batteries zarith-1.0 ounit pcre-ocaml ocamlgraph-1.8 objsize-0.16 libtracewrap VEX $(BAPDIRS)
+DISTCLEANFILES = *.log config.status
 all: all-recursive
 
 .SUFFIXES:
@@ -795,6 +796,7 @@ clean-generic:
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
 	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
+	-test -z "$(DISTCLEANFILES)" || rm -f $(DISTCLEANFILES)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"

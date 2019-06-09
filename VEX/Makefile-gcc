@@ -178,6 +178,7 @@ clean:
 	rm -f $(LIB_OBJS) *.a vex test_main.o TAG-* \
 		pub/libvex_guest_offsets.h \
 		auxprogs/genoffsets.s
+	rm -rf *.dSYM || rmdir *.dSYM
 
 .PHONY: distclean
 distclean: clean
