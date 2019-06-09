@@ -13,6 +13,10 @@ extern "C" {
 
 #include "config.h"
 #include <bfd.h>
+  
+#ifndef ATTRIBUTE_NORETURN
+# define ATTRIBUTE_NORETURN __attribute__((__noreturn__))
+#endif /* ATTRIBUTE_NORETURN */
 
 #define DEFAULT_IRMAPFILE  "./asm2re.map"
 #define DEFAULT_TRACEFILE "proctrace.out"

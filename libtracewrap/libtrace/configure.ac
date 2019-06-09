@@ -28,7 +28,7 @@ if test "x${CC}" = "x"; then
   test -z "${CC}"
   AC_PROG_CC
 else
-  test ! -z "${CC}" && export CC
+  test -n "${CC}" && test -x "${CC}" && export CC
   AC_SUBST([CC])
 fi
 if test "x${CPP}" = "x"; then
@@ -39,7 +39,7 @@ if test "x${RANLIB}" = "x"; then
   test -z "${RANLIB}"
   AC_PROG_RANLIB
 else
-  test ! -z "${RANLIB}" && export RANLIB
+  test -n "${RANLIB}" && test -x "${RANLIB}" && export RANLIB
   AC_SUBST([RANLIB])
 fi
 AC_PROG_OCAML
@@ -51,6 +51,11 @@ AC_CHECK_LIB([pthread],[pthread_create])dnl
 # Checks for header files.
 AC_HEADER_STDBOOL dnl# also "_CHECK"s it
 AC_CHECK_HEADERS([stdio.h])dnl
+
+if test "x${acl_cv_wp}" = "x"; then
+  test -z "${acl_cv_wp}" && export acl_cv_wp='-Wp,'
+fi
+AC_SUBST([acl_cv_wp])dnl
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_C_BIGENDIAN

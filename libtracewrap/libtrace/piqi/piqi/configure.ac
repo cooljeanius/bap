@@ -17,7 +17,7 @@ if test "x${CC}" = "x"; then
   test -z "${CC}"
   AC_PROG_CC
 else
-  test ! -z "${CC}" && export CC
+  test -n "${CC}" && test -x "${CC}" && export CC
   AC_SUBST([CC])
 fi
 if test "x${CPP}" = "x"; then
@@ -49,10 +49,12 @@ else
 fi
 
 # Checks for libraries.
-# FIXME: Replace `main' with a function in `-lprotobuf':
-AC_CHECK_LIB([protobuf],[main])dnl
-# FIXME: Replace `main' with a function in `-lprotoc':
-AC_CHECK_LIB([protoc],[main])dnl
+AC_CHECK_LIB([protobuf],[protobuf_c_version],[],[
+  AC_CHECK_LIB([protobuf],[main])dnl
+])dnl
+AC_CHECK_LIB([protoc],[protobuf_c_version],[],[
+  AC_CHECK_LIB([protoc],[main])dnl
+])dnl
 AC_CHECK_LIB([pthread],[pthread_create])dnl
 
 # Checks for header files.

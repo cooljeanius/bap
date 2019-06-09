@@ -47,43 +47,43 @@ AC_ARG_WITH([protoc],
 # Checks for programs.
 AC_USE_SYSTEM_EXTENSIONS
 AM_PROG_AR
-if test "x${AWK}" = "x"; then
+AS_IF([test "x${AWK}" = "x"],[
   test -z "${AWK}"
   AC_PROG_AWK
-else
-  test ! -z "${AWK}" && export AWK
+],[
+  test -n "${AWK}" && test -x "${AWK}" && export AWK
   AC_SUBST([AWK])
-fi
-if test "x${CC}" = "x"; then
+])
+AS_IF([test "x${CC}" = "x"],[
   test -z "${CC}"
   AC_PROG_CC
-else
-  test ! -z "${CC}" && export CC
+],[
+  test -n "${CC}" && test -x "${CC}" && export CC
   AC_SUBST([CC])
-fi
+])
 AC_PROG_CXX
 AC_LANG([C++])
-if test "x${CPP}" = "x"; then
+AS_IF([test "x${CPP}" = "x"],[
   test -z "${CPP}"
   AC_PROG_CPP
-fi
-if test "x${INSTALL}" = "x"; then
+])
+AS_IF([test "x${INSTALL}" = "x"],[
   test -z "${INSTALL}"
   AC_PROG_INSTALL
   AM_PROG_INSTALL_STRIP
-else
-  test ! -z "${INSTALL}" && export INSTALL
+],[
+  test -n "${INSTALL}" && test -x "${INSTALL}" && export INSTALL
   AC_SUBST([INSTALL])
-fi
+])
 AC_PROG_LN_S
-if test "x${MAKE}" = "x"; then
+AS_IF([test "x${MAKE}" = "x"],[
   test -z "${MAKE}"
   AC_PATH_PROGS([MAKE],[make gmake gnumake remake])
   AC_PROG_MAKE_SET
-else
-  test ! -z "${MAKE}" && export MAKE
+],[
+  test -n "${MAKE}" && test -x "${MAKE}" && export MAKE
   AC_SUBST([MAKE])
-fi
+])
 ACX_USE_SYSTEM_EXTENSIONS
 AM_CONDITIONAL([GCC],[test "${GCC}" = yes]) # let Makefile know we are gcc
 AC_PROG_GCC_TRADITIONAL
@@ -93,7 +93,7 @@ AC_MSG_CHECKING([C++ compiler flags...])
 AS_IF([test "x${ac_cv_env_CXXFLAGS_set}" = "x"],[
   AS_IF([test "${GCC}" = "yes"],[
     PROTOBUF_OPT_FLAG="-O2"
-    CXXFLAGS="${CXXFLAGS} -g"
+    CXXFLAGS="${CXXFLAGS} -g -std=gnu++11"
   ])dnl
 
   # Protocol Buffers contains several checks intended to be used only
@@ -119,19 +119,24 @@ LT_LANG([Java])dnl
 dnl# temporarily set this while I update everything libtool-related:
 LT_PREREQ([2.4.6])dnl
 
-if test "x${RANLIB}" = "x"; then
+AS_IF([test "x${RANLIB}" = "x"],[
   test -z "${RANLIB}"
   AC_PROG_RANLIB
-else
-  test ! -z "${RANLIB}" && export RANLIB
-  AC_SUBST([RANLIB])
-fi
+],[
+  test -n "${RANLIB}" && test -x "${RANLIB}" && export RANLIB
+  AC_SUBST([RANLIB])dnl
+])dnl
 
 # Checks for header files.
 AC_HEADER_DIRENT
 AC_HEADER_STDBOOL dnl# Also "_CHECK"s it
 AC_HEADER_SYS_WAIT
-AC_CHECK_HEADERS([fcntl.h float.h limits.h locale.h stdio.h sys/param.h])
+AC_CHECK_HEADERS([fcntl.h float.h limits.h locale.h stdio.h sys/param.h])dnl
+
+if test "x${acl_cv_wp}" = "x"; then
+  test -z "${acl_cv_wp}" && export acl_cv_wp='-Wp,'
+fi
+AC_SUBST([acl_cv_wp])dnl
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_C_BIGENDIAN

@@ -646,6 +646,7 @@ XMALLOC_ZERO_CFLAGS
 MALLOC_ZERO_CFLAGS
 BAP_DIR
 ASMIR_DIR
+acl_cv_wp
 INCDIRS
 VEX_DIR
 LIBM
@@ -658,6 +659,8 @@ HAVE_LLVM_AC
 LLVM_PACKAGE
 HAVE_PIN_FALSE
 HAVE_PIN_TRUE
+GCC_FALSE
+GCC_TRUE
 PKG_CONFIG_LIBDIR
 PKG_CONFIG_PATH
 PKG_CONFIG
@@ -742,7 +745,6 @@ am__nodep
 AMDEPBACKSLASH
 AMDEP_FALSE
 AMDEP_TRUE
-am__quote
 am__include
 DEPDIR
 am__untar
@@ -827,7 +829,8 @@ PACKAGE_VERSION
 PACKAGE_TARNAME
 PACKAGE_NAME
 PATH_SEPARATOR
-SHELL'
+SHELL
+am__quote'
 ac_subst_files=''
 ac_user_opts='
 enable_option_checking
@@ -4423,7 +4426,7 @@ $as_echo "$as_me: autobuild hostname... $hostname" >&6;}
 $as_echo "$as_me: autobuild timestamp... $date" >&6;}
   fi
 
-am__api_version='1.15'
+am__api_version='1.16'
 
 # Find a good install program.  We prefer a C program (faster),
 # so one script is as good as another.  But avoid the broken or
@@ -4849,45 +4852,45 @@ DEPDIR="${am__leading_dot}deps"
 
 ac_config_commands="$ac_config_commands depfiles"
 
-
-am_make=${MAKE-make}
-cat > confinc << 'END'
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking whether ${MAKE-make} supports the include directive" >&5
+$as_echo_n "checking whether ${MAKE-make} supports the include directive... " >&6; }
+cat > confinc.mk << 'END'
 am__doit:
-	@echo this is the am__doit target
+	@echo this is the am__doit target >confinc.out
 .PHONY: am__doit
 END
-# If we don't find an include directive, just comment out the code.
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for style of include used by $am_make" >&5
-$as_echo_n "checking for style of include used by $am_make... " >&6; }
 am__include="#"
 am__quote=
-_am_result=none
-# First try GNU make style include.
-echo "include confinc" > confmf
-# Ignore all kinds of additional output from 'make'.
-case `$am_make -s -f confmf 2> /dev/null` in #(
-*the\ am__doit\ target*)
-  am__include=include
-  am__quote=
-  _am_result=GNU
-  ;;
-esac
-# Now try BSD make style include.
-if test "$am__include" = "#"; then
-   echo '.include "confinc"' > confmf
-   case `$am_make -s -f confmf 2> /dev/null` in #(
-   *the\ am__doit\ target*)
-     am__include=.include
-     am__quote="\""
-     _am_result=BSD
+# BSD make does it like this.
+echo '.include "confinc.mk" # ignored' > confmf.BSD
+# Other make implementations (GNU, Solaris 10, AIX) do it like this.
+echo 'include confinc.mk # ignored' > confmf.GNU
+_am_result=no
+for s in GNU BSD; do
+  { echo "$as_me:$LINENO: ${MAKE-make} -f confmf.$s && cat confinc.out" >&5
+   (${MAKE-make} -f confmf.$s && cat confinc.out) >&5 2>&5
+   ac_status=$?
+   echo "$as_me:$LINENO: \$? = $ac_status" >&5
+   (exit $ac_status); }
+  case $?:`cat confinc.out 2>/dev/null` in #(
+  '0:this is the am__doit target') :
+    case $s in #(
+  BSD) :
+    am__include='.include' am__quote='"' ;; #(
+  *) :
+    am__include='include' am__quote='' ;;
+esac ;; #(
+  *) :
      ;;
-   esac
-fi
-
-
-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $_am_result" >&5
-$as_echo "$_am_result" >&6; }
-rm -f confinc confmf
+esac
+  if test "$am__include" != "#"; then
+    _am_result="yes ($s style)"
+    break
+  fi
+done
+rm -f confinc.* confmf.*
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: ${_am_result}" >&5
+$as_echo "${_am_result}" >&6; }
 
 # Check whether --enable-dependency-tracking was given.
 if test "${enable_dependency_tracking+set}" = set; then :
@@ -4999,8 +5002,8 @@ MAKEINFO=${MAKEINFO-"${am_missing_run}makeinfo"}
 
 # For better backward compatibility.  To be removed once Automake 1.9.x
 # dies out for good.  For more background, see:
-# <http://lists.gnu.org/archive/html/automake/2012-07/msg00001.html>
-# <http://lists.gnu.org/archive/html/automake/2012-07/msg00014.html>
+# <https://lists.gnu.org/archive/html/automake/2012-07/msg00001.html>
+# <https://lists.gnu.org/archive/html/automake/2012-07/msg00014.html>
 mkdir_p='$(MKDIR_P)'
 
 # We need awk for the "check" target (and possibly the TAP driver).  The
@@ -5179,7 +5182,7 @@ END
 Aborting the configuration process, to ensure you take notice of the issue.
 
 You can download and install GNU coreutils to get an 'rm' implementation
-that behaves properly: <http://www.gnu.org/software/coreutils/>.
+that behaves properly: <https://www.gnu.org/software/coreutils/>.
 
 If you want to complete the configuration process using your problematic
 'rm' anyway, export the environment variable ACCEPT_INFERIOR_RM_PROGRAM
@@ -6101,7 +6104,7 @@ fi
 done
 
 else
-  test ! -z "${AWK}" && export AWK
+  test -n "${AWK}" && test -x "${AWK}" && export AWK
 
 fi
 if test "x${CC}" = "x"; then
@@ -6705,7 +6708,7 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
 else
-  test ! -z "${CC}" && export CC
+  test -n "${CC}" && test -x "${CC}" && export CC
 
 fi
 if test "x${CPP}" = "x"; then
@@ -6848,7 +6851,7 @@ ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 else
-  test ! -z "${CPP}"
+  test -n "${CPP}" && test -x "${CPP}" && echo "CPP set to: '${CPP}'"
 
 
 for ac_prog in cpp
@@ -7053,7 +7056,7 @@ fi
 INSTALL_STRIP_PROGRAM="\$(install_sh) -c -s"
 
 else
-  test ! -z "${INSTALL}" && export INSTALL
+  test -n "${INSTALL}" && test -x "${INSTALL}" && export INSTALL
 
 fi
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether ln -s works" >&5
@@ -7146,7 +7149,7 @@ $as_echo "no" >&6; }
 fi
 
 else
-  test ! -z "${MAKE}" && export MAKE
+  test -n "${MAKE}" && test -x "${MAKE}" && export MAKE
 
 fi
   for ac_prog in gawk mawk nawk awk
@@ -22220,7 +22223,7 @@ else
 fi
 
 else
-  test ! -z "${RANLIB}" && export RANLIB
+  test -n "${RANLIB}" && test -x "${RANLIB}" && export RANLIB
 
 fi
 
@@ -22343,6 +22346,15 @@ $as_echo "no" >&6; }
 		PKG_CONFIG=""
 	fi
 fi
+
+ if test "x${GCC}" = "xyes"; then
+  GCC_TRUE=
+  GCC_FALSE='#'
+else
+  GCC_TRUE='#'
+  GCC_FALSE=
+fi
+ # let Makefiles know we are gcc
 
 # Check for Z3:
 
@@ -23077,8 +23089,52 @@ fi
 fi
 
 # More checks for libraries
-# FIXME: Replace `main' with a function in `-lasmir':
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -lasmir" >&5
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for asmir_open_file in -lasmir" >&5
+$as_echo_n "checking for asmir_open_file in -lasmir... " >&6; }
+if ${ac_cv_lib_asmir_asmir_open_file+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lasmir  $LIBS"
+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+/* Override any GCC internal prototype to avoid an error.
+   Use char because int might match the return type of a GCC
+   builtin and then its argument prototype would still apply.  */
+#ifdef __cplusplus
+extern "C"
+#endif
+char asmir_open_file ();
+int
+main ()
+{
+return asmir_open_file ();
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  ac_cv_lib_asmir_asmir_open_file=yes
+else
+  ac_cv_lib_asmir_asmir_open_file=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_asmir_asmir_open_file" >&5
+$as_echo "$ac_cv_lib_asmir_asmir_open_file" >&6; }
+if test "x$ac_cv_lib_asmir_asmir_open_file" = xyes; then :
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBASMIR 1
+_ACEOF
+
+  LIBS="-lasmir $LIBS"
+
+else
+
+  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -lasmir" >&5
 $as_echo_n "checking for main in -lasmir... " >&6; }
 if ${ac_cv_lib_asmir_main+:} false; then :
   $as_echo_n "(cached) " >&6
@@ -23114,6 +23170,8 @@ if test "x$ac_cv_lib_asmir_main" = xyes; then :
 _ACEOF
 
   LIBS="-lasmir $LIBS"
+
+fi
 
 fi
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for printf in -lc" >&5
@@ -23380,8 +23438,52 @@ fi
 esac
 
 
-# FIXME: Replace `main' with a function in `-lopcodes':
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -lopcodes" >&5
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for print_insn in -lopcodes" >&5
+$as_echo_n "checking for print_insn in -lopcodes... " >&6; }
+if ${ac_cv_lib_opcodes_print_insn+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lopcodes  $LIBS"
+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+/* Override any GCC internal prototype to avoid an error.
+   Use char because int might match the return type of a GCC
+   builtin and then its argument prototype would still apply.  */
+#ifdef __cplusplus
+extern "C"
+#endif
+char print_insn ();
+int
+main ()
+{
+return print_insn ();
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  ac_cv_lib_opcodes_print_insn=yes
+else
+  ac_cv_lib_opcodes_print_insn=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_opcodes_print_insn" >&5
+$as_echo "$ac_cv_lib_opcodes_print_insn" >&6; }
+if test "x$ac_cv_lib_opcodes_print_insn" = xyes; then :
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBOPCODES 1
+_ACEOF
+
+  LIBS="-lopcodes $LIBS"
+
+else
+
+  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -lopcodes" >&5
 $as_echo_n "checking for main in -lopcodes... " >&6; }
 if ${ac_cv_lib_opcodes_main+:} false; then :
   $as_echo_n "(cached) " >&6
@@ -23419,8 +23521,109 @@ _ACEOF
   LIBS="-lopcodes $LIBS"
 
 fi
-# FIXME: Replace `main' with a function in `-lprotobuf':
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -lprotobuf" >&5
+
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for library containing disassemble" >&5
+$as_echo_n "checking for library containing disassemble... " >&6; }
+if ${ac_cv_search_disassemble+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  ac_func_search_save_LIBS=$LIBS
+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+/* Override any GCC internal prototype to avoid an error.
+   Use char because int might match the return type of a GCC
+   builtin and then its argument prototype would still apply.  */
+#ifdef __cplusplus
+extern "C"
+#endif
+char disassemble ();
+int
+main ()
+{
+return disassemble ();
+  ;
+  return 0;
+}
+_ACEOF
+for ac_lib in '' bfd opcodes; do
+  if test -z "$ac_lib"; then
+    ac_res="none required"
+  else
+    ac_res=-l$ac_lib
+    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
+  fi
+  if ac_fn_c_try_link "$LINENO"; then :
+  ac_cv_search_disassemble=$ac_res
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext
+  if ${ac_cv_search_disassemble+:} false; then :
+  break
+fi
+done
+if ${ac_cv_search_disassemble+:} false; then :
+
+else
+  ac_cv_search_disassemble=no
+fi
+rm conftest.$ac_ext
+LIBS=$ac_func_search_save_LIBS
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_search_disassemble" >&5
+$as_echo "$ac_cv_search_disassemble" >&6; }
+ac_res=$ac_cv_search_disassemble
+if test "$ac_res" != no; then :
+  test "$ac_res" = "none required" || LIBS="$ac_res $LIBS"
+
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for protobuf_c_version in -lprotobuf" >&5
+$as_echo_n "checking for protobuf_c_version in -lprotobuf... " >&6; }
+if ${ac_cv_lib_protobuf_protobuf_c_version+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lprotobuf  $LIBS"
+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+/* Override any GCC internal prototype to avoid an error.
+   Use char because int might match the return type of a GCC
+   builtin and then its argument prototype would still apply.  */
+#ifdef __cplusplus
+extern "C"
+#endif
+char protobuf_c_version ();
+int
+main ()
+{
+return protobuf_c_version ();
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  ac_cv_lib_protobuf_protobuf_c_version=yes
+else
+  ac_cv_lib_protobuf_protobuf_c_version=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_protobuf_protobuf_c_version" >&5
+$as_echo "$ac_cv_lib_protobuf_protobuf_c_version" >&6; }
+if test "x$ac_cv_lib_protobuf_protobuf_c_version" = xyes; then :
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBPROTOBUF 1
+_ACEOF
+
+  LIBS="-lprotobuf $LIBS"
+
+else
+
+  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -lprotobuf" >&5
 $as_echo_n "checking for main in -lprotobuf... " >&6; }
 if ${ac_cv_lib_protobuf_main+:} false; then :
   $as_echo_n "(cached) " >&6
@@ -23456,6 +23659,8 @@ if test "x$ac_cv_lib_protobuf_main" = xyes; then :
 _ACEOF
 
   LIBS="-lprotobuf $LIBS"
+
+fi
 
 fi
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for pthread_create in -lpthread" >&5
@@ -23502,8 +23707,52 @@ _ACEOF
   LIBS="-lpthread $LIBS"
 
 fi
-# FIXME: Replace `main' with a function in `-lvex':
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -lvex" >&5
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for LibVEX_default_VexControl in -lvex" >&5
+$as_echo_n "checking for LibVEX_default_VexControl in -lvex... " >&6; }
+if ${ac_cv_lib_vex_LibVEX_default_VexControl+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lvex  $LIBS"
+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+/* Override any GCC internal prototype to avoid an error.
+   Use char because int might match the return type of a GCC
+   builtin and then its argument prototype would still apply.  */
+#ifdef __cplusplus
+extern "C"
+#endif
+char LibVEX_default_VexControl ();
+int
+main ()
+{
+return LibVEX_default_VexControl ();
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  ac_cv_lib_vex_LibVEX_default_VexControl=yes
+else
+  ac_cv_lib_vex_LibVEX_default_VexControl=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_vex_LibVEX_default_VexControl" >&5
+$as_echo "$ac_cv_lib_vex_LibVEX_default_VexControl" >&6; }
+if test "x$ac_cv_lib_vex_LibVEX_default_VexControl" = xyes; then :
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBVEX 1
+_ACEOF
+
+  LIBS="-lvex $LIBS"
+
+else
+
+  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -lvex" >&5
 $as_echo_n "checking for main in -lvex... " >&6; }
 if ${ac_cv_lib_vex_main+:} false; then :
   $as_echo_n "(cached) " >&6
@@ -23541,8 +23790,54 @@ _ACEOF
   LIBS="-lvex $LIBS"
 
 fi
-# FIXME: Replace `main' with a function in `-lstdc++':
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -lstdc++" >&5
+
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for __cxa_atexit in -lstdc++" >&5
+$as_echo_n "checking for __cxa_atexit in -lstdc++... " >&6; }
+if ${ac_cv_lib_stdcpp___cxa_atexit+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lstdc++  $LIBS"
+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+/* Override any GCC internal prototype to avoid an error.
+   Use char because int might match the return type of a GCC
+   builtin and then its argument prototype would still apply.  */
+#ifdef __cplusplus
+extern "C"
+#endif
+char __cxa_atexit ();
+int
+main ()
+{
+return __cxa_atexit ();
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  ac_cv_lib_stdcpp___cxa_atexit=yes
+else
+  ac_cv_lib_stdcpp___cxa_atexit=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_stdcpp___cxa_atexit" >&5
+$as_echo "$ac_cv_lib_stdcpp___cxa_atexit" >&6; }
+if test "x$ac_cv_lib_stdcpp___cxa_atexit" = xyes; then :
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBSTDC__ 1
+_ACEOF
+
+  LIBS="-lstdc++ $LIBS"
+
+else
+
+  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -lstdc++" >&5
 $as_echo_n "checking for main in -lstdc++... " >&6; }
 if ${ac_cv_lib_stdcpp_main+:} false; then :
   $as_echo_n "(cached) " >&6
@@ -23581,13 +23876,19 @@ _ACEOF
 
 fi
 
+fi
+
 LDFLAGS="${SAVE_LDFLAGS}"
 
 
 
+if test "x${acl_cv_wp}" = "x"; then
+  test -z "${acl_cv_wp}" && export acl_cv_wp='-Wp,'
+fi
+
 rm -f libasmir/makefile.inc
 echo "VEX_DIR=${VEX_DIR}" >> libasmir/makefile.inc
-echo "LIBASMIR_CXXFLAGS=-I${VEX_DIR}/pub -I`pwd`/src/include ${CXXFLAGS}" >> libasmir/makefile.inc
+echo "LIBASMIR_CXXFLAGS=${acl_cv_wp}-I${VEX_DIR}/pub ${acl_cv_wp}-I`pwd`/src/include ${CXXFLAGS}" >> libasmir/makefile.inc
 echo "LIBASMIR_LDFLAGS=-L${VEX_DIR} -L`pwd`/src ${LDFLAGS}" >> libasmir/makefile.inc
 echo "LIBASMIR_LIBS=-lasmir -lvex -lbfd -ldl -liberty -lz" >> libasmir/makefile.inc
 echo "CLIBS=asmir vex opcodes bfd z iberty stdc++" >> libasmir/makefile.inc
@@ -23624,9 +23925,10 @@ done
 $as_echo_n "checking other headers... " >&6; }
 { $as_echo "$as_me:${as_lineno-$LINENO}: result:  " >&5
 $as_echo " " >&6; }
-for ac_header in float.h limits.h locale.h malloc.h malloc/malloc.h \
-                  mem/memory.h stddef.h sys/file.h sys/inttypes.h \
-                  sys/ioctl.h sys/socket.h sys/time.h sys/timeb.h wchar.h
+for ac_header in dis-asm.h float.h limits.h locale.h malloc.h \
+                  malloc/malloc.h mem/memory.h stddef.h sys/file.h \
+                  sys/inttypes.h sys/ioctl.h sys/socket.h sys/time.h \
+                  sys/timeb.h wchar.h
 do :
   as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
 ac_fn_c_check_header_mongrel "$LINENO" "$ac_header" "$as_ac_Header" "$ac_includes_default"
@@ -25550,10 +25852,10 @@ fi
 
 fi
 
-for ac_func in alarm atexit bzero dup2 floor gettimeofday memset munmap \
-                printf realpath rint scanf setenv setlocale sqrt socket \
-                strchr strdup strerror strrchr strstr strtol strtoul \
-                strtoull sysinfo system uname
+for ac_func in alarm atexit bzero disassembler dup2 floor gettimeofday \
+                memset munmap printf realpath rint scanf setenv setlocale \
+                sqrt socket strchr strdup strerror strrchr strstr strtol \
+                strtoul strtoull sysinfo system uname
 do :
   as_ac_var=`$as_echo "ac_cv_func_$ac_func" | $as_tr_sh`
 ac_fn_c_check_func "$LINENO" "$ac_func" "$as_ac_var"
@@ -25564,6 +25866,112 @@ _ACEOF
 
 fi
 done
+
+ac_fn_c_check_decl "$LINENO" "disassembler" "ac_cv_have_decl_disassembler" "
+#ifdef HAVE_DIS_ASM_H
+# include <dis-asm.h>
+#else
+# if defined(__GNUC__) && !defined(__STRICT_ANSI__)
+#  warning \"conftest for disassembler expects <dis-asm.h> to be included.\"
+# endif /* __GNUC__ && !__STRICT_ANSI__ */
+#endif /* HAVE_DIS_ASM_H */
+
+"
+if test "x$ac_cv_have_decl_disassembler" = xyes; then :
+  ac_have_decl=1
+else
+  ac_have_decl=0
+fi
+
+cat >>confdefs.h <<_ACEOF
+#define HAVE_DECL_DISASSEMBLER $ac_have_decl
+_ACEOF
+
+if test "x${ac_cv_func_disassembler}" = "xyes" || test "x${ac_cv_have_decl_disassembler}" = "xyes" || test "x${ac_cv_search_disassembler}" != "xno"; then
+  { $as_echo "$as_me:${as_lineno-$LINENO}: checking how many arguments disassembler function takes" >&5
+$as_echo_n "checking how many arguments disassembler function takes... " >&6; }
+if ${ac_cv_func_disassembler_num_args+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+#ifdef HAVE_DIS_ASM_H
+# include <dis-asm.h>
+#else
+# if defined(__GNUC__) && !defined(__STRICT_ANSI__)
+#  warning "conftest for disassembler expects <dis-asm.h> to be included."
+# endif /* __GNUC__ && !__STRICT_ANSI__ */
+#endif /* HAVE_DIS_ASM_H */
+
+int
+main ()
+{
+
+bfd *abfd = NULL;
+disassembler(abfd);
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"; then :
+  ac_cv_func_disassembler_num_args=1
+else
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+#ifdef HAVE_DIS_ASM_H
+# include <dis-asm.h>
+#else
+# if defined(__GNUC__) && !defined(__STRICT_ANSI__)
+#  warning "conftest for disassembler expects <dis-asm.h> to be included."
+# endif /* __GNUC__ && !__STRICT_ANSI__ */
+#endif /* HAVE_DIS_ASM_H */
+
+int
+main ()
+{
+
+bfd *abfd = NULL;
+enum bfd_architecture arc = bfd_arch_unknown;
+bfd_boolean big = TRUE;
+unsigned long mach = 0UL;
+disassembler(arc, big, mach, abfd);
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"; then :
+  ac_cv_func_disassembler_num_args=4
+else
+  ac_cv_func_disassembler_num_args=unknown
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_func_disassembler_num_args" >&5
+$as_echo "$ac_cv_func_disassembler_num_args" >&6; }
+
+  if test "x${ac_cv_func_disassembler_num_args}" = "x1"; then
+    $as_echo "#define DISASSEMBLER_NUM_ARGS 1" >>confdefs.h
+
+  elif test "x${ac_cv_func_disassembler_num_args}" = "x4"; then
+    $as_echo "#define DISASSEMBLER_NUM_ARGS 4" >>confdefs.h
+
+  elif test "x${ac_cv_func_disassembler_num_args}" = "xunknown"; then
+    { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: disassembler should take either 1 arg or 4 args" >&5
+$as_echo "$as_me: WARNING: disassembler should take either 1 arg or 4 args" >&2;}
+  else
+    { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: disassembler should take some amount of args" >&5
+$as_echo "$as_me: WARNING: disassembler should take some amount of args" >&2;}
+  fi
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: will want disassembler function somehow" >&5
+$as_echo "$as_me: WARNING: will want disassembler function somehow" >&2;}
+fi
 
 # Check for library function versions
 # (N/A)
@@ -25716,6 +26124,10 @@ Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${am__fastdepCXX_TRUE}" && test -z "${am__fastdepCXX_FALSE}"; then
   as_fn_error $? "conditional \"am__fastdepCXX\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${GCC_TRUE}" && test -z "${GCC_FALSE}"; then
+  as_fn_error $? "conditional \"GCC\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${HAVE_PIN_TRUE}" && test -z "${HAVE_PIN_FALSE}"; then
@@ -26309,7 +26721,7 @@ cat >>$CONFIG_STATUS <<_ACEOF || ac_write_fail=1
 #
 # INIT-COMMANDS
 #
-AMDEP_TRUE="$AMDEP_TRUE" ac_aux_dir="$ac_aux_dir"
+AMDEP_TRUE="$AMDEP_TRUE" MAKE="${MAKE-make}"
 
 
 # The HP-UX ksh and POSIX shell print the target directory to stdout
@@ -27484,29 +27896,35 @@ $as_echo "$as_me: executing $ac_file commands" >&6;}
   # Older Autoconf quotes --file arguments for eval, but not when files
   # are listed without --file.  Let's play safe and only enable the eval
   # if we detect the quoting.
-  case $CONFIG_FILES in
-  *\'*) eval set x "$CONFIG_FILES" ;;
-  *)   set x $CONFIG_FILES ;;
-  esac
+  # TODO: see whether this extra hack can be removed once we start
+  # requiring Autoconf 2.70 or later.
+  case $CONFIG_FILES in #(
+  *\'*) :
+    eval set x "$CONFIG_FILES" ;; #(
+  *) :
+    set x $CONFIG_FILES ;; #(
+  *) :
+     ;;
+esac
   shift
-  for mf
+  # Used to flag and report bootstrapping failures.
+  am_rc=0
+  for am_mf
   do
     # Strip MF so we end up with the name of the file.
-    mf=`echo "$mf" | sed -e 's/:.*$//'`
-    # Check whether this is an Automake generated Makefile or not.
-    # We used to match only the files named 'Makefile.in', but
-    # some people rename them; so instead we look at the file content.
-    # Grep'ing the first line is not enough: some people post-process
-    # each Makefile.in and add a new line on top of each file to say so.
-    # Grep'ing the whole file is not good either: AIX grep has a line
+    am_mf=`$as_echo "$am_mf" | sed -e 's/:.*$//'`
+    # Check whether this is an Automake generated Makefile which includes
+    # dependency-tracking related rules and includes.
+    # Grep'ing the whole file directly is not great: AIX grep has a line
     # limit of 2048, but all sed's we know have understand at least 4000.
-    if sed -n 's,^#.*generated by automake.*,X,p' "$mf" | grep X >/dev/null 2>&1; then
-      dirpart=`$as_dirname -- "$mf" ||
-$as_expr X"$mf" : 'X\(.*[^/]\)//*[^/][^/]*/*$' \| \
-	 X"$mf" : 'X\(//\)[^/]' \| \
-	 X"$mf" : 'X\(//\)$' \| \
-	 X"$mf" : 'X\(/\)' \| . 2>/dev/null ||
-$as_echo X"$mf" |
+    sed -n 's,^am--depfiles:.*,X,p' "$am_mf" | grep X >/dev/null 2>&1 \
+      || continue
+    am_dirpart=`$as_dirname -- "$am_mf" ||
+$as_expr X"$am_mf" : 'X\(.*[^/]\)//*[^/][^/]*/*$' \| \
+	 X"$am_mf" : 'X\(//\)[^/]' \| \
+	 X"$am_mf" : 'X\(//\)$' \| \
+	 X"$am_mf" : 'X\(/\)' \| . 2>/dev/null ||
+$as_echo X"$am_mf" |
     sed '/^X\(.*[^/]\)\/\/*[^/][^/]*\/*$/{
 	    s//\1/
 	    q
@@ -27524,53 +27942,48 @@ $as_echo X"$mf" |
 	    q
 	  }
 	  s/.*/./; q'`
-    else
-      continue
-    fi
-    # Extract the definition of DEPDIR, am__include, and am__quote
-    # from the Makefile without running 'make'.
-    DEPDIR=`sed -n 's/^DEPDIR = //p' < "$mf"`
-    test -z "$DEPDIR" && continue
-    am__include=`sed -n 's/^am__include = //p' < "$mf"`
-    test -z "$am__include" && continue
-    am__quote=`sed -n 's/^am__quote = //p' < "$mf"`
-    # Find all dependency output files, they are included files with
-    # $(DEPDIR) in their names.  We invoke sed twice because it is the
-    # simplest approach to changing $(DEPDIR) to its actual value in the
-    # expansion.
-    for file in `sed -n "
-      s/^$am__include $am__quote\(.*(DEPDIR).*\)$am__quote"'$/\1/p' <"$mf" | \
-	 sed -e 's/\$(DEPDIR)/'"$DEPDIR"'/g'`; do
-      # Make sure the directory exists.
-      test -f "$dirpart/$file" && continue
-      fdir=`$as_dirname -- "$file" ||
-$as_expr X"$file" : 'X\(.*[^/]\)//*[^/][^/]*/*$' \| \
-	 X"$file" : 'X\(//\)[^/]' \| \
-	 X"$file" : 'X\(//\)$' \| \
-	 X"$file" : 'X\(/\)' \| . 2>/dev/null ||
-$as_echo X"$file" |
-    sed '/^X\(.*[^/]\)\/\/*[^/][^/]*\/*$/{
+    am_filepart=`$as_basename -- "$am_mf" ||
+$as_expr X/"$am_mf" : '.*/\([^/][^/]*\)/*$' \| \
+	 X"$am_mf" : 'X\(//\)$' \| \
+	 X"$am_mf" : 'X\(/\)' \| . 2>/dev/null ||
+$as_echo X/"$am_mf" |
+    sed '/^.*\/\([^/][^/]*\)\/*$/{
 	    s//\1/
 	    q
 	  }
-	  /^X\(\/\/\)[^/].*/{
+	  /^X\/\(\/\/\)$/{
 	    s//\1/
 	    q
 	  }
-	  /^X\(\/\/\)$/{
-	    s//\1/
-	    q
-	  }
-	  /^X\(\/\).*/{
+	  /^X\/\(\/\).*/{
 	    s//\1/
 	    q
 	  }
 	  s/.*/./; q'`
-      as_dir=$dirpart/$fdir; as_fn_mkdir_p
-      # echo "creating $dirpart/$file"
-      echo '# dummy' > "$dirpart/$file"
-    done
+    { echo "$as_me:$LINENO: cd "$am_dirpart" \
+      && sed -e '/# am--include-marker/d' "$am_filepart" \
+        | $MAKE -f - am--depfiles" >&5
+   (cd "$am_dirpart" \
+      && sed -e '/# am--include-marker/d' "$am_filepart" \
+        | $MAKE -f - am--depfiles) >&5 2>&5
+   ac_status=$?
+   echo "$as_me:$LINENO: \$? = $ac_status" >&5
+   (exit $ac_status); } || am_rc=$?
   done
+  if test $am_rc -ne 0; then
+    { { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
+$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
+as_fn_error $? "Something went wrong bootstrapping makefile fragments
+    for automatic dependency tracking.  Try re-running configure with the
+    '--disable-dependency-tracking' option to at least be able to build
+    the package (albeit without support for automatic dependency tracking).
+See \`config.log' for more details" "$LINENO" 5; }
+  fi
+  { am_dirpart=; unset am_dirpart;}
+  { am_filepart=; unset am_filepart;}
+  { am_mf=; unset am_mf;}
+  { am_rc=; unset am_rc;}
+  rm -f conftest-deps.mk
 }
  ;;
     "libtool":C)

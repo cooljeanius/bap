@@ -17,7 +17,7 @@ if test "x${CC}" = "x"; then
   test -z "${CC}"
   AC_PROG_CC
 else
-  test ! -z "${CC}" && export CC
+  test -n "${CC}" && test -x "${CC}" && export CC
   AC_SUBST([CC])
 fi
 if test "x${CPP}" = "x"; then

@@ -48,7 +48,7 @@ if test "x${INSTALL}" = "x"; then
   AC_PROG_INSTALL
   AM_PROG_INSTALL_STRIP
 else
-  test ! -z "${INSTALL}" && export INSTALL
+  test -n "${INSTALL}" && test -x "${INSTALL}" && export INSTALL
   AC_SUBST([INSTALL])
 fi
 if test "x${MAKE}" = "x"; then
@@ -56,7 +56,7 @@ if test "x${MAKE}" = "x"; then
   AC_PATH_PROGS([MAKE],[make gmake gnumake remake])
   AC_PROG_MAKE_SET
 else
-  test ! -z "${MAKE}" && export MAKE
+  test -n "${MAKE}" && test -x "${MAKE}" && export MAKE
   AC_SUBST([MAKE])
 fi
 AC_PROG_SED
@@ -64,7 +64,7 @@ if test "x${CC}" = "x"; then
   test -z "${CC}"
   AC_PROG_CC
 else
-  test ! -z "${CC}" && export CC
+  test -n "${CC}" && test -x "${CC}" && export CC
   AC_SUBST([CC])
 fi
 if test "x${CPP}" = "x"; then

@@ -10,7 +10,9 @@ TEXFILES = $(wildcard *.tex) $(wildcard *.sty)\
 	$(wildcard fig/*.pdf)
 
 
-BIBFILES = $(wildcard bibtex/*.bib) 
+BIBFILES = $(wildcard bibtex/*.bib)
+
+SUBBDIRS = fig just-formals
 
 all: $(PAPERNAME).pdf 
 

@@ -6,6 +6,9 @@
 /* The normal alignment of `bfd_vma', in bytes. */
 #undef ALIGNOF_BFD_VMA
 
+/* number of arguments to the disassembler function */
+#undef DISASSEMBLER_NUM_ARGS
+
 /* Enable additional debugging at the expense of performance and size */
 #undef GNOME_ENABLE_DEBUG
 
@@ -21,9 +24,19 @@
 /* Define to 1 if you have the `bzero' function. */
 #undef HAVE_BZERO
 
+/* Define to 1 if you have the declaration of `disassembler', and to 0 if you
+   don't. */
+#undef HAVE_DECL_DISASSEMBLER
+
 /* Define to 1 if you have the declaration of `tzname', and to 0 if you don't.
    */
 #undef HAVE_DECL_TZNAME
+
+/* Define to 1 if you have the `disassembler' function. */
+#undef HAVE_DISASSEMBLER
+
+/* Define to 1 if you have the <dis-asm.h> header file. */
+#undef HAVE_DIS_ASM_H
 
 /* Define to 1 if you have the <dlfcn.h> header file. */
 #undef HAVE_DLFCN_H

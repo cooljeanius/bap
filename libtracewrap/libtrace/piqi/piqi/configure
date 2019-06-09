@@ -3544,7 +3544,7 @@ ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 else
-  test ! -z "${CC}" && export CC
+  test -n "${CC}" && test -x "${CC}" && export CC
 
 fi
 if test "x${CPP}" = "x"; then
@@ -4458,8 +4458,52 @@ else
 fi
 
 # Checks for libraries.
-# FIXME: Replace `main' with a function in `-lprotobuf':
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -lprotobuf" >&5
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for protobuf_c_version in -lprotobuf" >&5
+$as_echo_n "checking for protobuf_c_version in -lprotobuf... " >&6; }
+if ${ac_cv_lib_protobuf_protobuf_c_version+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lprotobuf  $LIBS"
+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+/* Override any GCC internal prototype to avoid an error.
+   Use char because int might match the return type of a GCC
+   builtin and then its argument prototype would still apply.  */
+#ifdef __cplusplus
+extern "C"
+#endif
+char protobuf_c_version ();
+int
+main ()
+{
+return protobuf_c_version ();
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  ac_cv_lib_protobuf_protobuf_c_version=yes
+else
+  ac_cv_lib_protobuf_protobuf_c_version=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_protobuf_protobuf_c_version" >&5
+$as_echo "$ac_cv_lib_protobuf_protobuf_c_version" >&6; }
+if test "x$ac_cv_lib_protobuf_protobuf_c_version" = xyes; then :
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBPROTOBUF 1
+_ACEOF
+
+  LIBS="-lprotobuf $LIBS"
+
+else
+
+  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -lprotobuf" >&5
 $as_echo_n "checking for main in -lprotobuf... " >&6; }
 if ${ac_cv_lib_protobuf_main+:} false; then :
   $as_echo_n "(cached) " >&6
@@ -4497,8 +4541,54 @@ _ACEOF
   LIBS="-lprotobuf $LIBS"
 
 fi
-# FIXME: Replace `main' with a function in `-lprotoc':
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -lprotoc" >&5
+
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for protobuf_c_version in -lprotoc" >&5
+$as_echo_n "checking for protobuf_c_version in -lprotoc... " >&6; }
+if ${ac_cv_lib_protoc_protobuf_c_version+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lprotoc  $LIBS"
+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+/* Override any GCC internal prototype to avoid an error.
+   Use char because int might match the return type of a GCC
+   builtin and then its argument prototype would still apply.  */
+#ifdef __cplusplus
+extern "C"
+#endif
+char protobuf_c_version ();
+int
+main ()
+{
+return protobuf_c_version ();
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  ac_cv_lib_protoc_protobuf_c_version=yes
+else
+  ac_cv_lib_protoc_protobuf_c_version=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_protoc_protobuf_c_version" >&5
+$as_echo "$ac_cv_lib_protoc_protobuf_c_version" >&6; }
+if test "x$ac_cv_lib_protoc_protobuf_c_version" = xyes; then :
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBPROTOC 1
+_ACEOF
+
+  LIBS="-lprotoc $LIBS"
+
+else
+
+  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -lprotoc" >&5
 $as_echo_n "checking for main in -lprotoc... " >&6; }
 if ${ac_cv_lib_protoc_main+:} false; then :
   $as_echo_n "(cached) " >&6
@@ -4534,6 +4624,8 @@ if test "x$ac_cv_lib_protoc_main" = xyes; then :
 _ACEOF
 
   LIBS="-lprotoc $LIBS"
+
+fi
 
 fi
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for pthread_create in -lpthread" >&5

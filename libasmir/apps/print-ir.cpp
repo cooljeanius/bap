@@ -57,7 +57,16 @@ void print_prog_insns( asm_program_t *prog )
     if (!sec->is_code)
       continue;
 
+#if (DISASSEMBLER_NUM_ARGS == 1)
     disassembler_ftype disas = disassembler(prog->abfd);
+#elif (DISASSEMBLER_NUM_ARGS == 4)
+    enum bfd_architecture arc = bfd_arch_unknown;
+    bfd_boolean big = TRUE;
+    unsigned long mach = 0UL;
+    disassembler_ftype disas = disassembler(arc, big, mach, prog->abfd);
+#else
+# error "need to know how many args disassembler takes"
+#endif /* DISASSEMBLER_NUM_ARGS */
     prog->disasm_info.fprintf_func = (fprintf_ftype)fprintf;
     prog->disasm_info.stream = stdout;
 

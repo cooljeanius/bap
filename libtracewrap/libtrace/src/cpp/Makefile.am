@@ -1,6 +1,7 @@
 ## automake Makefile for libtrace C++ sources
 
-AM_CXXFLAGS = -I./pb -I@LIBTRACE_DIR@/src/common -I@LIBTRACE_DIR@/protobuf/src $(CXXFLAGS)
+AM_CXXFLAGS = ${acl_cv_wp}-I./pb ${acl_cv_wp}-I@LIBTRACE_DIR@/src/common \
+  ${acl_cv_wp}-I@LIBTRACE_DIR@/protobuf/src $(CXXFLAGS)
 
 lib_LIBRARIES = libtrace.a
 libtrace_a_SOURCES = pb/frame.piqi.pb.h pb/frame.piqi.pb.cc trace.container.cpp

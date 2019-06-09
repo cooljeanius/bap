@@ -89,7 +89,7 @@ EXTRA_DIST += $(m4data_DATA)
 
 # We define global AM_CPPFLAGS as everything we compile includes from these
 # directories.
-AM_CPPFLAGS = -I$(srcdir) -I$(srcdir)/include
+AM_CPPFLAGS = ${acl_cv_wp}-I$(srcdir) ${acl_cv_wp}-I$(srcdir)/include
 
 # another global:
 AM_CXXFLAGS = -fpermissive

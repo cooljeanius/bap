@@ -104,10 +104,10 @@ void panic( string msg )
   ostringstream os;
   os << "Panic: " << msg;
   throw os.str().c_str();
-  /*
-    cerr << "Panic: " << msg << endl;
-    exit(1);
-  */
+#if 0
+  cerr << "Panic: " << msg << endl;
+  exit(1);
+#endif /* 0 */
 }
 
 

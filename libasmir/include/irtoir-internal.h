@@ -9,6 +9,7 @@
 
 #include <setjmp.h>
 
+#include "common.h"
 #include "irtoir.h"
 
 /* We need this for emit_mux/match_mux etc. */
@@ -27,7 +28,7 @@
 
 // functions internal to irtoir.cpp and irtoir-*.cpp
 
-void panic( string msg );
+void panic(string msg) ATTRIBUTE_NORETURN;
 
 reg_t IRType_to_reg_type( IRType type );
 reg_t regt_of_irexpr(IRSB *irbb, IRExpr *e);

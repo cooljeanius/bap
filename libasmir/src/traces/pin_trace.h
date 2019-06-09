@@ -72,7 +72,7 @@ namespace pintrace { // We will use namespace to avoid collision
 
      uint64_t frm_pos;
      // toc is a map from frame number to offset
-     std::auto_ptr<toc_map> toc;
+     std::auto_ptr<toc_map> toc; // FIXME: deprecated
      
    protected:
       std::ifstream infile;

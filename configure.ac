@@ -32,21 +32,21 @@ if test "x${AWK}" = "x"; then
   test -z "${AWK}"
   AC_PROG_AWK
 else
-  test ! -z "${AWK}" && export AWK
+  test -n "${AWK}" && test -x "${AWK}" && export AWK
   AC_SUBST([AWK])
 fi
 if test "x${CC}" = "x"; then
   test -z "${CC}"
   AC_PROG_CC
 else
-  test ! -z "${CC}" && export CC
+  test -n "${CC}" && test -x "${CC}" && export CC
   AC_SUBST([CC])
 fi
 if test "x${CPP}" = "x"; then
   test -z "${CPP}"
   AC_PROG_CPP
 else
-  test ! -z "${CPP}"
+  test -n "${CPP}" && test -x "${CPP}" && echo "CPP set to: '${CPP}'"
   XORG_PROG_RAWCPP([])
 fi
 if test "x${INSTALL}" = "x"; then
@@ -54,7 +54,7 @@ if test "x${INSTALL}" = "x"; then
   AC_PROG_INSTALL
   AM_PROG_INSTALL_STRIP
 else
-  test ! -z "${INSTALL}" && export INSTALL
+  test -n "${INSTALL}" && test -x "${INSTALL}" && export INSTALL
   AC_SUBST([INSTALL])
 fi
 AC_PROG_LN_S
@@ -63,7 +63,7 @@ if test "x${MAKE}" = "x"; then
   AC_PATH_PROGS([MAKE],[make gmake gnumake remake])
   AC_PROG_MAKE_SET
 else
-  test ! -z "${MAKE}" && export MAKE
+  test -n "${MAKE}" && test -x "${MAKE}" && export MAKE
   AC_SUBST([MAKE])
 fi
 AX_CHECK_GNU_MAKE
@@ -85,10 +85,12 @@ if test "x${RANLIB}" = "x"; then
   test -z "${RANLIB}"
   AC_PROG_RANLIB
 else
-  test ! -z "${RANLIB}" && export RANLIB
+  test -n "${RANLIB}" && test -x "${RANLIB}" && export RANLIB
   AC_SUBST([RANLIB])
 fi
 PKG_PROG_PKG_CONFIG
+
+AM_CONDITIONAL([GCC],[test "x${GCC}" = "xyes"]) # let Makefiles know we are gcc
 
 # Check for Z3:
 AC_ARG_WITH([z3],
@@ -289,21 +291,27 @@ AC_CHECK_LIB([z],[inflate],[],[
 ])dnl
 
 # More checks for libraries
-# FIXME: Replace `main' with a function in `-lasmir':
-AC_CHECK_LIB([asmir],[main])dnl
+AC_CHECK_LIB([asmir],[asmir_open_file],[],[
+  AC_CHECK_LIB([asmir],[main])dnl
+])dnl
 AC_CHECK_LIB([c],[printf])dnl
 AC_CHECK_LIB([dl],[dlsym])dnl
 AC_CHECK_LIB([m],[sqrt])dnl
 LT_LIB_M
-# FIXME: Replace `main' with a function in `-lopcodes':
-AC_CHECK_LIB([opcodes],[main])dnl
-# FIXME: Replace `main' with a function in `-lprotobuf':
-AC_CHECK_LIB([protobuf],[main])dnl
+AC_CHECK_LIB([opcodes],[print_insn],[],[
+  AC_CHECK_LIB([opcodes],[main])dnl
+])dnl
+AC_SEARCH_LIBS([disassemble],[bfd opcodes])dnl
+AC_CHECK_LIB([protobuf],[protobuf_c_version],[],[
+  AC_CHECK_LIB([protobuf],[main])dnl
+])dnl
 AC_CHECK_LIB([pthread],[pthread_create])dnl
-# FIXME: Replace `main' with a function in `-lvex':
-AC_CHECK_LIB([vex],[main])dnl
-# FIXME: Replace `main' with a function in `-lstdc++':
-AC_CHECK_LIB([stdc++],[main])dnl
+AC_CHECK_LIB([vex],[LibVEX_default_VexControl],[],[
+  AC_CHECK_LIB([vex],[main])dnl
+])dnl
+AC_CHECK_LIB([stdc++],[__cxa_atexit],[],[
+  AC_CHECK_LIB([stdc++],[main])dnl
+])dnl
 
 LDFLAGS="${SAVE_LDFLAGS}"
 
@@ -311,9 +319,14 @@ AC_SUBST([VEX_DIR])dnl
 
 AC_SUBST([INCDIRS])dnl
 
+if test "x${acl_cv_wp}" = "x"; then
+  test -z "${acl_cv_wp}" && export acl_cv_wp='-Wp,'
+fi
+AC_SUBST([acl_cv_wp])dnl
+
 rm -f libasmir/makefile.inc
 echo "VEX_DIR=${VEX_DIR}" >> libasmir/makefile.inc
-echo "LIBASMIR_CXXFLAGS=-I${VEX_DIR}/pub -I`pwd`/src/include ${CXXFLAGS}" >> libasmir/makefile.inc
+echo "LIBASMIR_CXXFLAGS=${acl_cv_wp}-I${VEX_DIR}/pub ${acl_cv_wp}-I`pwd`/src/include ${CXXFLAGS}" >> libasmir/makefile.inc
 echo "LIBASMIR_LDFLAGS=-L${VEX_DIR} -L`pwd`/src ${LDFLAGS}" >> libasmir/makefile.inc
 echo "LIBASMIR_LIBS=-lasmir -lvex -lbfd -ldl -liberty -lz" >> libasmir/makefile.inc
 echo "CLIBS=asmir vex opcodes bfd z iberty stdc++" >> libasmir/makefile.inc
@@ -336,9 +349,10 @@ AC_CHECK_HEADERS([fcntl.h stdint.h stdio.h stdlib.h string.h unistd.h],[],
 # Just check these without erroring out:
 AC_MSG_CHECKING([other headers])
 AC_MSG_RESULT([ ])
-AC_CHECK_HEADERS([float.h limits.h locale.h malloc.h malloc/malloc.h \
-                  mem/memory.h stddef.h sys/file.h sys/inttypes.h \
-                  sys/ioctl.h sys/socket.h sys/time.h sys/timeb.h wchar.h])
+AC_CHECK_HEADERS([dis-asm.h float.h limits.h locale.h malloc.h \
+                  malloc/malloc.h mem/memory.h stddef.h sys/file.h \
+                  sys/inttypes.h sys/ioctl.h sys/socket.h sys/time.h \
+                  sys/timeb.h wchar.h])
 AC_HEADER_STDBOOL dnl# also "_CHECK"s it
 # These headers are from specific packages so they get specific error
 # messages:
@@ -395,10 +409,66 @@ AC_FUNC_MMAP
 AC_FUNC_REALLOC
 AC_FUNC_STAT
 AC_FUNC_STRTOD
-AC_CHECK_FUNCS([alarm atexit bzero dup2 floor gettimeofday memset munmap \
-                printf realpath rint scanf setenv setlocale sqrt socket \
-                strchr strdup strerror strrchr strstr strtol strtoul \
-                strtoull sysinfo system uname])dnl
+AC_CHECK_FUNCS([alarm atexit bzero disassembler dup2 floor gettimeofday \
+                memset munmap printf realpath rint scanf setenv setlocale \
+                sqrt socket strchr strdup strerror strrchr strstr strtol \
+                strtoul strtoull sysinfo system uname])dnl
+
+AC_CHECK_DECLS([disassembler],[],[],[
+#ifdef HAVE_DIS_ASM_H
+# include <dis-asm.h>
+#else
+# if defined(__GNUC__) && !defined(__STRICT_ANSI__)
+#  warning "conftest for disassembler expects <dis-asm.h> to be included."
+# endif /* __GNUC__ && !__STRICT_ANSI__ */
+#endif /* HAVE_DIS_ASM_H */
+])dnl
+
+if test "x${ac_cv_func_disassembler}" = "xyes" || test "x${ac_cv_have_decl_disassembler}" = "xyes" || test "x${ac_cv_search_disassembler}" != "xno"; then
+  AC_CACHE_CHECK([how many arguments disassembler function takes],
+                 [ac_cv_func_disassembler_num_args],
+    [AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+#ifdef HAVE_DIS_ASM_H
+# include <dis-asm.h>
+#else
+# if defined(__GNUC__) && !defined(__STRICT_ANSI__)
+#  warning "conftest for disassembler expects <dis-asm.h> to be included."
+# endif /* __GNUC__ && !__STRICT_ANSI__ */
+#endif /* HAVE_DIS_ASM_H */
+]],[[
+bfd *abfd = NULL;
+disassembler(abfd);
+]])],[ac_cv_func_disassembler_num_args=1],
+     [AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+#ifdef HAVE_DIS_ASM_H
+# include <dis-asm.h>
+#else
+# if defined(__GNUC__) && !defined(__STRICT_ANSI__)
+#  warning "conftest for disassembler expects <dis-asm.h> to be included."
+# endif /* __GNUC__ && !__STRICT_ANSI__ */
+#endif /* HAVE_DIS_ASM_H */
+]],[[
+bfd *abfd = NULL;
+enum bfd_architecture arc = bfd_arch_unknown;
+bfd_boolean big = TRUE;
+unsigned long mach = 0UL;
+disassembler(arc, big, mach, abfd);
+]])],[ac_cv_func_disassembler_num_args=4],
+     [ac_cv_func_disassembler_num_args=unknown])])])
+  AH_TEMPLATE([DISASSEMBLER_NUM_ARGS],
+              [number of arguments to the disassembler function])
+  if test "x${ac_cv_func_disassembler_num_args}" = "x1"; then
+    AC_DEFINE([DISASSEMBLER_NUM_ARGS],[1])
+  elif test "x${ac_cv_func_disassembler_num_args}" = "x4"; then
+    AC_DEFINE([DISASSEMBLER_NUM_ARGS],[4])
+  elif test "x${ac_cv_func_disassembler_num_args}" = "xunknown"; then
+    AC_MSG_WARN([disassembler should take either 1 arg or 4 args])
+  else
+    AC_MSG_WARN([disassembler should take some amount of args])
+  fi
+else
+  AC_MSG_WARN([will want disassembler function somehow])
+fi
 
 # Check for library function versions
 # (N/A)

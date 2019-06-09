@@ -35,14 +35,14 @@ if test "x${AWK}" = "x"; then
   test -z "${AWK}"
   AC_PROG_AWK
 else
-  test ! -z "${AWK}" && export AWK
+  test -n "${AWK}" && test -x "${AWK}" && export AWK
   AC_SUBST([AWK])
 fi
 if test "x${CC}" = "x"; then
   test -z "${CC}"
   AC_PROG_CC
 else
-  test ! -z "${CC}" && export CC
+  test -n "${CC}" && test -x "${CC}" && export CC
   AC_SUBST([CC])
 fi
 AC_PROG_CXX
@@ -56,7 +56,7 @@ if test "x${INSTALL}" = "x"; then
   AC_PROG_INSTALL
   AM_PROG_INSTALL_STRIP
 else
-  test ! -z "${INSTALL}" && export INSTALL
+  test -n "${INSTALL}" && test -x "${INSTALL}" && export INSTALL
   AC_SUBST([INSTALL])
 fi
 AC_PROG_LN_S
@@ -65,7 +65,7 @@ if test "x${MAKE}" = "x"; then
   AC_PATH_PROGS([MAKE],[make gmake gnumake remake])
   AC_PROG_MAKE_SET
 else
-  test ! -z "${MAKE}" && export MAKE
+  test -n "${MAKE}" && test -x "${MAKE}" && export MAKE
   AC_SUBST([MAKE])
 fi
 LT_INIT([win32-dll static])
@@ -77,7 +77,7 @@ if test "x${RANLIB}" = "x"; then
   test -z "${RANLIB}"
   AC_PROG_RANLIB
 else
-  test ! -z "${RANLIB}" && export RANLIB
+  test -n "${RANLIB}" && test -x "${RANLIB}" && export RANLIB
   AC_SUBST([RANLIB])
 fi
 
@@ -101,6 +101,11 @@ AC_HEADER_SYS_WAIT
 AC_HEADER_TIME
 AC_CHECK_HEADERS([fcntl.h limits.h stddef.h stdio.h \
                   sys/time.h sys/timeb.h wchar.h wctype.h])dnl
+
+if test "x${acl_cv_wp}" = "x"; then
+  test -z "${acl_cv_wp}" && export acl_cv_wp='-Wp,'
+fi
+AC_SUBST([acl_cv_wp])dnl
 
 # TODO(chandlerc@google.com) Check types, structures, and other compiler
 # and architecture characteristics.

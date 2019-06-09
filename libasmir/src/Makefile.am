@@ -5,8 +5,13 @@ DISTCLEANFILES = .DS_Store
 RANLIB = @RANLIB@
 lib_LIBRARIES = libasmir.a
 #lib_LTLIBRARIES = libasmir.la
-AM_CFLAGS = -I@VEX_DIR@/pub -I../include -Itraces -fPIC -DGET_OPERANDS
+AM_CFLAGS = ${acl_cv_wp}-I@VEX_DIR@/pub ${acl_cv_wp}-I../include \
+  ${acl_cv_wp}-Itraces -fPIC -DGET_OPERANDS
 AM_CXXFLAGS = $(AM_CFLAGS)
+
+if GCC
+VEX_MAKEFILE = -f Makefile-gcc
+endif
 
 libasmir_a_SOURCES = \
 	./old_ir/stmt.cpp \
@@ -36,7 +41,7 @@ libasmir_a_SOURCES = \
 libasmir_a_LIBADD = @VEX_DIR@/libvex.a @BAP_DIR@/libtracewrap/libtrace/src/cpp/libtrace.a
 
 @VEX_DIR@/libvex.a: @VEX_DIR@/Makefile
-	$(MAKE) -C @VEX_DIR@ libvex.a
+	$(MAKE) -C @VEX_DIR@ $(VEX_MAKEFILE) libvex.a CC=$(CC)
 
 @BAP_DIR@/libtracewrap/libtrace/src/cpp/libtrace.a: @BAP_DIR@/libtracewrap/libtrace/src/cpp/Makefile
 	$(MAKE) -C @BAP_DIR@/libtracewrap/libtrace/src/cpp libtrace.a

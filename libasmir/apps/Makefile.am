@@ -13,7 +13,7 @@ print_ir_SOURCES = print-ir.cpp ir_printer.cpp
 lifttrace_SOURCES = lifttrace.cpp
 LDADD = @ASMIR_DIR@/src/libasmir.a @VEX_DIR@/libvex.a -lbfd -ldl -lopcodes
 AM_CXXFLAGS = \
-              -I../include \
-              -I../src/traces \
-              -I@VEX_DIR@/pub
+              ${acl_cv_wp}-I../include \
+              ${acl_cv_wp}-I../src/traces \
+              ${acl_cv_wp}-I@VEX_DIR@/pub
 

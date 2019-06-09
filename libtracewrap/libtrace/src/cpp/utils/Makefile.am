@@ -1,6 +1,8 @@
 ## automake Makefile for libtrace utilities
 
-AM_CXXFLAGS = -I../pb -I.. -I@LIBTRACE_DIR@/src/common -I@LIBTRACE_DIR@/protobuf/src
+AM_CXXFLAGS = ${acl_cv_wp}-I../pb ${acl_cv_wp}-I.. \
+  ${acl_cv_wp}-I@LIBTRACE_DIR@/src/common \
+  ${acl_cv_wp}-I@LIBTRACE_DIR@/protobuf/src
 AM_CXXFLAGS += -m32
 
 utils_LDADD = ../libtrace.a @LIBTRACE_DIR@/protobuf/src/.libs/libprotobuf.a -lpthread

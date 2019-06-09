@@ -22,7 +22,7 @@ check-local: test
 .PHONY: test check-local
 
 install-intentional-failure:
-	@echo "BAP does not support the install target"
+	@echo "BAP does not support the install target" >&2
 	@false
 
 .PHONY: cscope-local install-intentional-failure

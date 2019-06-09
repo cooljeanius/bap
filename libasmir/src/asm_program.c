@@ -89,7 +89,16 @@ static int ignore() {
 
 int asmir_get_instr_length(asm_program_t *prog, bfd_vma addr)
 {
+#if (DISASSEMBLER_NUM_ARGS == 1)
   disassembler_ftype disas = disassembler(prog->abfd);
+#elif (DISASSEMBLER_NUM_ARGS == 4)
+  enum bfd_architecture arc = bfd_arch_unknown;
+  bfd_boolean big = TRUE;
+  unsigned long mach = 0UL;
+  disassembler_ftype disas = disassembler(arc, big, mach, prog->abfd);
+#else
+# error "unsure how many args to pass to disassembler"
+#endif /* DISASSEMBLER_NUM_ARGS */
   fprintf_ftype old_fprintf_func = prog->disasm_info.fprintf_func;
   prog->disasm_info.fprintf_func = (fprintf_ftype)ignore;
   assert(disas);
@@ -361,7 +370,16 @@ char* asmir_string_of_insn(asm_program_t *prog, bfd_vma inst)
 {
   static struct bprintf_buffer bits = {NULL, NULL, 0};
 
+#if (DISASSEMBLER_NUM_ARGS == 1)
   disassembler_ftype disas = disassembler(prog->abfd);
+#elif (DISASSEMBLER_NUM_ARGS == 4)
+  enum bfd_architecture arc = bfd_arch_unknown;
+  bfd_boolean big = TRUE;
+  unsigned long mach = 0UL;
+  disassembler_ftype disas = disassembler(arc, big, mach, prog->abfd);
+#else
+# error "unsure how many args to pass to disassembler"
+#endif /* DISASSEMBLER_NUM_ARGS */
   fprintf_ftype old_fprintf_func = prog->disasm_info.fprintf_func;
   void *oldstream = prog->disasm_info.stream;
   prog->disasm_info.fprintf_func = (fprintf_ftype)bprintf;
