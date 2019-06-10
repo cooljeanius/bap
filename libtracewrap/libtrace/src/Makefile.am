@@ -2,4 +2,4 @@
 
 SUBDIRS=cpp ocaml ocaml/utils
 
-DISTCLEANFILES = .DS_Store
+DISTCLEANFILES = *~ .DS_Store cpp/*~

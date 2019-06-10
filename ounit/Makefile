@@ -30,10 +30,10 @@ reinstall: setup.data
 	$(SETUP) -reinstall $(REINSTALLFLAGS)
 
 clean: 
-	$(SETUP) -clean $(CLEANFLAGS)
+	-$(SETUP) -clean $(CLEANFLAGS)
 
 distclean: 
-	$(SETUP) -distclean $(DISTCLEANFLAGS)
+	-$(SETUP) -distclean $(DISTCLEANFLAGS)
 
 maintainer-clean: distclean
 	@echo "This target is intended for maintainers to use."

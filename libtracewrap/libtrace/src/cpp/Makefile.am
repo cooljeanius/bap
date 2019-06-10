@@ -12,4 +12,9 @@ LIBS =
 
 SUBDIRS = . utils
 
-DISTCLEANFILES = .DS_Store *~
+DISTCLEANFILES = .DS_Store *~ pb/.DS_Store
+
+distclean-local:
+	rm -rf .deps || rmdir .deps
+	rm -rf pb/.deps || rmdir pb/.deps
+.PHONY: distclean-local

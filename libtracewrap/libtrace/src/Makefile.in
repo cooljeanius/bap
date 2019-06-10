@@ -309,7 +309,7 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 SUBDIRS = cpp ocaml ocaml/utils
-DISTCLEANFILES = .DS_Store
+DISTCLEANFILES = *~ .DS_Store cpp/*~
 all: all-recursive
 
 .SUFFIXES:

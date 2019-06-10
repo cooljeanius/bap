@@ -391,7 +391,7 @@ AM_CXXFLAGS = ${acl_cv_wp}-I./pb ${acl_cv_wp}-I@LIBTRACE_DIR@/src/common \
 lib_LIBRARIES = libtrace.a
 libtrace_a_SOURCES = pb/frame.piqi.pb.h pb/frame.piqi.pb.cc trace.container.cpp
 SUBDIRS = . utils
-DISTCLEANFILES = .DS_Store *~
+DISTCLEANFILES = .DS_Store *~ pb/.DS_Store
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
 
@@ -741,7 +741,7 @@ distclean: distclean-recursive
 	-rm -f pb/$(DEPDIR)/frame.piqi.pb.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
-	distclean-hdr distclean-tags
+	distclean-hdr distclean-local distclean-tags
 
 dvi: dvi-recursive
 
@@ -809,10 +809,10 @@ uninstall-am: uninstall-libLIBRARIES
 	am--depfiles check check-am clean clean-generic \
 	clean-libLIBRARIES cscopelist-am ctags ctags-am distclean \
 	distclean-compile distclean-generic distclean-hdr \
-	distclean-tags distdir dvi dvi-am html html-am info info-am \
-	install install-am install-data install-data-am install-dvi \
-	install-dvi-am install-exec install-exec-am install-html \
-	install-html-am install-info install-info-am \
+	distclean-local distclean-tags distdir dvi dvi-am html html-am \
+	info info-am install install-am install-data install-data-am \
+	install-dvi install-dvi-am install-exec install-exec-am \
+	install-html install-html-am install-info install-info-am \
 	install-libLIBRARIES install-man install-pdf install-pdf-am \
 	install-ps install-ps-am install-strip installcheck \
 	installcheck-am installdirs installdirs-am maintainer-clean \
@@ -822,6 +822,11 @@ uninstall-am: uninstall-libLIBRARIES
 
 .PRECIOUS: Makefile
 
+
+distclean-local:
+	rm -rf .deps || rmdir .deps
+	rm -rf pb/.deps || rmdir pb/.deps
+.PHONY: distclean-local
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

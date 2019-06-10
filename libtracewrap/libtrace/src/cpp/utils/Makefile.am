@@ -16,3 +16,9 @@ copytrace_LDADD = $(utils_LDADD)
 # Do NOT auto-link LIBS coming from autoconf, because we might not have
 # 32-bit equivalents!
 LIBS =
+
+DISTCLEANFILES = .DS_Store
+
+distclean-local:
+	rm -rf .deps || rmdir .deps
+.PHONY: distclean-local

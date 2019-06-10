@@ -48,6 +48,9 @@ clean:
 distclean: clean
 	-find . -name .DS_Store -delete 2>/dev/null
 
+.PHONY: maintainer-clean
+maintainer-clean: distclean
+
 .PHONY: install-piqi install
 # install-pb: $(PROTOCFILES) $(PROTOHFILES)
 # 	cp $^ $(PBDIR)

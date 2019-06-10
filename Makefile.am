@@ -15,7 +15,8 @@ endif
 BAPDIRS=libasmir ocaml utils tests $(PINTRACES)
 SUBDIRS=batteries zarith-1.0 ounit pcre-ocaml ocamlgraph-1.8 objsize-0.16 libtracewrap VEX $(BAPDIRS)
 
-DISTCLEANFILES = *.log config.status
+DISTCLEANFILES = *.log *~ libasmir/*~ @MAINT@ config.status
+MAINTAINERCLEANFILES = .DS_Store @MAINT@ Makefile
 
 test: all
 	$(MAKE) -C tests test
@@ -34,7 +35,13 @@ cscope-local:
 
 .PHONY: bap-clean maintainer-clean-local distclean-local
 bap-clean:
-	for d in $(BAPDIRS); do $(MAKE) -C $${d} clean; done
+	for d in $(BAPDIRS); do \
+	  if test -f $${d}/Makefile; then \
+	    $(MAKE) -C $${d} clean; \
+	  else \
+	    echo "skipping cleaning $${d} (missing Makefile)"; \
+	  fi; \
+	done
 
 maintainer-clean-local: bap-clean distclean-local
 	@echo "BAP is still working on cleaning for maintainers"

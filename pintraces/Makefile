@@ -155,6 +155,8 @@ clean:
 distclean: clean
 	-find . -name .DS_Store -delete 2>/dev/null
 
+maintainer-clean: distclean
+
 tags: 
 
-.PHONY: clean distclean tags
+.PHONY: clean distclean maintainer-clean tags

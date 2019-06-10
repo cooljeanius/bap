@@ -1281,3 +1281,6 @@ nobackup:
 
 .PHONY: distclean
 distclean: clean cleanup clean-doc clean-all nobackup
+
+.PHONY: maintainer-clean
+maintainer-clean: distclean

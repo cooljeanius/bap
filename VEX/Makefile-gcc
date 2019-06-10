@@ -183,16 +183,19 @@ clean:
 .PHONY: distclean
 distclean: clean
 
+.PHONY: maintainer-clean
+maintainer-clean: distclean
+
 minidist:
 	rm -f vex--minidist-2005MMDD.tar
 	tar cf vex--minidist-2005MMDD.tar $(PUB_HEADERS) $(PRIV_HEADERS) \
 		test_main.c test_main.h				\
 		Makefile					\
 		`echo $(LIB_OBJS) | sed "s/\.o/\.c/g"`
-	@echo 
+	@echo ""
 	@echo minidist done, size follows:
 	@ls -l vex--minidist-2005MMDD.tar
-	@echo
+	@echo ""
 
 # This is very uggerly.  Need to sed out both "xyzzyN" and
 # "xyzzy$N" since gcc on different targets emits the constants
