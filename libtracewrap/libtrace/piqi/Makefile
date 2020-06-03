@@ -18,6 +18,9 @@ clean:
 	bash -c 'cd piqi && source setenv.sh && $(MAKE) distclean'
 
 distclean: clean
+	-rm -f cscopelist
 
 tags:
 
+cscopelist:
+	touch $@

@@ -513,6 +513,9 @@ tags:
 	      "--regex=/val[ \t]+\([^ \t]+\)/\1/" \
 	      "--regex=/module[ \t]+\([^ \t]+\)/\1/"
 
+cscopelist:
+	touch $@
+
 # Makefile is rebuilt whenever Makefile.in or configure.in is modified
 ######################################################################
 
@@ -544,13 +547,13 @@ clean:
 	rm -f $(DGRAPH_DIR)/dgraph.byte $(DGRAPH_DIR)/dgraph.opt
 	rm -f $(DGRAPH_DIR)/dgraph
 	rm -f *.haux *.aux *.log $(NAME).tex $(NAME).dvi $(DOCFILES)
-	rm -f $(EXAMPLESBIN)
+	rm -f $(EXAMPLESBIN) cscopelist
 
 dist-clean distclean:: clean
 	rm -f Makefile config.cache config.log config.status *.byte *.opt
 
 svnclean svn-clean:: dist-clean
-	rm -f config.* configure configure.lineno
+	rm -f config.* configure configure.lineno cscopelist
 
 maintainer-clean: distclean svnclean
 	@echo "This target is intended for maintainers to use."

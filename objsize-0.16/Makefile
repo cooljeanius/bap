@@ -115,8 +115,12 @@ uninstall :
 tags:
 	-
 
+cscopelist:
+	touch $@
+
 distclean: clean
 	-find . -name .DS_Store -delete 2>/dev/null
+	-rm -f cscopelist
 
 maintainer-clean: distclean
 	@echo "This command is intended for maintainers to use"

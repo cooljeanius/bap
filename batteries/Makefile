@@ -192,7 +192,11 @@ qtest/test_mods.mllib:
 tags:
 	-
 
+cscopelist:
+	touch $@
+
 distclean: clean
+	rm -f cscopelist
 
 maintainer-clean: distclean
 	@echo "This command is intended for maintainers to use"

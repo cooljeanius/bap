@@ -111,12 +111,15 @@ $(AUTOGEN): z.mlp z.mlip $(SSRC) z_pp.pl
 %.o: %.c
 	$(OCAMLC) -verbose -ccopt "$(CFLAGS)" -c $<
 
+cscopelist:
+	touch $@
+
 clean:
 	/bin/rm -rf *.o *.a *.so *.cmi *.cmo *.cmx *.cmxa *.cmxs *.cma *.dll *~ \#* depend $(AUTOGEN) tmp.c
-	/bin/rm -rf test test.b rtest bitest html
+	/bin/rm -rf test test.b rtest bitest html cscopelist
 
 distclean: clean
-	rm -f config.status config.log config.h Makefile_orig
+	rm -f config.status config.log config.h Makefile_orig cscopelist
 
 maintainer-clean: distclean
 	@echo "This command is intended for maintainers to use"

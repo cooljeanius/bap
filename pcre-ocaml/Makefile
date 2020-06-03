@@ -40,9 +40,13 @@ clean:
 tags:
 	-
 
+cscopelist:
+	touch $@
+
 .PHONY: distclean
 distclean: clean
 	-find . -name .DS_Store -delete 2>/dev/null
+	-rm -f cscopelist
 
 .PHONY: maintainer-clean
 maintainer-clean: distclean

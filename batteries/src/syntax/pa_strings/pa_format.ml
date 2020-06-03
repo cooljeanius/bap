@@ -31,7 +31,8 @@ type ast = element llist
 
 let rev_implode l =
   let len = List.length l in
-  let s = String.create len in
+  let s = Bytes.create len in
+  (* FIXME: use Bytes.set instead of String.set, but where even is that? *)
   ignore (List.fold_left (fun i ch -> s.[i] <- ch; i - 1) (len - 1) l);
   s
 

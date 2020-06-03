@@ -34,11 +34,13 @@ clean:
 
 distclean: 
 	-$(SETUP) -distclean $(DISTCLEANFLAGS)
+	-rm -f cscopelist
 
 maintainer-clean: distclean
 	@echo "This target is intended for maintainers to use."
 	@echo "It can delete files that may require special tools to rebuild, and other junk."
 	@-find . -name .DS_Store -delete 2>/dev/null
+	@-rm -f cscopelist
 
 setup.data:
 	$(SETUP) -configure $(CONFIGUREFLAGS)
@@ -54,3 +56,6 @@ doc-test: doc
 
 tags:
 	-
+
+cscopelist:
+	touch $@

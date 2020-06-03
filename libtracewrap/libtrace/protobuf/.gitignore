@@ -27,3 +27,4 @@ Makefile
 src/Makefile
 protobuf.pc
 protobuf-lite.pc
+#*cscope.files

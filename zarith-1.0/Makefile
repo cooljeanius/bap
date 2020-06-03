@@ -13,7 +13,7 @@ tags:
 
 clean:
 	rm -f *.o *.a *.so *.cmi *.cmo *.cmx *.cmxa *.cmxs *.cma *~
-	rm -f *.dll \#* test tmp.c
+	rm -f *.dll \#* test tmp.c cscopelist
 	rm -f test.b rtest bitest html
 
 distclean: clean
