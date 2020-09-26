@@ -12,4 +12,8 @@ so_locations
 *.loT
 *.lo
 *.o
-*deps/*.*o
+.deps/*
+*/.deps/*
+*/*/.deps/*
+*/*/*/.deps/*
+*/*/*/*/.deps/*
