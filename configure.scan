@@ -1,9 +1,9 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
-AC_PREREQ([2.69])
+AC_PREREQ([2.71])
 AC_INIT([FULL-PACKAGE-NAME], [VERSION], [BUG-REPORT-ADDRESS])
-AC_CONFIG_SRCDIR([batteries/examples/benchmark/t_read_stub.c])
+AC_CONFIG_SRCDIR([libasmir/config.h.in])
 AC_CONFIG_HEADERS([config.h])
 
 # Checks for programs.
@@ -18,25 +18,25 @@ AC_PROG_RANLIB
 AC_PROG_YACC
 
 # Checks for libraries.
-# FIXME: Replace `main' with a function in `-lbfd':
+# FIXME: Replace 'main' with a function in '-lbfd':
 AC_CHECK_LIB([bfd], [main])
-# FIXME: Replace `main' with a function in `-ldl':
+# FIXME: Replace 'main' with a function in '-ldl':
 AC_CHECK_LIB([dl], [main])
-# FIXME: Replace `main' with a function in `-linkall':
+# FIXME: Replace 'main' with a function in '-linkall':
 AC_CHECK_LIB([inkall], [main])
-# FIXME: Replace `main' with a function in `-linkpkg':
+# FIXME: Replace 'main' with a function in '-linkpkg':
 AC_CHECK_LIB([inkpkg], [main])
-# FIXME: Replace `main' with a function in `-lopcodes':
+# FIXME: Replace 'main' with a function in '-lopcodes':
 AC_CHECK_LIB([opcodes], [main])
-# FIXME: Replace `main' with a function in `-lprotobuf':
+# FIXME: Replace 'main' with a function in '-lprotobuf':
 AC_CHECK_LIB([protobuf], [main])
-# FIXME: Replace `main' with a function in `-lpthread':
+# FIXME: Replace 'main' with a function in '-lpthread':
 AC_CHECK_LIB([pthread], [main])
-# FIXME: Replace `main' with a function in `-lz':
+# FIXME: Replace 'main' with a function in '-lz':
 AC_CHECK_LIB([z], [main])
 
 # Checks for header files.
-AC_CHECK_HEADERS([fcntl.h inttypes.h limits.h malloc.h memory.h stddef.h stdint.h stdlib.h string.h sys/socket.h unistd.h])
+AC_CHECK_HEADERS([fcntl.h inttypes.h malloc.h stdint.h sys/socket.h unistd.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_CHECK_HEADER_STDBOOL

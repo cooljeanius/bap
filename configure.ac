@@ -340,12 +340,13 @@ AC_SUBST([BAP_DIR])dnl
 # Some of these following header checks are duplicates, but we need to do
 # it again so that we can error out if any are missing:
 AC_MSG_NOTICE([re-checking standard headers])
+unset ac_cv_header_inttypes_h
 unset ac_cv_header_stdint_h
 unset ac_cv_header_stdlib_h
 unset ac_cv_header_string_h
 unset ac_cv_header_unistd_h
-AC_CHECK_HEADERS([fcntl.h stdint.h stdio.h stdlib.h string.h unistd.h],[],
-   [AC_MSG_ERROR([Standard headers missing])])
+AC_CHECK_HEADERS([fcntl.h inttypes.h stdint.h stdio.h stdlib.h string.h unistd.h],
+   [],[AC_MSG_ERROR([Standard headers missing])])
 # Just check these without erroring out:
 AC_MSG_CHECKING([other headers])
 AC_MSG_RESULT([ ])
@@ -413,6 +414,11 @@ AC_CHECK_FUNCS([alarm atexit bzero disassembler dup2 floor gettimeofday \
                 memset munmap printf realpath rint scanf setenv setlocale \
                 sqrt socket strchr strdup strerror strrchr strstr strtol \
                 strtoul strtoull sysinfo system uname])dnl
+
+if test "x${ac_cv_func_getpagesize}" = "x"; then
+  test -z "${ac_cv_func_getpagesize}"
+  AC_CHECK_FUNCS([getpagesize])
+fi
 
 AC_CHECK_DECLS([disassembler],[],[],[
 #ifdef HAVE_DIS_ASM_H
