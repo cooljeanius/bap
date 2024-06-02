@@ -10,7 +10,7 @@ AC_CONFIG_MACRO_DIR([m4])dnl
 AC_CANONICAL_TARGET
 AC_USE_SYSTEM_EXTENSIONS
 
-AM_INIT_AUTOMAKE([gnits subdir-objects -Wall])dnl
+AM_INIT_AUTOMAKE([gnits subdir-objects -Wall -Wno-obsolete -Wno-cross])dnl
 AM_MAINTAINER_MODE
 
 LIBTRACE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -51,6 +51,11 @@ AC_CHECK_LIB([pthread],[pthread_create])dnl
 # Checks for header files.
 AC_HEADER_STDBOOL dnl# also "_CHECK"s it
 AC_CHECK_HEADERS([stdio.h])dnl
+
+if test "x${ac_cv_header_stdint_h}" = "x"; then
+  test -z "${ac_cv_header_stdint_h}" || unset ac_cv_header_stdint_h
+  AC_CHECK_HEADERS([stdint.h])
+fi
 
 if test "x${acl_cv_wp}" = "x"; then
   test -z "${acl_cv_wp}" && export acl_cv_wp='-Wp,'

@@ -31,6 +31,20 @@ AM_MAINTAINER_MODE
 # Check for programs used in building Google Test.
 AC_USE_SYSTEM_EXTENSIONS
 AM_PROG_AR
+if test "x${AR}" = "x"; then
+  test -z "${AR}" || unset AR
+  ## might want to switch around these checks...
+  if test "x${ac_cv_prog_AR}" = "x"; then
+    test -z "${ac_cv_prog_AR}" || unset ac_cv_prog_AR
+    m4_ifdef([AC_PROG_AR],[
+      AC_PROG_AR
+    ],[
+      test -x "`which ar`" && echo "which ar? `which ar`"
+    ])
+  fi
+else
+  test -n "${AR}" && test -x "${AR}" && export AR
+fi
 if test "x${AWK}" = "x"; then
   test -z "${AWK}"
   AC_PROG_AWK
@@ -102,6 +116,15 @@ AC_HEADER_TIME
 AC_CHECK_HEADERS([fcntl.h limits.h stddef.h stdio.h \
                   sys/time.h sys/timeb.h wchar.h wctype.h])dnl
 
+if test "x${ac_cv_header_strings_h}" = "x"; then
+  test -z "${ac_cv_header_strings_h}" || unset ac_cv_header_strings_h
+  AC_CHECK_HEADERS([strings.h])
+fi
+if test "x${ac_cv_header_unistd_h}" = "x"; then
+  test -z "${ac_cv_header_unistd_h}" || unset ac_cv_header_unistd_h
+  AC_CHECK_HEADERS([unistd.h])
+fi
+
 if test "x${acl_cv_wp}" = "x"; then
   test -z "${acl_cv_wp}" && export acl_cv_wp='-Wp,'
 fi
@@ -129,6 +152,11 @@ AC_FUNC_VPRINTF
 AC_CHECK_FUNCS([dup2 getcwd gettimeofday memmove memset mkdir munmap \
                 putenv regcomp rmdir setenv strcasecmp strchr strdup \
                 strerror strrchr strstr strtol strtoull])dnl
+
+if test "x${ac_cv_func_getpagesize}" = "x"; then
+  test -z "${ac_cv_func_getpagesize}" || unset ac_cv_func_getpagesize
+  AC_CHECK_FUNCS([getpagesize])
+fi
 
 # Output the generated files. No further autoconf macros may be used.
 AC_CONFIG_COMMANDS([bap-local],[

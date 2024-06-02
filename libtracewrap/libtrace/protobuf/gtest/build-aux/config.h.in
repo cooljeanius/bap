@@ -3,32 +3,32 @@
 /* Define if building universal (internal helper macro) */
 #undef AC_APPLE_UNIVERSAL_BUILD
 
-/* Define to 1 if you have the declaration of `strerror_r', and to 0 if you
+/* Define to 1 if you have the declaration of 'strerror_r', and to 0 if you
    don't. */
 #undef HAVE_DECL_STRERROR_R
 
 /* Define to 1 if you have the <dlfcn.h> header file. */
 #undef HAVE_DLFCN_H
 
-/* Define to 1 if you don't have `vprintf' but do have `_doprnt.' */
+/* Define to 1 if you don't have 'vprintf' but do have '_doprnt.' */
 #undef HAVE_DOPRNT
 
-/* Define to 1 if you have the `dup2' function. */
+/* Define to 1 if you have the 'dup2' function. */
 #undef HAVE_DUP2
 
 /* Define to 1 if you have the <fcntl.h> header file. */
 #undef HAVE_FCNTL_H
 
-/* Define to 1 if you have the `fork' function. */
+/* Define to 1 if you have the 'fork' function. */
 #undef HAVE_FORK
 
-/* Define to 1 if you have the `getcwd' function. */
+/* Define to 1 if you have the 'getcwd' function. */
 #undef HAVE_GETCWD
 
-/* Define to 1 if you have the `getpagesize' function. */
+/* Define to 1 if you have the 'getpagesize' function. */
 #undef HAVE_GETPAGESIZE
 
-/* Define to 1 if you have the `gettimeofday' function. */
+/* Define to 1 if you have the 'gettimeofday' function. */
 #undef HAVE_GETTIMEOFDAY
 
 /* Define to 1 if you have the <inttypes.h> header file. */
@@ -37,26 +37,26 @@
 /* Define to 1 if you have the <limits.h> header file. */
 #undef HAVE_LIMITS_H
 
-/* Define to 1 if your system has a GNU libc compatible `malloc' function, and
+/* Define to 1 if your system has a GNU libc compatible 'malloc' function, and
    to 0 otherwise. */
 #undef HAVE_MALLOC
 
-/* Define to 1 if you have the `memmove' function. */
+/* Define to 1 if you have the 'memmove' function. */
 #undef HAVE_MEMMOVE
 
-/* Define to 1 if you have the `memset' function. */
+/* Define to 1 if you have the 'memset' function. */
 #undef HAVE_MEMSET
 
 /* Define to 1 if you have the <minix/config.h> header file. */
 #undef HAVE_MINIX_CONFIG_H
 
-/* Define to 1 if you have the `mkdir' function. */
+/* Define to 1 if you have the 'mkdir' function. */
 #undef HAVE_MKDIR
 
-/* Define to 1 if you have a working `mmap' system call. */
+/* Define to 1 if you have a working 'mmap' system call. */
 #undef HAVE_MMAP
 
-/* Define to 1 if you have the `munmap' function. */
+/* Define to 1 if you have the 'munmap' function. */
 #undef HAVE_MUNMAP
 
 /* Define if you have POSIX threads libraries and header files. */
@@ -65,26 +65,26 @@
 /* Have PTHREAD_PRIO_INHERIT. */
 #undef HAVE_PTHREAD_PRIO_INHERIT
 
-/* Define to 1 if the system has the type `ptrdiff_t'. */
+/* Define to 1 if the system has the type 'ptrdiff_t'. */
 #undef HAVE_PTRDIFF_T
 
-/* Define to 1 if you have the `putenv' function. */
+/* Define to 1 if you have the 'putenv' function. */
 #undef HAVE_PUTENV
 
-/* Define to 1 if your system has a GNU libc compatible `realloc' function,
+/* Define to 1 if your system has a GNU libc compatible 'realloc' function,
    and to 0 otherwise. */
 #undef HAVE_REALLOC
 
-/* Define to 1 if you have the `regcomp' function. */
+/* Define to 1 if you have the 'regcomp' function. */
 #undef HAVE_REGCOMP
 
-/* Define to 1 if you have the `rmdir' function. */
+/* Define to 1 if you have the 'rmdir' function. */
 #undef HAVE_RMDIR
 
-/* Define to 1 if you have the `setenv' function. */
+/* Define to 1 if you have the 'setenv' function. */
 #undef HAVE_SETENV
 
-/* Define to 1 if `stat' has the bug that it succeeds when given the
+/* Define to 1 if 'stat' has the bug that it succeeds when given the
    zero-length file name argument. */
 #undef HAVE_STAT_EMPTY_STRING_BUG
 
@@ -103,19 +103,19 @@
 /* Define to 1 if you have the <stdlib.h> header file. */
 #undef HAVE_STDLIB_H
 
-/* Define to 1 if you have the `strcasecmp' function. */
+/* Define to 1 if you have the 'strcasecmp' function. */
 #undef HAVE_STRCASECMP
 
-/* Define to 1 if you have the `strchr' function. */
+/* Define to 1 if you have the 'strchr' function. */
 #undef HAVE_STRCHR
 
-/* Define to 1 if you have the `strdup' function. */
+/* Define to 1 if you have the 'strdup' function. */
 #undef HAVE_STRDUP
 
-/* Define to 1 if you have the `strerror' function. */
+/* Define to 1 if you have the 'strerror' function. */
 #undef HAVE_STRERROR
 
-/* Define if you have `strerror_r'. */
+/* Define if you have 'strerror_r'. */
 #undef HAVE_STRERROR_R
 
 /* Define to 1 if you have the <strings.h> header file. */
@@ -124,16 +124,16 @@
 /* Define to 1 if you have the <string.h> header file. */
 #undef HAVE_STRING_H
 
-/* Define to 1 if you have the `strrchr' function. */
+/* Define to 1 if you have the 'strrchr' function. */
 #undef HAVE_STRRCHR
 
-/* Define to 1 if you have the `strstr' function. */
+/* Define to 1 if you have the 'strstr' function. */
 #undef HAVE_STRSTR
 
-/* Define to 1 if you have the `strtol' function. */
+/* Define to 1 if you have the 'strtol' function. */
 #undef HAVE_STRTOL
 
-/* Define to 1 if you have the `strtoull' function. */
+/* Define to 1 if you have the 'strtoull' function. */
 #undef HAVE_STRTOULL
 
 /* Define to 1 if you have the <sys/param.h> header file. */
@@ -157,13 +157,13 @@
 /* Define to 1 if you have the <unistd.h> header file. */
 #undef HAVE_UNISTD_H
 
-/* Define to 1 if you have the `vfork' function. */
+/* Define to 1 if you have the 'vfork' function. */
 #undef HAVE_VFORK
 
 /* Define to 1 if you have the <vfork.h> header file. */
 #undef HAVE_VFORK_H
 
-/* Define to 1 if you have the `vprintf' function. */
+/* Define to 1 if you have the 'vprintf' function. */
 #undef HAVE_VPRINTF
 
 /* Define to 1 if you have the <wchar.h> header file. */
@@ -172,16 +172,16 @@
 /* Define to 1 if you have the <wctype.h> header file. */
 #undef HAVE_WCTYPE_H
 
-/* Define to 1 if `fork' works. */
+/* Define to 1 if 'fork' works. */
 #undef HAVE_WORKING_FORK
 
-/* Define to 1 if `vfork' works. */
+/* Define to 1 if 'vfork' works. */
 #undef HAVE_WORKING_VFORK
 
-/* Define to 1 if the system has the type `_Bool'. */
+/* Define to 1 if the system has the type '_Bool'. */
 #undef HAVE__BOOL
 
-/* Define to 1 if `lstat' dereferences a symlink specified with a trailing
+/* Define to 1 if 'lstat' dereferences a symlink specified with a trailing
    slash. */
 #undef LSTAT_FOLLOWS_SLASHED_SYMLINK
 
@@ -216,7 +216,7 @@
    your system. */
 #undef PTHREAD_CREATE_JOINABLE
 
-/* Define to 1 if all of the C90 standard headers exist (not just the ones
+/* Define to 1 if all of the C89 standard headers exist (not just the ones
    required in a freestanding environment). This macro is provided for
    backward compatibility; new code need not use it. */
 #undef STDC_HEADERS
@@ -228,7 +228,7 @@
    macro is obsolete. */
 #undef TIME_WITH_SYS_TIME
 
-/* Enable extensions on AIX 3, Interix.  */
+/* Enable extensions on AIX, Interix, z/OS.  */
 #ifndef _ALL_SOURCE
 # undef _ALL_SOURCE
 #endif
@@ -289,11 +289,15 @@
 #ifndef __STDC_WANT_IEC_60559_DFP_EXT__
 # undef __STDC_WANT_IEC_60559_DFP_EXT__
 #endif
+/* Enable extensions specified by C23 Annex F.  */
+#ifndef __STDC_WANT_IEC_60559_EXT__
+# undef __STDC_WANT_IEC_60559_EXT__
+#endif
 /* Enable extensions specified by ISO/IEC TS 18661-4:2015.  */
 #ifndef __STDC_WANT_IEC_60559_FUNCS_EXT__
 # undef __STDC_WANT_IEC_60559_FUNCS_EXT__
 #endif
-/* Enable extensions specified by ISO/IEC TS 18661-3:2015.  */
+/* Enable extensions specified by C23 Annex H and ISO/IEC TS 18661-3:2015.  */
 #ifndef __STDC_WANT_IEC_60559_TYPES_EXT__
 # undef __STDC_WANT_IEC_60559_TYPES_EXT__
 #endif
@@ -334,10 +338,10 @@
 /* Define like PROTOTYPES; this can be used by system headers. */
 #undef __PROTOTYPES
 
-/* Define to empty if `const' does not conform to ANSI C. */
+/* Define to empty if 'const' does not conform to ANSI C. */
 #undef const
 
-/* Define to `__inline__' or `__inline' if that's what the C compiler
+/* Define to '__inline__' or '__inline' if that's what the C compiler
    calls it, or to nothing if 'inline' is not supported under any name.  */
 #ifndef __cplusplus
 #undef inline
@@ -367,8 +371,8 @@
 # define __restrict__
 #endif
 
-/* Define to `unsigned int' if <sys/types.h> does not define. */
+/* Define as 'unsigned int' if <stddef.h> doesn't define. */
 #undef size_t
 
-/* Define as `fork' if `vfork' does not work. */
+/* Define as 'fork' if 'vfork' does not work. */
 #undef vfork

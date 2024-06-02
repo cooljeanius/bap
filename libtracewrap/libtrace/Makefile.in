@@ -159,13 +159,11 @@ am__define_uniq_tagged_files = \
     if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
   done | $(am__uniquify_input)`
 DIST_SUBDIRS = $(SUBDIRS)
-am__DIST_COMMON = $(srcdir)/Makefile.in $(top_srcdir)/../../ar-lib \
-	$(top_srcdir)/../../compile $(top_srcdir)/../../config.guess \
-	$(top_srcdir)/../../config.sub $(top_srcdir)/../../install-sh \
-	$(top_srcdir)/../../missing \
+am__DIST_COMMON = $(srcdir)/Makefile.in \
 	$(top_srcdir)/src/ocaml/Makefile.in \
 	$(top_srcdir)/src/ocaml/utils/Makefile.in AUTHORS COPYING \
-	ChangeLog INSTALL NEWS README THANKS
+	ChangeLog INSTALL NEWS README THANKS ar-lib compile \
+	config.guess config.sub depcomp install-sh missing
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 distdir = $(PACKAGE)-$(VERSION)
 top_distdir = $(distdir)
@@ -342,7 +340,7 @@ top_srcdir = @top_srcdir@
 SUBDIRS = piqi protobuf src
 ACLOCAL_AMFLAGS = -I m4 --install
 noinst_SCRIPTS = autogen.sh
-DISTCLEANFILES = config.status .DS_Store
+DISTCLEANFILES = config.status .DS_Store *~
 MAINTAINERCLEANFILES = autoscan.log configure.scan
 nodist_noinst_DATA = @MAINT@ configure.scan
 all: all-recursive

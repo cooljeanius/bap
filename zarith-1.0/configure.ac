@@ -12,6 +12,20 @@ AM_MAINTAINER_MODE
 
 # Checks for programs.
 AM_PROG_AR
+if test "x${AR}" = "x"; then
+  test -z "${AR}" || unset AR
+  ## might want to switch around these checks...
+  if test "x${ac_cv_prog_AR}" = "x"; then
+    test -z "${ac_cv_prog_AR}" || unset ac_cv_prog_AR
+    m4_ifdef([AC_PROG_AR],[
+      AC_PROG_AR
+    ],[
+      test -x "`which ar`" && echo "which ar? `which ar`"
+    ])
+  fi
+else
+  test -n "${AR}" && test -x "${AR}" && export AR
+fi
 AM_PROG_AS
 if test "x${CC}" = "x"; then
   test -z "${CC}"

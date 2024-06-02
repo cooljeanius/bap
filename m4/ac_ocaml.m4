@@ -191,7 +191,8 @@ AC_DEFUN([AC_PROG_CAMLP4],[
 
     # Checking for camlp4
     _AC_OCAML_PATH_PROG_FATAL([CAMLP4],[camlp4])
-    _AC_OCAML_CHECK_VERSION_FATAL([CAMLP4],[camlp4])
+    dnl# put back to fatal once it works:
+    _AC_OCAML_CHECK_VERSION_NONFATAL([CAMLP4],[camlp4])
 
     # Checking for Camlp4o
     _AC_OCAML_PATH_PROG_FATAL([CAMLP4O],[camlp4o])
@@ -204,8 +205,8 @@ AC_DEFUN([AC_PROG_CAMLP4],[
 
     # Searching for parser library path
     AC_MSG_CHECKING([for CamlP4 library path])
-    CAMLP4LIB=`$CAMLP4 -where`
-    AC_MSG_RESULT([$CAMLP4LIB])
+    CAMLP4LIB=`${CAMLP4-camlp4} -where`
+    AC_MSG_RESULT([${CAMLP4LIB}])
 
 ]) # AC_PROG_CAMLP4
 

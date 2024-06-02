@@ -1,7 +1,7 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
-AC_PREREQ([2.69])
+AC_PREREQ([2.72])
 AC_INIT([FULL-PACKAGE-NAME], [VERSION], [BUG-REPORT-ADDRESS])
 AC_CONFIG_SRCDIR([config.h.in])
 AC_CONFIG_HEADERS([config.h])
@@ -15,15 +15,15 @@ AC_PROG_LN_S
 AC_PROG_MAKE_SET
 
 # Checks for libraries.
-# FIXME: Replace `main' with a function in `-lprotobuf':
+# FIXME: Replace 'main' with a function in '-lprotobuf':
 AC_CHECK_LIB([protobuf], [main])
-# FIXME: Replace `main' with a function in `-lprotoc':
+# FIXME: Replace 'main' with a function in '-lprotoc':
 AC_CHECK_LIB([protoc], [main])
-# FIXME: Replace `main' with a function in `-lpthread':
+# FIXME: Replace 'main' with a function in '-lpthread':
 AC_CHECK_LIB([pthread], [main])
 
 # Checks for header files.
-AC_CHECK_HEADERS([fcntl.h stdint.h stdlib.h])
+AC_CHECK_HEADERS([fcntl.h stdint.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_CHECK_HEADER_STDBOOL

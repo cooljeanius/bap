@@ -551,6 +551,7 @@ clean:
 
 dist-clean distclean:: clean
 	rm -f Makefile config.cache config.log config.status *.byte *.opt
+	rm -rf autom4te.cache || rmdir autom4te.cache
 
 svnclean svn-clean:: dist-clean
 	rm -f config.* configure configure.lineno cscopelist

@@ -61,6 +61,11 @@ AC_CHECK_LIB([pthread],[pthread_create])dnl
 AC_HEADER_STDBOOL dnl# also "_CHECK"s it
 AC_CHECK_HEADERS([fcntl.h stdio.h])dnl
 
+if test "x${ac_cv_header_stdint_h}" = "x"; then
+  test -z "${ac_cv_header_stdint_h}" || unset ac_cv_header_stdint_h
+  AC_CHECK_HEADERS([stdint.h])
+fi
+
 # Checks for typedefs, structures, and compiler characteristics.
 AC_C_BIGENDIAN
 AC_C_CONST
@@ -70,6 +75,7 @@ AC_TYPE_UINT64_T
 # Checks for library functions.
 AC_CHECK_FUNCS([strtoull])dnl
 
+# Output.
 AC_CONFIG_FILES([configure.sh])
 AC_CONFIG_COMMANDS([original],[
 # run the old configure script, too:

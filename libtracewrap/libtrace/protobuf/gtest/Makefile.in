@@ -1166,7 +1166,7 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 ACLOCAL_AMFLAGS = -I m4 --install
-DISTCLEANFILES = .DS_Store
+DISTCLEANFILES = .DS_Store *~
 MAINTAINERCLEANFILES = autoscan.log configure.scan
 nodist_noinst_DATA = @MAINT@ configure.scan
 

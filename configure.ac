@@ -16,7 +16,7 @@ AC_CANONICAL_TARGET
 AC_USE_SYSTEM_EXTENSIONS
 
 AB_INIT
-AM_INIT_AUTOMAKE([gnits subdir-objects -Wall])
+AM_INIT_AUTOMAKE([gnits subdir-objects -Wall -Wno-obsolete -Wno-cross])
 GNOME_MAINTAINER_MODE_DEFINES dnl# calls AM\_MAINTAINER\_MODE
 
 m4_include([./m4/ac_ocaml.m4])
@@ -26,6 +26,20 @@ m4_include([./m4/ac_prog_latex.m4])
 AC_MSG_CHECKING([programs])
 AC_MSG_RESULT([ ])
 AM_PROG_AR
+if test "x${AR}" = "x"; then
+  test -z "${AR}" || unset AR
+  ## might want to switch around these checks...
+  if test "x${ac_cv_prog_AR}" = "x"; then
+    test -z "${ac_cv_prog_AR}" || unset ac_cv_prog_AR
+    m4_ifdef([AC_PROG_AR],[
+      AC_PROG_AR
+    ],[
+      test -x "`which ar`" && echo "which ar? `which ar`"
+    ])
+  fi
+else
+  test -n "${AR}" && test -x "${AR}" && export AR
+fi
 AM_PROG_AS
 AC_PROG_CXX
 if test "x${AWK}" = "x"; then
@@ -360,7 +374,9 @@ AC_HEADER_STDBOOL dnl# also "_CHECK"s it
 AC_CHECK_HEADER([bfd.h],[],
    [AC_MSG_WARN([You need BFD headers (e.g., libbfd-dev): This ought to be an error but it has been changed to a warning to facilitate work on this configure script.])])
 AC_CHECK_HEADER([pcre.h],[],
-   [AC_MSG_ERROR([You need libpcre headers (e.g., libpcre3-dev)])])
+   [AC_CHECK_HEADER([pcre/pcre.h],[],
+      [AC_CHECK_HEADER([pcrelib/pcre.h],[],
+         [AC_MSG_ERROR([You need libpcre headers (e.g., libpcre3-dev)])])])])
 AC_CHECK_HEADER([caml/camlidlruntime.h],[],
    [AC_MSG_WARN([the optional z3 package will want to include <caml/camlidlruntime.h>, but this header seems to be missing.])])dnl
 

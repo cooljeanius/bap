@@ -31,7 +31,7 @@ AS_IF([test "x${ac_cv_env_CXXFLAGS_set}" = "x"],
 
 AC_CANONICAL_TARGET
 
-AM_INIT_AUTOMAKE([gnits subdir-objects -Wall])
+AM_INIT_AUTOMAKE([gnits subdir-objects -Wall -Wno-obsolete -Wno-cross])
 AM_MAINTAINER_MODE
 
 AC_ARG_WITH([zlib],
@@ -47,6 +47,20 @@ AC_ARG_WITH([protoc],
 # Checks for programs.
 AC_USE_SYSTEM_EXTENSIONS
 AM_PROG_AR
+AS_IF([test "x${AR}" = "x"],[
+  test -z "${AR}" || unset AR
+  ## might want to switch around these checks...
+  AS_IF([test "x${ac_cv_prog_AR}" = "x"],[
+    test -z "${ac_cv_prog_AR}" || unset ac_cv_prog_AR
+    m4_ifdef([AC_PROG_AR],[
+      AC_PROG_AR
+    ],[
+      test -x "`which ar`" && echo "which ar? `which ar`"
+    ])
+  ])
+],[
+  test -n "${AR}" && test -x "${AR}" && export AR
+])
 AS_IF([test "x${AWK}" = "x"],[
   test -z "${AWK}"
   AC_PROG_AWK
@@ -86,7 +100,6 @@ AS_IF([test "x${MAKE}" = "x"],[
 ])
 ACX_USE_SYSTEM_EXTENSIONS
 AM_CONDITIONAL([GCC],[test "${GCC}" = yes]) # let Makefile know we are gcc
-AC_PROG_GCC_TRADITIONAL
 
 # test_util.cc takes forever to compile with GCC & optimization turned on.
 AC_MSG_CHECKING([C++ compiler flags...])
@@ -137,6 +150,19 @@ if test "x${acl_cv_wp}" = "x"; then
   test -z "${acl_cv_wp}" && export acl_cv_wp='-Wp,'
 fi
 AC_SUBST([acl_cv_wp])dnl
+
+if test "x${ac_cv_header_inttypes_h}" = "x"; then
+  test -z "${ac_cv_header_inttypes_h}" || unset ac_cv_header_inttypes_h
+  AC_CHECK_HEADERS([inttypes.h])
+fi
+if test "x${ac_cv_header_stdint_h}" = "x"; then
+  test -z "${ac_cv_header_stdint_h}" || unset ac_cv_header_stdint_h
+  AC_CHECK_HEADERS([stdint.h])
+fi
+if test "x${ac_cv_header_unistd_h}" = "x"; then
+  test -z "${ac_cv_header_unistd_h}" || unset ac_cv_header_unistd_h
+  AC_CHECK_HEADERS([unistd.h])
+fi
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_C_BIGENDIAN

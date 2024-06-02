@@ -8,7 +8,7 @@ AUTOMAKE_OPTIONS = foreign
 
 noinst_SCRIPTS = autogen.sh generate_descriptor_proto.sh
 
-DISTCLEANFILES = .DS_Store
+DISTCLEANFILES = .DS_Store *~
 
 # Build . before src so that our all-local and clean-local hooks kick in at
 # the right time.
