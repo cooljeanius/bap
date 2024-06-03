@@ -77,8 +77,8 @@ jobs:
         opam -y init --shell-setup
         eval "$(opam env --switch=default)"
         export CHECK_IF_PREINSTALLED=false
-        opam -y install xmlm ulex easy-format camomile gettext-camomile camlidl batteries lablgl lablgtk lablgtk-extras lablgtk3 lablgtk3-extras lablgtk3-goocanvas2 z3 z3_tptp
-        opam -y install lablgtk3-rsvg2 || opam install -y lablgtk3-sourceview3 || opam -y install lablgtk3-gtkspell3 || opam -y install gtk-light
+        opam -y install xmlm ulex easy-format camomile gettext-camomile camlidl batteries lablgl lablgtk lablgtk-extras lablgtk3 lablgtk3-goocanvas2 z3 z3_tptp
+        opam -y install lablgtk3-extras || opam -y install lablgtk3-rsvg2 || opam install -y lablgtk3-sourceview3 || opam -y install lablgtk3-gtkspell3 || opam -y install gtk-light
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
