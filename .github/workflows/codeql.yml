@@ -67,6 +67,13 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
+    - name: Dependencies
+      if: matrix.language == 'c-cpp'
+      run: |
+        sudo apt-get -qq update
+        sudo apt-get install -y libc6-dev-amd64-cross libgcc-s1-amd64-cross libtbb-dev libfl-dev ocaml camlp4 ocaml-findlib camlidl binutils-dev libiberty-dev libprotobuf-dev ocamlbuild opam erlang-base libprotoc-dev ocamlweb binfmtc llvm llvm-dev clang llvm-runtime libllvm-ocaml-dev exuberant-ctags libparse-exuberantctags-perl libcamomile-ocaml-dev libgettext-ocaml libgettext-ocaml-dev z3 libz3-dev libz3-java libz3-jni libbatteries-ocaml-dev ocaml-batteries-included liblablgl-ocaml liblablgl-ocaml-dev liblablgtk2-ocaml liblablgtk2-ocaml-dev liblablgtk2-gnome-ocaml liblablgtk2-gnome-ocaml-dev liblablgtk2-gl-ocaml liblablgtk2-gl-ocaml-dev liblablgtk-extras-ocaml-dev liblablgtk3-ocaml liblablgtk3-ocaml-dev liblablgtksourceview3-ocaml liblablgtksourceview3-ocaml-dev liblablgtkspell3-ocaml liblablgtkspell3-ocaml-dev
+        opam install xmlm ulex easy-format camomile gettext-camomile camlidl
+
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
