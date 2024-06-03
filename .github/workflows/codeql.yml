@@ -71,7 +71,7 @@ jobs:
       if: matrix.language == 'c-cpp'
       run: |
         sudo apt-get -qq update
-        sudo apt-get install -y libc6-dev-amd64-cross libgcc-s1-amd64-cross libtbb-dev libfl-dev ocaml camlp4 ocaml-findlib camlidl binutils-dev libiberty-dev libprotobuf-dev ocamlbuild oasis liboasis-ocaml liboasis-ocaml-dev opam erlang erlang-base libprotoc-dev ocamlweb binfmtc llvm llvm-dev clang llvm-runtime libllvm-ocaml-dev exuberant-ctags libparse-exuberantctags-perl libcamomile-ocaml-dev libgettext-ocaml libgettext-ocaml-dev z3 libz3-dev libz3-java libz3-jni libbatteries-ocaml-dev ocaml-batteries-included liblablgl-ocaml liblablgl-ocaml-dev liblablgtk2-ocaml liblablgtk2-ocaml-dev liblablgtk2-gnome-ocaml liblablgtk2-gnome-ocaml-dev liblablgtk2-gl-ocaml liblablgtk2-gl-ocaml-dev liblablgtk-extras-ocaml-dev liblablgtk3-ocaml liblablgtk3-ocaml-dev liblablgtksourceview3-ocaml liblablgtksourceview3-ocaml-dev liblablgtkspell3-ocaml liblablgtkspell3-ocaml-dev dh-make libasprintf-dev libgettextpo-dev libgoocanvas-2.0-dev mesa-common-dev xdot lib32stdc++-11-dev libc6-dev-i386-amd64-cross lib32gcc-s1-amd64-cross otags libctypes-ocaml libctypes-ocaml-dev xsltproc fop gvfs hevea manpages-dev libc-devtools libnss-nis libnss-nisplus
+        sudo apt-get -qq install -y libc6-dev-amd64-cross libgcc-s1-amd64-cross libtbb-dev libfl-dev ocaml camlp4 ocaml-findlib camlidl binutils-dev libiberty-dev libprotobuf-dev ocamlbuild oasis liboasis-ocaml liboasis-ocaml-dev opam erlang erlang-base libprotoc-dev ocamlweb binfmtc llvm llvm-dev clang llvm-runtime libllvm-ocaml-dev exuberant-ctags libparse-exuberantctags-perl libcamomile-ocaml-dev libgettext-ocaml libgettext-ocaml-dev z3 libz3-dev libz3-java libz3-jni libbatteries-ocaml-dev ocaml-batteries-included liblablgl-ocaml liblablgl-ocaml-dev liblablgtk2-ocaml liblablgtk2-ocaml-dev liblablgtk2-gnome-ocaml liblablgtk2-gnome-ocaml-dev liblablgtk2-gl-ocaml liblablgtk2-gl-ocaml-dev liblablgtk-extras-ocaml-dev liblablgtk3-ocaml liblablgtk3-ocaml-dev liblablgtksourceview3-ocaml liblablgtksourceview3-ocaml-dev liblablgtkspell3-ocaml liblablgtkspell3-ocaml-dev dh-make libasprintf-dev libgettextpo-dev libgoocanvas-2.0-dev mesa-common-dev xdot lib32stdc++-11-dev libc6-dev-i386-amd64-cross lib32gcc-s1-amd64-cross otags libctypes-ocaml libctypes-ocaml-dev xsltproc fop gvfs hevea manpages-dev libc-devtools libnss-nis libnss-nisplus
         sudo apt-get install -y gcj-jdk || echo "will just have to do without gcj..."
 
     - name: opam dependencies
@@ -82,9 +82,9 @@ jobs:
         eval "$(opam env --switch=default)"
         export CHECK_IF_PREINSTALLED=false
         time opam -y install xmlm ulex easy-format camomile gettext-camomile camlidl batteries piqi piqilib ctypes-foreign stdlib-shims
-        for lablgpkg in gtk-light lablgl lablgtk lablgtk-extras lablgtk3 lablgtk3-extras lablgtk3-goocanvas2 lablgtk3-gtkspell3 lablgtk3-rsvg2 lablgtk3-sourceview3; do \
+        for lablgpkg in lablgl lablgtk lablgtk3 lablgtk3-extras lablgtk3-goocanvas2 lablgtk3-gtkspell3 lablgtk3-rsvg2 lablgtk3-sourceview3; do \
           sync && echo "attempting to install ${lablgpkg}..."; \
-          (time opam -y install "${lablgpkg}") || echo "unable to install ${lablgpkg}"; \
+          opam -y install "${lablgpkg}" || echo "unable to install ${lablgpkg}"; \
         done
 
     # Initializes the CodeQL tools for scanning.
