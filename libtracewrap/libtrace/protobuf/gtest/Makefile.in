@@ -1166,7 +1166,7 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 ACLOCAL_AMFLAGS = -I m4 --install
-DISTCLEANFILES = .DS_Store *~
+DISTCLEANFILES = .DS_Store *~ build-aux/*~ autoscan.log
 MAINTAINERCLEANFILES = autoscan.log configure.scan
 nodist_noinst_DATA = @MAINT@ configure.scan
 
@@ -3339,6 +3339,7 @@ uninstall-am: uninstall-binSCRIPTS uninstall-libLTLIBRARIES \
 
 distclean-local:
 	rm -rf autom4te.cache || rmdir autom4te.cache
+	-rm -rf */.deps/* || rmdir */.deps
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

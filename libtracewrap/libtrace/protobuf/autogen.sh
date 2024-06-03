@@ -40,7 +40,16 @@ sed -i -e 's/RuntimeLibrary="5"/RuntimeLibrary="3"/g;
 autoreconf -f -i -v -Wall,no-obsolete
 
 test -d autom4te.cache && (rm -rf autom4te.cache || rmdir autom4te.cache)
+test -e config.guess~ && rm -f config.guess~
 test -e config.h.in~ && rm -f config.h.in~
-test -d gtest/autom4te.cache && rm -rf gtest/autom4te.cache
+test -e config.sub~ && rm -f config.sub~
+test -e configure~ && rm -f configure~
+test -d gtest/autom4te.cache && (rm -rf gtest/autom4te.cache || rmdir gtest/autom4te.cache)
+test -e gtest/build-aux/config.guess~ && rm -f gtest/build-aux/config.guess~
 test -e gtest/build-aux/config.h.in~ && rm -f gtest/build-aux/config.h.in~
+test -e gtest/build-aux/config.sub~ && rm -f gtest/build-aux/config.sub~
+test -e gtest/build-aux/install-sh~ && rm -f gtest/build-aux/install-sh~
+test -e gtest/configure~ && rm -f gtest/configure~
+test -e install-sh~ && rm -f install-sh~
+test -e src/cpp/config.h.in~ && rm -f src/cpp/config.h.in~
 exit 0

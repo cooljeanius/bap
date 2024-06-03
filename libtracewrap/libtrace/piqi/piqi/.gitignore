@@ -1,6 +1,7 @@
 ./build
 bin/*
 build/*
+!deps/.gitattributes
 ebin
 *.cache
 *~

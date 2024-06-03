@@ -8,9 +8,9 @@ else
     url="http://research.microsoft.com/projects/z3/z3-3.2.tar.gz"
 fi
 
-if test ! -z "$(which wget)"; then
+if test -x "$(which wget)"; then
 	wget ${url} -O - | tar -xvz -C ${DIR}
-elif test ! -z "$(which curl)"; then
+elif test -x "$(which curl)"; then
 	echo "TODO: convert wget command in this script to equivalent curl command"
 	exit 1
 else

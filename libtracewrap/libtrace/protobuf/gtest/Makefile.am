@@ -2,10 +2,11 @@
 
 ACLOCAL_AMFLAGS = -I m4 --install
 
-DISTCLEANFILES = .DS_Store *~
+DISTCLEANFILES = .DS_Store *~ build-aux/*~ autoscan.log
 
 distclean-local:
 	rm -rf autom4te.cache || rmdir autom4te.cache
+	-rm -rf */.deps/* || rmdir */.deps
 
 MAINTAINERCLEANFILES = autoscan.log configure.scan
 

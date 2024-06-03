@@ -4,7 +4,7 @@
 
 set -e
 
-echo "It would probably be a better idea to just run \`autoreconf' with your flags of choice instead of $0, but whatever..."
+echo "It would probably be a better idea to just run \`autoreconf' with your flags of choice in `pwd` instead of $0, but whatever..."
 
 set -ex
 
@@ -22,11 +22,13 @@ if [ ! -z "${OLDPWD}" ]; then
 fi
 
 if [ -d piqi/piqi ]; then
-	(cd piqi/piqi && autoreconf -fvi -Wall)
+	(cd piqi/piqi && autoreconf -fvi -Wall -Wno-obsolete)
 fi
 
 test -d autom4te.cache && (rm -rf autom4te.cache || rmdir autom4te.cache)
 test -e config.h.in~ && rm -f config.h.in~
+test -e configure~ && rm -f configure~
 test -d piqi/piqi/autom4te.cache && rm -rf piqi/piqi/autom4te.cache
 test -e piqi/piqi/config.h.in~ && rm -f piqi/piqi/config.h.in~
+test -e piqi/piqi/configure~ && rm -f piqi/piqi/configure~
 exit 0

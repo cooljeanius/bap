@@ -91,6 +91,7 @@ distclean:
 		rm -f config.h.in~; \
 		rm -f configure.sh; \
 		rm -f Makefile.config; \
+		rm -f autoscan.log; \
 		rm -f config.log; \
 		rm -f config.status; \
 	fi

@@ -28,6 +28,9 @@ clean:
 	$(OCAMLBUILD) -clean
 	rm -f *~ *.html *.css *.tar.gz
 
+distclean: clean
+	rm -rf _build/*
+
 view_test: all
 	camlp4o -printer ocaml ./_build/pa_ulex.cma test.ml
 
@@ -55,5 +58,7 @@ upload:
 	$(MAKE) package
 	rsync -avz $(PACKAGE).tar.gz brome.pps.jussieu.fr:/home/web/wwwcduce/public_html/download
 	$(MAKE) doc
-#	rsync -avz *.html *.css cduce@di.ens.fr:public_html/ulex
+	if test "x`whoami`" = "xcduce"; then \
+	  rsync -avz *.html *.css cduce@di.ens.fr:public_html/ulex; \
+	fi
 	rsync -avz CHANGES *.html *.css brome.pps.jussieu.fr:/home/web/wwwcduce/public_html/ulex

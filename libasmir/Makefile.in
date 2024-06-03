@@ -380,7 +380,7 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 SUBDIRS = src apps 
 MAINTAINERCLEANFILES = makefile.inc
-DISTCLEANFILES = *~ .DS_Store
+DISTCLEANFILES = *~ .DS_Store stamp-h1
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
 

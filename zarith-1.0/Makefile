@@ -17,7 +17,7 @@ clean:
 	rm -f test.b rtest bitest html
 
 distclean: clean
-	rm -f config.status config.log config.h Makefile_orig .DS_Store
+	rm -f config.status config.log config.h Makefile_orig .DS_Store *~
 	-rm -rf autom4te.cache || rmdir autom4te.cache
 
 maintainer-clean: distclean

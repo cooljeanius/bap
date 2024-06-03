@@ -97,3 +97,6 @@ tests/asm/nop
 VEX/pub/*guest_offsets.h
 pin/*
 #*/cscopelist
+*.xcuserstate
+*.xcuserdatad
+*/xcuserdata/*

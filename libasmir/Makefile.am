@@ -9,4 +9,4 @@ SUBDIRS= src apps
 
 MAINTAINERCLEANFILES= makefile.inc
 
-DISTCLEANFILES = *~ .DS_Store
+DISTCLEANFILES = *~ .DS_Store stamp-h1
