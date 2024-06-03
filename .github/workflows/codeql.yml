@@ -82,7 +82,7 @@ jobs:
         eval "$(opam env --switch=default)"
         export CHECK_IF_PREINSTALLED=false
         time opam -y install xmlm ulex easy-format camomile gettext-camomile camlidl batteries piqi piqilib ctypes-foreign stdlib-shims
-        for lablgpkg in lablgl lablgtk lablgtk3 lablgtk3-extras lablgtk3-goocanvas2 lablgtk3-gtkspell3 lablgtk3-rsvg2 lablgtk3-sourceview3; do \
+        for lablgpkg in lablgl lablgtk lablgtk3 lablgtk3-extras lablgtk3-goocanvas2 lablgtk3-gtkspell3 lablgtk3-rsvg2; do \
           sync && echo "attempting to install ${lablgpkg}..."; \
           opam -y install "${lablgpkg}" || echo "unable to install ${lablgpkg}"; \
         done

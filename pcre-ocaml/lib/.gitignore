@@ -2,3 +2,4 @@ pcre
 pcre.top
 pcre.asm
 pcre.s
+*.so
