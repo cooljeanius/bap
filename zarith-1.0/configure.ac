@@ -86,6 +86,9 @@ case ${host_os} in
             arch='i686'
         fi
         ;;
+    *linux-gnu)
+        CFLAGS="-DZ_ELF ${CFLAGS}"
+        ;;
     none)
         ;;
     *) 
