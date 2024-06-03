@@ -36,7 +36,7 @@ INSTALL_FILES = _build/META _build/src/*.cma \
 	ocamlinit build/ocaml
 NATIVE_INSTALL_FILES = _build/src/*.cmx _build/src/*.a _build/src/*.cmxa
 
-# What to build
+# What to build:
 TARGETS = syntax.otarget byte.otarget src/batteries_help.cmo META
 BENCH_TARGETS = benchsuite/bench_int.native benchsuite/bench_map.native
 TEST_TARGET = test-byte
@@ -104,7 +104,7 @@ reinstall:
 	$(MAKE) uninstall
 	$(MAKE) install
 
-#List of source files that it's okay to try to test
+# List of source files that it ought to be okay to try to test:
 DONTTEST=$(wildcard src/batCamomile-*.ml) src/batteries_help.ml
 TESTABLE ?= $(filter-out $(DONTTEST), $(wildcard src/*.ml))
 
@@ -178,11 +178,11 @@ camfailunk:
 _build/build/make_suite.$(EXT): build/make_suite.mll
 	$(OCAMLBUILD) $(OCAMLBUILDFLAGS) make_suite.$(EXT)
 
-#convert a source file to a test suite by filtering special comments
+# Convert a source file to a test suite by filtering special comments:
 qtest/%_t.ml: src/%.ml _build/build/make_suite.$(EXT)
 	_build/build/make_suite.$(EXT) $< > $@
 
-#put all the testing modules in a library
+# Put all the testing modules in a library:
 qtest/test_mods.mllib:
 	/bin/echo -n "Quickcheck Tests " > $@
 	echo $(patsubst src/%.ml,%_t, $(TESTABLE)) >> $@
