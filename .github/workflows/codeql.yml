@@ -101,7 +101,7 @@ jobs:
             libc6-dev-i386-amd64-cross lib32gcc-s1-amd64-cross otags \
             libctypes-ocaml libctypes-ocaml-dev xsltproc fop gvfs hevea \
             manpages-dev libc-devtools libnss-nis libnss-nisplus
-          sudo apt-get install -y gcj-jdk \
+          sudo apt-get install -y gcj-jdk || which -a gcj 2>/dev/null || \
             echo "will just have to do without gcj..."
 
       - name: opam dependencies
