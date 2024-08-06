@@ -115,8 +115,8 @@ jobs:
             camlidl batteries piqi piqilib ctypes-foreign stdlib-shims
           for lablgpkg in lablgl lablgtk lablgtk3 lablgtk3-extras \
               lablgtk3-goocanvas2 lablgtk3-gtkspell3 lablgtk3-rsvg2; do \
-            sync && echo "attempting to install ${lablgpkg}..."; \
-            opam -y install "${lablgpkg}" || \
+            sync && date && echo "attempting to install ${lablgpkg}..."; \
+            (time opam -y install "${lablgpkg}") || \
               echo "unable to install ${lablgpkg}"; \
           done
 
