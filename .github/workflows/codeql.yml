@@ -18,10 +18,12 @@ on:
     branches:
       - master
       - dependabot/*
+      - cooljeanius/dependabot/*
   pull_request:
     branches:
       - master
       - dependabot/*
+      - cooljeanius/dependabot/*
   schedule:
     - cron: '32 16 * * 6'
 

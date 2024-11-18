@@ -44,7 +44,7 @@ AM_MAINTAINER_MODE
 
 # Checks for programs.
 if test "x${INSTALL}" = "x"; then
-  test -z "${INSTALL}"
+  test -z "${INSTALL}" || unset INSTALL
   AC_PROG_INSTALL
   AM_PROG_INSTALL_STRIP
 else
@@ -52,7 +52,7 @@ else
   AC_SUBST([INSTALL])
 fi
 if test "x${MAKE}" = "x"; then
-  test -z "${MAKE}"
+  test -z "${MAKE}" || unset MAKE
   AC_PATH_PROGS([MAKE],[make gmake gnumake remake])
   AC_PROG_MAKE_SET
 else
@@ -61,14 +61,14 @@ else
 fi
 AC_PROG_SED
 if test "x${CC}" = "x"; then
-  test -z "${CC}"
+  test -z "${CC}" || unset CC
   AC_PROG_CC
 else
   test -n "${CC}" && test -x "${CC}" && export CC
   AC_SUBST([CC])
 fi
 if test "x${CPP}" = "x"; then
-  test -z "${CPP}"
+  test -z "${CPP}" || unset CPP
   AC_PROG_CPP
 fi
 # (yacc and lex are checked later)
@@ -119,10 +119,10 @@ fi
 
 # checking for ocamlc.opt
 AC_CHECK_PROG([OCAMLCDOTOPT],[ocamlc.opt],[ocamlc.opt],[no])
-if test "${OCAMLCDOTOPT}" != no ; then
+if test "${OCAMLCDOTOPT}" != "no"; then
   AC_MSG_CHECKING([ocamlc.opt version])
   TMPVERSION=`${OCAMLCDOTOPT} -v | sed -n -e 's|.*version *\(.*\)$|\1|p' `
-  if test "${TMPVERSION}" != "${OCAMLVERSION}" ; then
+  if test "${TMPVERSION}" != "${OCAMLVERSION}"; then
     AC_MSG_RESULT([differs from ocamlc; ocamlc.opt discarded.])
   else
     AC_MSG_RESULT([ok])
@@ -151,10 +151,11 @@ if test "x${OCAMLDEP}" = "xno"; then
   AC_MSG_ERROR([Cannot find ocamldep.])
 fi
 
+AC_USE_SYSTEM_EXTENSIONS
 AC_PROG_LEX
 if test -x ./missing; then
-  test -d ${srcdir}
-  m4_ifdef([AM_PROG_LEX],[AM_PROG_LEX],[test ! -z "${LEX}"])
+  test -d ${srcdir} && echo "srcdir is ${srcdir}"
+  m4_ifdef([AM_PROG_LEX],[AM_PROG_LEX],[test -n "${LEX}"])
 fi
 
 AC_CHECK_PROG([OCAMLLEX],[ocamllex],[ocamllex],[no])
@@ -225,7 +226,6 @@ AC_EXEEXT
 
 AM_PROG_AS
 AC_SEARCH_LIBS([strerror],[cposix])dnl# Used to be AC\_ISC\_POSIX
-AC_USE_SYSTEM_EXTENSIONS
 AC_CHECK_HEADERS([stdio.h])dnl
 
 LIBEXT=`ocamlc -config | grep ext_lib | sed -e 's/.*\(\..*\)/\1/' `

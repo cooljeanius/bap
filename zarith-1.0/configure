@@ -4368,6 +4368,7 @@ esac
 fi
 
 : ${AR=ar}
+: ${ARFLAGS=cr}
 
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking the archiver ($AR) interface" >&5
 printf %s "checking the archiver ($AR) interface... " >&6; }
@@ -4388,7 +4389,7 @@ int some_variable = 0;
 _ACEOF
 if ac_fn_c_try_compile "$LINENO"
 then :
-  am_ar_try='$AR cru libconftest.a conftest.$ac_objext >&5'
+  am_ar_try='$AR $ARFLAGS libconftest.a conftest.$ac_objext >&5'
       { { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$am_ar_try\""; } >&5
   (eval $am_ar_try) 2>&5
   ac_status=$?
@@ -4709,7 +4710,7 @@ else case e in #(
       # icc doesn't choke on unknown options, it will just issue warnings
       # or remarks (even with -Werror).  So we grep stderr for any message
       # that says an option was ignored or not supported.
-      # When given -MP, icc 7.0 and 7.1 complain thusly:
+      # When given -MP, icc 7.0 and 7.1 complain thus:
       #   icc: Command line warning: ignoring option '-M'; no argument required
       # The diagnosis changed in icc 8.0:
       #   icc: Command line remark: option '-MP' not supported

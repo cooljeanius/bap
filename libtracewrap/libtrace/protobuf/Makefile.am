@@ -4,7 +4,7 @@
 
 ACLOCAL_AMFLAGS = -I m4 --install
 
-AUTOMAKE_OPTIONS = foreign
+AUTOMAKE_OPTIONS = foreign -Wno-obsolete
 
 noinst_SCRIPTS = autogen.sh generate_descriptor_proto.sh
 

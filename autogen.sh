@@ -4,14 +4,14 @@
 
 set -e
 
-echo "It would be a better idea to just run \`autoreconf' with your favorite flags in `pwd` instead of $0, but whatever..."
+echo "It may be a better idea to just run 'autoreconf' with your favorite flags in `pwd` instead of $0, but whatever..."
 
 set -ex
 
-test ! -z "`which aclocal`" && aclocal --force --warnings=all,no-obsolete -I m4 --install
-test ! -z "`which autoconf`" && autoconf --force --warnings=all,no-obsolete,no-cross
-test ! -z "`which autoheader`" && autoheader --force --warnings=all
-test ! -z "`which automake`" && automake --add-missing --copy --force-missing --warnings=all
+test -n "`which aclocal`" && aclocal --force --warnings=all,no-obsolete -I m4 --install
+test -n "`which autoconf`" && autoconf --force --warnings=all,no-obsolete,no-cross
+test -n "`which autoheader`" && autoheader --force --warnings=all
+test -n "`which automake`" && automake --add-missing --copy --force-missing --warnings=all
 (cd libtracewrap/libtrace && sh ./autogen.sh)
 (cd ocamlgraph-1.8 && sh ./autogen.sh)
 (cd zarith-1.0 && autoreconf -fvi -Wall)

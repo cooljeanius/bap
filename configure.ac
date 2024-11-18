@@ -43,28 +43,28 @@ fi
 AM_PROG_AS
 AC_PROG_CXX
 if test "x${AWK}" = "x"; then
-  test -z "${AWK}"
+  test -z "${AWK}" || unset AWK
   AC_PROG_AWK
 else
   test -n "${AWK}" && test -x "${AWK}" && export AWK
   AC_SUBST([AWK])
 fi
 if test "x${CC}" = "x"; then
-  test -z "${CC}"
+  test -z "${CC}" || unset CC
   AC_PROG_CC
 else
   test -n "${CC}" && test -x "${CC}" && export CC
   AC_SUBST([CC])
 fi
 if test "x${CPP}" = "x"; then
-  test -z "${CPP}"
+  test -z "${CPP}" || unset CPP
   AC_PROG_CPP
 else
   test -n "${CPP}" && test -x "${CPP}" && echo "CPP set to: '${CPP}'"
   XORG_PROG_RAWCPP([])
 fi
 if test "x${INSTALL}" = "x"; then
-  test -z "${INSTALL}"
+  test -z "${INSTALL}" || unset INSTALL
   AC_PROG_INSTALL
   AM_PROG_INSTALL_STRIP
 else
@@ -73,7 +73,7 @@ else
 fi
 AC_PROG_LN_S
 if test "x${MAKE}" = "x"; then
-  test -z "${MAKE}"
+  test -z "${MAKE}" || unset MAKE
   AC_PATH_PROGS([MAKE],[make gmake gnumake remake])
   AC_PROG_MAKE_SET
 else
@@ -96,7 +96,7 @@ LT_LANG([C++])dnl
 LT_LANG([Java])dnl
 LT_LANG([Windows Resource])
 if test "x${RANLIB}" = "x"; then
-  test -z "${RANLIB}"
+  test -z "${RANLIB}" || unset RANLIB
   AC_PROG_RANLIB
 else
   test -n "${RANLIB}" && test -x "${RANLIB}" && export RANLIB
@@ -432,7 +432,7 @@ AC_CHECK_FUNCS([alarm atexit bzero disassembler dup2 floor gettimeofday \
                 strtoul strtoull sysinfo system uname])dnl
 
 if test "x${ac_cv_func_getpagesize}" = "x"; then
-  test -z "${ac_cv_func_getpagesize}"
+  test -z "${ac_cv_func_getpagesize}" || unset ac_cv_func_getpagesize
   AC_CHECK_FUNCS([getpagesize])
 fi
 
