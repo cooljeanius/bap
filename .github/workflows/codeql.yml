@@ -53,6 +53,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
+          - language: actions
+            build-mode: none
           - language: c-cpp
             build-mode: autobuild
           - language: java-kotlin
@@ -99,9 +101,11 @@ jobs:
             liblablgtkspell3-ocaml liblablgtkspell3-ocaml-dev dh-make \
             libasprintf-dev libgettextpo-dev libgoocanvas-2.0-dev \
             mesa-common-dev xdot lib32stdc++-11-dev \
-            libc6-dev-i386-amd64-cross lib32gcc-s1-amd64-cross otags \
+            libc6-dev-i386-amd64-cross lib32gcc-s1-amd64-cross \
             libctypes-ocaml libctypes-ocaml-dev xsltproc fop gvfs hevea \
             manpages-dev libc-devtools libnss-nis libnss-nisplus
+          sudo apt-get install -y otags || which -a otags 2>/dev/null || \
+            echo "will just have to do without otags..."
           sudo apt-get install -y gcj-jdk || which -a gcj 2>/dev/null || \
             echo "will just have to do without gcj..."
 
