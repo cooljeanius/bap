@@ -97,10 +97,10 @@ jobs:
             liblablgtksourceview3-ocaml-dev liblablgtkspell3-ocaml \
             liblablgtkspell3-ocaml-dev dh-make libasprintf-dev \
             libgettextpo-dev libgoocanvas-2.0-dev mesa-common-dev xdot \
-            lib32stdc++-11-dev libc6-dev-i386-amd64-cross \
+            lib32stdc++-13-dev libc6-dev-i386-amd64-cross \
             lib32gcc-s1-amd64-cross libctypes-ocaml libctypes-ocaml-dev \
             xsltproc fop gvfs hevea manpages-dev libc-devtools libnss-nis \
-            libnss-nisplus
+            libnss-nisplus librsvg2-dev mailcap libpcre3-dev
           sudo apt-get install -y otags || which -a otags 2>/dev/null || \
             echo "will just have to do without otags..."
           sudo apt-get install -y gcj-jdk || which -a gcj 2>/dev/null || \
@@ -114,7 +114,7 @@ jobs:
           eval "$(opam env --switch=default)"
           export CHECK_IF_PREINSTALLED=false
           time opam -y install xmlm ulex easy-format camomile gettext-camomile \
-            camlidl batteries piqi piqilib ctypes-foreign stdlib-shims
+            camlidl batteries piqi piqilib ctypes-foreign stdlib-shims otags
           for lablgpkg in lablgl lablgtk lablgtk3 lablgtk3-extras \
               lablgtk3-goocanvas2 lablgtk3-gtkspell3 lablgtk3-rsvg2; do \
             sync && date && echo "attempting to install ${lablgpkg}..."; \
