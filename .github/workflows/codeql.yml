@@ -113,6 +113,7 @@ jobs:
           opam -y init --shell-setup
           eval "$(opam env --switch=default)"
           export CHECK_IF_PREINSTALLED=false
+          echo "opam update" && opam update
           time opam -y install xmlm ulex easy-format camomile gettext-camomile \
             camlidl batteries piqi piqilib ctypes-foreign stdlib-shims otags
           for lablgpkg in lablgl lablgtk lablgtk3 lablgtk3-extras \
