@@ -53,6 +53,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
+          - language: actions
+            build-mode: none
           - language: c-cpp
             build-mode: autobuild
           - language: java-kotlin
@@ -75,7 +77,7 @@ jobs:
             # https://docs.github.com/en/code-security/code-scanning/creating-an-advanced-setup-for-code-scanning/codeql-code-scanning-for-compiled-languages
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: System dependencies
         if: matrix.language == 'c-cpp'
@@ -90,18 +92,20 @@ jobs:
             libparse-exuberantctags-perl libcamomile-ocaml-dev \
             libgettext-ocaml libgettext-ocaml-dev z3 libz3-dev libz3-java \
             libz3-jni libbatteries-ocaml-dev ocaml-batteries-included \
-            liblablgl-ocaml liblablgl-ocaml-dev liblablgtk2-ocaml \
-            liblablgtk2-ocaml-dev liblablgtk2-gnome-ocaml \
-            liblablgtk2-gnome-ocaml-dev liblablgtk2-gl-ocaml \
-            liblablgtk2-gl-ocaml-dev liblablgtk-extras-ocaml-dev \
-            liblablgtk3-ocaml liblablgtk3-ocaml-dev \
-            liblablgtksourceview3-ocaml liblablgtksourceview3-ocaml-dev \
-            liblablgtkspell3-ocaml liblablgtkspell3-ocaml-dev dh-make \
-            libasprintf-dev libgettextpo-dev libgoocanvas-2.0-dev \
-            mesa-common-dev xdot lib32stdc++-11-dev \
-            libc6-dev-i386-amd64-cross lib32gcc-s1-amd64-cross otags \
-            libctypes-ocaml libctypes-ocaml-dev xsltproc fop gvfs hevea \
-            manpages-dev libc-devtools libnss-nis libnss-nisplus
+            liblablgl-ocaml liblablgl-ocaml-dev liblablgtk3-ocaml \
+            liblablgtk3-ocaml-dev liblablgtksourceview3-ocaml \
+            liblablgtksourceview3-ocaml-dev liblablgtkspell3-ocaml \
+            liblablgtkspell3-ocaml-dev dh-make libasprintf-dev \
+            libgettextpo-dev libgoocanvas-2.0-dev mesa-common-dev xdot \
+            lib32stdc++-13-dev libc6-dev-i386-amd64-cross \
+            lib32gcc-s1-amd64-cross libctypes-ocaml libctypes-ocaml-dev \
+            xsltproc fop gvfs hevea manpages-dev libc-devtools libnss-nis \
+            libnss-nisplus librsvg2-dev mailcap libpcre3-dev
+          sudo apt-get install -y otags || which -a otags 2>/dev/null || \
+            echo "will just have to do without otags..."
+          sudo apt-get install -y libgtk2.0-dev || which -a gtk-demo 2>/dev/null || \
+            which -a gtk-builder-convert 2>/dev/null || \
+            echo "will just have to do without gtk2..."
           sudo apt-get install -y gcj-jdk || which -a gcj 2>/dev/null || \
             echo "will just have to do without gcj..."
 
