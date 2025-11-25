@@ -103,6 +103,9 @@ jobs:
             libnss-nisplus librsvg2-dev mailcap libpcre3-dev
           sudo apt-get install -y otags || which -a otags 2>/dev/null || \
             echo "will just have to do without otags..."
+          sudo apt-get install -y libgtk2.0-dev || which -a gtk-demo 2>/dev/null || \
+            which -a gtk-builder-convert 2>/dev/null || \
+            echo "will just have to do without gtk2..."
           sudo apt-get install -y gcj-jdk || which -a gcj 2>/dev/null || \
             echo "will just have to do without gcj..."
 
