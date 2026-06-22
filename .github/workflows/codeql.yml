@@ -19,11 +19,13 @@ on:
       - master
       - dependabot/*
       - cooljeanius/dependabot/*
+      - alert-autofix-*
   pull_request:
     branches:
       - master
       - dependabot/*
       - cooljeanius/dependabot/*
+      - alert-autofix-*
   schedule:
     - cron: '32 16 * * 6'
 
