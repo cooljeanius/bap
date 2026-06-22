@@ -556,7 +556,7 @@ UInt x86g_calculate_eflags_all_WRK ( UInt cc_op,
                                                 Short,  toUShort );
       case X86G_CC_OP_SMULW:  ACTIONS_SMUL( 16, Short,  toUShort, 
                                                 Int,    toUInt   );
-      case X86G_CC_OP_SMULL:  ACTIONS_SMUL( 32, Int,    toUInt,
+      case X86G_CC_OP_SMULL:  ACTIONS_SMUL( 32, (Long)Int,    toUInt,
                                                 Long,   idULong );
 
       default:
