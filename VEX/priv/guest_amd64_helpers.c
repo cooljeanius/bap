@@ -649,7 +649,7 @@ ULong amd64g_calculate_rflags_all_WRK ( ULong cc_op,
                                                   Short,  toUShort );
       case AMD64G_CC_OP_SMULW:  ACTIONS_SMUL( 16, Short,  toUShort, 
                                                   Int,    toUInt   );
-      case AMD64G_CC_OP_SMULL:  ACTIONS_SMUL( 32, Int,    toUInt,
+      case AMD64G_CC_OP_SMULL:  ACTIONS_SMUL( 32, Int,    toInt,
                                                   Long,   idULong );
 
       case AMD64G_CC_OP_SMULQ:  ACTIONS_SMULQ;
