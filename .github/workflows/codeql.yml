@@ -123,7 +123,8 @@ jobs:
             time opam -y install xmlm ulex easy-format camomile gettext-camomile \
               camlidl batteries piqi piqilib ctypes-foreign stdlib-shims; \
           else \
-            time opam -y install pcre pcre2; \
+            opam -y install --no-depexts pcre; \
+            opam -y install pcre2; \
           fi
           for lablgpkg in lablgl lablgtk lablgtk3 lablgtk3-extras \
               lablgtk3-goocanvas2 lablgtk3-gtkspell3 lablgtk3-rsvg2; do \
