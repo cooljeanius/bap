@@ -114,6 +114,7 @@ jobs:
       - name: opam dependencies
         if: matrix.language == 'c-cpp'
         run: |
+          set -x
           which -a opam
           opam -y init --shell-setup
           eval "$(opam env --switch=default)"
