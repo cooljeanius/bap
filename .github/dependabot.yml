@@ -1,6 +1,5 @@
 ---
-
-# To get started with Dependabot version updates, you'll need to specify which
+# To get started with Dependabot version updates, you need to specify which
 # package ecosystems to update and where the package manifests are located.
 # Please see the documentation for all configuration options:
 # https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
@@ -10,18 +9,18 @@ updates:
   - package-ecosystem: "maven"  # See documentation for possible values
     directory: "/libtracewrap/libtrace/protobuf/java/"  # Location of manifests
     schedule:
-      interval: "weekly"
+      interval: "monthly"
     cooldown:
       default-days: 7
   - package-ecosystem: "pip"
     directory: "/libtracewrap/libtrace/protobuf/python/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
     cooldown:
       default-days: 7
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
     cooldown:
       default-days: 7
