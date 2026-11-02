@@ -102,8 +102,7 @@ jobs:
             lib32stdc++-13-dev libc6-dev-i386-amd64-cross \
             lib32gcc-s1-amd64-cross libctypes-ocaml libctypes-ocaml-dev \
             xsltproc fop gvfs hevea manpages-dev libc-devtools libnss-nis \
-            libnss-nisplus librsvg2-dev mailcap libpcre++ pcre-ocaml pcre2 \
-            pcre2-ocaml
+            libnss-nisplus librsvg2-dev mailcap libpcre++
           sudo apt-get install -y otags || which -a otags 2>/dev/null || \
             echo "will just have to do without otags..."
           sudo apt-get install -y libgtk2.0-dev || which -a gtk-demo 2>/dev/null || \
@@ -113,15 +112,19 @@ jobs:
             echo "will just have to do without gcj..."
 
       - name: opam dependencies
-        if: matrix.language == 'c-cpp' && false
+        if: matrix.language == 'c-cpp'
         run: |
           set -x
           which -a opam
           opam -y init --shell-setup
           eval "$(opam env --switch=default)"
           export CHECK_IF_PREINSTALLED=false
-          time opam -y install xmlm ulex easy-format camomile gettext-camomile \
-            camlidl batteries piqi piqilib ctypes-foreign stdlib-shims
+          if test "x${USE_OLD_PACKAGE_LIST}" = "xyes"; then \
+            time opam -y install xmlm ulex easy-format camomile gettext-camomile \
+              camlidl batteries piqi piqilib ctypes-foreign stdlib-shims; \
+          else \
+            time opam -y install pcre pcre2; \
+          fi
           for lablgpkg in lablgl lablgtk lablgtk3 lablgtk3-extras \
               lablgtk3-goocanvas2 lablgtk3-gtkspell3 lablgtk3-rsvg2; do \
             sync && date && echo "attempting to install ${lablgpkg}..."; \
