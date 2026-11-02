@@ -102,7 +102,7 @@ jobs:
             lib32stdc++-13-dev libc6-dev-i386-amd64-cross \
             lib32gcc-s1-amd64-cross libctypes-ocaml libctypes-ocaml-dev \
             xsltproc fop gvfs hevea manpages-dev libc-devtools libnss-nis \
-            libnss-nisplus librsvg2-dev mailcap pcre3
+            libnss-nisplus librsvg2-dev mailcap
           sudo apt-get install -y otags || which -a otags 2>/dev/null || \
             echo "will just have to do without otags..."
           sudo apt-get install -y libgtk2.0-dev || which -a gtk-demo 2>/dev/null || \
