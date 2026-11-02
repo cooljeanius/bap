@@ -112,7 +112,7 @@ jobs:
             echo "will just have to do without gcj..."
 
       - name: opam dependencies
-        if: matrix.language == 'c-cpp'
+        if: matrix.language == 'c-cpp' && false
         run: |
           set -x
           which -a opam
