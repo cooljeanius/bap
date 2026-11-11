@@ -102,7 +102,8 @@ jobs:
             lib32stdc++-13-dev libc6-dev-i386-amd64-cross \
             lib32gcc-s1-amd64-cross libctypes-ocaml libctypes-ocaml-dev \
             xsltproc fop gvfs hevea manpages-dev libc-devtools libnss-nis \
-            libnss-nisplus librsvg2-dev mailcap libpcre++
+            libnss-nisplus librsvg2-dev mailcap
+          sudo apt-get install libpcre3-dev || sudo apt-get install -y libpcre++
           sudo apt-get install -y otags || which -a otags 2>/dev/null || \
             echo "will just have to do without otags..."
           sudo apt-get install -y libgtk2.0-dev || which -a gtk-demo 2>/dev/null || \
@@ -119,6 +120,7 @@ jobs:
           opam -y init --shell-setup
           eval "$(opam env --switch=default)"
           export CHECK_IF_PREINSTALLED=false
+          env | uniq | sort | uniq | grep -v "\*\*\*" | grep -v "PWD\="
           if test "x${USE_OLD_PACKAGE_LIST}" = "xyes"; then \
             time opam -y install xmlm ulex easy-format camomile gettext-camomile \
               camlidl batteries piqi piqilib ctypes-foreign stdlib-shims; \
