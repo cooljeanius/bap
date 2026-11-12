@@ -126,12 +126,12 @@ jobs:
           else \
             export ImageVersionShort=0; \
           fi
-          sync
+          sync && sleep 1 && sync
           env | uniq | sort | uniq | grep -v "\*\*\*" | grep -v "PWD\="
           sync
-          if test "${ImageVersionShort}" -lt 20261101; then \
-            time opam -y install xmlm ulex easy-format camomile gettext-camomile \
-              camlidl batteries piqi piqilib ctypes-foreign stdlib-shims; \
+          if test "${ImageVersionShort}" -lt 20261101 || test "${ImageOS}" = "ubuntu24"; then \
+            time opam -y install xmlm ulex easy-format camomile gettext-camomile llvm \
+              camlidl batteries piqi piqilib ctypes-foreign stdlib-shims otaglibc; \
           else \
             opam -y install pcre2; \
           fi

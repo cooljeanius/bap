@@ -25,4 +25,7 @@ test -e libasmir/config.h.in~ && rm -f libasmir/config.h.in~
 test -d zarith-1.0/autom4te.cache && (rm -rf zarith-1.0/autom4te.cache || rmdir zarith-1.0/autom4te.cache)
 test -e zarith-1.0/config.h.in~ && rm -f zarith-1.0/config.h.in~
 test -e zarith-1.0/configure~ && rm -f zarith-1.0/configure~
+test -e zarith-1.0/config.guess~ && rm -f zarith-1.0/config.guess~
+test -e zarith-1.0/config.sub~ && rm -f zarith-1.0/config.sub~
+test -e "zarith-1.0/install-sh~" && rm -f "zarith-1.0/install-sh~"
 exit 0
