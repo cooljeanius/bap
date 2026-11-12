@@ -102,7 +102,7 @@ jobs:
             lib32stdc++-13-dev libc6-dev-i386-amd64-cross \
             lib32gcc-s1-amd64-cross libctypes-ocaml libctypes-ocaml-dev \
             xsltproc fop gvfs hevea manpages-dev libc-devtools libnss-nis \
-            libnss-nisplus librsvg2-dev mailcap taglib ocaml-taglib
+            libnss-nisplus librsvg2-dev mailcap
           sudo apt-get install libpcre3-dev || sudo apt-get install -y libpcre++
           sudo apt-get install -y otags || which -a otags 2>/dev/null || \
             echo "will just have to do without otags..."
@@ -131,7 +131,7 @@ jobs:
           sync
           if test "${ImageVersionShort}" -lt 20261101 || test "${ImageOS}" = "ubuntu24"; then \
             time opam -y install xmlm ulex easy-format camomile gettext-camomile llvm \
-              camlidl batteries piqi piqilib ctypes-foreign stdlib-shims otaglibc; \
+              camlidl batteries piqi piqilib ctypes-foreign stdlib-shims; \
           else \
             opam -y install pcre2; \
           fi
