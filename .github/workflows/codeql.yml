@@ -119,20 +119,30 @@ jobs:
           which -a opam
           opam -y init --shell-setup
           eval "$(opam env --switch=default)"
-          export CHECK_IF_PREINSTALLED=false
+          export CHECK_IF_PREINSTALLED=false && sync
+          if test -n "${ImageVersion}"; then \
+            ImageVersionShort="$(echo "${ImageVersion}" | cut -d. -f1)"; \
+            export ImageVersionShort; \
+          else \
+            export ImageVersionShort=0; \
+          fi
+          sync
           env | uniq | sort | uniq | grep -v "\*\*\*" | grep -v "PWD\="
-          if test "x${USE_OLD_PACKAGE_LIST}" = "xyes"; then \
+          sync
+          if test "${ImageVersionShort}" -lt 20261101; then \
             time opam -y install xmlm ulex easy-format camomile gettext-camomile \
               camlidl batteries piqi piqilib ctypes-foreign stdlib-shims; \
           else \
             opam -y install pcre2; \
           fi
+          sync
           for lablgpkg in lablgl lablgtk lablgtk3 lablgtk3-extras \
               lablgtk3-goocanvas2 lablgtk3-gtkspell3 lablgtk3-rsvg2; do \
             sync && date && echo "attempting to install ${lablgpkg}..."; \
             (time opam -y install "${lablgpkg}") || \
               echo "unable to install ${lablgpkg}"; \
           done
+          sync
 
       # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL

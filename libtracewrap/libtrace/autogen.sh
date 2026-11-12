@@ -28,6 +28,8 @@ fi
 test -d autom4te.cache && (rm -rf autom4te.cache || rmdir autom4te.cache)
 test -e config.h.in~ && rm -f config.h.in~
 test -e configure~ && rm -f configure~
+test -e config.guess~ && rm -f config.guess~
+test -e config.sub~ && rm -f config.sub~
 test -d piqi/piqi/autom4te.cache && rm -rf piqi/piqi/autom4te.cache
 test -e piqi/piqi/config.h.in~ && rm -f piqi/piqi/config.h.in~
 test -e piqi/piqi/configure~ && rm -f piqi/piqi/configure~

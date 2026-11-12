@@ -25,19 +25,23 @@ AC_SUBST([INCDIRS])dnl
 AM_PROG_AR
 AC_PROG_CXX
 if test "x${CC}" = "x"; then
-  test -z "${CC}"
+  test -z "${CC}" || unset CC
   AC_PROG_CC
 else
   test -n "${CC}" && test -x "${CC}" && export CC
   AC_SUBST([CC])
 fi
 if test "x${CPP}" = "x"; then
-  test -z "${CPP}"
+  test -z "${CPP}" || unset CPP
   AC_PROG_CPP
 fi
 if test "x${RANLIB}" = "x"; then
   test -z "${RANLIB}"
-  AC_PROG_RANLIB
+  m4_ifdef([AC_PROG_RANLIB],[
+    AC_PROG_RANLIB
+  ],[
+    AC_CHECK_TOOL([RANLIB],[ranlib],[:])
+  ])
 else
   test -n "${RANLIB}" && test -x "${RANLIB}" && export RANLIB
   AC_SUBST([RANLIB])
@@ -50,7 +54,7 @@ AC_CHECK_LIB([pthread],[pthread_create])dnl
 
 # Checks for header files.
 AC_HEADER_STDBOOL dnl# also "_CHECK"s it
-AC_CHECK_HEADERS([stdio.h])dnl
+AC_CHECK_HEADERS([google/protobuf/stubs/common.h])dnl
 
 if test "x${ac_cv_header_stdint_h}" = "x"; then
   test -z "${ac_cv_header_stdint_h}" || unset ac_cv_header_stdint_h

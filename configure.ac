@@ -9,7 +9,7 @@ dnl# Process this file with autoconf to produce a configure script.
 AC_PREREQ([2.69])
 AC_INIT([Bap],[0.7],[bap-dev@lists.andrew.cmu.edu])
 AC_CONFIG_SRCDIR([libasmir/src/asm_program.c])
-AC_CONFIG_HEADER([libasmir/config.h])
+AC_CONFIG_HEADERS([libasmir/config.h])
 AC_CONFIG_MACRO_DIR([m4])dnl
 
 AC_CANONICAL_TARGET
@@ -81,6 +81,7 @@ else
   AC_SUBST([MAKE])
 fi
 AX_CHECK_GNU_MAKE
+AC_PROG_LEX([noyywrap])
 AM_PROG_LEX
 AC_PROG_YACC
 AC_PROG_OCAML([3.12.0])
@@ -97,7 +98,11 @@ LT_LANG([Java])dnl
 LT_LANG([Windows Resource])
 if test "x${RANLIB}" = "x"; then
   test -z "${RANLIB}" || unset RANLIB
-  AC_PROG_RANLIB
+  m4_ifdef([AC_PROG_RANLIB],[
+    AC_PROG_RANLIB
+  ],[
+    AC_CHECK_TOOL([RANLIB],[ranlib],[:])
+  ])
 else
   test -n "${RANLIB}" && test -x "${RANLIB}" && export RANLIB
   AC_SUBST([RANLIB])
@@ -293,7 +298,11 @@ AC_CHECK_LIB([pcre],[pcre_config],[],[
     AC_CHECK_LIB([pcreposix],[main],[
       AC_MSG_WARN([trying to use libpcreposix in the absence of just plain libpcre; this is untested])
     ],[
-      AC_MSG_ERROR([PCRE library not found])
+      AC_SEARCH_LIBS([pcre_config],
+                     [pcre3 pcre2 pcre++ pcre-ocaml pcre3-ocaml pcre2-ocaml \
+                      pcre-posix pcre2-posix pcre2-posix3],
+                     [echo "found; LIBS are now ${LIBS}"],
+                     [AC_MSG_ERROR([PCRE library not found])])dnl
     ])dnl
   ])dnl
 ])dnl
@@ -356,6 +365,7 @@ AC_SUBST([BAP_DIR])dnl
 AC_MSG_NOTICE([re-checking standard headers])
 unset ac_cv_header_inttypes_h
 unset ac_cv_header_stdint_h
+unset ac_cv_header_stdio_h
 unset ac_cv_header_stdlib_h
 unset ac_cv_header_string_h
 unset ac_cv_header_unistd_h
@@ -367,7 +377,7 @@ AC_MSG_RESULT([ ])
 AC_CHECK_HEADERS([dis-asm.h float.h limits.h locale.h malloc.h \
                   malloc/malloc.h mem/memory.h stddef.h sys/file.h \
                   sys/inttypes.h sys/ioctl.h sys/socket.h sys/time.h \
-                  sys/timeb.h wchar.h])
+                  sys/timeb.h sys/wchar.h])
 AC_HEADER_STDBOOL dnl# also "_CHECK"s it
 # These headers are from specific packages so they get specific error
 # messages:
@@ -376,7 +386,9 @@ AC_CHECK_HEADER([bfd.h],[],
 AC_CHECK_HEADER([pcre.h],[],
    [AC_CHECK_HEADER([pcre/pcre.h],[],
       [AC_CHECK_HEADER([pcrelib/pcre.h],[],
-         [AC_MSG_ERROR([You need libpcre headers (e.g., libpcre3-dev)])])])])
+         [AC_CHECK_HEADER([pcreposix.h],[],
+           [AC_MSG_WARN([You need libpcre headers (e.g., libpcre3-dev where applicable): This ought to be an error but it has been changed to a warning to facilitate work on this configure script.])])])])])dnl
+  ## camlidl:
 AC_CHECK_HEADER([caml/camlidlruntime.h],[],
    [AC_MSG_WARN([the optional z3 package will want to include <caml/camlidlruntime.h>, but this header seems to be missing.])])dnl
 

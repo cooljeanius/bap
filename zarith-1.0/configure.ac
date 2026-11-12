@@ -28,14 +28,14 @@ else
 fi
 AM_PROG_AS
 if test "x${CC}" = "x"; then
-  test -z "${CC}"
+  test -z "${CC}" || unset CC
   AC_PROG_CC
 else
   test -n "${CC}" && test -x "${CC}" && export CC
   AC_SUBST([CC])
 fi
 if test "x${CPP}" = "x"; then
-  test -z "${CPP}"
+  test -z "${CPP}" || unset CPP
   AC_PROG_CPP
 fi
 AC_PROG_CXX
@@ -200,7 +200,7 @@ if test ! -z "${ocamllibdir}"; then
 fi
 AC_HEADER_STDBOOL dnl# also "_CHECK"s it
 AC_CHECK_HEADERS([caml/mlvalues.h float.h gmp.h math.h mpir.h \
-                  stddef.h stdio.h])dnl
+                  stddef.h])dnl
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_C_BIGENDIAN

@@ -46,14 +46,14 @@ else
   test -n "${AR}" && test -x "${AR}" && export AR
 fi
 if test "x${AWK}" = "x"; then
-  test -z "${AWK}"
+  test -z "${AWK}" || unset AWK
   AC_PROG_AWK
 else
   test -n "${AWK}" && test -x "${AWK}" && export AWK
   AC_SUBST([AWK])
 fi
 if test "x${CC}" = "x"; then
-  test -z "${CC}"
+  test -z "${CC}" || unset CC
   AC_PROG_CC
 else
   test -n "${CC}" && test -x "${CC}" && export CC
@@ -62,11 +62,11 @@ fi
 AC_PROG_CXX
 AC_LANG([C++])
 if test "x${CPP}" = "x"; then
-  test -z "${CPP}"
+  test -z "${CPP}" || unset CPP
   AC_PROG_CPP
 fi
 if test "x${INSTALL}" = "x"; then
-  test -z "${INSTALL}"
+  test -z "${INSTALL}" || unset INSTALL
   AC_PROG_INSTALL
   AM_PROG_INSTALL_STRIP
 else
@@ -75,7 +75,7 @@ else
 fi
 AC_PROG_LN_S
 if test "x${MAKE}" = "x"; then
-  test -z "${MAKE}"
+  test -z "${MAKE}" || unset MAKE
   AC_PATH_PROGS([MAKE],[make gmake gnumake remake])
   AC_PROG_MAKE_SET
 else
@@ -88,8 +88,12 @@ dnl# temporarily set this while I update everything libtool-related:
 LT_PREREQ([2.4.6])dnl
 
 if test "x${RANLIB}" = "x"; then
-  test -z "${RANLIB}"
-  AC_PROG_RANLIB
+  test -z "${RANLIB}" || unset RANLIB
+  m4_ifdef([AC_PROG_RANLIB],[
+    AC_PROG_RANLIB
+  ],[
+    AC_CHECK_TOOL([RANLIB],[ranlib],[:])
+  ])
 else
   test -n "${RANLIB}" && test -x "${RANLIB}" && export RANLIB
   AC_SUBST([RANLIB])
@@ -112,9 +116,8 @@ AX_PTHREAD
 # TODO(chandlerc@google.com) Check for the necessary system headers.
 AC_HEADER_STDBOOL dnl# also "_CHECK"s it
 AC_HEADER_SYS_WAIT
-AC_HEADER_TIME
-AC_CHECK_HEADERS([fcntl.h limits.h stddef.h stdio.h \
-                  sys/time.h sys/timeb.h wchar.h wctype.h])dnl
+AC_CHECK_HEADERS([fcntl.h limits.h stddef.h sys/time.h sys/timeb.h \
+                  sys/wchar.h wctype.h])dnl
 
 if test "x${ac_cv_header_strings_h}" = "x"; then
   test -z "${ac_cv_header_strings_h}" || unset ac_cv_header_strings_h

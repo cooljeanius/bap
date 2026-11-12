@@ -14,18 +14,19 @@ AM_MAINTAINER_MODE
 # Checks for programs.
 AC_PROG_CXX
 if test "x${CC}" = "x"; then
-  test -z "${CC}"
+  test -z "${CC}" || unset CC
   AC_PROG_CC
 else
   test -n "${CC}" && test -x "${CC}" && export CC
   AC_SUBST([CC])
 fi
 if test "x${CPP}" = "x"; then
-  test -z "${CPP}"
+  test -z "${CPP}" || unset CPP
   AC_PROG_CPP
 fi
 AC_PROG_INSTALL
 AM_PROG_INSTALL_STRIP
+AC_PROG_LEX([noyywrap])
 AM_PROG_LEX
 AC_PROG_YACC
 AC_PROG_LN_S
@@ -59,7 +60,7 @@ AC_CHECK_LIB([pthread],[pthread_create])dnl
 
 # Checks for header files.
 AC_HEADER_STDBOOL dnl# also "_CHECK"s it
-AC_CHECK_HEADERS([fcntl.h stdio.h])dnl
+AC_CHECK_HEADERS([fcntl.h])dnl
 
 if test "x${ac_cv_header_stdint_h}" = "x"; then
   test -z "${ac_cv_header_stdint_h}" || unset ac_cv_header_stdint_h
