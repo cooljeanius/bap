@@ -62,14 +62,14 @@ AS_IF([test "x${AR}" = "x"],[
   test -n "${AR}" && test -x "${AR}" && export AR
 ])
 AS_IF([test "x${AWK}" = "x"],[
-  test -z "${AWK}"
+  test -z "${AWK}" || unset AWK
   AC_PROG_AWK
 ],[
   test -n "${AWK}" && test -x "${AWK}" && export AWK
   AC_SUBST([AWK])
 ])
 AS_IF([test "x${CC}" = "x"],[
-  test -z "${CC}"
+  test -z "${CC}" || unset CC
   AC_PROG_CC
 ],[
   test -n "${CC}" && test -x "${CC}" && export CC
@@ -78,11 +78,11 @@ AS_IF([test "x${CC}" = "x"],[
 AC_PROG_CXX
 AC_LANG([C++])
 AS_IF([test "x${CPP}" = "x"],[
-  test -z "${CPP}"
+  test -z "${CPP}" || unset CPP
   AC_PROG_CPP
 ])
 AS_IF([test "x${INSTALL}" = "x"],[
-  test -z "${INSTALL}"
+  test -z "${INSTALL}" || unset INSTALL
   AC_PROG_INSTALL
   AM_PROG_INSTALL_STRIP
 ],[
@@ -91,7 +91,7 @@ AS_IF([test "x${INSTALL}" = "x"],[
 ])
 AC_PROG_LN_S
 AS_IF([test "x${MAKE}" = "x"],[
-  test -z "${MAKE}"
+  test -z "${MAKE}" || unset MAKE
   AC_PATH_PROGS([MAKE],[make gmake gnumake remake])
   AC_PROG_MAKE_SET
 ],[
@@ -133,8 +133,12 @@ dnl# temporarily set this while I update everything libtool-related:
 LT_PREREQ([2.4.6])dnl
 
 AS_IF([test "x${RANLIB}" = "x"],[
-  test -z "${RANLIB}"
-  AC_PROG_RANLIB
+  test -z "${RANLIB}" || unset RANLIB
+  m4_ifdef([AC_PROG_RANLIB],[
+    AC_PROG_RANLIB
+  ],[
+    AC_CHECK_TOOL([RANLIB],[ranlib],[:])
+  ])
 ],[
   test -n "${RANLIB}" && test -x "${RANLIB}" && export RANLIB
   AC_SUBST([RANLIB])dnl
@@ -144,7 +148,7 @@ AS_IF([test "x${RANLIB}" = "x"],[
 AC_HEADER_DIRENT
 AC_HEADER_STDBOOL dnl# Also "_CHECK"s it
 AC_HEADER_SYS_WAIT
-AC_CHECK_HEADERS([fcntl.h float.h limits.h locale.h stdio.h sys/param.h])dnl
+AC_CHECK_HEADERS([fcntl.h float.h limits.h locale.h])dnl
 
 if test "x${acl_cv_wp}" = "x"; then
   test -z "${acl_cv_wp}" && export acl_cv_wp='-Wp,'
@@ -158,6 +162,10 @@ fi
 if test "x${ac_cv_header_stdint_h}" = "x"; then
   test -z "${ac_cv_header_stdint_h}" || unset ac_cv_header_stdint_h
   AC_CHECK_HEADERS([stdint.h])
+fi
+if test "x${ac_cv_header_sys_param_h}" = "x"; then
+  test -z "${ac_cv_header_sys_param_h}" || unset ac_cv_header_sys_param_h
+  AC_CHECK_HEADERS([sys/param.h])
 fi
 if test "x${ac_cv_header_unistd_h}" = "x"; then
   test -z "${ac_cv_header_unistd_h}" || unset ac_cv_header_unistd_h

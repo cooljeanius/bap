@@ -152,7 +152,7 @@ if test "x${OCAMLDEP}" = "xno"; then
 fi
 
 AC_USE_SYSTEM_EXTENSIONS
-AC_PROG_LEX
+AC_PROG_LEX([noyywrap])
 if test -x ./missing; then
   test -d ${srcdir} && echo "srcdir is ${srcdir}"
   m4_ifdef([AM_PROG_LEX],[AM_PROG_LEX],[test -n "${LEX}"])
@@ -226,7 +226,6 @@ AC_EXEEXT
 
 AM_PROG_AS
 AC_SEARCH_LIBS([strerror],[cposix])dnl# Used to be AC\_ISC\_POSIX
-AC_CHECK_HEADERS([stdio.h])dnl
 
 LIBEXT=`ocamlc -config | grep ext_lib | sed -e 's/.*\(\..*\)/\1/' `
 OBJEXT=`ocamlc -config | grep ext_obj | sed -e 's/.*\(\..*\)/\1/' `

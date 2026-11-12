@@ -16,4 +16,7 @@ test -n "`which autoheader`" && autoheader --force --warnings=all
 test -d autom4te.cache && (rm -rf autom4te.cache || rmdir autom4te.cache)
 test -e config.h.in~ && rm -f config.h.in~
 test -e configure~ && rm -f configure~
+test -e config.guess~ && rm -f config.guess~
+test -e config.sub~ && rm -f config.sub~
+test -e "install-sh~" && rm -f "install-sh~"
 exit 0
